@@ -5,7 +5,7 @@ export const Route = createFileRoute('/blog/$slug')({
 })
 
 const posts: Record<string, { title: string; date: string; category: string; readTime: string; content: React.ReactNode }> = {
-  'crypto-trust': {h
+  'crypto-trust': {
     title: 'Do I Need a Trust If I Own Crypto?',
     date: 'June 2025',
     category: 'Crypto Planning',
