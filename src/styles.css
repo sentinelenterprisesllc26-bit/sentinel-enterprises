@@ -1,0 +1,86 @@
+@import "tailwindcss" source("../");
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Blog post prose styles */
+.blog-content .prose-content {
+  color: rgb(203 213 225);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.blog-content .prose-content .lead {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: rgb(226 232 240);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.blog-content .prose-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content .prose-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: rgb(226 232 240);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-content .prose-content p {
+  margin-bottom: 1.25rem;
+  color: rgb(148 163 184);
+}
+
+.blog-content .prose-content ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content .prose-content ul li {
+  margin-bottom: 0.5rem;
+  color: rgb(148 163 184);
+}
+
+.blog-content .prose-content ul li strong {
+  color: rgb(226 232 240);
+}
+
+.blog-content .prose-content .cta-box {
+  background: rgba(245, 158, 11, 0.05);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.blog-content .prose-content .cta-box p {
+  color: rgb(226 232 240);
+  margin-bottom: 0.75rem;
+}
+
+.blog-content .prose-content .cta-box a {
+  color: rgb(251 191 36);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.blog-content .prose-content .cta-box a:hover {
+  color: rgb(252 211 77);
+}

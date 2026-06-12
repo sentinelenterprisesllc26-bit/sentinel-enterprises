@@ -1,0 +1,192 @@
+import { Link, createFileRoute } from '@tanstack/react-router'
+import { CheckoutButton } from '../lib/checkout'
+import { formatPrice, PRODUCTS, type ProductId } from '../lib/products'
+
+export const Route = createFileRoute('/guides')({
+  component: GuidesPage,
+})
+
+/*
+ * ============================================================================
+ *  PAID GUIDES & VIDEO BUNDLES  —  HOW IT WORKS
+ * ============================================================================
+ *
+ *  Each "Buy" button opens Stripe Checkout (Stripe's secure hosted payment
+ *  page) via the create-checkout Netlify Function. There are no manual payment
+ *  links to paste — adding the products and prices is already done.
+ *
+ *  TO TAKE REAL PAYMENTS:
+ *    Add a STRIPE_SECRET_KEY environment variable in the Netlify UI
+ *    (Site settings → Environment variables). That's the only remaining step.
+ *
+ *  PRICES live in src/lib/products.ts (edit `amountCents` to change them).
+ *
+ *  DELIVERY AFTER PAYMENT  ➜  Stripe redirects buyers to /thank-you
+ *    (src/routes/thank-you.tsx), which has the "Watch Video" + "Download PDF"
+ *    buttons you connect to the real files. Upload deliverables to
+ *    /public/pdfs/ (PDFs) and host any videos privately.
+ * ============================================================================
+ */
+
+type Product = {
+  // Maps to the catalog in src/lib/products.ts (drives price + Stripe charge).
+  id: ProductId
+  badge?: string
+  title: string
+  tagline: string
+  description: string
+  includes: string[]
+  buttonText: string
+  featured?: boolean
+}
+
+const products: Product[] = [
+  {
+    id: 'crypto-inheritance-bundle',
+    badge: 'Best Value',
+    featured: true,
+    title: 'Crypto Inheritance Protection Bundle',
+    tagline: 'Make sure your heirs actually inherit your crypto.',
+    description:
+      'The complete system for passing on Bitcoin, XRP, and other digital assets without lost seed phrases or frozen accounts — taught in plain English, step by step.',
+    includes: [
+      'Paid training video: building an inheritance-ready crypto plan',
+      'Downloadable PDF checklist + fillable workbook',
+      'Beneficiary access template you can hand to your family',
+    ],
+    buttonText: 'Buy Now',
+  },
+  {
+    id: 'caregiver-tax-guide',
+    title: 'Caregiver Tax Savings Guide',
+    tagline: 'Stop overpaying on caregiver-related taxes.',
+    description:
+      'A plain-English walkthrough of the deductions, credits, and filing strategies most family caregivers miss — so you can keep more of what you earn this tax year.',
+    includes: ['Downloadable PDF guide', 'Quick-reference deduction checklist'],
+    buttonText: 'Get the Guide',
+  },
+  {
+    id: 'asset-protection-guide',
+    title: 'Asset Protection Starter Guide',
+    tagline: 'Plan like the wealthy — without the eight-figure budget.',
+    description:
+      'Understand what a properly structured plan can actually shield from lawsuits, creditors, and inheritance erosion — and the practical first steps to put one in place.',
+    includes: ['Downloadable PDF guide', 'Trust & titling starter checklist'],
+    buttonText: 'Access the Guide',
+  },
+]
+
+function GuidesPage() {
+  return (
+    <>
+      <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl">
+            <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">
+              Paid Guides &amp; Video Bundles
+            </span>
+            <h1 className="mt-2 text-4xl sm:text-5xl font-black text-white leading-tight mb-6">
+              Go Deeper with Step-by-Step Guides
+            </h1>
+            <p className="text-xl text-slate-400 leading-relaxed">
+              Our free resources get you started. These paid guides and video bundles give you the complete, follow-along
+              system — workbooks, checklists, and training you can act on today.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-24 bg-slate-950">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+            {products.map((p) => (
+              <ProductCard key={p.title} {...p} />
+            ))}
+          </div>
+
+          <p className="mt-10 text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-8 max-w-3xl">
+            These materials are provided for educational purposes only. Sentinel Enterprises LLC is not a licensed
+            attorney, financial advisor, or fiduciary. Nothing in these guides constitutes legal, tax, or financial
+            advice. All sales are processed securely by Stripe.
+          </p>
+
+          <div className="mt-10 text-center">
+            <Link
+              to="/downloads"
+              className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors"
+            >
+              Prefer to start free? Browse our free downloads →
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+function ProductCard({ id, badge, title, tagline, description, includes, buttonText, featured }: Product) {
+  return (
+    <div
+      className={
+        'rounded-2xl p-7 flex flex-col transition-colors ' +
+        (featured
+          ? 'bg-slate-800/80 border-2 border-amber-500/60 shadow-lg shadow-amber-500/10'
+          : 'bg-slate-800/60 border border-slate-700/50 hover:border-amber-500/50')
+      }
+    >
+      {badge && (
+        <span className="self-start mb-4 px-2.5 py-0.5 bg-amber-500/15 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider">
+          {badge}
+        </span>
+      )}
+      <h3 className="text-xl font-bold text-white">{title}</h3>
+      <p className="text-amber-400 text-sm font-medium mt-1 mb-4">{tagline}</p>
+      <p className="text-slate-400 text-sm leading-relaxed mb-6">{description}</p>
+
+      <div className="mb-6">
+        <p className="text-white font-semibold text-xs uppercase tracking-wider mb-3">What&apos;s included</p>
+        <ul className="space-y-2.5">
+          {includes.map((item) => (
+            <li key={item} className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed">
+              <svg
+                className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-auto">
+        <div className="flex items-baseline gap-1 mb-4">
+          <span className="text-3xl font-black text-white">{formatPrice(PRODUCTS[id].amountCents)}</span>
+          <span className="text-slate-500 text-sm">one-time</span>
+        </div>
+        {/* Opens Stripe Checkout via the create-checkout function (no link to paste). */}
+        <CheckoutButton
+          productId={id}
+          className="inline-flex w-full items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 disabled:cursor-wait text-slate-900 font-bold text-sm rounded-xl transition-colors"
+        >
+          {buttonText}
+        </CheckoutButton>
+        {/* Reassurance note shown under every paid button */}
+        <p className="mt-3 flex items-center justify-center gap-1.5 text-slate-500 text-xs">
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M16.5 10.5V6.75a4.5 4.5 0 00-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"
+            />
+          </svg>
+          Secure checkout powered by Stripe
+        </p>
+      </div>
+    </div>
+  )
+}
