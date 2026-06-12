@@ -5,7 +5,7 @@ export const Route = createFileRoute('/blog/$slug')({
 })
 
 const posts: Record<string, { title: string; date: string; category: string; readTime: string; content: React.ReactNode }> = {
-  'crypto-trust': {
+  'crypto-trust': {h
     title: 'Do I Need a Trust If I Own Crypto?',
     date: 'June 2025',
     category: 'Crypto Planning',
@@ -19,15 +19,21 @@ const posts: Record<string, { title: string; date: string; category: string; rea
 
         <h2>What a Trust Actually Does</h2>
         <p>
-          A trust is a legal arrangement where you (the grantor) transfer ownership of assets to a trust entity, managed
-          by a trustee, for the benefit of your beneficiaries. In plain English: your assets move into a legal "box"
-          that has clear rules about what happens to them when you're gone.
+          A non-grantor irrevocable trust is a separate legal and tax entity. The person who sets it up (the grantor)
+          gives up control — they cannot change the terms, pull assets back, or revoke it, except in very narrow
+          circumstances under state law or with court involvement.
         </p>
         <p>
-          For traditional assets — your home, savings account, brokerage — a trust avoids probate (the public, often
-          slow court process of distributing an estate), protects against creditors, and gives your heirs a clear
-          roadmap.
+          Because the grantor is not treated as the owner for income tax purposes, the trust must obtain its own EIN,
+          file its own Form 1041 tax return, and pay taxes on any income it retains — at trust tax rates, which hit
+          higher brackets much faster than individual rates.
         </p>
+                <p>
+                          If the trustee distributes income to beneficiaries, that income is deductible to the trust and becomes
+                          taxable to the beneficiary, who receives a Schedule K-1. Assets in a properly structured non-grantor
+                          irrevocable trust are generally outside the grantor's taxable estate and better shielded from future
+                          creditors — though specific results depend on state law and timing of the transfer.
+                </p>
 
         <h2>Why Crypto Needs Special Trust Language</h2>
         <p>
