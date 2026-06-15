@@ -236,7 +236,7 @@ function PaidProductsSection() {
 
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-black text-white">$97</span>
+              <span className="text-5xl font-black text-white">$17.99</span>
               <span className="text-slate-400 text-sm">one-time · lifetime access</span>
             </div>
             <a
@@ -245,7 +245,7 @@ function PaidProductsSection() {
               rel="noopener noreferrer"
               className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
             >
-              Get the Complete Bundle — $97
+              Get the Complete Bundle — $17.99
             </a>
           </div>
         </div>
