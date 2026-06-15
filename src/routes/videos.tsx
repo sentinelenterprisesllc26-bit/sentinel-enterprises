@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { CheckoutButton } from '../lib/checkout'
 import { formatPrice, PRODUCTS } from '../lib/products'
 
 export const Route = createFileRoute('/videos')({
@@ -266,13 +265,15 @@ function MasterclassSection() {
                 <span className="text-slate-400 text-sm">one-time · lifetime access</span>
               </div>
 
-              {/* Opens Stripe Checkout via the create-checkout function. */}
-              <CheckoutButton
-                productId={MASTERCLASS.productId}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 disabled:cursor-wait text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
+              {/* Opens Stripe's hosted payment page directly in a new tab. */}
+              <a
+                href="https://buy.stripe.com/14A7sL3uN5NA53nbtLdIA01"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
               >
                 Buy the Masterclass
-              </CheckoutButton>
+              </a>
               <p className="mt-3 flex items-center gap-1.5 text-slate-500 text-xs">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path

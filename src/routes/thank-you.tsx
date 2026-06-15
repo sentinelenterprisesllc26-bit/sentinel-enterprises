@@ -9,34 +9,35 @@ export const Route = createFileRoute('/thank-you')({
  *  THANK-YOU / DOWNLOAD PAGE  —  POST-PURCHASE DELIVERY
  * ============================================================================
  *
- *  This is where customers land AFTER a successful Stripe payment. Stripe
- *  Checkout redirects here with a ?session_id=... query param identifying the
- *  completed order.
+ *  This is where customers land AFTER a successful Stripe payment. It lists
+ *  every file in the paid bundle as a direct download link. The same files
+ *  are also emailed to the buyer by Stripe along with their receipt.
  *
- *  HOW TO CONNECT IT:
- *  1. Payment + redirect are already wired up — the create-checkout function
- *     (netlify/functions/create-checkout.mts) sends buyers here automatically.
- *  2. Upload the purchased files to  /public/pdfs/  (PDFs) and host the
- *     training videos (unlisted YouTube/Vimeo, or a Stripe-gated link).
- *  3. REPLACE the two placeholder hrefs below:
- *        WATCH_VIDEO_URL  — the private/unlisted training video link
- *        DOWNLOAD_PDF_URL — the deliverable PDF/workbook in /public/pdfs/
- *
- *  NOTE ON SECURITY: a public redirect page like this is the simplest setup.
- *  For gated delivery that can't be shared, add a Netlify Function that reads
- *  the ?session_id, verifies it with Stripe, and only then reveals the links.
- *  That can be wired in later without changing the rest of the site.
+ *  The PDFs live in /public/downloads/ — to swap in a real deliverable, just
+ *  replace the matching file there (keep the filename) and the link below
+ *  keeps working.
  * ============================================================================
  */
 
-// 🔵 REPLACE: the private training-video link delivered after purchase.
-const WATCH_VIDEO_URL = 'https://www.youtube.com/watch?v=REPLACE_WITH_PRIVATE_VIDEO'
-// 🔵 REPLACE: the deliverable PDF (upload it to /public/pdfs/ first).
-const DOWNLOAD_PDF_URL = '/pdfs/your-purchased-workbook.pdf'
+type Download = {
+  title: string
+  file: string
+}
+
+// Each entry links to /downloads/<file> served from /public/downloads/.
+const DOWNLOADS: Download[] = [
+  { title: 'Crypto Inheritance Checklist', file: 'crypto-inheritance-checklist.pdf' },
+  { title: 'Crypto Inheritance Fillable Workbook', file: 'crypto-inheritance-fillable-workbook.pdf' },
+  { title: 'Beneficiary Access Template', file: 'beneficiary-access-template.pdf' },
+  { title: 'Caregiver Tax Savings Guide', file: 'caregiver-tax-savings-guide.pdf' },
+  { title: 'Caregiver Deduction Checklist', file: 'caregiver-deduction-checklist.pdf' },
+  { title: 'Asset Protection Starter Guide', file: 'asset-protection-starter-guide.pdf' },
+  { title: 'Trust & Titling Starter Checklist', file: 'trust-titling-starter-checklist.pdf' },
+]
 
 function ThankYouPage() {
   return (
-    <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 min-h-[70vh] flex items-center">
+    <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950 min-h-[70vh]">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="w-16 h-16 mx-auto bg-amber-500/15 border border-amber-500/30 rounded-2xl flex items-center justify-center text-amber-400 mb-6">
           <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -45,48 +46,60 @@ function ThankYouPage() {
         </div>
 
         <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Payment Confirmed</span>
-        <h1 className="mt-2 text-4xl sm:text-5xl font-black text-white leading-tight mb-4">Thank You!</h1>
+        <h1 className="mt-2 text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
+          Thank You for Your Purchase!
+        </h1>
         <p className="text-xl text-slate-400 leading-relaxed mb-10">
-          Your purchase is complete. Your training video and downloadable materials are ready below.
+          Your downloads are ready below. We&apos;ve also emailed copies to you, so you&apos;ll always have them
+          on hand.
         </p>
 
-        <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-8 flex flex-col sm:flex-row gap-4 justify-center">
-          {/* 🔵 REPLACE `WATCH_VIDEO_URL` above with your real private video link. */}
-          <a
-            href={WATCH_VIDEO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 5v14l11-7z" />
-            </svg>
-            Watch Video
-          </a>
-          {/* 🔵 REPLACE `DOWNLOAD_PDF_URL` above with your real PDF in /public/pdfs/. */}
-          <a
-            href={DOWNLOAD_PDF_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-              />
-            </svg>
-            Download PDF
-          </a>
+        <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 sm:p-8 text-left">
+          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-4">Your downloads</p>
+          <ul className="space-y-2.5">
+            {DOWNLOADS.map((d) => (
+              <li key={d.file}>
+                <a
+                  href={`/downloads/${d.file}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="flex items-center gap-3 px-4 py-3 bg-white/5 hover:bg-white/10 text-white font-semibold rounded-xl border border-white/10 transition-colors"
+                >
+                  <svg
+                    className="w-5 h-5 text-amber-400 flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                    />
+                  </svg>
+                  <span className="flex-1">{d.title}</span>
+                  <span className="text-slate-500 text-xs uppercase tracking-wider">PDF</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <p className="mt-8 text-slate-500 text-sm">
-          Having trouble accessing your purchase?{' '}
-          <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-amber-400 hover:text-amber-300 font-semibold">
-            Email us
-          </a>{' '}
-          and we&apos;ll sort it out right away.
+        <p className="mt-8 text-slate-400 text-sm leading-relaxed">
+          Your receipt has been emailed to you by Stripe. If you have any questions email{' '}
+          <a
+            href="mailto:Sentinelenterprisesllc26@gmail.com"
+            className="text-amber-400 hover:text-amber-300 font-semibold"
+          >
+            Sentinelenterprisesllc26@gmail.com
+          </a>
+          .
+        </p>
+
+        <p className="mt-4 text-slate-500 text-sm leading-relaxed">
+          Tip: bookmark this page so you can return to your downloads anytime.
         </p>
 
         <div className="mt-10">
