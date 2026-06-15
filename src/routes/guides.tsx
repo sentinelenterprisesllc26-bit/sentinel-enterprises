@@ -1,5 +1,4 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { CheckoutButton } from '../lib/checkout'
 import { formatPrice, PRODUCTS, type ProductId } from '../lib/products'
 
 export const Route = createFileRoute('/guides')({
@@ -11,15 +10,12 @@ export const Route = createFileRoute('/guides')({
  *  PAID GUIDES & VIDEO BUNDLES  —  HOW IT WORKS
  * ============================================================================
  *
- *  Each "Buy" button opens Stripe Checkout (Stripe's secure hosted payment
- *  page) via the create-checkout Netlify Function. There are no manual payment
- *  links to paste — adding the products and prices is already done.
+ *  The "Buy Now" button links directly to Stripe's secure hosted payment page
+ *  (a Stripe Payment Link), opened in a new tab. To change the destination,
+ *  edit the href on the buy button below.
  *
- *  TO TAKE REAL PAYMENTS:
- *    Add a STRIPE_SECRET_KEY environment variable in the Netlify UI
- *    (Site settings → Environment variables). That's the only remaining step.
- *
- *  PRICES live in src/lib/products.ts (edit `amountCents` to change them).
+ *  PRICES live in src/lib/products.ts (edit `amountCents` to change the price
+ *  shown on this page).
  *
  *  DELIVERY AFTER PAYMENT  ➜  Stripe redirects buyers to /thank-you
  *    (src/routes/thank-you.tsx), which has the "Watch Video" + "Download PDF"
@@ -45,34 +41,16 @@ const products: Product[] = [
     id: 'crypto-inheritance-bundle',
     badge: 'Best Value',
     featured: true,
-    title: 'Crypto Inheritance Protection Bundle',
-    tagline: 'Make sure your heirs actually inherit your crypto.',
+    title: 'Complete Protection Bundle',
+    tagline: 'Everything we offer — crypto inheritance, caregiver taxes, and asset protection.',
     description:
-      'The complete system for passing on Bitcoin, XRP, and other digital assets without lost seed phrases or frozen accounts — taught in plain English, step by step.',
+      'Our entire library in one bundle: pass on your digital assets without lost seed phrases or frozen accounts, stop overpaying on caregiver-related taxes, and learn the practical first steps to shield what you own — all taught in plain English, step by step.',
     includes: [
-      'Paid training video: building an inheritance-ready crypto plan',
-      'Downloadable PDF checklist + fillable workbook',
-      'Beneficiary access template you can hand to your family',
+      'Crypto Inheritance: PDF checklist + fillable workbook + beneficiary access template',
+      'Caregiver Tax Savings: PDF guide + deduction checklist',
+      'Asset Protection: PDF guide + trust & titling starter checklist',
     ],
     buttonText: 'Buy Now',
-  },
-  {
-    id: 'caregiver-tax-guide',
-    title: 'Caregiver Tax Savings Guide',
-    tagline: 'Stop overpaying on caregiver-related taxes.',
-    description:
-      'A plain-English walkthrough of the deductions, credits, and filing strategies most family caregivers miss — so you can keep more of what you earn this tax year.',
-    includes: ['Downloadable PDF guide', 'Quick-reference deduction checklist'],
-    buttonText: 'Get the Guide',
-  },
-  {
-    id: 'asset-protection-guide',
-    title: 'Asset Protection Starter Guide',
-    tagline: 'Plan like the wealthy — without the eight-figure budget.',
-    description:
-      'Understand what a properly structured plan can actually shield from lawsuits, creditors, and inheritance erosion — and the practical first steps to put one in place.',
-    includes: ['Downloadable PDF guide', 'Trust & titling starter checklist'],
-    buttonText: 'Access the Guide',
   },
 ]
 
@@ -98,7 +76,7 @@ function GuidesPage() {
 
       <section className="pb-24 bg-slate-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          <div className="max-w-md mx-auto">
             {products.map((p) => (
               <ProductCard key={p.title} {...p} />
             ))}
@@ -168,13 +146,15 @@ function ProductCard({ id, badge, title, tagline, description, includes, buttonT
           <span className="text-3xl font-black text-white">{formatPrice(PRODUCTS[id].amountCents)}</span>
           <span className="text-slate-500 text-sm">one-time</span>
         </div>
-        {/* Opens Stripe Checkout via the create-checkout function (no link to paste). */}
-        <CheckoutButton
-          productId={id}
-          className="inline-flex w-full items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 disabled:cursor-wait text-slate-900 font-bold text-sm rounded-xl transition-colors"
+        {/* Opens Stripe's hosted payment page directly in a new tab. */}
+        <a
+          href="https://buy.stripe.com/14A7sL3uN5NA53nbtLdIA01"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex w-full items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
         >
           {buttonText}
-        </CheckoutButton>
+        </a>
         {/* Reassurance note shown under every paid button */}
         <p className="mt-3 flex items-center justify-center gap-1.5 text-slate-500 text-xs">
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
