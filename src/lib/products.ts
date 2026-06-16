@@ -33,7 +33,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     id: 'crypto-inheritance-bundle',
     name: 'Crypto Inheritance Protection Bundle',
     description: 'Training video + PDF checklist & workbook for passing on digital assets.',
-    amountCents: 4700,
+    amountCents: 1799,
     currency: 'usd',
   },
   'caregiver-tax-guide': {
@@ -54,7 +54,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     id: 'crypto-inheritance-masterclass',
     name: 'Crypto Inheritance Masterclass',
     description: 'Full masterclass video + companion PDF workbook and checklist.',
-    amountCents: 4700,
+    amountCents: 1799,
     currency: 'usd',
   },
 }
