@@ -110,8 +110,15 @@ function CryptoChecklistPage() {
 
             {status === 'success' ? (
               <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
-                <p className="font-semibold text-lg mb-1">Checklist sent!</p>
-                <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+                <p className="font-semibold text-lg mb-1">Checklist on its way!</p>
+                <p className="text-sm">We've emailed your PDF — check your inbox (and spam folder, just in case).</p>
+                <a
+                  href="/downloads/crypto-inheritance-checklist.pdf"
+                  download
+                  className="inline-flex items-center justify-center gap-2 mt-4 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
+                >
+                  Download it now →
+                </a>
               </div>
             ) : (
               <form
