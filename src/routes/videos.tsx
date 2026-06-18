@@ -267,7 +267,7 @@ function MasterclassSection() {
 
               {/* Opens Stripe's hosted payment page directly in a new tab. */}
               <a
-                href="https://buy.stripe.com/14A7sL3uN5NA53nbtLdIA01"
+                href="https://buy.stripe.com/28E3cvghzcbY67r2XfdIA05"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"

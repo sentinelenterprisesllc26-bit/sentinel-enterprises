@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VideosRouteImport } from './routes/videos'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SentinelSquadRouteImport } from './routes/sentinel-squad'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as DownloadsRouteImport } from './routes/downloads'
@@ -35,6 +36,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SentinelSquadRoute = SentinelSquadRouteImport.update({
+  id: '/sentinel-squad',
+  path: '/sentinel-squad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnersRoute = PartnersRouteImport.update({
@@ -92,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
+  '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
+  '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
+  '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/guides'
     | '/partners'
+    | '/sentinel-squad'
     | '/services'
     | '/thank-you'
     | '/videos'
@@ -151,6 +161,7 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/guides'
     | '/partners'
+    | '/sentinel-squad'
     | '/services'
     | '/thank-you'
     | '/videos'
@@ -165,6 +176,7 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/guides'
     | '/partners'
+    | '/sentinel-squad'
     | '/services'
     | '/thank-you'
     | '/videos'
@@ -180,6 +192,7 @@ export interface RootRouteChildren {
   DownloadsRoute: typeof DownloadsRoute
   GuidesRoute: typeof GuidesRoute
   PartnersRoute: typeof PartnersRoute
+  SentinelSquadRoute: typeof SentinelSquadRoute
   ServicesRoute: typeof ServicesRoute
   ThankYouRoute: typeof ThankYouRoute
   VideosRoute: typeof VideosRoute
@@ -208,6 +221,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sentinel-squad': {
+      id: '/sentinel-squad'
+      path: '/sentinel-squad'
+      fullPath: '/sentinel-squad'
+      preLoaderRoute: typeof SentinelSquadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partners': {
@@ -284,6 +304,7 @@ const rootRouteChildren: RootRouteChildren = {
   DownloadsRoute: DownloadsRoute,
   GuidesRoute: GuidesRoute,
   PartnersRoute: PartnersRoute,
+  SentinelSquadRoute: SentinelSquadRoute,
   ServicesRoute: ServicesRoute,
   ThankYouRoute: ThankYouRoute,
   VideosRoute: VideosRoute,

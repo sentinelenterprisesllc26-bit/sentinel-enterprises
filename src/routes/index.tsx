@@ -178,7 +178,7 @@ function ServicesSection() {
 
 // Homepage paid offer: a single all-in-one bundle. Every paid deliverable is
 // sold together for one price via the Stripe checkout link below.
-const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/14A7sL3uN5NA53nbtLdIA01'
+const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/28E3cvghzcbY67r2XfdIA05'
 
 function PaidProductsSection() {
   const included = [
