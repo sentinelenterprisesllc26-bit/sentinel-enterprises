@@ -6,11 +6,11 @@ export const Route = createRootRoute({
     meta: [
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'Sentinel Enterprises — Protect Your Assets & Crypto' },
+      { title: 'Sentinel Enterprises - Learn. Protect. Build.' },
       {
         name: 'description',
         content:
-          'Sentinel Enterprises helps working families and crypto holders build practical wealth protection plans, understand self-custody, and stop overpaying on caregiver taxes.',
+          'Sentinel Enterprises helps working families and crypto holders learn how money is changing, protect their digital assets, and make smarter financial decisions. Free education first.',
       },
     ],
     links: [
@@ -38,20 +38,19 @@ function NavBar() {
 
           <div className="hidden lg:flex items-center gap-1">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/services">Services</NavLink>
-            <NavLink to="/blog">Resources</NavLink>
-            <NavLink to="/videos">Videos</NavLink>
-            <NavLink to="/sentinel-squad">Sentinel Squad</NavLink>
-            <NavLink to="/guides">Guides</NavLink>
+            <NavLink to="/blog">Free Resources</NavLink>
             <NavLink to="/downloads">Downloads</NavLink>
-            <NavLink to="/partners">Partners</NavLink>
-            <NavLink to="/crypto-inheritance-checklist">Free Checklists</NavLink>
+            <NavLink to="/videos">Videos</NavLink>
+            <NavLink to="/guides">Guides</NavLink>
+            <NavLink to="/partners">Tools</NavLink>
+            <NavLink to="/services">Services</NavLink>
+            <NavLink to="/sentinel-squad">Sentinel Squad</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/contact">Contact</NavLink>
           </div>
 
           <Link
-            to="/contact"
+            to="/guides"
             className="hidden lg:inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm rounded-lg transition-colors"
           >
             Get Started
@@ -85,17 +84,25 @@ function MobileMenu() {
         </svg>
       </summary>
       <div className="absolute top-16 left-0 right-0 bg-slate-900 border-b border-slate-700 px-4 py-3 flex flex-col gap-1">
-        <MobileNavLink to="/">Home</MobileNavLink>
-        <MobileNavLink to="/services">Services</MobileNavLink>
-        <MobileNavLink to="/blog">Resources</MobileNavLink>
-        <MobileNavLink to="/videos">Videos</MobileNavLink>
-        <MobileNavLink to="/sentinel-squad">Sentinel Squad</MobileNavLink>
-        <MobileNavLink to="/guides">Guides</MobileNavLink>
-        <MobileNavLink to="/downloads">Downloads</MobileNavLink>
-        <MobileNavLink to="/partners">Partners</MobileNavLink>
-        <MobileNavLink to="/crypto-inheritance-checklist">Free Checklists</MobileNavLink>
-        <MobileNavLink to="/about">About</MobileNavLink>
-        <MobileNavLink to="/contact">Contact</MobileNavLink>
+        <div className="pb-2 mb-2 border-b border-slate-800">
+          <p className="text-amber-400 text-xs font-bold uppercase tracking-wider px-3 py-1">Free Resources</p>
+          <MobileNavLink to="/blog">Articles & Guides</MobileNavLink>
+          <MobileNavLink to="/downloads">Free Downloads</MobileNavLink>
+          <MobileNavLink to="/videos">Videos</MobileNavLink>
+          <MobileNavLink to="/crypto-inheritance-checklist">Free Checklists</MobileNavLink>
+        </div>
+        <div className="pb-2 mb-2 border-b border-slate-800">
+          <p className="text-amber-400 text-xs font-bold uppercase tracking-wider px-3 py-1">Paid Products</p>
+          <MobileNavLink to="/guides">Guides & Bundles</MobileNavLink>
+          <MobileNavLink to="/partners">Trusted Tools</MobileNavLink>
+          <MobileNavLink to="/services">Services</MobileNavLink>
+        </div>
+        <div>
+          <p className="text-amber-400 text-xs font-bold uppercase tracking-wider px-3 py-1">More</p>
+          <MobileNavLink to="/sentinel-squad">Sentinel Squad</MobileNavLink>
+          <MobileNavLink to="/about">About</MobileNavLink>
+          <MobileNavLink to="/contact">Contact</MobileNavLink>
+        </div>
       </div>
     </details>
   )
@@ -122,66 +129,33 @@ function Footer() {
               <img src="/sentinel-logo.png" alt="Sentinel Enterprises" className="h-8 w-auto" />
               <span className="text-white font-bold text-lg">Sentinel Enterprises</span>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              Helping working families and crypto holders build practical wealth protection plans — without the
-              elite-level trust budget.
+            <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-4">
+              Learn how money is changing. Protect your assets and digital wealth. Access beginner-friendly guides, tools, and deeper paid resources.
+            </p>
+            <p className="text-amber-400/70 text-xs font-medium italic">
+              Learn for free. Go deeper if you want more. Protect what you build.
             </p>
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Services</h3>
+            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Free Resources</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/services" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Asset Protection Planning
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Crypto Guidance
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Caregiver Tax Savings
-                </Link>
-              </li>
-              <li>
-                <Link to="/videos" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Video Library
-                </Link>
-              </li>
-              <li>
-                <Link to="/sentinel-squad" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Sentinel Squad Series
-                </Link>
-              </li>
-              <li>
-                <Link to="/guides" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Paid Guides &amp; Bundles
-                </Link>
-              </li>
-              <li>
-                <Link to="/downloads" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Free Downloads
-                </Link>
-              </li>
-              <li>
-                <Link to="/partners" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  Tools &amp; Partners
-                </Link>
-              </li>
+              <li><Link to="/blog" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Articles & Guides</Link></li>
+              <li><Link to="/downloads" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Free Downloads</Link></li>
+              <li><Link to="/videos" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Video Library</Link></li>
+              <li><Link to="/crypto-inheritance-checklist" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Free Checklists</Link></li>
             </ul>
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Contact</h3>
+            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">Go Deeper</h3>
             <ul className="space-y-2">
+              <li><Link to="/guides" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Paid Guides & Bundles</Link></li>
+              <li><Link to="/partners" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Trusted Tools & Partners</Link></li>
+              <li><Link to="/services" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Services</Link></li>
+              <li><Link to="/sentinel-squad" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Sentinel Squad Series</Link></li>
               <li>
-                <a
-                  href="mailto:Sentinelenterprisesllc26@gmail.com"
-                  className="text-slate-400 hover:text-amber-400 text-sm transition-colors"
-                >
+                <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
                   Sentinelenterprisesllc26@gmail.com
                 </a>
               </li>
@@ -202,7 +176,7 @@ function Footer() {
             professional for advice specific to your situation.
           </p>
           <p className="text-slate-600 text-xs mt-3">
-            © {new Date().getFullYear()} Sentinel Enterprises LLC. All rights reserved.
+            &copy; {new Date().getFullYear()} Sentinel Enterprises LLC. All rights reserved.
           </p>
         </div>
       </div>
