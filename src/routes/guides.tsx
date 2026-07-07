@@ -148,7 +148,7 @@ function ProductCard({ id, badge, title, tagline, description, includes, buttonT
         </div>
         {/* Opens Stripe's hosted payment page directly in a new tab. */}
         <a
-          href="https://buy.stripe.com/14A7sL3uN5NA53nbtLdIA01"
+          href="https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex w-full items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
