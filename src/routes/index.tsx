@@ -149,7 +149,7 @@ function ValueLadderSection() {
   )
 }
 
-const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/14A7sL3uN5NA53nbtLdIA01'
+const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 
 function PaidProductsSection() {
   const included = ['Crypto Inheritance Checklist', 'Crypto Inheritance Fillable Workbook', 'Beneficiary Access Template', 'Caregiver Tax Savings Guide', 'Caregiver Deduction Checklist', 'Asset Protection Starter Guide', 'Trust and Titling Starter Checklist']
