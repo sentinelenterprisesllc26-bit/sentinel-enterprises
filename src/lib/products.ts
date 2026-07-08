@@ -40,14 +40,14 @@ export const PRODUCTS: Record<ProductId, Product> = {
     id: 'caregiver-tax-guide',
     name: 'Caregiver Tax Savings Guide',
     description: 'Plain-English walkthrough of caregiver deductions, credits, and filing strategies.',
-    amountCents: 2700,
+    amountCents: 1799,
     currency: 'usd',
   },
   'asset-protection-guide': {
     id: 'asset-protection-guide',
     name: 'Asset Protection Starter Guide',
     description: 'Practical first steps to shield assets from lawsuits, creditors, and inheritance erosion.',
-    amountCents: 3700,
+    amountCents: 1799,
     currency: 'usd',
   },
   'crypto-inheritance-masterclass': {
