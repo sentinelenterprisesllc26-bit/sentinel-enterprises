@@ -73,6 +73,16 @@ const platforms: Platform[] = [
         href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend',
         primary: true,
       },
+        {
+    name: 'Ledger',
+    category: 'Industry-standard hardware wallet',
+    description:
+      'The most widely used hardware wallet in the world. Ledger devices store your private keys offline and support thousands of coins including XRP, Bitcoin, and Ethereum. A trusted foundation for serious self-custody.',
+    code: { label: 'Shop Ledger', value: 'affiliate' },
+    links: [
+      { label: 'Shop Ledger', href: 'https://shop.ledger.com/?r=sentinelenterprisesllc', primary: true },
+    ],
+  },
     ],
   },
 ]
