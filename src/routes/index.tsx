@@ -43,16 +43,16 @@ function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="#free-learning"
+                          href="/crypto-inheritance-checklist"
               className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
             >
-              Start Learning for Free
+                            Get the Free Crypto Checklist
             </a>
             <Link
               to="/guides"
               className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition-all"
             >
-              See Paid Guides
+                            See Guides & Bundle →
             </Link>
           </div>
         </div>
