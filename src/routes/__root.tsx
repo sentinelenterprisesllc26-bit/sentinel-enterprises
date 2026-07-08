@@ -12,6 +12,24 @@ export const Route = createRootRoute({
         content:
           'Sentinel Enterprises helps working families and crypto holders learn how money is changing, protect their digital assets, and make smarter financial decisions. Free education first.',
       },
+      { property: 'og:type', content: 'website' },
+      { property: 'og:site_name', content: 'Sentinel Enterprises' },
+      { property: 'og:title', content: 'Sentinel Enterprises - Learn. Protect. Build.' },
+      {
+        property: 'og:description',
+        content:
+          'Sentinel Enterprises helps working families and crypto holders learn how money is changing, protect their digital assets, and make smarter financial decisions. Free education first.',
+      },
+      { property: 'og:url', content: 'https://sentinelenterprisesllc.com/' },
+      { property: 'og:image', content: 'https://sentinelenterprisesllc.com/sentinel-logo.png' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: 'Sentinel Enterprises - Learn. Protect. Build.' },
+      {
+        name: 'twitter:description',
+        content:
+          'Sentinel Enterprises helps working families and crypto holders learn how money is changing, protect their digital assets, and make smarter financial decisions. Free education first.',
+      },
+      { name: 'twitter:image', content: 'https://sentinelenterprisesllc.com/sentinel-logo.png' },
     ],
     links: [
       { rel: 'icon', href: '/favicon.ico' },
@@ -189,6 +207,20 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Sentinel Enterprises',
+              url: 'https://sentinelenterprisesllc.com',
+              logo: 'https://sentinelenterprisesllc.com/sentinel-logo.png',
+              description:
+                'Sentinel Enterprises helps working families and crypto holders learn how money is changing, protect their digital assets, and make smarter financial decisions.',
+            }),
+          }}
+        />
       </head>
       <body className="bg-slate-950 text-white font-sans antialiased">
         <NavBar />
