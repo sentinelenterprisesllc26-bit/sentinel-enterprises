@@ -17,6 +17,7 @@ export type ProductId =
   | 'crypto-inheritance-bundle'
   | 'caregiver-tax-guide'
   | 'asset-protection-guide'
+    | 'complete-bundle'
   | 'crypto-inheritance-masterclass'
 
 export type Product = {
@@ -55,6 +56,13 @@ export const PRODUCTS: Record<ProductId, Product> = {
     name: 'Crypto Inheritance Masterclass',
     description: 'Full masterclass video + companion PDF workbook and checklist.',
     amountCents: 1799,
+    currency: 'usd',
+  },
+    'complete-bundle': {
+    id: 'complete-bundle',
+    name: 'Complete Protection Bundle — All 4 Guides',
+    description: 'Every guide, workbook, checklist, and template in one bundle. Crypto inheritance, asset protection, caregiver taxes, and the full masterclass.',
+    amountCents: 4900,
     currency: 'usd',
   },
 }
