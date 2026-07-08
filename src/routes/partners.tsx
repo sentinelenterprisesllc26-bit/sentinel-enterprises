@@ -104,6 +104,9 @@ type RecommendedTool = {
   benefit: string
   // 🔵 REPLACE with your real affiliate link.
   href: string
+  // Optional companion PDF guide shown as a second button.
+  pdfHref?: string
+  pdfLabel?: string
 }
 
 const recommendedTools: RecommendedTool[] = [
@@ -120,8 +123,9 @@ const recommendedTools: RecommendedTool[] = [
   {
     name: 'Crypto Security Toolkit',
     benefit: 'A trusted resource for seed-phrase backups and hardened self-custody.',
-    // 🔵 REPLACE with your real affiliate link (no URL on file yet).
-    href: 'https://affiliate-link-here.com/security-tool',
+    href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    pdfHref: '/downloads/Tangem_Beginners_Guide.pdf',
+    pdfLabel: 'Setup Guide (PDF)',
   },
 ]
 
@@ -168,14 +172,26 @@ function PartnersPage() {
                 <h3 className="text-lg font-bold text-white mb-2">{tool.name}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{tool.benefit}</p>
                 {/* 🔵 REPLACE `tool.href` (in recommendedTools above) with your affiliate link. */}
-                <a
-                  href={tool.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
-                >
-                  View Tool
-                </a>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href={tool.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
+                  >
+                    View Tool
+                  </a>
+                  {tool.pdfHref && (
+                    <a
+                      href={tool.pdfHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
+                    >
+                      {tool.pdfLabel || 'Download PDF'}
+                    </a>
+                  )}
+                </div>
               </div>
             ))}
           </div>
