@@ -27,6 +27,11 @@ export const Route = createFileRoute('/downloads')({
  *       (or the homepage form) so the visitor subscribes first; the existing
  *       Netlify form then emails them the file. Use `emailGated: true` to
  *       show the "Get it by email" style button instead of a direct link.
+ *
+ * YOUTUBE COMPANION VIDEOS:
+ *   Add an optional `youtubeUrl` to any download that has a matching video
+ *   on the Sentinel Enterprises channel. A "Watch on YouTube" button will
+ *   appear next to the Download button automatically.
  * ============================================================================
  */
 
@@ -40,6 +45,8 @@ type Download = {
   // Optional secondary link nudging the reader toward the matching paid guide
   // or affiliate tool right next to the free download.
   upsell?: { label: string; href: string; external?: boolean }
+  // Optional companion video for this guide, shown as a "Watch on YouTube" button.
+  youtubeUrl?: string
 }
 
 type DownloadGroup = {
@@ -97,6 +104,7 @@ const groups: DownloadGroup[] = [
           'Step-by-step playbook for holding cryptocurrency inside a self-directed IRA. Covers setup, custodians, contribution limits, and estate planning considerations.',
         href: '/downloads/crypto_ira_playbook.pdf',
         upsell: { label: 'Start a Crypto IRA — code UOHKD3 →', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', external: true },
+        // 🟡 No matching free video exists yet on the channel — add youtubeUrl here once one is published.
       },
       {
         title: 'XRP Essentials Guide',
@@ -129,6 +137,7 @@ const groups: DownloadGroup[] = [
           'Complete setup instructions for the ELLIPAL air-gapped hardware wallet — the safest way to store crypto offline with no USB or Bluetooth attack surface.',
         href: '/downloads/ELLIPAL_Setup_Guide.pdf',
         upsell: { label: 'Shop ELLIPAL →', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', external: true },
+        youtubeUrl: 'https://www.youtube.com/watch?v=VGUBgFpx-0U',
       },
       {
         title: "Tangem Beginner's Guide",
@@ -136,6 +145,7 @@ const groups: DownloadGroup[] = [
           'Get started with the Tangem card wallet — a card-sized, chip-protected cold storage device perfect for beginners stepping into self-custody for the first time.',
         href: '/downloads/Tangem_Beginners_Guide.pdf',
         upsell: { label: 'Get Tangem — code FUSB6E →', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', external: true },
+        youtubeUrl: 'https://www.youtube.com/watch?v=WNlgRXtUtK4',
       },
     ],
   },
@@ -211,7 +221,7 @@ function DownloadsPage() {
   )
 }
 
-function DownloadCard({ title, description, href, badge, emailGated, upsell }: Download) {
+function DownloadCard({ title, description, href, badge, emailGated, upsell, youtubeUrl }: Download) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 flex flex-col hover:border-amber-500/50 transition-colors">
       <div className="flex items-start justify-between gap-3 mb-2">
@@ -223,39 +233,51 @@ function DownloadCard({ title, description, href, badge, emailGated, upsell }: D
         )}
       </div>
       <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{description}</p>
-      {emailGated ? (
-        // Email-gated delivery: send the visitor to the signup page; the
-        // existing Netlify form emails them the PDF after they subscribe.
-        <Link
-          to={href}
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-            />
-          </svg>
-          Get It by Email
-        </Link>
-      ) : (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-            />
-          </svg>
-          Download PDF
-        </a>
-      )}
+      <div className="flex flex-wrap gap-3">
+        {emailGated ? (
+          // Email-gated delivery: send the visitor to the signup page; the
+          // existing Netlify form emails them the PDF after they subscribe.
+          <Link
+            to={href}
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              />
+            </svg>
+            Get It by Email
+          </Link>
+        ) : (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+              />
+            </svg>
+            Download PDF
+          </a>
+        )}
+        {youtubeUrl && (
+          <a
+            href={youtubeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-4 py-2.5 rounded-xl border border-slate-600 text-slate-100 text-sm font-semibold hover:bg-slate-800/70 transition-colors"
+          >
+            Watch on YouTube
+          </a>
+        )}
+      </div>
       {upsell && (
         <a
           href={upsell.href}
