@@ -6,27 +6,27 @@ export const Route = createFileRoute('/downloads')({
 
 /*
  * ============================================================================
- *  FREE DOWNLOADS  —  WHERE TO PUT YOUR PDF FILES
+ * FREE DOWNLOADS — WHERE TO PUT YOUR PDF FILES
  * ============================================================================
  *
- *  Every card's `href` points to a file that must exist in the site's
- *  /public/ folder. Two locations are used:
+ * Every card's `href` points to a file that must exist in the site's
+ * /public/ folder. Two locations are used:
  *
- *    • /public/downloads/   ← the existing library files (/downloads/*.pdf)
- *    • /public/pdfs/        ← the NEW placeholder files for the cards below
- *                             (create this folder and drop your PDFs in).
+ *   • /public/downloads/  ← the existing library files (/downloads/*.pdf)
+ *   • /public/pdfs/       ← the NEW placeholder files for the cards below
+ *                            (create this folder and drop your PDFs in).
  *
- *  TO REPLACE A PLACEHOLDER: upload your real PDF to the matching path, e.g.
- *      /public/pdfs/caregiver-tax-checklist.pdf
- *  and the "Download PDF" button will serve it instantly — no code change
- *  needed beyond editing the `href` strings in the `groups` array below.
+ * TO REPLACE A PLACEHOLDER: upload your real PDF to the matching path, e.g.
+ * /public/pdfs/caregiver-tax-checklist.pdf
+ * and the "Download PDF" button will serve it instantly — no code change
+ * needed beyond editing the `href` strings in the `groups` array below.
  *
- *  DELIVERY OPTIONS for a free PDF:
- *    (a) Instant download  — link straight to the file (what these cards do).
- *    (b) After email signup — point the button at /crypto-inheritance-checklist
- *        (or the homepage form) so the visitor subscribes first; the existing
- *        Netlify form then emails them the file. Use `emailGated: true` to
- *        show the "Get it by email" style button instead of a direct link.
+ * DELIVERY OPTIONS for a free PDF:
+ *   (a) Instant download — link straight to the file (what these cards do).
+ *   (b) After email signup — point the button at /crypto-inheritance-checklist
+ *       (or the homepage form) so the visitor subscribes first; the existing
+ *       Netlify form then emails them the file. Use `emailGated: true` to
+ *       show the "Get it by email" style button instead of a direct link.
  * ============================================================================
  */
 
@@ -37,6 +37,9 @@ type Download = {
   badge?: string
   // When true, the button invites an email signup instead of an instant download.
   emailGated?: boolean
+  // Optional secondary link nudging the reader toward the matching paid guide
+  // or affiliate tool right next to the free download.
+  upsell?: { label: string; href: string; external?: boolean }
 }
 
 type DownloadGroup = {
@@ -57,6 +60,7 @@ const groups: DownloadGroup[] = [
         // 🟢 REPLACE: upload your real file to /public/pdfs/caregiver-tax-checklist.pdf
         href: '/pdfs/caregiver-tax-checklist.pdf',
         badge: 'Free',
+        upsell: { label: 'Get the Caregiver Tax Savings Guide →', href: '/guides' },
       },
       {
         title: 'Crypto Inheritance Checklist',
@@ -92,12 +96,14 @@ const groups: DownloadGroup[] = [
         description:
           'Step-by-step playbook for holding cryptocurrency inside a self-directed IRA. Covers setup, custodians, contribution limits, and estate planning considerations.',
         href: '/downloads/crypto_ira_playbook.pdf',
+        upsell: { label: 'Start a Crypto IRA — code UOHKD3 →', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', external: true },
       },
       {
         title: 'XRP Essentials Guide',
         description:
           'An accessible introduction to XRP — how it works, why it matters for cross-border payments, and what crypto holders need to know before buying or holding.',
         href: '/downloads/XRP_Essentials_Guide.pdf',
+        upsell: { label: 'Buy XRP on Uphold →', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', external: true },
       },
       {
         title: 'XRP Illustrated Guide',
@@ -122,12 +128,14 @@ const groups: DownloadGroup[] = [
         description:
           'Complete setup instructions for the ELLIPAL air-gapped hardware wallet — the safest way to store crypto offline with no USB or Bluetooth attack surface.',
         href: '/downloads/ELLIPAL_Setup_Guide.pdf',
+        upsell: { label: 'Shop ELLIPAL →', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', external: true },
       },
       {
         title: "Tangem Beginner's Guide",
         description:
           'Get started with the Tangem card wallet — a card-sized, chip-protected cold storage device perfect for beginners stepping into self-custody for the first time.',
         href: '/downloads/Tangem_Beginners_Guide.pdf',
+        upsell: { label: 'Get Tangem — code FUSB6E →', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', external: true },
       },
     ],
   },
@@ -203,7 +211,7 @@ function DownloadsPage() {
   )
 }
 
-function DownloadCard({ title, description, href, badge, emailGated }: Download) {
+function DownloadCard({ title, description, href, badge, emailGated, upsell }: Download) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 flex flex-col hover:border-amber-500/50 transition-colors">
       <div className="flex items-start justify-between gap-3 mb-2">
@@ -233,20 +241,29 @@ function DownloadCard({ title, description, href, badge, emailGated }: Download)
         </Link>
       ) : (
         <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
-      >
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-          />
-        </svg>
-        Download PDF
-      </a>
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
+        >
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+            />
+          </svg>
+          Download PDF
+        </a>
+      )}
+      {upsell && (
+        <a
+          href={upsell.href}
+          {...(upsell.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          className="inline-flex items-center justify-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-xs font-semibold transition-colors"
+        >
+          {upsell.label}
+        </a>
       )}
     </div>
   )
