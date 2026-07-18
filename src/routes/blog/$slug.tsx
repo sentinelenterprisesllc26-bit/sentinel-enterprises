@@ -28,12 +28,12 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           file its own Form 1041 tax return, and pay taxes on any income it retains — at trust tax rates, which hit
           higher brackets much faster than individual rates.
         </p>
-                <p>
-                          If the trustee distributes income to beneficiaries, that income is deductible to the trust and becomes
-                          taxable to the beneficiary, who receives a Schedule K-1. Assets in a properly structured non-grantor
-                          irrevocable trust are generally outside the grantor's taxable estate and better shielded from future
-                          creditors — though specific results depend on state law and timing of the transfer.
-                </p>
+        <p>
+          If the trustee distributes income to beneficiaries, that income is deductible to the trust and becomes
+          taxable to the beneficiary, who receives a Schedule K-1. Assets in a properly structured non-grantor
+          irrevocable trust are generally outside the grantor's taxable estate and better shielded from future
+          creditors — though specific results depend on state law and timing of the transfer.
+        </p>
 
         <h2>Why Crypto Needs Special Trust Language</h2>
         <p>
@@ -87,6 +87,10 @@ const posts: Record<string, { title: string; date: string; category: string; rea
             crypto holder should take.
           </p>
           <Link to="/crypto-inheritance-checklist">Download the Crypto Inheritance Checklist →</Link>
+          <p>
+            Want the complete follow-along system — training video, fillable workbook, and beneficiary access template?
+          </p>
+          <Link to="/guides">Get the Crypto Inheritance Protection Bundle →</Link>
         </div>
       </div>
     ),
@@ -155,6 +159,10 @@ const posts: Record<string, { title: string; date: string; category: string; rea
             instantly to your inbox.
           </p>
           <a href="/#email-signup">Get the Free Caregiver Tax Checklist →</a>
+          <p>
+            Want the full walkthrough with a ready-to-use deduction checklist and filing strategy tips?
+          </p>
+          <Link to="/guides">Get the Caregiver Tax Savings Guide →</Link>
         </div>
       </div>
     ),
@@ -192,6 +200,9 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           <li><strong>Cons:</strong> No seed phrase means inheritance and recovery is handled differently — you must plan for who gets the physical cards</li>
           <li><strong>Best for:</strong> Beginners who want cold storage without a steep learning curve</li>
         </ul>
+        <p>
+          <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer">Get Tangem — use code FUSB6E →</a>
+        </p>
 
         <h2>Ledger: Best for Advanced Users</h2>
         <p>
@@ -203,6 +214,10 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           <li><strong>Cons:</strong> Seed phrase is a single point of failure — lose it or expose it and your crypto is gone or stolen</li>
           <li><strong>Best for:</strong> Users comfortable managing and securing a seed phrase</li>
         </ul>
+        <p>
+          Prefer a fully air-gapped option with no seed-phrase card to lose?{' '}
+          <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer">See the ELLIPAL wallet we recommend →</a>
+        </p>
 
         <h2>Exchange Custody: When It Makes Sense</h2>
         <p>Exchange custody (keeping crypto on Coinbase, etc.) makes sense when:</p>
@@ -221,6 +236,15 @@ const posts: Record<string, { title: string; date: string; category: string; rea
         </ul>
 
         <div className="cta-box">
+          <p>
+            Ready to move to cold storage? We recommend Tangem for beginners and ELLIPAL for fully air-gapped security.
+          </p>
+          <p>
+            <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer">Get Tangem — code FUSB6E →</a>
+          </p>
+          <p>
+            <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer">Shop ELLIPAL →</a>
+          </p>
           <p>
             Not sure how to include your cold storage in an estate plan? Explore our Digital Asset Guidance services.
           </p>
