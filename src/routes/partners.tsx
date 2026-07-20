@@ -141,6 +141,147 @@ const recommendedTools: RecommendedTool[] = [
 
 function PartnersPage() {
   return (
+
+export const Route = createFileRoute('/partners')({
+  component: PartnersPage,
+})
+
+type Resource = {
+  label: string
+  href: string
+  primary?: boolean
+  pdf?: boolean
+}
+
+type Platform = {
+  name: string
+  category: string
+  description: string
+  code?: { label: string; value: string }
+  links: Resource[]
+}
+
+const platforms: Platform[] = [
+  {
+    name: 'ELLIPAL',
+    category: 'Air-gapped hardware wallet',
+    description:
+      'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device. The starting point Sentinel recommends for serious self-custody.',
+    links: [
+      { label: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', primary: true },
+      { label: 'Setup guide', href: '/downloads/ELLIPAL_Setup_Guide.pdf', pdf: true },
+    ],
+  },
+  {
+    name: 'Tangem',
+    category: 'Tap-to-sign card wallet',
+    description:
+      'A hardware wallet the size of a credit card. Tap it to your phone to sign — no cables, no charging, no seed phrase to lose. Use the code below for a discount at checkout.',
+    code: { label: 'Promo code', value: 'FUSB6E' },
+    links: [
+      { label: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', primary: true },
+      { label: 'Setup guide', href: '/downloads/Tangem_Beginners_Guide.pdf', pdf: true },
+    ],
+  },
+  {
+    name: 'Caleb & Brown',
+    category: 'Personal crypto brokerage',
+    description:
+      'A full-service brokerage with a dedicated human broker for every client — ideal for larger buys, OTC trades, and guided portfolio building. Apply the referral code at sign-up.',
+    code: { label: 'Referral code', value: 'CU073620' },
+    links: [
+      { label: 'Open an account', href: 'https://app.calebandbrown.com/signup?referral=CU073620', primary: true },
+    ],
+  },
+  {
+    name: 'iTrustCapital',
+    category: 'Crypto IRA & retirement',
+    description:
+      "Buy and hold crypto inside a tax-advantaged IRA. Sentinel's Crypto IRA Playbook walks you through opening and funding an account step by step. Use the referral code to claim your bonus.",
+    code: { label: 'Referral code', value: 'UOHKD3' },
+    links: [
+      { label: 'Start an IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', primary: true },
+      { label: 'Crypto IRA Playbook', href: '/downloads/crypto_ira_playbook.pdf', pdf: true },
+    ],
+  },
+  {
+    name: 'Uphold',
+    category: 'Exchange & multi-asset wallet',
+    description:
+      'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more from one balance. A convenient on-ramp before moving funds to cold storage. Sign up through the link below.',
+    links: [
+      {
+        label: 'Join Uphold',
+        href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend',
+        primary: true,
+      },
+    ],
+  },
+  {
+    name: 'Ledger',
+    category: 'Industry-standard hardware wallet',
+    description:
+      'The most widely used hardware wallet in the world. Ledger devices store your private keys offline and support thousands of coins including XRP, Bitcoin, and Ethereum. A trusted foundation for serious self-custody.',
+    links: [
+      { label: 'Shop Ledger', href: 'https://shop.ledger.com/?r=sentinelenterprisesllc', primary: true },
+    ],
+  },
+]
+
+const guides = [
+  {
+    title: 'XRP Illustrated Guide',
+    blurb: 'A plain-English visual primer',
+    href: '/downloads/xrp_illustrated_guide.pdf',
+  },
+  {
+    title: 'The XRP & Ripple Book',
+    blurb: 'The deeper-dive reference read',
+    href: '/downloads/XRP_Ripple_Book.pdf',
+  },
+]
+
+/*
+ * ============================================================================
+ * RECOMMENDED TOOLS — AFFILIATE LINK PLACEHOLDERS
+ * ============================================================================
+ * Swap each `href` below for your real affiliate URL when you have it.
+ * The placeholders intentionally read https://affiliate-link-here.com/...
+ * so they are easy to find-and-replace.
+ * ============================================================================
+ */
+type RecommendedTool = {
+  name: string
+  benefit: string
+  // 🔵 REPLACE with your real affiliate link.
+  href: string
+  // Optional companion PDF guide shown as a second button.
+  pdfHref?: string
+  pdfLabel?: string
+}
+
+const recommendedTools: RecommendedTool[] = [
+  {
+    name: 'Tangem Wallet',
+    benefit: 'Tap-to-sign card wallet — the simplest way to move crypto into cold storage.',
+    href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+  },
+  {
+    name: 'ELLIPAL Wallet',
+    benefit: 'Fully air-gapped hardware wallet — no USB, no Bluetooth, no online attack surface.',
+    href: 'https://www.ellipal.com/?rfsn=8708468.a45049',
+  },
+  {
+    name: 'Crypto Security Toolkit',
+    benefit: 'A trusted resource for seed-phrase backups and hardened self-custody.',
+    href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    pdfHref: '/downloads/Tangem_Beginners_Guide.pdf',
+    pdfLabel: 'Setup Guide (PDF)',
+  },
+]
+
+function PartnersPage() {
+  return (
     <>
       <section className="py-24 bg-gradient-to-b from-slate-900 to-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
