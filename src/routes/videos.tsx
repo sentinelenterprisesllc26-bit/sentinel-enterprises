@@ -89,31 +89,31 @@ const groups: VideoGroup[] = [
     items: [
       {
         id: 'RHKZVhSMWkE',
-        title: 'SBI CEO: XRP & Regulatory Clarity',
+        title: 'SBI CEO Just Said THIS About XRP Regulation',
         description:
           'A look at how regulatory clarity and institutional adoption — including comments from SBI’s CEO — are shaping the future of XRP.',
       },
       {
         id: 'hc4XJktTf68',
-        title: 'The New Financial Order — Audiobook Presentation',
+        title: 'The Global Financial System Is Shifting — Are You Ready?',
         description:
           'An audiobook-style presentation on the shifting global financial system and what it means for everyday holders.',
       },
       {
         id: 'gruxCAPQWgw',
-        title: 'The New Financial Order — Take Control',
+        title: 'Why Self-Custody Matters Before the System Changes Again',
         description:
           'Why self-custody and a plan of your own matter as the financial system changes around us.',
       },
       {
         id: 'BH8TsbOeM1E',
-        title: 'XRP — The Global Payment',
+        title: 'How XRP Could Power the Next Era of Global Payments',
         description:
           'How XRP is positioned for fast, low-cost cross-border payments and global settlement.',
       },
       {
         id: 'f0NAbB9YjMQ',
-        title: 'XRP — Global Standard',
+        title: 'Is XRP Becoming the Global Standard for Value Transfer?',
         description:
           'The case for XRP as a global standard for value transfer and what holders should understand.',
       },
@@ -125,31 +125,31 @@ const groups: VideoGroup[] = [
     items: [
       {
         id: 'WNlgRXtUtK4',
-        title: 'Tangem Wallet — The Complete Step-by-Step Guide',
+        title: 'No Battery. No App Login. Here\'s How the Tangem Wallet Works',
         description:
           'A full walkthrough of setting up and using the Tangem card wallet for simple, secure cold storage.',
       },
       {
         id: '3ziWQgjFwKQ',
-        title: 'The Sentinel Guide to Tangem Setup',
+        title: 'Tangem Setup in Minutes: The Complete Walkthrough',
         description:
           'A quick-start guide to getting your Tangem wallet up and running and your keys under your control.',
       },
       {
         id: 'VGUBgFpx-0U',
-        title: 'Ellipal Steel — Protect Your Crypto Wealth',
+        title: 'The Air-Gapped Wallet That Never Touches the Internet',
         description:
           'Using the air-gapped ELLIPAL hardware wallet and steel backup to protect crypto wealth offline.',
       },
       {
         id: '1MB84vFCDds',
-        title: 'How to Update ELLIPAL Firmware',
+        title: 'Skip This ELLIPAL Update and Your Wallet Could Get Stuck',
         description:
           'Step-by-step instructions for safely updating the firmware on your ELLIPAL hardware wallet.',
       },
       {
         id: '2CFabC1XVj4',
-        title: 'Protect Your Seed Phrase: The 12 Words',
+        title: 'Never Write Your Seed Phrase Like This',
         description:
           'Why your recovery phrase is everything, and how to store those words so your assets stay yours.',
       },
