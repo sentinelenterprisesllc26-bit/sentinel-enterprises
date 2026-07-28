@@ -68,6 +68,11 @@ const RECOMMENDED_TOOLS: Tool[] = [
     pdfHref: '/downloads/Tangem_Beginners_Guide.pdf',
     pdfLabel: 'Setup Guide (PDF)',
   },
+  {
+    name: 'Ledger',
+    benefit: 'The most widely used hardware wallet in the world — stores keys offline, supports XRP, Bitcoin, and more.',
+    href: 'https://shop.ledger.com/?r=2f2485b5c526',
+  },
 ]
 
 type Video = {
@@ -128,12 +133,6 @@ const groups: VideoGroup[] = [
         title: 'No Battery. No App Login. Here\'s How the Tangem Wallet Works',
         description:
           'A full walkthrough of setting up and using the Tangem card wallet for simple, secure cold storage.',
-      },
-      {
-        id: '3ziWQgjFwKQ',
-        title: 'Tangem Setup in Minutes: The Complete Walkthrough',
-        description:
-          'A quick-start guide to getting your Tangem wallet up and running and your keys under your control.',
       },
       {
         id: 'VGUBgFpx-0U',
