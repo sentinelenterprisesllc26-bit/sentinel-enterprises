@@ -150,9 +150,44 @@ function Footer() {
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-4">
               Learn how money is changing. Protect your assets and digital wealth. Access beginner-friendly guides, tools, and deeper paid resources.
             </p>
-            <p className="text-amber-400/70 text-xs font-medium italic">
+            <p className="text-amber-400/70 text-xs font-medium italic mb-4">
               Learn for free. Go deeper if you want more. Protect what you build.
             </p>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.youtube.com/@JenaeSentinel"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sentinel Enterprises on YouTube"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 hover:bg-amber-500 text-slate-300 hover:text-slate-900 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.tiktok.com/@jenae.wiley"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sentinel Enterprises on TikTok"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 hover:bg-amber-500 text-slate-300 hover:text-slate-900 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.27 1.36V7.3s-1.88.09-3.2-1.48z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61572035077818"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Sentinel Enterprises on Facebook"
+                className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 hover:bg-amber-500 text-slate-300 hover:text-slate-900 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div>

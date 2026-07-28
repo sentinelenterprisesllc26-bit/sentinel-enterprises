@@ -194,6 +194,7 @@ function AffiliateToolsSection() {
     { name: 'iTrustCapital', category: 'Crypto IRA and Retirement', description: 'Hold crypto inside a tax-advantaged IRA. A smart move for long-term holders who want to grow wealth with fewer tax surprises.', cta: 'Start a Crypto IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', code: 'UOHKD3' },
     { name: 'Uphold', category: 'Exchange and Multi-Asset Wallet', description: 'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more. A solid on-ramp before moving to cold storage.', cta: 'Join Uphold', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', code: undefined },
     { name: 'Tangem', category: 'Tap-to-Sign Card Wallet', description: 'A hardware wallet the size of a credit card. Tap it to your phone to sign - no cables, no charging, no seed phrase to lose.', cta: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', code: 'FUSB6E' },
+    { name: 'Ledger', category: 'Industry-Standard Hardware Wallet', description: 'The most widely used hardware wallet in the world. Stores your private keys offline and supports thousands of coins including XRP, Bitcoin, and Ethereum.', cta: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', code: undefined },
   ]
   return (
     <section className="py-24 bg-slate-950">
