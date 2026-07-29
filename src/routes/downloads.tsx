@@ -70,6 +70,14 @@ const groups: DownloadGroup[] = [
         upsell: { label: 'Get the Caregiver Tax Savings Guide →', href: '/guides' },
       },
       {
+        title: 'Crypto Security Lead Magnet',
+        description:
+          'The 5 most common crypto security mistakes that cost people their savings — and exactly how to avoid each one. FBI and Chainalysis statistics, real-world examples, and a step-by-step action plan.',
+        href: '/downloads/Crypto_Security_Lead_Magnet.pdf',
+        badge: 'New',
+        upsell: { label: 'Get the Complete Protection Bundle →', href: '/guides' },
+      },
+      {
         title: 'Crypto Inheritance Checklist',
         description:
           'The 5 non-negotiable steps to make sure your heirs can actually access your digital assets. Delivered to your inbox when you sign up.',
