@@ -338,6 +338,12 @@ function HealthyWealthySection() {
     'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-6znwf6P/0/NXj6sqkKBwRpQxSw83zLbgPPCJHT2KgSh4thQ8ZDx/L/1223_THREE5511-L.jpg',
     'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-C9Q46g3/0/MX8d2BD6PMw8DrwMWXgmNqkRCx47Bcn9ZbvG9Mm78/L/1223_THREE4437-L.jpg'
   ]
+  const videos = [
+    { id: 'i-Tqs4z8w', title: 'Our Cells' },
+    { id: 'i-MMBfKLz', title: 'Exercise Recovery' },
+    { id: 'i-32bP7Jp', title: 'Why Collagène' },
+    { id: 'i-n3DFcHK', title: 'Why Purifí' }
+  ]
   return (
     <section id="healthy-wealthy" className="py-24 bg-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -359,6 +365,27 @@ function HealthyWealthySection() {
           {images.map((src, i) => (
             <div key={i} className="aspect-square overflow-hidden rounded-2xl bg-slate-800">
               <img src={src} alt="THREE International wellness product" loading="lazy" className="w-full h-full object-cover" />
+            </div>
+          ))}
+        </div>
+        <div className="mb-4 text-center">
+          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">30 Seconds of Science</span>
+          <h3 className="text-2xl font-bold text-white mt-2">Watch & Learn</h3>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+          {videos.map((v) => (
+            <div key={v.id} className="rounded-2xl overflow-hidden bg-slate-800 border border-slate-700">
+              <div className="aspect-[9/16] w-full bg-black">
+                <iframe
+                  src={`https://secure.smugmug.com/services/embed/image/${v.id}/`}
+                  title={v.title}
+                  loading="lazy"
+                  allowFullScreen
+                  className="w-full h-full"
+                  frameBorder="0"
+                />
+              </div>
+              <div className="px-4 py-3 text-center text-slate-200 text-sm font-medium">{v.title}</div>
             </div>
           ))}
         </div>
