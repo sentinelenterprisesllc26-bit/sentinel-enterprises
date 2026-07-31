@@ -9,17 +9,17 @@ const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
 
 /*
  * ============================================================================
- *  PAID VIDEO OFFER  +  AFFILIATE TOOLS  (this file)
+ * PAID VIDEO OFFER + AFFILIATE TOOLS (this file)
  * ============================================================================
- *  • The "Crypto Inheritance Masterclass" section below is the PAID VIDEO
- *    OFFER. Its "Buy" button opens Stripe Checkout via the create-checkout
- *    function — no payment link to paste. (Its price lives in
- *    src/lib/products.ts under `crypto-inheritance-masterclass`.)
- *      - 🔵 Upload the companion workbook to /public/pdfs/ and point the
- *        delivery at /thank-you (see src/routes/thank-you.tsx).
- *  • The "Recommended Tools" cards are AFFILIATE links.
- *      - 🔵 REPLACE each `href` in RECOMMENDED_TOOLS with your real affiliate
- *        URL. The placeholders read https://affiliate-link-here.com/...
+ * • The "Crypto Inheritance Masterclass" section below is the PAID VIDEO
+ *   OFFER. Its "Buy" button opens Stripe Checkout via the create-checkout
+ *   function — no payment link to paste. (Its price lives in
+ *   src/lib/products.ts under `crypto-inheritance-masterclass`.)
+ *   - 🔵 Upload the companion workbook to /public/pdfs/ and point the
+ *     delivery at /thank-you (see src/routes/thank-you.tsx).
+ * • The "Recommended Tools" cards are AFFILIATE links.
+ *   - 🔵 REPLACE each `href` in RECOMMENDED_TOOLS with your real affiliate
+ *     URL. The placeholders read https://affiliate-link-here.com/...
  * ============================================================================
  */
 
@@ -151,6 +151,24 @@ const groups: VideoGroup[] = [
         title: 'Never Write Your Seed Phrase Like This',
         description:
           'Why your recovery phrase is everything, and how to store those words so your assets stay yours.',
+      },
+    ],
+  },
+  {
+    icon: '🌿',
+    label: 'Health & Wellness (THREE International)',
+    items: [
+      {
+        id: 'Mm9zFV4UgS0',
+        title: 'Dr. Dan Breaks Down GLP-1: What You Actually Need to Know',
+        description:
+          'A clear, science-first breakdown of what GLP-1 actually is and what you need to know about it.',
+      },
+      {
+        id: 'qD9dG3dBDlE',
+        title: 'GLP THREE: Support Your Body\'s Own Natural GLP-1 Production',
+        description:
+          'How GLP THREE from THREE International supports your body\'s own natural GLP-1 production.',
       },
     ],
   },
