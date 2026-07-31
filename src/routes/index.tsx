@@ -14,6 +14,7 @@ function HomePage() {
       <ValueLadderSection />
       <PaidProductsSection />
       <AffiliateToolsSection />
+      <HealthyWealthySection />
       <SentinelSquadTeaser />
       <BuiltForYouSection />
       <EmailSignupSection />
@@ -327,3 +328,79 @@ function EmailSignupSection() {
     </section>
   )
       }
+
+function HealthyWealthySection() {
+  const images = [
+    'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-q272zxv/0/MmmDTSzWF5FHW2pgGgwfN4WsM52Cn7XcLrWfN23bc/L/1223_THREE6350-L.jpg',
+    'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-RwhPPxt/0/NbVbr5J5XbLXLQKvMjVFmW3thPZzsCN2mpFMJmkWG/L/1223_THREE6126-L.jpg',
+    'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-7kXbfbR/0/Lpnxmx2bz7XBCnsgfwbm6HX29bpLckmw7XnPZgRNc/XL/1223_THREE5678-XL.jpg',
+    'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-TRKzPDz/0/MsH2zWdsBN63v8PqQgd8HNN7zSFQVvLGRFTh9MCH9/X2/1223_THREE5519-X2.jpg',
+    'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-6znwf6P/0/NXj6sqkKBwRpQxSw83zLbgPPCJHT2KgSh4thQ8ZDx/L/1223_THREE5511-L.jpg',
+    'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-C9Q46g3/0/MX8d2BD6PMw8DrwMWXgmNqkRCx47Bcn9ZbvG9Mm78/L/1223_THREE4437-L.jpg'
+  ]
+  return (
+    <section id="healthy-wealthy" className="py-24 bg-slate-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-sm font-medium mb-6">
+            WELLNESS WE STAND BEHIND
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Wealth Is Nothing Without Your Health
+          </h2>
+          <p className="text-lg text-slate-300 leading-relaxed">
+            Protecting what you build isn't only about money. As an authorized THREE
+            International Brand Ambassador, I recommend a line of science-backed wellness
+            products designed to help you feel as good as your future looks. Learn first,
+            decide for yourself.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-14">
+          {images.map((src, i) => (
+            <div key={i} className="aspect-square overflow-hidden rounded-2xl bg-slate-800">
+              <img src={src} alt="THREE International wellness product" loading="lazy" className="w-full h-full object-cover" />
+            </div>
+          ))}
+        </div>
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+            <h3 className="text-xl font-semibold text-white mb-3">Featured: GLP THREE</h3>
+            <p className="text-slate-300 leading-relaxed">
+              A daily wellness formula built on published science. Discover the full
+              ingredient story and decide if it's right for you.
+            </p>
+          </div>
+          <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+            <h3 className="text-xl font-semibold text-white mb-3">Why THREE</h3>
+            <p className="text-slate-300 leading-relaxed">
+              Backed by a Scientific Advisory Board of respected doctors and researchers,
+              with transparency about what goes into every product.
+            </p>
+          </div>
+          <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
+            <h3 className="text-xl font-semibold text-white mb-3">Start Where You Are</h3>
+            <p className="text-slate-300 leading-relaxed">
+              Shop as a customer, or explore becoming a Brand Ambassador yourself. No
+              pressure, just a clear path.
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-4 justify-center">
+          <a href="https://Jenae.threeinternational.com" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
+            Explore the Products →
+          </a>
+          <a href="https://threeinternational.com/en/ShopProducts/2053972" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
+            Shop Now →
+          </a>
+          <a href="https://Jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-amber-500 text-white font-semibold rounded-lg transition-colors">
+            Become an Ambassador →
+          </a>
+        </div>
+        <p className="text-center text-sm text-slate-500 mt-8">
+          As an independent THREE International Brand Ambassador, I may earn a commission on
+          purchases made through these links.
+        </p>
+      </div>
+    </section>
+  )
+}
