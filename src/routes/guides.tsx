@@ -13,8 +13,7 @@ export const Route = createFileRoute('/guides')({
 const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 const INDIVIDUAL_CHECKOUT_URLS: Partial<Record<ProductId, string>> = {
   'crypto-inheritance-bundle': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-  'caregiver-tax-guide': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-  'asset-protection-guide': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
+'asset-protection-guide': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
   'crypto-inheritance-masterclass': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
 }
 
@@ -36,11 +35,10 @@ const bundleProduct: Product = {
   title: 'Complete Protection Bundle — All 4 Guides',
   tagline: 'Every guide, workbook, checklist, and template. One price, lifetime access.',
   description:
-    'Get everything Sentinel offers in one bundle: crypto inheritance planning, caregiver tax savings, asset protection basics, and the full masterclass with companion workbook. Buy once, keep forever.',
+    'Get everything Sentinel offers in one bundle: crypto inheritance planning, asset protection basics, and the full masterclass with companion workbook. Buy once, keep forever.',
   includes: [
     'Crypto Inheritance Protection Bundle (PDF checklist + fillable workbook + beneficiary template)',
-    'Caregiver Tax Savings Guide (PDF guide + deduction checklist)',
-    'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
+        'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
     'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
   ],
   buttonText: 'Get the Complete Bundle — $49',
@@ -60,20 +58,7 @@ const individualProducts: Product[] = [
     ],
     buttonText: 'Buy Now — $17.99',
   },
-  {
-    id: 'caregiver-tax-guide',
-    title: 'Caregiver Tax Savings Guide',
-    tagline: 'Stop overpaying taxes as a family caregiver.',
-    description:
-      'Plain-English walkthrough of every deduction, credit, and filing strategy most family caregivers miss. Includes a ready-to-use deduction checklist.',
-    includes: [
-      'Caregiver Tax Savings PDF Guide',
-      'Deduction & Credit Checklist',
-      'Filing strategy tips in plain English',
-    ],
-    buttonText: 'Buy Now — $17.99',
-  },
-  {
+{
     id: 'asset-protection-guide',
     title: 'Asset Protection Starter Guide',
     tagline: 'Protect what you own from lawsuits, creditors, and inheritance erosion.',
