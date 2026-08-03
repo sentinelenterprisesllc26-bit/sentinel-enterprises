@@ -84,28 +84,14 @@ const groups: DownloadGroup[] = [
     icon: '₿',
     label: 'Crypto & XRP',
     items: [
-      {
-        title: 'Crypto IRA Playbook',
-        description:
-          'Step-by-step playbook for holding cryptocurrency inside a self-directed IRA. Covers setup, custodians, contribution limits, and estate planning considerations.',
-        href: '/downloads/crypto_ira_playbook.pdf',
-        upsell: { label: 'Start a Crypto IRA — code UOHKD3 →', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', external: true },
-        // 🟡 No matching free video exists yet on the channel — add youtubeUrl here once one is published.
-      },
-      {
+{
         title: 'XRP Essentials Guide',
         description:
           'An accessible introduction to XRP — how it works, why it matters for cross-border payments, and what crypto holders need to know before buying or holding.',
         href: '/downloads/XRP_Essentials_Guide.pdf',
         upsell: { label: 'Buy XRP on Uphold →', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', external: true },
       },
-      {
-        title: 'XRP Illustrated Guide',
-        description:
-          'A visually rich walkthrough of the XRP Ledger ecosystem, covering wallets, on-ledger DEX, trust lines, and practical use cases for everyday holders.',
-        href: '/downloads/xrp_illustrated_guide.pdf',
-      },
-      {
+{
         title: 'XRP Ripple Book',
         description:
           'An in-depth look at Ripple, the company behind XRP, its technology, regulatory history, and what the settlement means for long-term holders.',
