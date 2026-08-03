@@ -15,8 +15,7 @@
 
 export type ProductId =
   | 'crypto-inheritance-bundle'
-  | 'caregiver-tax-guide'
-  | 'asset-protection-guide'
+| 'asset-protection-guide'
     | 'complete-bundle'
   | 'crypto-inheritance-masterclass'
 
@@ -37,14 +36,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     amountCents: 1799,
     currency: 'usd',
   },
-  'caregiver-tax-guide': {
-    id: 'caregiver-tax-guide',
-    name: 'Caregiver Tax Savings Guide',
-    description: 'Plain-English walkthrough of caregiver deductions, credits, and filing strategies.',
-    amountCents: 1799,
-    currency: 'usd',
-  },
-  'asset-protection-guide': {
+'asset-protection-guide': {
     id: 'asset-protection-guide',
     name: 'Asset Protection Starter Guide',
     description: 'Practical first steps to shield assets from lawsuits, creditors, and inheritance erosion.',
@@ -61,7 +53,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     'complete-bundle': {
     id: 'complete-bundle',
     name: 'Complete Protection Bundle — All 4 Guides',
-    description: 'Every guide, workbook, checklist, and template in one bundle. Crypto inheritance, asset protection, caregiver taxes, and the full masterclass.',
+    description: 'Every guide, workbook, checklist, and template in one bundle. Crypto inheritance, asset protection, and the full masterclass.',
     amountCents: 4900,
     currency: 'usd',
   },
