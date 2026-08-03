@@ -42,17 +42,7 @@ const DOWNLOADS: Download[] = [
     file: 'beneficiary-access-template.pdf',
     description: 'A ready-to-use template for securely passing access details to the people you trust.',
   },
-  {
-    title: 'Caregiver Tax Savings Guide',
-    file: 'caregiver-tax-guide.pdf',
-    description: 'The deductions, credits, and filing strategies most family caregivers miss — in plain English.',
-  },
-  {
-    title: 'Caregiver Deduction Checklist',
-    file: 'caregiver-deduction-checklist.pdf',
-    description: 'A quick-reference checklist so you never leave a caregiver tax deduction on the table.',
-  },
-  {
+{
     title: 'Asset Protection Starter Guide',
     file: 'asset-protection-guide.pdf',
     description: 'Practical first steps to shield what you’ve built — without an eight-figure trust budget.',
