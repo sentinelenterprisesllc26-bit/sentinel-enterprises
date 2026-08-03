@@ -55,12 +55,11 @@ const platforms: Platform[] = [
     name: 'iTrustCapital',
     category: 'Crypto IRA & retirement',
     description:
-      "Buy and hold crypto inside a tax-advantaged IRA. Sentinel's Crypto IRA Playbook walks you through opening and funding an account step by step. Use the referral code to claim your bonus.",
+      "Buy and hold crypto inside a tax-advantaged IRA. Use the referral code to claim your bonus.",
     code: { label: 'Referral code', value: 'UOHKD3' },
     links: [
       { label: 'Start an IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', primary: true },
-      { label: 'Crypto IRA Playbook', href: '/downloads/crypto_ira_playbook.pdf', pdf: true },
-    ],
+      ],
   },
   {
     name: 'Uphold',
