@@ -3,9 +3,8 @@
  *  PRODUCT CATALOG  —  the ONE place prices live
  * ============================================================================
  *  This is the single source of truth for every paid product on the site.
- *  Both the storefront (guides / videos pages) and the Stripe checkout
- *  function (netlify/functions/create-checkout.mts) read from this list, so
- *  the amount a customer is charged can never drift from the price they see.
+ *  The storefront reads from this list while the secure checkout function
+ *  uses the Stripe-managed Price ID named on each checkout-enabled product.
  *
  *  TO CHANGE A PRICE: edit `amountCents` below (e.g. 4700 = $47.00). That's it.
  *  TO ADD A PRODUCT:  add an entry here, then drop a <CheckoutButton> with its
@@ -15,9 +14,10 @@
 
 export type ProductId =
   | 'crypto-inheritance-bundle'
-| 'asset-protection-guide'
-    | 'complete-bundle'
+  | 'asset-protection-guide'
+  | 'complete-bundle'
   | 'crypto-inheritance-masterclass'
+  | 'crypto-mastery'
 
 export type Product = {
   id: ProductId
@@ -26,6 +26,8 @@ export type Product = {
   /** Charge amount in the smallest currency unit (cents). 4700 = $47.00 */
   amountCents: number
   currency: string
+  /** Netlify environment variable that holds the Stripe-managed Price ID. */
+  stripePriceEnv?: string
 }
 
 export const PRODUCTS: Record<ProductId, Product> = {
@@ -36,7 +38,15 @@ export const PRODUCTS: Record<ProductId, Product> = {
     amountCents: 1799,
     currency: 'usd',
   },
-'asset-protection-guide': {
+  'crypto-mastery': {
+    id: 'crypto-mastery',
+    name: "Crypto Mastery: The Complete Beginner's Guide to Cryptocurrency",
+    description: '39-page digital PDF e-book for cryptocurrency beginners, including a bonus estate-planning section.',
+    amountCents: 1700,
+    currency: 'usd',
+    stripePriceEnv: 'STRIPE_PRICE_CRYPTO_MASTERY',
+  },
+  'asset-protection-guide': {
     id: 'asset-protection-guide',
     name: 'Asset Protection Starter Guide',
     description: 'Practical first steps to shield assets from lawsuits, creditors, and inheritance erosion.',
@@ -50,7 +60,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     amountCents: 1799,
     currency: 'usd',
   },
-    'complete-bundle': {
+  'complete-bundle': {
     id: 'complete-bundle',
     name: 'Complete Protection Bundle — All 4 Guides',
     description: 'Every guide, workbook, checklist, and template in one bundle. Crypto inheritance, asset protection, and the full masterclass.',

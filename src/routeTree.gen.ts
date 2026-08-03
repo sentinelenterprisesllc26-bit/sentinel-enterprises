@@ -16,11 +16,13 @@ import { Route as SentinelSquadRouteImport } from './routes/sentinel-squad'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as DownloadsRouteImport } from './routes/downloads'
+import { Route as CryptoMasteryRouteImport } from './routes/crypto-mastery'
 import { Route as CryptoInheritanceChecklistRouteImport } from './routes/crypto-inheritance-checklist'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as CryptoMasterySuccessRouteImport } from './routes/crypto-mastery.success'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
 const VideosRoute = VideosRouteImport.update({
@@ -58,6 +60,11 @@ const DownloadsRoute = DownloadsRouteImport.update({
   path: '/downloads',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CryptoMasteryRoute = CryptoMasteryRouteImport.update({
+  id: '/crypto-mastery',
+  path: '/crypto-mastery',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CryptoInheritanceChecklistRoute =
   CryptoInheritanceChecklistRouteImport.update({
     id: '/crypto-inheritance-checklist',
@@ -84,6 +91,11 @@ const BlogIndexRoute = BlogIndexRouteImport.update({
   path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CryptoMasterySuccessRoute = CryptoMasterySuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => CryptoMasteryRoute,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -95,6 +107,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/crypto-inheritance-checklist': typeof CryptoInheritanceChecklistRoute
+  '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
@@ -103,6 +116,7 @@ export interface FileRoutesByFullPath {
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
@@ -110,6 +124,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/crypto-inheritance-checklist': typeof CryptoInheritanceChecklistRoute
+  '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
@@ -118,6 +133,7 @@ export interface FileRoutesByTo {
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
@@ -126,6 +142,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/crypto-inheritance-checklist': typeof CryptoInheritanceChecklistRoute
+  '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
@@ -134,6 +151,7 @@ export interface FileRoutesById {
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
@@ -143,6 +161,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/crypto-inheritance-checklist'
+    | '/crypto-mastery'
     | '/downloads'
     | '/guides'
     | '/partners'
@@ -151,6 +170,7 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/videos'
     | '/blog/$slug'
+    | '/crypto-mastery/success'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -158,6 +178,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/crypto-inheritance-checklist'
+    | '/crypto-mastery'
     | '/downloads'
     | '/guides'
     | '/partners'
@@ -166,6 +187,7 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/videos'
     | '/blog/$slug'
+    | '/crypto-mastery/success'
     | '/blog'
   id:
     | '__root__'
@@ -173,6 +195,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/crypto-inheritance-checklist'
+    | '/crypto-mastery'
     | '/downloads'
     | '/guides'
     | '/partners'
@@ -181,6 +204,7 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/videos'
     | '/blog/$slug'
+    | '/crypto-mastery/success'
     | '/blog/'
   fileRoutesById: FileRoutesById
 }
@@ -189,6 +213,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   CryptoInheritanceChecklistRoute: typeof CryptoInheritanceChecklistRoute
+  CryptoMasteryRoute: typeof CryptoMasteryRouteWithChildren
   DownloadsRoute: typeof DownloadsRoute
   GuidesRoute: typeof GuidesRoute
   PartnersRoute: typeof PartnersRoute
@@ -251,6 +276,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DownloadsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crypto-mastery': {
+      id: '/crypto-mastery'
+      path: '/crypto-mastery'
+      fullPath: '/crypto-mastery'
+      preLoaderRoute: typeof CryptoMasteryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/crypto-inheritance-checklist': {
       id: '/crypto-inheritance-checklist'
       path: '/crypto-inheritance-checklist'
@@ -286,6 +318,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/crypto-mastery/success': {
+      id: '/crypto-mastery/success'
+      path: '/success'
+      fullPath: '/crypto-mastery/success'
+      preLoaderRoute: typeof CryptoMasterySuccessRouteImport
+      parentRoute: typeof CryptoMasteryRoute
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -296,11 +335,24 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CryptoMasteryRouteChildren {
+  CryptoMasterySuccessRoute: typeof CryptoMasterySuccessRoute
+}
+
+const CryptoMasteryRouteChildren: CryptoMasteryRouteChildren = {
+  CryptoMasterySuccessRoute: CryptoMasterySuccessRoute,
+}
+
+const CryptoMasteryRouteWithChildren = CryptoMasteryRoute._addFileChildren(
+  CryptoMasteryRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   CryptoInheritanceChecklistRoute: CryptoInheritanceChecklistRoute,
+  CryptoMasteryRoute: CryptoMasteryRouteWithChildren,
   DownloadsRoute: DownloadsRoute,
   GuidesRoute: GuidesRoute,
   PartnersRoute: PartnersRoute,

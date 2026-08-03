@@ -104,6 +104,39 @@ function GuidesPage() {
         </div>
       </section>
 
+      <section className="bg-slate-950 py-12 px-4">
+        <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden border border-cyan-400/30 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
+          <div className="grid md:grid-cols-[0.72fr_1.28fr] gap-0 items-center">
+            <div className="p-8 sm:p-10 flex justify-center bg-slate-950/40">
+              <img
+                src="/crypto-mastery-cover.png"
+                alt="Crypto Mastery beginner cryptocurrency guide"
+                className="w-full max-w-[220px] rounded-xl border border-amber-400/40 shadow-xl"
+              />
+            </div>
+            <div className="p-8 sm:p-10">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-cyan-200 bg-cyan-400/10 border border-cyan-300/20 rounded-full px-3 py-1 mb-4">
+                New Beginner Guide
+              </span>
+              <h2 className="text-3xl font-black text-white leading-tight mb-3">Crypto Mastery</h2>
+              <p className="text-amber-400 font-semibold mb-3">The Complete Beginner’s Guide to Cryptocurrency</p>
+              <p className="text-slate-300 leading-relaxed mb-6">
+                A 39-page, plain-English guide to Bitcoin, blockchain, crypto wallets, security, buying your first crypto, and more.
+              </p>
+              <div className="flex items-center gap-4">
+                <Link
+                  to="/crypto-mastery"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl transition-colors"
+                >
+                  View Crypto Mastery — $17
+                </Link>
+                <span className="text-xs text-slate-400">Instant PDF download</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* === FEATURED BUNDLE === */}
       <section className="bg-slate-900 py-12 px-4">
         <div className="max-w-3xl mx-auto">

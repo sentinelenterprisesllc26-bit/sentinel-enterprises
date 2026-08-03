@@ -25,7 +25,7 @@ export function CheckoutButton({
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/checkout', {
+      const res = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ productId }),
@@ -44,7 +44,14 @@ export function CheckoutButton({
 
   return (
     <>
-      <button type="button" onClick={handleClick} disabled={loading} className={className} aria-busy={loading}>
+      <button
+        type="button"
+        onClick={handleClick}
+        disabled={loading}
+        className={className}
+        aria-busy={loading}
+        data-testid={`button-checkout-${productId}`}
+      >
         {loading ? 'Redirecting to checkout…' : children}
       </button>
       {error && (

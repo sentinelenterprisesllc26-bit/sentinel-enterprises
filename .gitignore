@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.netlify/
+.env
+.env.*
+!.env.example
+
+# Paid digital files are stored in the private delivery-assets repository.
+private/
