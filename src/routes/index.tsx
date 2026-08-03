@@ -339,10 +339,10 @@ function HealthyWealthySection() {
     'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-C9Q46g3/0/MX8d2BD6PMw8DrwMWXgmNqkRCx47Bcn9ZbvG9Mm78/L/1223_THREE4437-L.jpg'
   ]
   const videos = [
-    { id: 'i-Tqs4z8w', title: 'Our Cells' },
-    { id: 'i-MMBfKLz', title: 'Exercise Recovery' },
-    { id: 'i-32bP7Jp', title: 'Why Collagène' },
-    { id: 'i-n3DFcHK', title: 'Why Purifí' }
+    { id: 'Mm9zFV4UgS0', title: 'Our Cells' },
+    { id: 'qD9dG3dBDlE', title: 'Exercise Recovery' },
+    { id: '-Wqu0mxNPQU', title: 'Why Collagène' },
+    { id: 'ADVTMWt1eeM', title: 'Why Purifí' }
   ]
   return (
     <section id="healthy-wealthy" className="py-24 bg-slate-900">
@@ -375,11 +375,12 @@ function HealthyWealthySection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
           {videos.map((v) => (
             <div key={v.id} className="rounded-2xl overflow-hidden bg-slate-800 border border-slate-700">
-              <div className="aspect-[9/16] w-full bg-black">
+              <div className="aspect-video w-full bg-black">
                 <iframe
-                  src={`https://secure.smugmug.com/services/embed/image/${v.id}/`}
+                  src={`https://www.youtube.com/embed/${v.id}`}
                   title={v.title}
                   loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   className="w-full h-full"
                   frameBorder="0"
