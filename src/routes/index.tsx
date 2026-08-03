@@ -339,10 +339,10 @@ function HealthyWealthySection() {
     'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-C9Q46g3/0/MX8d2BD6PMw8DrwMWXgmNqkRCx47Bcn9ZbvG9Mm78/L/1223_THREE4437-L.jpg'
   ]
   const videos = [
-    { id: 'Mm9zFV4UgS0', title: 'Our Cells' },
-    { id: 'qD9dG3dBDlE', title: 'Exercise Recovery' },
-    { id: '-Wqu0mxNPQU', title: 'Why Collagène' },
-    { id: 'ADVTMWt1eeM', title: 'Why Purifí' }
+    { id: 'Mm9zFV4UgS0', title: 'GLP-1: What You Actually Need to Know' },
+    { id: 'qD9dG3dBDlE', title: 'GLP THREE: Natural GLP-1 Support' },
+    { id: '-Wqu0mxNPQU', title: 'Kynetik Berry Blast: The Sound of Summer' },
+    { id: 'ADVTMWt1eeM', title: 'THREE International Wellness' }
   ]
   return (
     <section id="healthy-wealthy" className="py-24 bg-slate-900">
