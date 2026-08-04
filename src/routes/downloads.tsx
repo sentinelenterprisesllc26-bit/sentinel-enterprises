@@ -60,14 +60,6 @@ const groups: DownloadGroup[] = [
     icon: '✅',
     label: 'Free Checklists',
     items: [
-{
-        title: 'Crypto Security Lead Magnet',
-        description:
-          'The 5 most common crypto security mistakes that cost people their savings — and exactly how to avoid each one. FBI and Chainalysis statistics, real-world examples, and a step-by-step action plan.',
-        href: '/downloads/Crypto_Security_Lead_Magnet.pdf',
-        badge: 'New',
-        upsell: { label: 'Get the Complete Protection Bundle →', href: '/guides' },
-      },
       {
         title: 'Crypto Inheritance Checklist',
         description:
