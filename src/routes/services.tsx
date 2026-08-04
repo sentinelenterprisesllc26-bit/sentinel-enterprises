@@ -151,55 +151,6 @@ function ServiceDetails() {
             </div>
           </div>
         </div>
-
-        <div className="border-t border-slate-800" />
-
-        {/* Service 3 */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-start">
-          <div className="lg:col-span-2">
-            <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-center justify-center text-amber-400 mb-4">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold text-white mb-2">Caregiver Tax Savings</h2>
-            <span className="inline-block px-3 py-1 bg-amber-500/10 text-amber-400 text-xs font-semibold rounded-full border border-amber-500/20">
-              Family Caregivers
-            </span>
-          </div>
-          <div className="lg:col-span-3">
-            <p className="text-slate-300 leading-relaxed mb-4">
-              For family caregivers who suspect they've been overpaying taxes for years.
-            </p>
-            <p className="text-slate-400 leading-relaxed mb-4">
-              We break down the deductions, credits, and filing strategies most caregivers miss — in plain English,
-              not tax code. Get our free checklist to see what you might be leaving on the table.
-            </p>
-            <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-4 mb-6">
-              <p className="text-amber-300 font-semibold italic">"Keep more of what you've earned."</p>
-            </div>
-            <ul className="space-y-2 mb-6">
-              {[
-                'Medical expense deduction maximization',
-                'Dependent care credit guidance',
-                'Filing status optimization (head of household, etc.)',
-                'Free caregiver tax checklist — 7 commonly missed deductions',
-              ].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-300 text-sm">
-                  <svg className="w-4 h-4 text-amber-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <div className="flex flex-wrap items-center gap-4">
-              <a href="/#email-signup" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors">
-                Get the Free Caregiver Tax Checklist →
-              </a>
-              <PayPalButton />
-            </div>
-          </div>
         </div>
       </div>
     </section>
