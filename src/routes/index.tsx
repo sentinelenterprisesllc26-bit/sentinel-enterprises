@@ -153,7 +153,7 @@ function ValueLadderSection() {
 const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 
 function PaidProductsSection() {
-  const included = ['Crypto Inheritance Checklist', 'Crypto Inheritance Fillable Workbook', 'Beneficiary Access Template', 'Caregiver Tax Savings Guide', 'Caregiver Deduction Checklist', 'Asset Protection Starter Guide', 'Trust and Titling Starter Checklist']
+  const included = ['Crypto Inheritance Checklist', 'Crypto Inheritance Fillable Workbook', 'Beneficiary Access Template', 'Asset Protection Starter Guide', 'Trust and Titling Starter Checklist']
   return (
     <section className="py-24 bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -163,7 +163,7 @@ function PaidProductsSection() {
           <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template - the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
         </div>
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-3xl p-8 sm:p-10 lg:p-12">
-          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 7 Resources Included - One Price, Lifetime Access</p>
+          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 5 Resources Included - One Price, Lifetime Access</p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
             {included.map((item) => (
               <li key={item} className="flex items-start gap-3 bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-3">
