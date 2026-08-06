@@ -14,7 +14,6 @@ function HomePage() {
       <ValueLadderSection />
       <PaidProductsSection />
       <AffiliateToolsSection />
-      <SocialProofSection />
       <SentinelSquadTeaser />
       <BuiltForYouSection />
       <CryptoLeadMagnetSection />
@@ -160,13 +159,6 @@ function PaidProductsSection() {
     'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
     'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
   ]
-  const faqs = [
-    { q: 'How do I access the files after purchase?', a: 'After checkout, you will receive an email with instant download links to all files. You can download them immediately and keep them forever.' },
-    { q: 'What format are the files in?', a: 'All guides and checklists are PDF files. The masterclass includes a video walkthrough. The workbook is a fillable PDF you can type directly into.' },
-    { q: 'Can I get a refund?', a: 'Yes. If you are not satisfied within 7 days of purchase, email us for a full refund — no questions asked.' },
-    { q: 'Is this legal or financial advice?', a: 'No. These are educational resources that help you understand your options and ask the right questions when working with a qualified professional.' },
-    { q: 'Do I need to be wealthy to benefit from this?', a: 'Not at all. These guides are written for working families, caregivers, and everyday crypto holders — not just the wealthy.' },
-  ]
   return (
     <section className="py-24 bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -197,22 +189,6 @@ function PaidProductsSection() {
               Get the Complete Bundle — $49
             </a>
             <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
-          </div>
-        </div>
-
-        {/* FAQ */}
-        <div className="mt-16 max-w-3xl mx-auto">
-          <h3 className="text-2xl font-bold text-white text-center mb-8">Frequently Asked Questions</h3>
-          <div className="space-y-4">
-            {faqs.map((faq) => (
-              <details key={faq.q} className="group bg-slate-800/50 border border-slate-700/50 rounded-xl overflow-hidden">
-                <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-white font-medium text-sm list-none">
-                  {faq.q}
-                  <svg className="w-4 h-4 text-amber-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
-                </summary>
-                <div className="px-6 pb-4 text-slate-400 text-sm leading-relaxed">{faq.a}</div>
-              </details>
-            ))}
           </div>
         </div>
       </div>
@@ -258,57 +234,6 @@ function AffiliateToolsSection() {
           <Link to="/partners" className="text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">See all recommended tools and partners &rarr;</Link>
           <p className="mt-2 text-slate-600 text-xs">Some links are affiliate links. We may earn a commission at no extra cost to you.</p>
         </div>
-      </div>
-    </section>
-  )
-}
-
-function SocialProofSection() {
-  const testimonials = [
-    { quote: 'I had no idea my crypto would just disappear if something happened to me. The crypto inheritance checklist was a wake-up call I needed.', author: 'Verified Download', source: 'Free Checklist User' },
-    { quote: 'As a caregiver for my mom, I was missing thousands in deductions. The caregiver tax guide paid for itself ten times over.', author: 'Verified Purchase', source: 'Bundle Buyer' },
-    { quote: 'Finally someone explains crypto and trusts in plain English. No hype, no pressure, just real information I could act on.', author: 'Verified Download', source: 'Free Guide Reader' },
-  ]
-  const stats = [
-    { number: '5+', label: 'Free Downloads' },
-    { number: '4', label: 'Affiliate Partners' },
-    { number: '100%', label: 'Free Education' },
-    { number: '7-Day', label: 'Money-Back Guarantee' },
-  ]
-  return (
-    <section className="py-24 bg-slate-950 border-y border-slate-800">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400 mb-1">{s.number}</div>
-              <div className="text-slate-500 text-sm">{s.label}</div>
-            </div>
-          ))}
-        </div>
-        <div className="text-center mb-12">
-          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">What People Say</span>
-          <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white">Trusted by Working Families</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((t) => (
-            <div key={t.quote} className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-7 flex flex-col">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-slate-300 text-sm leading-relaxed mb-5 flex-1">"{t.quote}"</p>
-              <div>
-                <p className="text-white text-sm font-semibold">{t.author}</p>
-                <p className="text-slate-500 text-xs">{t.source}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-8 text-center text-slate-600 text-xs">Testimonials reflect real feedback from site visitors and customers. Some identifying details have been summarized.</p>
       </div>
     </section>
   )
