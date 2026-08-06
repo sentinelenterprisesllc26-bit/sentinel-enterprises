@@ -184,7 +184,7 @@ function PartnersPage() {
                   <a
                     href={tool.href}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="sponsored noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
                   >
                     View Tool
@@ -193,7 +193,7 @@ function PartnersPage() {
                     <a
                       href={tool.pdfHref}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="sponsored noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
                     >
                       {tool.pdfLabel || 'Download PDF'}
@@ -236,7 +236,7 @@ function PartnersPage() {
                 key={g.title}
                 href={g.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="sponsored noopener noreferrer"
                 className="group bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 flex items-center gap-5 hover:border-amber-500/50 transition-colors"
               >
                 <div className="w-12 h-14 bg-amber-500/10 border border-amber-500/20 rounded-lg flex items-center justify-center text-amber-400 flex-shrink-0">
@@ -341,7 +341,7 @@ function PlatformCard({ name, category, description, code, links }: Platform) {
             key={l.label}
             href={l.href}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="sponsored noopener noreferrer"
             className={
               l.primary
                 ? 'inline-flex items-center px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors'

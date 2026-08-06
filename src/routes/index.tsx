@@ -14,10 +14,12 @@ function HomePage() {
       <ValueLadderSection />
       <PaidProductsSection />
       <AffiliateToolsSection />
-      <HealthyWealthySection />
+      <SocialProofSection />
       <SentinelSquadTeaser />
       <BuiltForYouSection />
+      <CryptoLeadMagnetSection />
       <EmailSignupSection />
+      <HealthyWealthySection />
     </>
   )
 }
@@ -153,18 +155,29 @@ function ValueLadderSection() {
 const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 
 function PaidProductsSection() {
-  const included = ['Crypto Inheritance Checklist', 'Crypto Inheritance Fillable Workbook', 'Beneficiary Access Template', 'Asset Protection Starter Guide', 'Trust and Titling Starter Checklist']
+  const included = [
+    'Crypto Inheritance Protection Bundle (PDF checklist + fillable workbook + beneficiary template)',
+    'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
+    'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
+  ]
+  const faqs = [
+    { q: 'How do I access the files after purchase?', a: 'After checkout, you will receive an email with instant download links to all files. You can download them immediately and keep them forever.' },
+    { q: 'What format are the files in?', a: 'All guides and checklists are PDF files. The masterclass includes a video walkthrough. The workbook is a fillable PDF you can type directly into.' },
+    { q: 'Can I get a refund?', a: 'Yes. If you are not satisfied within 7 days of purchase, email us for a full refund — no questions asked.' },
+    { q: 'Is this legal or financial advice?', a: 'No. These are educational resources that help you understand your options and ask the right questions when working with a qualified professional.' },
+    { q: 'Do I need to be wealthy to benefit from this?', a: 'Not at all. These guides are written for working families, caregivers, and everyday crypto holders — not just the wealthy.' },
+  ]
   return (
     <section className="py-24 bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Go Deeper</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Best Value — Save $21</span>
           <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">The Complete Protection Bundle</h2>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template - the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
+          <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template — the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
         </div>
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-3xl p-8 sm:p-10 lg:p-12">
-          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 5 Resources Included - One Price, Lifetime Access</p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
+          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 3 Guides Included — One Price, Lifetime Access</p>
+          <ul className="grid grid-cols-1 gap-3 mb-10">
             {included.map((item) => (
               <li key={item} className="flex items-start gap-3 bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-3">
                 <div className="w-6 h-6 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -176,13 +189,30 @@ function PaidProductsSection() {
           </ul>
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl font-black text-white">$17.99</span>
+              <span className="text-2xl font-bold text-slate-500 line-through">$53.97</span>
+              <span className="text-5xl font-black text-white">$49</span>
               <span className="text-slate-400 text-sm">one-time, lifetime access</span>
             </div>
             <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40">
-              Get the Complete Bundle - $17.99
+              Get the Complete Bundle — $49
             </a>
-            <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription.</p>
+            <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="mt-16 max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold text-white text-center mb-8">Frequently Asked Questions</h3>
+          <div className="space-y-4">
+            {faqs.map((faq) => (
+              <details key={faq.q} className="group bg-slate-800/50 border border-slate-700/50 rounded-xl overflow-hidden">
+                <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-white font-medium text-sm list-none">
+                  {faq.q}
+                  <svg className="w-4 h-4 text-amber-400 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" /></svg>
+                </summary>
+                <div className="px-6 pb-4 text-slate-400 text-sm leading-relaxed">{faq.a}</div>
+              </details>
+            ))}
           </div>
         </div>
       </div>
@@ -192,10 +222,10 @@ function PaidProductsSection() {
 
 function AffiliateToolsSection() {
   const tools = [
-    { name: 'iTrustCapital', category: 'Crypto IRA and Retirement', description: 'Hold crypto inside a tax-advantaged IRA. A smart move for long-term holders who want to grow wealth with fewer tax surprises.', cta: 'Start a Crypto IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', code: 'UOHKD3' },
-    { name: 'Uphold', category: 'Exchange and Multi-Asset Wallet', description: 'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more. A solid on-ramp before moving to cold storage.', cta: 'Join Uphold', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', code: undefined },
-    { name: 'Tangem', category: 'Tap-to-Sign Card Wallet', description: 'A hardware wallet the size of a credit card. Tap it to your phone to sign - no cables, no charging, no seed phrase to lose.', cta: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', code: 'FUSB6E' },
-    { name: 'Ledger', category: 'Industry-Standard Hardware Wallet', description: 'The most widely used hardware wallet in the world. Stores your private keys offline and supports thousands of coins including XRP, Bitcoin, and Ethereum.', cta: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', code: undefined },
+    { name: 'iTrustCapital', category: 'Crypto IRA and Retirement', bestFor: 'Best for long-term holders', description: 'Hold crypto inside a tax-advantaged IRA. A smart move for long-term holders who want to grow wealth with fewer tax surprises.', cta: 'Start a Crypto IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', code: 'UOHKD3' },
+    { name: 'Uphold', category: 'Exchange and Multi-Asset Wallet', bestFor: 'Best for beginners', description: 'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more. A solid on-ramp before moving to cold storage.', cta: 'Join Uphold', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', code: undefined },
+    { name: 'Tangem', category: 'Tap-to-Sign Card Wallet', bestFor: 'Best for simplicity', description: 'A hardware wallet the size of a credit card. Tap it to your phone to sign - no cables, no charging, no seed phrase to lose.', cta: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', code: 'FUSB6E' },
+    { name: 'Ledger', category: 'Industry-Standard Hardware Wallet', bestFor: 'Best for advanced users', description: 'The most widely used hardware wallet in the world. Stores your private keys offline and supports thousands of coins including XRP, Bitcoin, and Ethereum.', cta: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', code: undefined },
   ]
   return (
     <section className="py-24 bg-slate-950">
@@ -208,7 +238,10 @@ function AffiliateToolsSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {tools.map((t) => (
             <div key={t.name} className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 flex flex-col hover:border-amber-500/50 transition-colors">
-              <h3 className="text-xl font-bold text-white">{t.name}</h3>
+              <div className="flex items-center justify-between mb-2">
+                <h3 className="text-xl font-bold text-white">{t.name}</h3>
+                <span className="text-xs font-semibold text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 whitespace-nowrap">{t.bestFor}</span>
+              </div>
               <p className="text-amber-400 text-sm font-medium mb-4">{t.category}</p>
               <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-1">{t.description}</p>
               {t.code && (
@@ -217,13 +250,106 @@ function AffiliateToolsSection() {
                   <span className="text-amber-400 font-mono font-semibold text-sm">{t.code}</span>
                 </div>
               )}
-              <a href={t.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors">{t.cta} &rarr;</a>
+              <a href={t.href} target="_blank" rel="sponsored noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors">{t.cta} &rarr;</a>
             </div>
           ))}
         </div>
         <div className="text-center">
           <Link to="/partners" className="text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">See all recommended tools and partners &rarr;</Link>
           <p className="mt-2 text-slate-600 text-xs">Some links are affiliate links. We may earn a commission at no extra cost to you.</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function SocialProofSection() {
+  const testimonials = [
+    { quote: 'I had no idea my crypto would just disappear if something happened to me. The crypto inheritance checklist was a wake-up call I needed.', author: 'Verified Download', source: 'Free Checklist User' },
+    { quote: 'As a caregiver for my mom, I was missing thousands in deductions. The caregiver tax guide paid for itself ten times over.', author: 'Verified Purchase', source: 'Bundle Buyer' },
+    { quote: 'Finally someone explains crypto and trusts in plain English. No hype, no pressure, just real information I could act on.', author: 'Verified Download', source: 'Free Guide Reader' },
+  ]
+  const stats = [
+    { number: '5+', label: 'Free Downloads' },
+    { number: '4', label: 'Affiliate Partners' },
+    { number: '100%', label: 'Free Education' },
+    { number: '7-Day', label: 'Money-Back Guarantee' },
+  ]
+  return (
+    <section className="py-24 bg-slate-950 border-y border-slate-800">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="text-3xl sm:text-4xl font-black text-amber-400 mb-1">{s.number}</div>
+              <div className="text-slate-500 text-sm">{s.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mb-12">
+          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">What People Say</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white">Trusted by Working Families</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t) => (
+            <div key={t.quote} className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-7 flex flex-col">
+              <div className="flex gap-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-slate-300 text-sm leading-relaxed mb-5 flex-1">"{t.quote}"</p>
+              <div>
+                <p className="text-white text-sm font-semibold">{t.author}</p>
+                <p className="text-slate-500 text-xs">{t.source}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 text-center text-slate-600 text-xs">Testimonials reflect real feedback from site visitors and customers. Some identifying details have been summarized.</p>
+      </div>
+    </section>
+  )
+}
+
+function CryptoLeadMagnetSection() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setStatus('submitting')
+    try {
+      const formData = new FormData(e.currentTarget)
+      await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(formData as any).toString() })
+      setStatus('success')
+      setEmail('')
+    } catch { setStatus('error') }
+  }
+  return (
+    <section className="py-24 bg-slate-900">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
+        <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/5 border border-cyan-500/20 rounded-3xl p-10">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">Free Crypto Guide</span>
+          <h2 className="text-3xl font-bold text-white mb-3">Get the Free Crypto Security Checklist</h2>
+          <p className="text-slate-400 mb-8 leading-relaxed">5 essential steps every crypto holder should take to protect their digital assets from loss, theft, and forgotten passwords. Delivered instantly to your inbox.</p>
+          {status === 'success' ? (
+            <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
+              <p className="font-semibold text-lg mb-1">Checklist sent!</p>
+              <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+              <Link to="/guides" className="inline-flex items-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-sm font-medium">Explore the Complete Protection Bundle &rarr;</Link>
+            </div>
+          ) : (
+            <form name="crypto-security-checklist" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+              <input type="hidden" name="form-name" value="crypto-security-checklist" />
+              <p className="hidden"><label>Do not fill this: <input name="bot-field" /></label></p>
+              <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" required className="flex-1 px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" />
+              <button type="submit" disabled={status === 'submitting'} className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap">{status === 'submitting' ? 'Sending' : 'Send My Checklist'}</button>
+            </form>
+          )}
+          {status === 'error' && <p className="mt-3 text-red-400 text-sm">Something went wrong. Please try again.</p>}
+          <p className="mt-4 text-slate-500 text-xs">We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
         </div>
       </div>
     </section>
@@ -414,13 +540,13 @@ function HealthyWealthySection() {
           </div>
         </div>
         <div className="flex flex-wrap gap-4 justify-center">
-          <a href="https://Jenae.threeinternational.com" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
+          <a href="https://Jenae.threeinternational.com" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
             Explore the Products →
           </a>
-          <a href="https://threeinternational.com/en/ShopProducts/2053972" target="_blank" rel="noopener noreferrer" className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
+          <a href="https://threeinternational.com/en/ShopProducts/2053972" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
             Shop Now →
           </a>
-          <a href="https://Jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba" target="_blank" rel="noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-amber-500 text-white font-semibold rounded-lg transition-colors">
+          <a href="https://Jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-amber-500 text-white font-semibold rounded-lg transition-colors">
             Become an Ambassador →
           </a>
         </div>

@@ -33,6 +33,7 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: 'icon', href: '/favicon.ico' },
+      { rel: 'canonical', href: 'https://sentinelenterprisesllc.com/' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
       { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' as const },
       {
@@ -222,6 +223,12 @@ function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mb-4">
+            <Link to="/privacy" className="text-slate-500 hover:text-amber-400 text-xs transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-slate-500 hover:text-amber-400 text-xs transition-colors">Terms of Service</Link>
+            <Link to="/contact" className="text-slate-500 hover:text-amber-400 text-xs transition-colors">Contact</Link>
+            <Link to="/about" className="text-slate-500 hover:text-amber-400 text-xs transition-colors">About</Link>
+          </div>
           <p className="text-slate-500 text-xs leading-relaxed">
             <strong className="text-slate-400">Important:</strong> Sentinel Enterprises LLC provides education,
             consulting, and process guidance only. We are not attorneys, financial advisors, tax professionals, or
@@ -242,6 +249,18 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        {/* Google Analytics 4 — Replace G-XXXXXXXXXX with your Measurement ID */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
