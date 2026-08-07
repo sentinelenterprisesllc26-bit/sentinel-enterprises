@@ -27,6 +27,9 @@ function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-slate-900">
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      {/* Decorative glow orbs */}
+      <div className="absolute top-1/4 -right-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-500/5 rounded-full blur-3xl" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-sm font-medium mb-6">
@@ -40,19 +43,19 @@ function HeroSection() {
           <p className="text-xl text-slate-300 leading-relaxed mb-6 max-w-2xl">
             Sentinel Enterprises helps working families and crypto holders understand the changing financial system, protect their digital assets, and make smarter money decisions.
           </p>
-          <p className="text-base text-amber-400/80 font-medium mb-10 max-w-2xl">
+          <p className="text-base text-amber-400 font-medium mb-10 max-w-2xl">
             Start free. Go deeper if you want more. Use better tools. Protect what you build.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
                           href="/crypto-inheritance-checklist"
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
+              className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5"
             >
                             Get the Free Crypto Checklist
             </a>
             <Link
               to="/guides"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:border-amber-400/50 transition-all hover:-translate-y-0.5"
             >
                             See Guides & Bundle →
             </Link>
@@ -82,6 +85,14 @@ function TrustBarSection() {
 }
 
 function FreeLearningSection() {
+  const iconMap: Record<string, React.ReactNode> = {
+    book: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />,
+    lock: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 0h10.5a2.25 2.25 0 012.25 2.25v7.5a2.25 2.25 0 01-2.25 2.25H6.75a2.25 2.25 0 01-2.25-2.25v-7.5a2.25 2.25 0 012.25-2.25z" />,
+    shield: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.275z" />,
+    money: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.071 0l.879.659M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />,
+    video: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />,
+    download: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />,
+  }
   const topics = [
     { icon: 'book', title: 'How Money Is Changing', description: 'Understand ISO 20022, XRP, and what the shift to the new financial system means for everyday people in plain English.', link: '/blog', linkText: 'Read Free Articles' },
     { icon: 'lock', title: 'Crypto and Digital Asset Safety', description: 'Learn self-custody basics, wallet security, seed phrase protection, and how to pass digital assets to heirs without losing them.', link: '/blog', linkText: 'Explore Crypto Guides' },
@@ -104,7 +115,12 @@ function FreeLearningSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {topics.map((t) => (
-            <div key={t.title} className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 flex flex-col hover:border-amber-500/50 transition-colors">
+            <div key={t.title} className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 flex flex-col hover:border-amber-500/50 hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 bg-amber-500/10 border border-amber-500/20 rounded-xl flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  {iconMap[t.icon]}
+                </svg>
+              </div>
               <h3 className="text-lg font-bold text-white mb-3">{t.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{t.description}</p>
               <Link to={t.link as '/blog'} className="text-amber-400 hover:text-amber-300 text-sm font-semibold transition-colors">
@@ -135,9 +151,9 @@ function ValueLadderSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((s) => (
-            <div key={s.step} className={'rounded-2xl p-7 flex flex-col transition-colors ' + (s.highlight ? 'bg-amber-500/10 border-2 border-amber-500/50' : 'bg-slate-800/60 border border-slate-700/50 hover:border-amber-500/30')}>
+            <div key={s.step} className={'rounded-2xl p-7 flex flex-col transition-all duration-300 ' + (s.highlight ? 'bg-amber-500/10 border-2 border-amber-500/50 hover:-translate-y-1' : 'bg-slate-800/60 border border-slate-700/50 hover:border-amber-500/30 hover:-translate-y-1')}>
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-amber-400 font-black text-2xl">{s.step}</span>
+                <span className="flex items-center justify-center w-10 h-10 rounded-full bg-amber-500/20 border border-amber-500/30 text-amber-400 font-black text-sm">{s.step}</span>
                 <span className={'text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ' + (s.highlight ? 'bg-amber-500 text-slate-900' : 'bg-slate-700 text-slate-400')}>{s.label}</span>
               </div>
               <h3 className="text-lg font-bold text-white mb-3">{s.title}</h3>
@@ -167,7 +183,7 @@ function PaidProductsSection() {
           <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">The Complete Protection Bundle</h2>
           <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template — the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
         </div>
-        <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-3xl p-8 sm:p-10 lg:p-12">
+        <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl shadow-amber-500/5">
           <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 3 Guides Included — One Price, Lifetime Access</p>
           <ul className="grid grid-cols-1 gap-3 mb-10">
             {included.map((item) => (
@@ -185,7 +201,7 @@ function PaidProductsSection() {
               <span className="text-5xl font-black text-white">$49</span>
               <span className="text-slate-400 text-sm">one-time, lifetime access</span>
             </div>
-            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40">
+            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
               Get the Complete Bundle — $49
             </a>
             <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
@@ -213,7 +229,7 @@ function AffiliateToolsSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {tools.map((t) => (
-            <div key={t.name} className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 flex flex-col hover:border-amber-500/50 transition-colors">
+            <div key={t.name} className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 flex flex-col hover:border-amber-500/50 hover:-translate-y-1 transition-all duration-300">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="text-xl font-bold text-white">{t.name}</h3>
                 <span className="text-xs font-semibold text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-2 py-0.5 whitespace-nowrap">{t.bestFor}</span>
