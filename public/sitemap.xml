@@ -60,4 +60,12 @@
     <loc>https://sentinelenterprisesllc.com/contact</loc>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://sentinelenterprisesllc.com/privacy</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://sentinelenterprisesllc.com/terms</loc>
+    <priority>0.3</priority>
+  </url>
 </urlset>
