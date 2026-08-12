@@ -215,6 +215,7 @@ function PaidProductsSection() {
 function AffiliateToolsSection() {
   const tools = [
     { name: 'iTrustCapital', category: 'Crypto IRA and Retirement', bestFor: 'Best for long-term holders', description: 'Hold crypto inside a tax-advantaged IRA. A smart move for long-term holders who want to grow wealth with fewer tax surprises.', cta: 'Start a Crypto IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', code: 'UOHKD3' },
+    { name: 'ELLIPAL', category: 'Air-Gapped Hardware Wallet', bestFor: 'Best for serious self-custody', description: 'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device.', cta: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', code: undefined },
     { name: 'Uphold', category: 'Exchange and Multi-Asset Wallet', bestFor: 'Best for beginners', description: 'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more. A solid on-ramp before moving to cold storage.', cta: 'Join Uphold', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', code: undefined },
     { name: 'Tangem', category: 'Tap-to-Sign Card Wallet', bestFor: 'Best for simplicity', description: 'A hardware wallet the size of a credit card. Tap it to your phone to sign - no cables, no charging, no seed phrase to lose.', cta: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', code: 'FUSB6E' },
     { name: 'Ledger', category: 'Industry-Standard Hardware Wallet', bestFor: 'Best for advanced users', description: 'The most widely used hardware wallet in the world. Stores your private keys offline and supports thousands of coins including XRP, Bitcoin, and Ethereum.', cta: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', code: undefined },
@@ -484,7 +485,7 @@ function HealthyWealthySection() {
           <a href="https://Jenae.threeinternational.com" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
             Explore the Products →
           </a>
-          <a href="https://threeinternational.com/en/ShopProducts/2053972" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
+          <a href="https://Jenae.threeinternational.com/en/ShopProducts/2053972" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
             Shop Now →
           </a>
           <a href="https://Jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba" target="_blank" rel="sponsored noopener noreferrer" className="px-6 py-3 border border-slate-600 hover:border-amber-500 text-white font-semibold rounded-lg transition-colors">

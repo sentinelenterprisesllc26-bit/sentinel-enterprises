@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VideosRouteImport } from './routes/videos'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SentinelSquadRouteImport } from './routes/sentinel-squad'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as DownloadsRouteImport } from './routes/downloads'
@@ -35,6 +37,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
   path: '/thank-you',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -43,6 +50,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const SentinelSquadRoute = SentinelSquadRouteImport.update({
   id: '/sentinel-squad',
   path: '/sentinel-squad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnersRoute = PartnersRouteImport.update({
@@ -111,8 +123,10 @@ export interface FileRoutesByFullPath {
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
+  '/privacy': typeof PrivacyRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -128,8 +142,10 @@ export interface FileRoutesByTo {
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
+  '/privacy': typeof PrivacyRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -146,8 +162,10 @@ export interface FileRoutesById {
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
   '/partners': typeof PartnersRoute
+  '/privacy': typeof PrivacyRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -165,8 +183,10 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/guides'
     | '/partners'
+    | '/privacy'
     | '/sentinel-squad'
     | '/services'
+    | '/terms'
     | '/thank-you'
     | '/videos'
     | '/blog/$slug'
@@ -182,8 +202,10 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/guides'
     | '/partners'
+    | '/privacy'
     | '/sentinel-squad'
     | '/services'
+    | '/terms'
     | '/thank-you'
     | '/videos'
     | '/blog/$slug'
@@ -199,8 +221,10 @@ export interface FileRouteTypes {
     | '/downloads'
     | '/guides'
     | '/partners'
+    | '/privacy'
     | '/sentinel-squad'
     | '/services'
+    | '/terms'
     | '/thank-you'
     | '/videos'
     | '/blog/$slug'
@@ -217,8 +241,10 @@ export interface RootRouteChildren {
   DownloadsRoute: typeof DownloadsRoute
   GuidesRoute: typeof GuidesRoute
   PartnersRoute: typeof PartnersRoute
+  PrivacyRoute: typeof PrivacyRoute
   SentinelSquadRoute: typeof SentinelSquadRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
   VideosRoute: typeof VideosRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -241,6 +267,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ThankYouRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -253,6 +286,13 @@ declare module '@tanstack/react-router' {
       path: '/sentinel-squad'
       fullPath: '/sentinel-squad'
       preLoaderRoute: typeof SentinelSquadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partners': {
@@ -356,8 +396,10 @@ const rootRouteChildren: RootRouteChildren = {
   DownloadsRoute: DownloadsRoute,
   GuidesRoute: GuidesRoute,
   PartnersRoute: PartnersRoute,
+  PrivacyRoute: PrivacyRoute,
   SentinelSquadRoute: SentinelSquadRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
   VideosRoute: VideosRoute,
   BlogSlugRoute: BlogSlugRoute,
