@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VideosRouteImport } from './routes/videos'
+import { Route as ThreeRouteImport } from './routes/three'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -30,6 +31,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
   path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThreeRoute = ThreeRouteImport.update({
+  id: '/three',
+  path: '/three',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ThankYouRoute = ThankYouRouteImport.update({
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/three': typeof ThreeRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
@@ -147,6 +154,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/three': typeof ThreeRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
+  '/three': typeof ThreeRoute
   '/videos': typeof VideosRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
@@ -188,6 +197,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/thank-you'
+    | '/three'
     | '/videos'
     | '/blog/$slug'
     | '/crypto-mastery/success'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/thank-you'
+    | '/three'
     | '/videos'
     | '/blog/$slug'
     | '/crypto-mastery/success'
@@ -226,6 +237,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/terms'
     | '/thank-you'
+    | '/three'
     | '/videos'
     | '/blog/$slug'
     | '/crypto-mastery/success'
@@ -246,6 +258,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
+  ThreeRoute: typeof ThreeRoute
   VideosRoute: typeof VideosRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -258,6 +271,13 @@ declare module '@tanstack/react-router' {
       path: '/videos'
       fullPath: '/videos'
       preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/three': {
+      id: '/three'
+      path: '/three'
+      fullPath: '/three'
+      preLoaderRoute: typeof ThreeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/thank-you': {
@@ -401,6 +421,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
+  ThreeRoute: ThreeRoute,
   VideosRoute: VideosRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,

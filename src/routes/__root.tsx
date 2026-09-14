@@ -52,16 +52,17 @@ function NavBar() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-3">
             <img src="/sentinel-logo.png" alt="Sentinel Enterprises" className="h-9 w-auto" />
-            <span className="text-white font-bold text-lg hidden sm:block">Sentinel Enterprises</span>
+            <span className="text-white font-bold text-lg hidden sm:block xl:hidden">Sentinel Enterprises</span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/blog">Free Resources</NavLink>
             <NavLink to="/downloads">Downloads</NavLink>
             <NavLink to="/videos">Videos</NavLink>
             <NavLink to="/guides">Guides</NavLink>
             <NavLink to="/partners">Tools</NavLink>
+            <NavLink to="/three">Three Wellness</NavLink>
             <NavLink to="/services">Services</NavLink>
             <NavLink to="/sentinel-squad">Sentinel Squad</NavLink>
             <NavLink to="/about">About</NavLink>
@@ -70,7 +71,7 @@ function NavBar() {
 
           <Link
             to="/guides"
-            className="hidden lg:inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm rounded-lg transition-colors"
+            className="hidden xl:inline-flex items-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm rounded-lg transition-colors"
           >
             Get Started
           </Link>
@@ -96,7 +97,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
 
 function MobileMenu() {
   return (
-    <details className="lg:hidden group">
+    <details className="xl:hidden group">
       <summary className="list-none cursor-pointer p-2 rounded-md text-slate-300 hover:text-white">
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -114,6 +115,7 @@ function MobileMenu() {
           <p className="text-amber-400 text-xs font-bold uppercase tracking-wider px-3 py-1">Paid Products</p>
           <MobileNavLink to="/guides">Guides & Bundles</MobileNavLink>
           <MobileNavLink to="/partners">Trusted Tools</MobileNavLink>
+          <MobileNavLink to="/three">Three Wellness</MobileNavLink>
           <MobileNavLink to="/services">Services</MobileNavLink>
         </div>
         <div>
@@ -206,6 +208,7 @@ function Footer() {
             <ul className="space-y-2">
               <li><Link to="/guides" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Paid Guides & Bundles</Link></li>
               <li><Link to="/partners" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Trusted Tools & Partners</Link></li>
+              <li><Link to="/three" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Three Wellness</Link></li>
               <li><Link to="/services" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Services</Link></li>
               <li><Link to="/sentinel-squad" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Sentinel Squad Series</Link></li>
               <li>
