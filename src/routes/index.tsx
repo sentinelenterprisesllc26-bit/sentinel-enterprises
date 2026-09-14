@@ -210,7 +210,7 @@ function PaidProductsSection() {
     <section className="py-24 bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Best Value — Save $21</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Complete Bundle</span>
           <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">The Complete Protection Bundle</h2>
           <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template — the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
         </div>
@@ -229,11 +229,11 @@ function PaidProductsSection() {
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-bold text-slate-500 line-through">$53.97</span>
-              <span className="text-5xl font-black text-white">$49</span>
+              <span className="text-5xl font-black text-white">$17.99</span>
               <span className="text-slate-400 text-sm">one-time, lifetime access</span>
             </div>
             <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
-              Get the Complete Bundle — $49
+              Get the Complete Bundle — $17.99
             </a>
             <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
           </div>

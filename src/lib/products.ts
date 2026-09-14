@@ -64,7 +64,7 @@ export const PRODUCTS: Record<ProductId, Product> = {
     id: 'complete-bundle',
     name: 'Complete Protection Bundle — All 4 Guides',
     description: 'Every guide, workbook, checklist, and template in one bundle. Crypto inheritance, asset protection, and the full masterclass.',
-    amountCents: 4900,
+    amountCents: 1799,
     currency: 'usd',
   },
 }

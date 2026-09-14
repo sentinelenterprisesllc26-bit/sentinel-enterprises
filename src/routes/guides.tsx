@@ -6,7 +6,7 @@ export const Route = createFileRoute('/guides')({
 })
 
 /*
- * BUNDLE_CHECKOUT_URL  — Stripe Payment Link for the $49 Complete Bundle
+ * BUNDLE_CHECKOUT_URL  — Stripe Payment Link for the $17.99 Complete Bundle
  * INDIVIDUAL checkout URLs — Stripe Payment Links for each $17.99 guide
  * Update these with your real Stripe links.
  */
@@ -30,7 +30,7 @@ type Product = {
 
 const bundleProduct: Product = {
   id: 'complete-bundle',
-  badge: 'Best Value — Save $21',
+  badge: 'Complete Bundle',
   featured: true,
   title: 'Complete Protection Bundle — All 4 Guides',
   tagline: 'Every guide, workbook, checklist, and template. One price, lifetime access.',
@@ -41,7 +41,7 @@ const bundleProduct: Product = {
         'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
     'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
   ],
-  buttonText: 'Get the Complete Bundle — $49',
+  buttonText: 'Get the Complete Bundle — $17.99',
 }
 
 const individualProducts: Product[] = [
@@ -154,7 +154,7 @@ function GuidesPage() {
       <section className="bg-slate-950 py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-2">Or Buy Individual Guides</h2>
-          <p className="text-slate-400 text-center mb-10">Each guide is $17.99 — or save $21 with the bundle above.</p>
+          <p className="text-slate-400 text-center mb-10">Each guide is $17.99. You can also explore the complete bundle above.</p>
           <div className="grid sm:grid-cols-2 gap-6">
             {individualProducts.map((p) => (
               <ProductCard
