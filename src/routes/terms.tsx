@@ -33,17 +33,31 @@ function TermsPage() {
               </p>
 
               <h2>Digital Products</h2>
+              <p>
+                The website has advertised a $17.99 Crypto Inheritance Protection Bundle. Its exact contents and
+                delivery operations have not been confirmed. <strong>Do not pay until those details are confirmed.</strong>{' '}
+                Contact Sentinel before paying for the current offer terms. Nothing in this notice revokes, narrows, or
+                waives any refund, cancellation, consumer-protection, or other rights that may apply to a purchase or
+                prior representation.
+              </p>
               <h3>Purchases</h3>
               <p>
                 When you purchase digital products from Sentinel Enterprises, you receive a personal, non-transferable license to use the materials for your own education. You may not resell, redistribute, or share purchased materials.
               </p>
               <h3>Refund Policy</h3>
               <p>
-                We offer a 7-day money-back guarantee on all digital product purchases. If you are not satisfied, email us within 7 days of purchase for a full refund.
+                The website has advertised a 7-day money-back guarantee for digital product purchases. We have not
+                independently verified how that advertised term is currently implemented for the $17.99 offer. This
+                statement does not revoke or narrow that advertised promise or any rights that may apply. Contact
+                Sentinelenterprisesllc26@gmail.com promptly about an existing purchase or refund request, and retain
+                your checkout and purchase records.
               </p>
               <h3>Delivery</h3>
               <p>
-                Digital products are delivered electronically via email download links immediately after purchase. If you experience any issues accessing your files, contact us and we will resolve the issue promptly.
+                The website has described digital products as delivered electronically through email download links
+                immediately after purchase. We have not verified that delivery operation or timing for the $17.99
+                offer. Do not assume immediate email delivery. Contact Sentinelenterprisesllc26@gmail.com about an
+                existing purchase or access issue; applicable rights and prior advertised terms remain preserved.
               </p>
 
               <h2>Affiliate Links</h2>

@@ -6,17 +6,10 @@ export const Route = createFileRoute('/guides')({
   component: GuidesPage,
 })
 
-/*
- * BUNDLE_CHECKOUT_URL  — Stripe Payment Link for the $17.99 Complete Bundle
- * INDIVIDUAL checkout URLs — Stripe Payment Links for each $17.99 guide
- * Update these with your real Stripe links.
- */
+// Existing Stripe Payment Link. Its public checkout label is
+// "Crypto Inheritance Protection Bundle" at $17.99; contents and delivery
+// still require owner confirmation.
 const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
-const INDIVIDUAL_CHECKOUT_URLS: Partial<Record<ProductId, string>> = {
-  'crypto-inheritance-bundle': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-'asset-protection-guide': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-  'crypto-inheritance-masterclass': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-}
 
 type Product = {
   id: ProductId
@@ -30,62 +23,21 @@ type Product = {
 }
 
 const bundleProduct: Product = {
-  id: 'complete-bundle',
-  badge: 'Complete Bundle',
+  id: 'crypto-inheritance-bundle',
+  badge: 'Primary $17.99 offer',
   featured: true,
-  title: 'Complete Protection Bundle — All 4 Guides',
-  tagline: 'Every guide, workbook, checklist, and template. One price, lifetime access.',
+  title: 'Crypto Inheritance Protection Bundle',
+  tagline: 'Plain-English education for crypto holders and families planning for access and inheritance.',
   description:
-    'Get everything Sentinel offers in one bundle: crypto inheritance planning, asset protection basics, and the full masterclass with companion workbook. Buy once, keep forever.',
+    'This offer is for people who want a practical starting point for documenting wallets, access instructions, beneficiary communications, and related asset-protection basics.',
   includes: [
-    'Crypto Inheritance Protection Bundle (PDF checklist + fillable workbook + beneficiary template)',
-        'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
-    'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
+    'Available site resource: Crypto Inheritance Checklist (6-page PDF with a 12-step checklist and Crypto Access Letter prompts)',
+    'Available site resource: printable Crypto Inheritance Workbook (6 pages; complete by hand; not fillable)',
+    'Available site resource: Beneficiary Access Template (6-page PDF with an access letter template and beneficiary steps)',
+    'Related available site resources: Asset Protection Starter Guide (6 pages) and Trust & Titling Starter Checklist (7 pages)',
   ],
-  buttonText: 'Get the Complete Bundle — $17.99',
+  buttonText: 'View checkout details — $17.99',
 }
-
-const individualProducts: Product[] = [
-  {
-    id: 'crypto-inheritance-bundle',
-    title: 'Crypto Inheritance Protection Bundle',
-    tagline: 'Make sure your crypto reaches your heirs, not a frozen wallet.',
-    description:
-      'Step-by-step PDF checklist, fillable workbook, and beneficiary access template for passing on digital assets without lost seed phrases or locked accounts.',
-    includes: [
-      'Crypto Inheritance PDF Checklist',
-      'Fillable Workbook for organizing your holdings',
-      'Beneficiary Access Template',
-    ],
-    buttonText: 'Buy Now — $17.99',
-  },
-{
-    id: 'asset-protection-guide',
-    title: 'Asset Protection Starter Guide',
-    tagline: 'Protect what you own from lawsuits, creditors, and inheritance erosion.',
-    description:
-      'Practical first steps to shield your assets using trusts, titling strategies, and basic legal structures — explained clearly without legal jargon.',
-    includes: [
-      'Asset Protection PDF Guide',
-      'Trust & Titling Starter Checklist',
-      'Plain-English explanations of protective structures',
-    ],
-    buttonText: 'Buy Now — $17.99',
-  },
-  {
-    id: 'crypto-inheritance-masterclass',
-    title: 'Crypto Inheritance Masterclass',
-    tagline: 'The complete deep-dive on protecting and passing on your crypto.',
-    description:
-      'Full masterclass video plus a companion PDF workbook and checklist. The most thorough resource Sentinel offers for crypto inheritance planning.',
-    includes: [
-      'Full Masterclass Video',
-      'Companion PDF Workbook',
-      'Crypto Inheritance Checklist',
-    ],
-    buttonText: 'Buy Now — $17.99',
-  },
-]
 
 function GuidesPage() {
   return (
@@ -93,18 +45,32 @@ function GuidesPage() {
       <section className="bg-slate-900 border-b border-slate-700/50 py-16 px-4">
         <div className="max-w-3xl mx-auto text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/20 rounded-full px-3 py-1 mb-4">
-            Paid Guides &amp; Video Bundles
+             Crypto Education
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
             Go Deeper with Step-by-Step Guides
           </h1>
           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            Our free resources get you started. These paid guides and video bundles give you the complete,
-            follow-along system — workbooks, checklists, and training you can act on today.
+             Start with free resources, then review one clearly identified crypto inheritance offer. The site
+             also has a separate Crypto Mastery guide with its own $17 checkout path.
           </p>
         </div>
       </section>
 
+      {/* === PRIMARY $17.99 OFFER === */}
+      <section className="bg-slate-900 py-12 px-4">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-center text-sm text-amber-400 font-semibold uppercase tracking-widest mb-6">
+            Primary offer details
+          </p>
+          <ProductCard
+            {...bundleProduct}
+            checkoutUrl={BUNDLE_CHECKOUT_URL}
+          />
+        </div>
+      </section>
+
+      {/* === SECONDARY INDEPENDENT RESOURCE === */}
       <section className="bg-slate-950 py-12 px-4">
         <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden border border-cyan-400/30 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950">
           <div className="grid md:grid-cols-[0.72fr_1.28fr] gap-0 items-center">
@@ -117,12 +83,13 @@ function GuidesPage() {
             </div>
             <div className="p-8 sm:p-10">
               <span className="inline-block text-xs font-bold uppercase tracking-widest text-cyan-200 bg-cyan-400/10 border border-cyan-300/20 rounded-full px-3 py-1 mb-4">
-                New Beginner Guide
+                Independent resource
               </span>
               <h2 className="text-3xl font-black text-white leading-tight mb-3">Crypto Mastery</h2>
-              <p className="text-amber-400 font-semibold mb-3">The Complete Beginner’s Guide to Cryptocurrency</p>
+              <p className="text-amber-400 font-semibold mb-3">The Beginner’s Guide to Cryptocurrency</p>
               <p className="text-slate-300 leading-relaxed mb-6">
-                A 39-page, plain-English guide to Bitcoin, blockchain, crypto wallets, security, buying your first crypto, and more.
+                Plain-English education about Bitcoin, blockchain, crypto wallets, security, buying crypto, and more.
+                This separate resource keeps its own $17 checkout route.
               </p>
               <div className="flex items-center gap-4">
                 <Link
@@ -131,39 +98,9 @@ function GuidesPage() {
                 >
                   View Crypto Mastery — $17
                 </Link>
-                <span className="text-xs text-slate-400">Instant PDF download</span>
+                <span className="text-xs text-slate-400">Independent $17 resource</span>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* === FEATURED BUNDLE === */}
-      <section className="bg-slate-900 py-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-center text-sm text-amber-400 font-semibold uppercase tracking-widest mb-6">
-            Best Value
-          </p>
-          <ProductCard
-            {...bundleProduct}
-            checkoutUrl={BUNDLE_CHECKOUT_URL}
-          />
-        </div>
-      </section>
-
-      {/* === INDIVIDUAL GUIDES === */}
-      <section className="bg-slate-950 py-12 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-white text-center mb-2">Or Buy Individual Guides</h2>
-          <p className="text-slate-400 text-center mb-10">Each guide is $17.99. You can also explore the complete bundle above.</p>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {individualProducts.map((p) => (
-              <ProductCard
-                key={p.id}
-                {...p}
-                checkoutUrl={INDIVIDUAL_CHECKOUT_URLS[p.id] ?? BUNDLE_CHECKOUT_URL}
-              />
-            ))}
           </div>
         </div>
       </section>
@@ -171,9 +108,11 @@ function GuidesPage() {
       <section className="bg-slate-900 py-8 px-4 border-t border-slate-700/50">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-slate-400 text-sm mb-3">
-            These materials are provided for educational purposes only. Sentinel Enterprises LLC is not a
-            licensed attorney, financial advisor, or fiduciary. Nothing in these guides constitutes legal,
-            tax, or financial advice. All sales are processed securely by Stripe.
+             These materials are provided for educational purposes only. Sentinel Enterprises LLC is not a
+             licensed attorney, financial advisor, or fiduciary. Nothing in these guides constitutes legal,
+             tax, or financial advice. The $17.99 checkout link opens Stripe; tax may calculate there.
+             <strong className="text-amber-300">DO NOT PAY until the exact contents and delivery method are confirmed.</strong>
+             Contact us before paying to confirm them.
           </p>
           <Link to="/downloads" className="text-amber-400 hover:text-amber-300 text-sm font-medium">
             Prefer to start free? Browse our free downloads →
@@ -212,7 +151,7 @@ function ProductCard({
       <p className="text-amber-400 text-sm font-medium mb-3">{tagline}</p>
       <p className="text-slate-300 text-sm mb-5">{description}</p>
 
-      <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">What's included</p>
+       <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">Available site resources (not confirmed paid contents)</p>
       <ul className="space-y-2 mb-6">
         {includes.map((item) => (
           <li key={item} className="flex items-start gap-2 text-sm text-slate-300">
@@ -224,8 +163,12 @@ function ProductCard({
 
       <div className="flex items-baseline gap-2 mb-4">
         <span className="text-2xl font-black text-white">{formatPrice(PRODUCTS[id].amountCents)}</span>
-        <span className="text-slate-400 text-sm">one-time, lifetime access</span>
+         <span className="text-slate-400 text-sm">tax may calculate at checkout</span>
       </div>
+       <p className="text-amber-200 bg-amber-500/10 border border-amber-400/40 rounded-xl px-4 py-3 text-xs leading-relaxed mb-4" role="alert">
+         <strong>DO NOT PAY until the exact contents and delivery method are confirmed.</strong>{' '}
+         <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-amber-300 hover:text-amber-200 underline">Contact us before paying</a> to confirm them.
+       </p>
 
       <a
         href={checkoutUrl}
@@ -241,7 +184,7 @@ function ProductCard({
       >
         {buttonText}
       </a>
-      <p className="text-center text-xs text-slate-500 mt-3">Secure checkout powered by Stripe</p>
+       <p className="text-center text-xs text-slate-500 mt-3">View the existing Stripe checkout details</p>
     </div>
   )
 }

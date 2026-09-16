@@ -9,34 +9,17 @@ export const Route = createFileRoute('/videos')({
 const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
 
 /*
- * ============================================================================
- * PAID VIDEO OFFER + AFFILIATE TOOLS (this file)
- * ============================================================================
- * • The "Crypto Inheritance Masterclass" section below is the PAID VIDEO
- *   OFFER. Its "Buy" button opens Stripe Checkout via the create-checkout
- *   function — no payment link to paste. (Its price lives in
- *   src/lib/products.ts under `crypto-inheritance-masterclass`.)
- *   - 🔵 Upload the companion workbook to /public/pdfs/ and point the
- *     delivery at /thank-you (see src/routes/thank-you.tsx).
- * • The "Recommended Tools" cards are AFFILIATE links.
- *   - 🔵 REPLACE each `href` in RECOMMENDED_TOOLS with your real affiliate
- *     URL. The placeholders read https://affiliate-link-here.com/...
- * ============================================================================
+ * OFFER REVIEW + AFFILIATE TOOLS
+ *
+ * The crypto inheritance offer review keeps the existing public Stripe
+ * payment link. Its contents and delivery are not confirmed.
  */
 
-const MASTERCLASS = {
-  // Maps to the catalog in src/lib/products.ts (drives price + Stripe charge).
-  productId: 'crypto-inheritance-masterclass' as const,
-  title: 'Crypto Inheritance Masterclass',
+const BUNDLE_OFFER = {
+  productId: 'crypto-inheritance-bundle' as const,
+  title: 'Crypto Inheritance Protection Bundle',
   // The recommended hardware wallet shown inside the offer (affiliate link).
   walletAffiliateUrl: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
-  learn: [
-    'Build an inheritance-ready plan for Bitcoin, XRP, and other digital assets',
-    'Set up cold storage your heirs can actually access — without lost seed phrases',
-    'Create a beneficiary access plan that keeps you secure today',
-    'Properly fund a trust with digital assets (generic estate language won\'t cut it)',
-    'Test your plan so it works when your family needs it most',
-  ],
 }
 
 type Tool = {
@@ -213,8 +196,8 @@ function VideosPage() {
         </div>
       </section>
 
-      {/* ===== PAID VIDEO OFFER: Crypto Inheritance Masterclass ===== */}
-      <MasterclassSection />
+      {/* ===== PRIMARY OFFER REVIEW ===== */}
+      <OfferReviewSection />
 
       <section className="pb-24 bg-slate-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -250,7 +233,7 @@ function VideosPage() {
   )
 }
 
-function MasterclassSection() {
+function OfferReviewSection() {
   return (
     <section className="py-20 bg-slate-950 border-b border-slate-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -259,23 +242,25 @@ function MasterclassSection() {
             {/* Sales copy + CTA */}
             <div>
               <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/15 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-6">
-                Premium Masterclass
+                Primary $17.99 offer
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-white leading-tight mb-4">
-                The {MASTERCLASS.title}
+                {BUNDLE_OFFER.title}
               </h2>
               <p className="text-lg text-slate-300 leading-relaxed mb-6">
-                Most crypto is lost forever when its owner passes — not stolen, just inaccessible. This masterclass walks
-                you through the exact plan that lets your family inherit your digital assets with confidence.
+                Plain-English crypto inheritance education for holders and families who want to document wallets,
+                access instructions, beneficiary communications, and related asset-protection basics.
               </p>
 
               <div className="bg-slate-900/50 border border-slate-700/50 rounded-2xl p-5 mb-6">
-                <p className="text-white font-semibold text-xs uppercase tracking-wider mb-3">Your premium bundle</p>
+                <p className="text-white font-semibold text-xs uppercase tracking-wider mb-3">Available site resources (not confirmed paid contents)</p>
                 <ul className="space-y-2.5">
                   {[
-                    '1 paid training video (full masterclass)',
-                    '1 companion PDF workbook + checklist',
-                    '1 recommended hardware wallet (affiliate)',
+                    'Crypto Inheritance Checklist — 6-page PDF with a 12-step checklist',
+                    'Printable Crypto Inheritance Workbook — 6 pages; complete by hand; not fillable',
+                    'Beneficiary Access Template — 6-page PDF',
+                    'Asset Protection Starter Guide — 6 pages',
+                    'Trust & Titling Starter Checklist — 7 pages',
                   ].map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed">
                       <svg
@@ -294,24 +279,27 @@ function MasterclassSection() {
               </div>
 
               <div className="flex items-baseline gap-2 mb-4">
-                <span className="text-4xl font-black text-white">{formatPrice(PRODUCTS[MASTERCLASS.productId].amountCents)}</span>
-                <span className="text-slate-400 text-sm">one-time · lifetime access</span>
+                <span className="text-4xl font-black text-white">{formatPrice(PRODUCTS[BUNDLE_OFFER.productId].amountCents)}</span>
+                <span className="text-slate-400 text-sm">tax may calculate at checkout</span>
               </div>
 
-              {/* Opens Stripe's hosted payment page directly in a new tab. */}
+              <p className="text-amber-200 bg-amber-500/10 border border-amber-400/40 rounded-xl px-4 py-3 text-sm leading-relaxed mb-4" role="alert">
+                <strong>DO NOT PAY until the exact contents and delivery method are confirmed.</strong>{' '}
+                <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-amber-300 hover:text-amber-200 underline">Contact us before paying</a> to confirm them.
+              </p>
               <a
                 href="https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() =>
                   trackEvent('product_checkout_click', {
-                    product_id: MASTERCLASS.productId,
+                    product_id: BUNDLE_OFFER.productId,
                     placement: 'videos_masterclass',
                   })
                 }
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
               >
-                Buy the Masterclass
+                Review bundle checkout details — $17.99
               </a>
               <p className="mt-3 flex items-center gap-1.5 text-slate-500 text-xs">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -325,11 +313,15 @@ function MasterclassSection() {
               </p>
             </div>
 
-            {/* What you'll learn */}
+            {/* Offer verification notes */}
             <div className="bg-slate-900/40 border border-slate-700/50 rounded-2xl p-7">
-              <h3 className="text-xl font-bold text-white mb-5">What You&apos;ll Learn</h3>
+              <h3 className="text-xl font-bold text-white mb-5">Before You Pay</h3>
               <ul className="space-y-4">
-                {MASTERCLASS.learn.map((point) => (
+                {[
+                  'The Stripe label and $17.99 price are visible, but offer contents are not confirmed.',
+                  'Delivery timing, channel, and access controls are not confirmed.',
+                  'These public files are available site resources, not verified purchased entitlements.',
+                ].map((point) => (
                   <li key={point} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
                     <span className="w-6 h-6 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                       <svg className="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -341,17 +333,17 @@ function MasterclassSection() {
                 ))}
               </ul>
 
-              {/* Recommended hardware wallet — affiliate link bundled with the offer */}
+              {/* Recommended hardware wallet — separate affiliate link */}
               <div className="mt-7 pt-6 border-t border-slate-700/50">
                 <p className="text-white font-semibold text-xs uppercase tracking-wider mb-2">
                   Recommended hardware wallet
                 </p>
                 <p className="text-slate-400 text-sm leading-relaxed mb-3">
-                  Pair the masterclass with the cold-storage device we use and recommend.
+                  This is a separate affiliate recommendation, not a confirmed part of the $17.99 offer.
                 </p>
-                {/* 🔵 REPLACE `MASTERCLASS.walletAffiliateUrl` (top of file) with your affiliate link. */}
+                {/* 🔵 This separate affiliate link is maintained at the top of the file. */}
                 <a
-                  href={MASTERCLASS.walletAffiliateUrl}
+                  href={BUNDLE_OFFER.walletAffiliateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent('affiliate_link_click', { partner: 'tangem', placement: 'videos_masterclass' })}

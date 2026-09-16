@@ -25,6 +25,12 @@ full referral URLs, or arbitrary query-string values.
 `asset-protection-guide`, `complete-bundle`,
 `crypto-inheritance-masterclass`, and `crypto-mastery`.
 
+The primary $17.99 public checkout link is tracked as
+`crypto-inheritance-bundle`, matching the public Stripe label
+“Crypto Inheritance Protection Bundle.” The other catalog identifiers remain
+available for legacy routes and reporting; a checkout click never proves that
+the offer contents, payment, fulfillment, or revenue were completed.
+
 `service_id` values are `asset_protection`, `digital_asset_guidance`, and
 `general_consultation`. Service placements identify the two service-detail CTAs
 or the general “Ready to Get Started?” CTA.

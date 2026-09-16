@@ -14,8 +14,7 @@ export const Route = createFileRoute('/downloads')({
  * /public/ folder. Two locations are used:
  *
  *   • /public/downloads/  ← the existing library files (/downloads/*.pdf)
- *   • /public/pdfs/       ← the NEW placeholder files for the cards below
- *                            (create this folder and drop your PDFs in).
+ *   • /public/pdfs/       ← files for cards that use this location.
  *
  * TO REPLACE A PLACEHOLDER: upload your real PDF to the matching path, e.g.
  * /public/pdfs/caregiver-tax-checklist.pdf
@@ -23,11 +22,10 @@ export const Route = createFileRoute('/downloads')({
  * needed beyond editing the `href` strings in the `groups` array below.
  *
  * DELIVERY OPTIONS for a free PDF:
- *   (a) Instant download — link straight to the file (what these cards do).
- *   (b) After email signup — point the button at /crypto-inheritance-checklist
- *       (or the homepage form) so the visitor subscribes first; the existing
- *       Netlify form then emails them the file. Use `emailGated: true` to
- *       show the "Get it by email" style button instead of a direct link.
+ *   (a) Direct download — link straight to a verified public file.
+ *   (b) Request form — point the button at /crypto-inheritance-checklist (or
+ *       the homepage form). The form confirms receipt of a request, not file
+ *       delivery. Use `emailGated: true` for that button style.
  *
  * YOUTUBE COMPANION VIDEOS:
  *   Add an optional `youtubeUrl` to any download that has a matching video
@@ -42,7 +40,7 @@ type Download = {
   href: string
   resource: ResourceId
   badge?: string
-  // When true, the button invites an email signup instead of an instant download.
+  // When true, the button invites a request form instead of a direct download.
   emailGated?: boolean
   // Optional secondary link nudging the reader toward the matching paid guide
   // or affiliate tool right next to the free download.
@@ -66,13 +64,10 @@ const groups: DownloadGroup[] = [
       {
         title: 'Crypto Inheritance Checklist',
         description:
-          'The 5 non-negotiable steps to make sure your heirs can actually access your digital assets. Delivered to your inbox when you sign up.',
-        // To deliver this after email signup instead of an instant download,
-        // it points at the existing lead-magnet page + Netlify form.
-        href: '/crypto-inheritance-checklist',
+          'A 6-page PDF with beginner context, a 12-step checklist, and Crypto Access Letter prompts for documenting how trusted people can find your digital assets.',
+        href: '/downloads/crypto-inheritance-checklist.pdf',
         resource: 'crypto_inheritance_checklist',
         badge: 'Free',
-        emailGated: true,
       },
     ],
   },
@@ -162,16 +157,16 @@ function DownloadsPage() {
           ))}
 
           <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-2xl p-8 text-center">
-            <h2 className="text-2xl font-bold text-white mb-2">Want the complete, follow-along version?</h2>
+             <h2 className="text-2xl font-bold text-white mb-2">Review the $17.99 crypto offer</h2>
             <p className="text-slate-400 leading-relaxed mb-6 max-w-xl mx-auto">
-              Our paid guides and video bundles turn these checklists into a step-by-step system — workbooks, training
-              videos, and templates you can act on today.
+               Visit the guides page for the clearly labeled Crypto Inheritance Protection Bundle offer. The exact
+               contents and delivery method have not been confirmed.
             </p>
             <Link
               to="/guides"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors"
             >
-              Browse Paid Guides &amp; Bundles →
+               View Offer Details →
             </Link>
           </div>
 
@@ -209,8 +204,8 @@ function DownloadCard({ title, description, href, resource, badge, emailGated, u
       <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{description}</p>
       <div className="flex flex-wrap gap-3">
         {emailGated ? (
-          // Email-gated delivery: send the visitor to the signup page; the
-          // existing Netlify form emails them the PDF after they subscribe.
+           // Request form: the existing Netlify form records the request; it
+           // does not by itself verify or guarantee file delivery.
           <Link
             to={href}
             className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
