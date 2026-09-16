@@ -96,6 +96,19 @@ def test_scenario_has_explicit_illustrative_values_and_blank_conversion(tmp_path
     assert scenario["B11"].value is None
 
 
+def test_scenario_funnel_stage_matches_named_rate(tmp_path: Path) -> None:
+    output = generate_workbook(tmp_path / "cash-flow-worksheet.xlsx")
+    workbook = openpyxl.load_workbook(output, data_only=False)
+    scenario = workbook["Scenario"]
+    rate_label = scenario["A10"].value.lower()
+    output_label = scenario["A11"].value.lower()
+    assert "checkout" in rate_label and "paid-order" in rate_label and "rate" in rate_label
+    assert "checkout clicks required" in output_label
+    assert "visitors needed" not in output_label
+    # Required orders divided by checkout-to-paid-order rate yields checkout clicks.
+    assert scenario["B11"].value == '=IF(OR(B10="",B10<=0),"",B7/B10)'
+
+
 if __name__ == "__main__":
     with tempfile.TemporaryDirectory() as directory:
         path = Path(directory)
@@ -105,4 +118,5 @@ if __name__ == "__main__":
         test_netted_refund_and_separate_refund_cash_boundaries()
         test_scenario_sample_and_blank_optional_conversion()
         test_scenario_has_explicit_illustrative_values_and_blank_conversion(path)
+        test_scenario_funnel_stage_matches_named_rate(path)
     print("All cash-flow worksheet tests passed.")

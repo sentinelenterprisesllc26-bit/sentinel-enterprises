@@ -56,7 +56,9 @@ const posts=[
 const esc=(s)=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const disclaimer=" Education only; not legal or financial advice.";
 const index=document.getElementById("index"), postsEl=document.getElementById("posts");
+const normalizeDayId=(id)=>id.replace(/^d(\d+)_/,(_,number)=>`d${number.padStart(2,"0")}_`);
 posts.forEach((p,i)=>{
+  p.id=normalizeDayId(p.id);
   const n=i+1, fb=`${p.title}: browse free crypto inheritance and wallet-security resources at ${base}?utm_source=facebook&utm_medium=organic_social&utm_campaign=crypto_inheritance_14d&utm_content=${p.id}.`+disclaimer;
   index.insertAdjacentHTML("beforeend",`<li><a href="#${p.id}">Day ${n} — ${esc(p.title)}</a></li>`);
   postsEl.insertAdjacentHTML("beforeend",`<article class="day" id="${p.id}"><h2>Day ${n} — ${esc(p.title)}</h2><p class="label">Hook</p><p class="hook">“${esc(p.hook)}”</p><p class="label">Complete spoken script · about 25–40 seconds</p><blockquote>${esc(p.script)}</blockquote><p class="label">Shot notes</p><p>${esc(p.shots)}</p><p class="label">YouTube Shorts caption</p><p class="caption">${esc(p.yt)} ${profileNote("@JenaeSentinel")} ${disclaimer} #CryptoSecurity</p><p class="label">TikTok caption</p><p class="caption">${esc(p.tt)} ${profileNote("@jenae.wiley")} ${disclaimer} #CryptoSecurity</p><p class="label">Facebook caption</p><p class="caption">${esc(fb)} <a href="${base}?utm_source=facebook&utm_medium=organic_social&utm_campaign=crypto_inheritance_14d&utm_content=${p.id}">Direct destination</a></p><p class="cta"><strong>One educational CTA:</strong> Browse free crypto inheritance and wallet-security resources at the downloads page.</p></article>`);

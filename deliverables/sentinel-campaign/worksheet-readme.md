@@ -25,8 +25,10 @@ Generated output: `deliverables/sentinel-campaign/cash-flow-worksheet.xlsx`
   deducted in Cash Ledger.
 - **Scenario** — an explicitly illustrative `$100/day` gross target at the
   `$17.99` offer price. The formula uses `CEILING` and shows six orders and
-  `$107.94` illustrative gross. The optional conversion assumption is blank
-  and is never used to invent actual visitors or purchases.
+  `$107.94` illustrative gross. The optional **checkout → paid-order
+  conversion rate** is blank; if entered, the scenario outputs **checkout
+  clicks required**, not website visitors. No visitor count or purchase result
+  is invented.
 - **Weekly Review** — reconciliation prompts for `GA4
   product_checkout_click` and `lead_form_success`, plus sales, processor,
   affiliate, and refunds sources. Pageviews are explicitly not a purchase
