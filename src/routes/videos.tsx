@@ -141,7 +141,7 @@ const groups: VideoGroup[] = [
           'Using the air-gapped ELLIPAL hardware wallet and steel backup to protect crypto wealth offline.',
       },
       {
-        id: '1MB84vFCDds',
+        id: '9FG83CpyseY',
         title: 'Skip This ELLIPAL Update and Your Wallet Could Get Stuck',
         description:
           'Step-by-step instructions for safely updating the firmware on your ELLIPAL hardware wallet.',
