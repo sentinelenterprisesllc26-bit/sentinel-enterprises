@@ -50,17 +50,17 @@ function HeroSection() {
             Start free. Go deeper if you want more. Use better tools. Protect what you build.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="/crypto-inheritance-checklist"
-              className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5"
-            >
-              Get the Free Crypto Checklist
-            </a>
             <Link
               to="/guides"
+              className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5"
+            >
+              Explore the $17.99 Crypto Offer
+            </Link>
+            <Link
+              to="/downloads"
               className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:border-amber-400/50 transition-all hover:-translate-y-0.5"
             >
-                            See Guides & Bundle →
+              Start with Free Resources →
             </Link>
           </div>
         </div>
@@ -203,23 +203,25 @@ function ValueLadderSection() {
 const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 
 function PaidProductsSection() {
-  const included = [
-    'Crypto Inheritance Protection Bundle (PDF checklist + fillable workbook + beneficiary template)',
-    'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
-    'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
+  const availableResources = [
+    'Crypto Inheritance Checklist — 6-page PDF with beginner context, a 12-step checklist, and Crypto Access Letter prompts',
+    'Crypto Inheritance Workbook — 6-page printable workbook to complete by hand (not fillable)',
+    'Beneficiary Access Template — 6-page PDF with an access letter template and beneficiary steps',
+    'Asset Protection Starter Guide — 6-page PDF covering five protection levels and first actions',
+    'Trust & Titling Starter Checklist — 7-page PDF covering ownership and titling review steps',
   ]
   return (
     <section className="py-24 bg-slate-900">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Complete Bundle</span>
-          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">The Complete Protection Bundle</h2>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template — the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Paid Crypto Education</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">Crypto Inheritance Protection Bundle</h2>
+          <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">For crypto holders and families who want plain-English education about documenting wallets, access instructions, beneficiary communications, and related asset-protection basics.</p>
         </div>
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl shadow-amber-500/5">
-          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 3 Guides Included — One Price, Lifetime Access</p>
+          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">Available site resources to review</p>
           <ul className="grid grid-cols-1 gap-3 mb-10">
-            {included.map((item) => (
+            {availableResources.map((item) => (
               <li key={item} className="flex items-start gap-3 bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-3">
                 <div className="w-6 h-6 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                   <svg className="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
@@ -228,16 +230,18 @@ function PaidProductsSection() {
               </li>
             ))}
           </ul>
+          <p className="text-amber-200 bg-amber-500/10 border border-amber-400/40 rounded-xl px-4 py-3 text-sm leading-relaxed mb-8" role="alert">
+            <strong>DO NOT PAY until the exact contents and delivery method are confirmed.</strong> These public resources are not represented as verified purchased entitlements. <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-amber-300 hover:text-amber-200 underline">Contact us before paying</a> to confirm them.
+          </p>
           <div className="flex flex-col items-center gap-6">
             <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-500 line-through">$53.97</span>
               <span className="text-5xl font-black text-white">$17.99</span>
-              <span className="text-slate-400 text-sm">one-time, lifetime access</span>
+              <span className="text-slate-400 text-sm">plus any applicable tax</span>
             </div>
-            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('product_checkout_click', { product_id: 'complete-bundle', placement: 'homepage_bundle' })} className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
-              Get the Complete Bundle — $17.99
+            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('product_checkout_click', { product_id: 'crypto-inheritance-bundle', placement: 'homepage_bundle' })} className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
+              View checkout details — $17.99
             </a>
-            <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
+            <p className="text-slate-500 text-xs">Checkout opens the existing Stripe payment page. This page does not confirm fulfillment, access, or refund terms.</p>
           </div>
         </div>
       </div>
@@ -315,19 +319,19 @@ function CryptoLeadMagnetSection() {
         <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/5 border border-cyan-500/20 rounded-3xl p-10">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-6">Free Crypto Guide</span>
           <h2 className="text-3xl font-bold text-white mb-3">Get the Free Crypto Security Checklist</h2>
-          <p className="text-slate-400 mb-8 leading-relaxed">5 essential steps every crypto holder should take to protect their digital assets from loss, theft, and forgotten passwords. Delivered instantly to your inbox.</p>
+          <p className="text-slate-400 mb-8 leading-relaxed">Request the free crypto security checklist covering practical steps for protecting digital assets from loss, theft, and forgotten passwords. Delivery timing is not confirmed.</p>
           {status === 'success' ? (
             <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
-              <p className="font-semibold text-lg mb-1">Checklist sent!</p>
-              <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
-              <Link to="/guides" className="inline-flex items-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-sm font-medium">Explore the Complete Protection Bundle &rarr;</Link>
+              <p className="font-semibold text-lg mb-1">Request received</p>
+              <p className="text-sm">We will follow up about the checklist. Delivery is not confirmed. Need help? <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="underline">Contact us</a>.</p>
+              <Link to="/guides" className="inline-flex items-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-sm font-medium">Review the $17.99 crypto offer &rarr;</Link>
             </div>
           ) : (
             <form name="crypto-security-checklist" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
               <input type="hidden" name="form-name" value="crypto-security-checklist" />
               <p className="hidden"><label>Do not fill this: <input name="bot-field" /></label></p>
               <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" required className="flex-1 px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500" />
-              <button type="submit" disabled={status === 'submitting'} className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap">{status === 'submitting' ? 'Sending' : 'Send My Checklist'}</button>
+              <button type="submit" disabled={status === 'submitting'} className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap">{status === 'submitting' ? 'Submitting' : 'Request the Checklist'}</button>
             </form>
           )}
           {status === 'error' && <p className="mt-3 text-red-400 text-sm">Something went wrong. Please try again.</p>}
@@ -421,11 +425,11 @@ function EmailSignupSection() {
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-10">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-6">Free Resource</span>
           <h2 className="text-3xl font-bold text-white mb-3">Get the Free Caregiver Tax Checklist</h2>
-          <p className="text-slate-400 mb-8 leading-relaxed">7 deductions and credits most family caregivers miss, delivered instantly to your inbox. No spam. Unsubscribe anytime.</p>
+           <p className="text-slate-400 mb-8 leading-relaxed">Request a practical reference covering deductions and credits family caregivers may want to discuss with a qualified tax professional. Delivery timing is not confirmed.</p>
           {status === 'success' ? (
             <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
-              <p className="font-semibold text-lg mb-1">Checklist sent!</p>
-              <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+               <p className="font-semibold text-lg mb-1">Request received</p>
+               <p className="text-sm">We will follow up about the checklist. Delivery is not confirmed. Need help? <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="underline">Contact us</a>.</p>
               <Link to="/crypto-inheritance-checklist" className="inline-flex items-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-sm font-medium">Explore our crypto inheritance guide &rarr;</Link>
             </div>
           ) : (
@@ -433,7 +437,7 @@ function EmailSignupSection() {
               <input type="hidden" name="form-name" value="caregiver-checklist" />
               <p className="hidden"><label>Do not fill this: <input name="bot-field" /></label></p>
               <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" required className="flex-1 px-4 py-3 bg-slate-800 border border-slate-600 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500" />
-              <button type="submit" disabled={status === 'submitting'} className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap">{status === 'submitting' ? 'Sending' : 'Send My Checklist'}</button>
+              <button type="submit" disabled={status === 'submitting'} className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap">{status === 'submitting' ? 'Submitting' : 'Request the Checklist'}</button>
             </form>
           )}
           {status === 'error' && <p className="mt-3 text-red-400 text-sm">Something went wrong. Please try again.</p>}

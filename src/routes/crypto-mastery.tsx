@@ -14,7 +14,7 @@ export const Route = createFileRoute('/crypto-mastery')({
       { property: 'og:title', content: "Crypto Mastery — The Complete Beginner's Guide to Cryptocurrency" },
       {
         property: 'og:description',
-        content: 'Master cryptocurrency in simple, everyday language. Instant PDF download after checkout.',
+        content: 'Master cryptocurrency in simple, everyday language with the existing checkout path.',
       },
       { property: 'og:image', content: 'https://sentinelenterprisesllc.com/crypto-mastery-cover.png' },
     ],
@@ -75,9 +75,9 @@ function CryptoMasteryPage() {
               placement="crypto_mastery_hero"
               className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-950 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
             >
-              Get Instant Access — $17
+              Continue to checkout — $17
             </CheckoutButton>
-            <p className="mt-3 text-sm text-slate-400">One-time payment. Secure checkout through Stripe. Instant PDF download after payment.</p>
+            <p className="mt-3 text-sm text-slate-400">The existing checkout shows $17. Delivery timing is not confirmed; contact us before paying if access details matter.</p>
             <div className="mt-8 grid sm:grid-cols-3 gap-3 text-sm text-slate-300">
               {['No prior knowledge needed', 'Step-by-step buying guide', 'Bonus estate-planning section'].map((item) => (
                 <div key={item} className="flex items-start gap-2"><CheckIcon /> <span>{item}</span></div>
@@ -136,14 +136,14 @@ function CryptoMasteryPage() {
       <section className="bg-gradient-to-b from-slate-900 to-slate-950 py-20">
         <div className="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-3xl border border-amber-400/40 bg-slate-800/70 p-8 sm:p-10 text-center shadow-xl">
-            <p className="text-amber-400 font-semibold text-sm uppercase tracking-wider mb-3">Instant digital delivery</p>
+            <p className="text-amber-400 font-semibold text-sm uppercase tracking-wider mb-3">Independent $17 resource</p>
             <h2 className="text-3xl font-black text-white">Get Crypto Mastery Today</h2>
             <div className="my-7">
               <span className="text-6xl font-black text-white">$17</span>
               <span className="ml-2 text-slate-400">one-time payment</span>
             </div>
             <ul className="mb-8 space-y-3 text-left text-sm text-slate-300">
-              {['39 pages of beginner-friendly crypto education', 'Instant PDF download after payment', 'Read on your phone, tablet, or computer', '28-question quiz and complete answer key'].map((item) => (
+              {['39 pages of beginner-friendly crypto education', 'PDF format described on this page', 'Read on your phone, tablet, or computer', '28-question quiz and complete answer key'].map((item) => (
                 <li key={item} className="flex gap-3"><CheckIcon /><span>{item}</span></li>
               ))}
             </ul>
@@ -152,7 +152,7 @@ function CryptoMasteryPage() {
               placement="crypto_mastery_bottom"
               className="w-full inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-950 font-bold text-lg rounded-xl transition-all"
             >
-              Buy Now — Instant Download
+              Continue to checkout — $17
             </CheckoutButton>
             <p className="mt-4 text-xs leading-relaxed text-slate-500">This guide is for educational purposes only and is not financial, investment, tax, or legal advice.</p>
           </div>

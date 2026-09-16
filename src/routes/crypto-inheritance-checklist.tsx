@@ -109,13 +109,13 @@ function CryptoChecklistPage() {
 
           {/* Email Signup */}
           <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-10 text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-3">Get the Full Checklist</h2>
-            <p className="text-slate-400 mb-6">Enter your email and we'll send it instantly.</p>
+             <h2 className="text-2xl font-bold text-white mb-3">Request the Free Checklist</h2>
+             <p className="text-slate-400 mb-6">Enter your email to request the checklist. Delivery timing is not confirmed.</p>
 
             {status === 'success' ? (
               <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
-                <p className="font-semibold text-lg mb-1">Checklist sent!</p>
-                <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+                <p className="font-semibold text-lg mb-1">Request received</p>
+                <p className="text-sm">We will follow up about the checklist. Delivery is not confirmed. Need help? <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="underline">Contact us</a>.</p>
               </div>
             ) : (
               <form
@@ -146,7 +146,7 @@ function CryptoChecklistPage() {
                   disabled={status === 'submitting'}
                   className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap"
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Send Me the Crypto Checklist'}
+                   {status === 'submitting' ? 'Submitting…' : 'Request the Crypto Checklist'}
                 </button>
               </form>
             )}

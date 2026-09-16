@@ -6,18 +6,9 @@ export const Route = createFileRoute('/thank-you')({
 })
 
 /*
- * ============================================================================
- *  THANK-YOU / DOWNLOAD PAGE  —  POST-PURCHASE DELIVERY
- * ============================================================================
- *
- *  This is where customers land AFTER a successful Stripe payment. It lists
- *  every file in the Complete Protection Bundle as a direct download card.
- *  Stripe also emails the buyer their receipt.
- *
- *  The PDFs live in /public/downloads/ — to swap in a real deliverable, just
- *  replace the matching file there (keep the filename) and the link below
- *  keeps working.
- * ============================================================================
+ * This public resource page does not authenticate a purchase or verify a
+ * payment. Keep the links limited to readable files present in
+ * /public/downloads/.
  */
 
 type Download = {
@@ -30,33 +21,33 @@ type Download = {
 // Each entry links to /downloads/<file> served from /public/downloads/.
 const DOWNLOADS: Download[] = [
   {
-    title: 'Crypto Inheritance Checklist',
+    title: 'Crypto Inheritance Checklist (6-page PDF)',
     file: 'crypto-inheritance-checklist.pdf',
-    description: 'A step-by-step checklist to make sure your heirs can actually find and inherit your crypto.',
+    description: 'Beginner context, a 12-step checklist, and Crypto Access Letter prompts for documenting digital-asset access.',
     resource: 'crypto_inheritance_checklist',
   },
   {
-    title: 'Crypto Inheritance Fillable Workbook',
+    title: 'Crypto Inheritance Workbook (printable)',
     file: 'your-purchased-workbook.pdf',
-    description: 'A fill-in-the-blanks workbook to document wallets, access, and instructions in one place.',
+    description: 'A 6-page workbook for documenting wallets, trusted people, instructions, and contacts. Print and complete it by hand; it is not fillable.',
     resource: 'crypto_inheritance_workbook',
   },
   {
-    title: 'Beneficiary Access Template',
+    title: 'Beneficiary Access Template (6-page PDF)',
     file: 'beneficiary-access-template.pdf',
-    description: 'A ready-to-use template for securely passing access details to the people you trust.',
+    description: 'A beneficiary access letter template with space for accounts, approximate values, instructions, and next steps.',
     resource: 'beneficiary_access_template',
   },
 {
-    title: 'Asset Protection Starter Guide',
+    title: 'Asset Protection Starter Guide (6-page PDF)',
     file: 'asset-protection-guide.pdf',
-    description: 'Practical first steps to shield what you’ve built — without an eight-figure trust budget.',
+    description: 'Plain-English overview of five protection levels, trusts, and first actions for reviewing asset protection.',
     resource: 'asset_protection_guide',
   },
   {
-    title: 'Trust & Titling Starter Checklist',
+    title: 'Trust & Titling Starter Checklist (7-page PDF)',
     file: 'trust-titling-checklist.pdf',
-    description: 'How to title accounts and assets correctly so your protection plan actually holds up.',
+    description: 'A checklist for reviewing ownership documents and whether accounts and assets are titled consistently.',
     resource: 'trust_titling_checklist',
   },
 ]
@@ -68,16 +59,16 @@ function ThankYouPage() {
         <div className="text-center">
           <div className="w-16 h-16 mx-auto bg-amber-500/15 border border-amber-500/30 rounded-2xl flex items-center justify-center text-amber-400 mb-6">
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M5.25 21h13.5A2.25 2.25 0 0021 18.75V18H3v.75A2.25 2.25 0 005.25 21z" />
             </svg>
           </div>
 
-          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Payment Confirmed</span>
+          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Public resource page</span>
           <h1 className="mt-2 text-4xl sm:text-5xl font-black text-white leading-tight mb-4">
-            Thank You for Your Purchase! 🎉
+            Crypto and Asset-Protection Resources
           </h1>
           <p className="text-xl text-slate-400 leading-relaxed mb-12 max-w-2xl mx-auto">
-            Your Complete Protection Bundle is ready. All 7 guides are listed below.
+            This page does not verify payment or confirm an order. The five public files below are available site resources for education and personal planning.
           </p>
         </div>
 
@@ -115,33 +106,9 @@ function ThankYouPage() {
           ))}
         </div>
 
-        {/* Masterclass video — placeholder until the recording is published. */}
-        <div className="mt-16">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-6">Your Masterclass Video</h2>
-          <div className="bg-slate-800/60 border border-dashed border-slate-600 rounded-2xl p-10 sm:p-14 text-center">
-            <div className="w-16 h-16 mx-auto bg-amber-500/15 border border-amber-500/30 rounded-2xl flex items-center justify-center text-amber-400 mb-5">
-              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
-                />
-              </svg>
-            </div>
-            <p className="text-slate-300 leading-relaxed max-w-xl mx-auto">
-              Video coming soon — check back here or email us at{' '}
-              <a
-                href="mailto:sentinel@sentinelenterprisesllc.com"
-                className="text-amber-400 hover:text-amber-300 font-semibold"
-              >
-                sentinel@sentinelenterprisesllc.com
-              </a>
-            </p>
-          </div>
-        </div>
-
         <p className="mt-12 text-slate-400 text-sm leading-relaxed text-center max-w-2xl mx-auto">
-          Your receipt was emailed to you by Stripe. Bookmark this page to return to your downloads anytime.
+          These links are public and do not establish entitlement to a paid offer. If you are considering the $17.99
+          checkout, <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-amber-400 hover:text-amber-300 underline">contact us before paying</a> to confirm contents and delivery.
         </p>
 
         <div className="mt-10 text-center">
