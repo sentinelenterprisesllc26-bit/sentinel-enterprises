@@ -1,5 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { trackEvent } from '../lib/analytics'
+import { submitNetlifyFormOnce } from '../lib/forms'
 
 export const Route = createFileRoute('/contact')({
   component: ContactPage,
@@ -9,21 +11,23 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 function ContactPage() {
   const [status, setStatus] = useState<FormStatus>('idle')
+  const submittingRef = useRef(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (status === 'submitting' || submittingRef.current) return
+    submittingRef.current = true
     setStatus('submitting')
+    const form = e.currentTarget
     try {
-      const formData = new FormData(e.currentTarget)
-      await fetch('/__forms.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
-      })
+      const accepted = await submitNetlifyFormOnce(form, () =>
+        trackEvent('contact_form_success', { placement: 'contact_page' }),
+      )
+      if (!accepted) return
       setStatus('success')
     } catch {
       setStatus('error')
-    }
+    } finally { submittingRef.current = false }
   }
 
   return (

@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
+import { trackEvent } from '../lib/analytics'
 
 export const Route = createFileRoute('/crypto-mastery/success')({
   validateSearch: (search: Record<string, unknown>) => ({
@@ -62,6 +63,12 @@ function CryptoMasterySuccessPage() {
           {state === 'ready' && (
             <a
               href={downloadUrl}
+              onClick={() =>
+                trackEvent('resource_download_click', {
+                  resource: 'crypto_mastery_ebook',
+                  placement: 'thank_you_delivery',
+                })
+              }
               className="inline-flex w-full justify-center items-center px-6 py-4 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-lg rounded-xl transition-colors"
               data-testid="link-download-crypto-mastery"
             >

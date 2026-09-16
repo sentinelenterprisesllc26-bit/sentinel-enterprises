@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { trackEvent } from '../../lib/analytics'
 
 export const Route = createFileRoute('/blog/$slug')({
   component: BlogPostPage,
@@ -201,7 +202,7 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           <li><strong>Best for:</strong> Beginners who want cold storage without a steep learning curve</li>
         </ul>
         <p>
-          <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer">Get Tangem — use code FUSB6E →</a>
+          <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('affiliate_link_click', { partner: 'tangem', placement: 'blog_article' })}>Get Tangem — use code FUSB6E →</a>
         </p>
 
         <h2>Ledger: Best for Advanced Users</h2>
@@ -216,7 +217,7 @@ const posts: Record<string, { title: string; date: string; category: string; rea
         </ul>
         <p>
           Prefer a fully air-gapped option with no seed-phrase card to lose?{' '}
-          <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer">See the ELLIPAL wallet we recommend →</a>
+            <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('affiliate_link_click', { partner: 'ellipal', placement: 'blog_article' })}>See the ELLIPAL wallet we recommend →</a>
         </p>
 
         <h2>Exchange Custody: When It Makes Sense</h2>
@@ -240,10 +241,10 @@ const posts: Record<string, { title: string; date: string; category: string; rea
             Ready to move to cold storage? We recommend Tangem for beginners and ELLIPAL for fully air-gapped security.
           </p>
           <p>
-            <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer">Get Tangem — code FUSB6E →</a>
+            <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('affiliate_link_click', { partner: 'tangem', placement: 'blog_article' })}>Get Tangem — code FUSB6E →</a>
           </p>
           <p>
-            <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer">Shop ELLIPAL →</a>
+            <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('affiliate_link_click', { partner: 'ellipal', placement: 'blog_article' })}>Shop ELLIPAL →</a>
           </p>
           <p>
             Not sure how to include your cold storage in an estate plan? Explore our Digital Asset Guidance services.

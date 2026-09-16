@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { trackEvent, type AffiliatePartner, type ResourceId } from '../lib/analytics'
 
 export const Route = createFileRoute('/partners')({
   component: PartnersPage,
@@ -9,6 +10,8 @@ type Resource = {
   href: string
   primary?: boolean
   pdf?: boolean
+  partner?: AffiliatePartner
+  resource?: ResourceId
 }
 
 type Platform = {
@@ -26,8 +29,8 @@ const platforms: Platform[] = [
     description:
       'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device. The starting point Sentinel recommends for serious self-custody.',
     links: [
-      { label: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', primary: true },
-      { label: 'Setup guide', href: '/downloads/ELLIPAL_Setup_Guide.pdf', pdf: true },
+      { label: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', primary: true, partner: 'ellipal' },
+      { label: 'Setup guide', href: '/downloads/ELLIPAL_Setup_Guide.pdf', pdf: true, resource: 'ellipal_setup_guide' },
     ],
   },
   {
@@ -37,8 +40,8 @@ const platforms: Platform[] = [
       'A hardware wallet the size of a credit card. Tap it to your phone to sign — no cables, no charging, no seed phrase to lose. Use the code below for a discount at checkout.',
     code: { label: 'Promo code', value: 'FUSB6E' },
     links: [
-      { label: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', primary: true },
-      { label: 'Setup guide', href: '/downloads/Tangem_Beginners_Guide.pdf', pdf: true },
+      { label: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', primary: true, partner: 'tangem' },
+      { label: 'Setup guide', href: '/downloads/Tangem_Beginners_Guide.pdf', pdf: true, resource: 'tangem_beginners_guide' },
     ],
   },
   {
@@ -48,7 +51,7 @@ const platforms: Platform[] = [
       'A full-service brokerage with a dedicated human broker for every client — ideal for larger buys, OTC trades, and guided portfolio building. Apply the referral code at sign-up.',
     code: { label: 'Referral code', value: 'CU073620' },
     links: [
-      { label: 'Open an account', href: 'https://app.calebandbrown.com/signup?referral=CU073620', primary: true },
+      { label: 'Open an account', href: 'https://app.calebandbrown.com/signup?referral=CU073620', primary: true, partner: 'caleb_brown' },
     ],
   },
   {
@@ -58,7 +61,7 @@ const platforms: Platform[] = [
       "Buy and hold crypto inside a tax-advantaged IRA. Use the referral code to claim your bonus.",
     code: { label: 'Referral code', value: 'UOHKD3' },
     links: [
-      { label: 'Start an IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', primary: true },
+      { label: 'Start an IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', primary: true, partner: 'itrustcapital' },
       ],
   },
   {
@@ -71,6 +74,7 @@ const platforms: Platform[] = [
         label: 'Join Uphold',
         href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend',
         primary: true,
+        partner: 'uphold',
       },
     ],
   },
@@ -80,21 +84,23 @@ const platforms: Platform[] = [
     description:
       'The most widely used hardware wallet in the world. Ledger devices store your private keys offline and support thousands of coins including XRP, Bitcoin, and Ethereum. A trusted foundation for serious self-custody.',
     links: [
-      { label: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', primary: true },
+      { label: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', primary: true, partner: 'ledger' },
     ],
   },
 ]
 
-const guides = [
+const guides: Array<{ title: string; blurb: string; href: string; resource: ResourceId }> = [
   {
     title: 'XRP Illustrated Guide',
     blurb: 'A plain-English visual primer',
     href: '/downloads/xrp_illustrated_guide.pdf',
+    resource: 'xrp_essentials_guide',
   },
   {
     title: 'The XRP & Ripple Book',
     blurb: 'The deeper-dive reference read',
     href: '/downloads/XRP_Ripple_Book.pdf',
+    resource: 'xrp_ripple_book',
   },
 ]
 
@@ -112,9 +118,11 @@ type RecommendedTool = {
   benefit: string
   // 🔵 REPLACE with your real affiliate link.
   href: string
+  partner: AffiliatePartner
   // Optional companion PDF guide shown as a second button.
   pdfHref?: string
   pdfLabel?: string
+  resource?: ResourceId
 }
 
 const recommendedTools: RecommendedTool[] = [
@@ -122,18 +130,22 @@ const recommendedTools: RecommendedTool[] = [
     name: 'Tangem Wallet',
     benefit: 'Tap-to-sign card wallet — the simplest way to move crypto into cold storage.',
     href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    partner: 'tangem',
   },
   {
     name: 'ELLIPAL Wallet',
     benefit: 'Fully air-gapped hardware wallet — no USB, no Bluetooth, no online attack surface.',
     href: 'https://www.ellipal.com/?rfsn=8708468.a45049',
+    partner: 'ellipal',
   },
   {
     name: 'Crypto Security Toolkit',
     benefit: 'A trusted resource for seed-phrase backups and hardened self-custody.',
     href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    partner: 'tangem',
     pdfHref: '/downloads/Tangem_Beginners_Guide.pdf',
     pdfLabel: 'Setup Guide (PDF)',
+    resource: 'tangem_beginners_guide',
   },
 ]
 
@@ -185,6 +197,7 @@ function PartnersPage() {
                     href={tool.href}
                     target="_blank"
                     rel="sponsored noopener noreferrer"
+                    onClick={() => trackEvent('affiliate_link_click', { partner: tool.partner, placement: 'partners_recommended_tools' })}
                     className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
                   >
                     View Tool
@@ -194,6 +207,14 @@ function PartnersPage() {
                       href={tool.pdfHref}
                       target="_blank"
                       rel="sponsored noopener noreferrer"
+                      onClick={() => {
+                        if (tool.resource) {
+                          trackEvent('resource_download_click', {
+                            resource: tool.resource,
+                            placement: 'partners_recommended_tools',
+                          })
+                        }
+                      }}
                       className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
                     >
                       {tool.pdfLabel || 'Download PDF'}
@@ -237,6 +258,7 @@ function PartnersPage() {
                 href={g.href}
                 target="_blank"
                 rel="sponsored noopener noreferrer"
+                onClick={() => trackEvent('resource_download_click', { resource: g.resource, placement: 'partners_free_guides' })}
                 className="group bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 flex items-center gap-5 hover:border-amber-500/50 transition-colors"
               >
                 <div className="w-12 h-14 bg-amber-500/10 border border-amber-500/20 rounded-lg flex items-center justify-center text-amber-400 flex-shrink-0">
@@ -284,6 +306,7 @@ function PartnersPage() {
                 href="https://www.youtube.com/@JenaeSentinel"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('social_link_click', { platform: 'youtube', placement: 'partners_video_section' })}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -295,6 +318,7 @@ function PartnersPage() {
                 href="https://www.tiktok.com/@jenae.wiley"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('social_link_click', { platform: 'tiktok', placement: 'partners_video_section' })}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 text-white font-bold rounded-xl border border-white/10 transition-colors"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -342,6 +366,17 @@ function PlatformCard({ name, category, description, code, links }: Platform) {
             href={l.href}
             target="_blank"
             rel="sponsored noopener noreferrer"
+            onClick={() => {
+              if (l.partner) {
+                trackEvent('affiliate_link_click', { partner: l.partner, placement: 'partners_platforms' })
+              }
+              if (l.pdf && l.resource) {
+                trackEvent('resource_download_click', {
+                  resource: l.resource,
+                  placement: 'partners_platforms',
+                })
+              }
+            }}
             className={
               l.primary
                 ? 'inline-flex items-center px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors'

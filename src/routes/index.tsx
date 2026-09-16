@@ -1,5 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { trackEvent } from '../lib/analytics'
+import { submitNetlifyFormOnce } from '../lib/forms'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -49,10 +51,10 @@ function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-                          href="/crypto-inheritance-checklist"
+              href="/crypto-inheritance-checklist"
               className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5"
             >
-                            Get the Free Crypto Checklist
+              Get the Free Crypto Checklist
             </a>
             <Link
               to="/guides"
@@ -74,15 +76,15 @@ function MediaSocialSection() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <span className="text-slate-400 font-medium text-sm">Follow Jenae on:</span>
-            <a href="https://www.youtube.com/@JenaeSentinel" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
+            <a href="https://www.youtube.com/@JenaeSentinel" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('social_link_click', { platform: 'youtube', placement: 'homepage_social' })} className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
               <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg>
               <span className="font-semibold text-sm">@JenaeSentinel</span>
             </a>
-            <a href="https://www.tiktok.com/@jenae.wiley" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
+            <a href="https://www.tiktok.com/@jenae.wiley" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('social_link_click', { platform: 'tiktok', placement: 'homepage_social' })} className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
               <svg className="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 24 24"><path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.27 1.36V7.3s-1.88.09-3.2-1.48z" /></svg>
               <span className="font-semibold text-sm">@jenae.wiley</span>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=61572035077818" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
+            <a href="https://www.facebook.com/profile.php?id=61572035077818" target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('social_link_click', { platform: 'facebook', placement: 'homepage_social' })} className="flex items-center gap-2 text-white hover:text-amber-400 transition-colors">
               <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94z" /></svg>
               <span className="font-semibold text-sm">Facebook</span>
             </a>
@@ -232,7 +234,7 @@ function PaidProductsSection() {
               <span className="text-5xl font-black text-white">$17.99</span>
               <span className="text-slate-400 text-sm">one-time, lifetime access</span>
             </div>
-            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
+            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" onClick={() => trackEvent('product_checkout_click', { product_id: 'complete-bundle', placement: 'homepage_bundle' })} className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
               Get the Complete Bundle — $17.99
             </a>
             <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
@@ -245,11 +247,11 @@ function PaidProductsSection() {
 
 function AffiliateToolsSection() {
   const tools = [
-    { name: 'iTrustCapital', category: 'Crypto IRA and Retirement', bestFor: 'Best for long-term holders', description: 'Hold crypto inside a tax-advantaged IRA. A smart move for long-term holders who want to grow wealth with fewer tax surprises.', cta: 'Start a Crypto IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', code: 'UOHKD3' },
-    { name: 'ELLIPAL', category: 'Air-Gapped Hardware Wallet', bestFor: 'Best for serious self-custody', description: 'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device.', cta: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', code: undefined },
-    { name: 'Uphold', category: 'Exchange and Multi-Asset Wallet', bestFor: 'Best for beginners', description: 'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more. A solid on-ramp before moving to cold storage.', cta: 'Join Uphold', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', code: undefined },
-    { name: 'Tangem', category: 'Tap-to-Sign Card Wallet', bestFor: 'Best for simplicity', description: 'A hardware wallet the size of a credit card. Tap it to your phone to sign - no cables, no charging, no seed phrase to lose.', cta: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', code: 'FUSB6E' },
-    { name: 'Ledger', category: 'Industry-Standard Hardware Wallet', bestFor: 'Best for advanced users', description: 'The most widely used hardware wallet in the world. Stores your private keys offline and supports thousands of coins including XRP, Bitcoin, and Ethereum.', cta: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', code: undefined },
+    { name: 'iTrustCapital', partner: 'itrustcapital' as const, category: 'Crypto IRA and Retirement', bestFor: 'Best for long-term holders', description: 'Hold crypto inside a tax-advantaged IRA. A smart move for long-term holders who want to grow wealth with fewer tax surprises.', cta: 'Start a Crypto IRA', href: 'https://www.itrustcapital.com/?referral_id=UOHKD3', code: 'UOHKD3' },
+    { name: 'ELLIPAL', partner: 'ellipal' as const, category: 'Air-Gapped Hardware Wallet', bestFor: 'Best for serious self-custody', description: 'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device.', cta: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', code: undefined },
+    { name: 'Uphold', partner: 'uphold' as const, category: 'Exchange and Multi-Asset Wallet', bestFor: 'Best for beginners', description: 'A beginner-friendly exchange to buy, sell, and swap crypto, metals, and more. A solid on-ramp before moving to cold storage.', cta: 'Join Uphold', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', code: undefined },
+    { name: 'Tangem', partner: 'tangem' as const, category: 'Tap-to-Sign Card Wallet', bestFor: 'Best for simplicity', description: 'A hardware wallet the size of a credit card. Tap it to your phone to sign - no cables, no charging, no seed phrase to lose.', cta: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', code: 'FUSB6E' },
+    { name: 'Ledger', partner: 'ledger' as const, category: 'Industry-Standard Hardware Wallet', bestFor: 'Best for advanced users', description: 'The most widely used hardware wallet in the world. Stores your private keys offline and supports thousands of coins including XRP, Bitcoin, and Ethereum.', cta: 'Shop Ledger', href: 'https://shop.ledger.com/?r=2f2485b5c526', code: undefined },
   ]
   return (
     <section className="py-24 bg-slate-950">
@@ -274,7 +276,7 @@ function AffiliateToolsSection() {
                   <span className="text-amber-400 font-mono font-semibold text-sm">{t.code}</span>
                 </div>
               )}
-              <a href={t.href} target="_blank" rel="sponsored noopener noreferrer" className="inline-flex items-center justify-center px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors">{t.cta} &rarr;</a>
+              <a href={t.href} target="_blank" rel="sponsored noopener noreferrer" onClick={() => trackEvent('affiliate_link_click', { partner: t.partner, placement: 'homepage_tools' })} className="inline-flex items-center justify-center px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors">{t.cta} &rarr;</a>
             </div>
           ))}
         </div>
@@ -290,15 +292,22 @@ function AffiliateToolsSection() {
 function CryptoLeadMagnetSection() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const submittingRef = useRef(false)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (status === 'submitting' || submittingRef.current) return
+    submittingRef.current = true
     setStatus('submitting')
+    const form = e.currentTarget
     try {
-      const formData = new FormData(e.currentTarget)
-      await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(formData as any).toString() })
+      const accepted = await submitNetlifyFormOnce(form, () =>
+        trackEvent('lead_form_success', { form_name: 'crypto_security_checklist', placement: 'homepage_crypto' }),
+      )
+      if (!accepted) return
       setStatus('success')
       setEmail('')
     } catch { setStatus('error') }
+    finally { submittingRef.current = false }
   }
   return (
     <section className="py-24 bg-slate-900">
@@ -389,15 +398,22 @@ function BuiltForYouSection() {
 function EmailSignupSection() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const submittingRef = useRef(false)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (status === 'submitting' || submittingRef.current) return
+    submittingRef.current = true
     setStatus('submitting')
+    const form = e.currentTarget
     try {
-      const formData = new FormData(e.currentTarget)
-      await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(formData as any).toString() })
+      const accepted = await submitNetlifyFormOnce(form, () =>
+        trackEvent('lead_form_success', { form_name: 'caregiver_checklist', placement: 'homepage_caregiver' }),
+      )
+      if (!accepted) return
       setStatus('success')
       setEmail('')
     } catch { setStatus('error') }
+    finally { submittingRef.current = false }
   }
   return (
     <section id="email-signup" className="py-24 bg-slate-900">
@@ -513,13 +529,13 @@ function HealthyWealthySection() {
           </div>
         </div>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link to="/three" className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
+          <Link to="/three" onClick={() => trackEvent('three_link_click', { action: 'shop', placement: 'homepage_three_section' })} className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold rounded-lg transition-colors">
             Explore the Products →
           </Link>
-          <a href="https://jenae.threeinternational.com/en/purchase-products" target="_blank" rel="sponsored noopener noreferrer external commercial" className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
+          <a href="https://jenae.threeinternational.com/en/purchase-products" target="_blank" rel="sponsored noopener noreferrer external commercial" onClick={() => trackEvent('three_link_click', { action: 'shop', placement: 'homepage_three_section' })} className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors">
             Shop Now →
           </a>
-          <a href="https://jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba" target="_blank" rel="sponsored noopener noreferrer external commercial" className="px-6 py-3 border border-slate-600 hover:border-amber-500 text-white font-semibold rounded-lg transition-colors">
+          <a href="https://jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba" target="_blank" rel="sponsored noopener noreferrer external commercial" onClick={() => trackEvent('three_link_click', { action: 'enroll', placement: 'homepage_three_section' })} className="px-6 py-3 border border-slate-600 hover:border-amber-500 text-white font-semibold rounded-lg transition-colors">
             Become an Ambassador →
           </a>
         </div>

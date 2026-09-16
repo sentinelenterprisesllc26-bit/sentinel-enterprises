@@ -1,4 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { trackEvent } from '../lib/analytics'
 
 export const Route = createFileRoute('/three')({
   head: () => ({
@@ -60,6 +61,7 @@ function ThreeHero() {
             href="https://jenae.threeinternational.com/en/purchase-products"
             target="_blank"
             rel="sponsored noopener noreferrer external commercial"
+            onClick={() => trackEvent('three_link_click', { action: 'shop', placement: 'three_hero' })}
             className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5 w-full sm:w-auto"
           >
             Shop Products
@@ -68,6 +70,7 @@ function ThreeHero() {
             href="https://jenae.threeinternational.com/en/opportunity"
             target="_blank"
             rel="sponsored noopener noreferrer external commercial"
+            onClick={() => trackEvent('three_link_click', { action: 'opportunity', placement: 'three_hero' })}
             className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:border-cyan-400/50 transition-all hover:-translate-y-0.5 w-full sm:w-auto"
           >
             Learn About the Opportunity →
@@ -81,7 +84,7 @@ function ThreeHero() {
 function ThreeProducts() {
   const products = [
     {
-      id: 'vitalite',
+       id: 'vitalite' as const,
       name: 'Vitalité',
       category: 'Daily Multivitamin',
       description: 'A comprehensive daily formula featuring vitamins, minerals, and nutrients to support your foundational nutritional needs.',
@@ -89,7 +92,7 @@ function ThreeProducts() {
       benefits: ['Vitamins & Minerals', 'Daily Nutrition', 'Wellness Support']
     },
     {
-      id: 'visage',
+       id: 'visage' as const,
       name: 'Visage',
       category: 'Super Serum',
       description: 'A dedicated skin-care serum designed to be a versatile addition to your daily beauty routine.',
@@ -97,7 +100,7 @@ function ThreeProducts() {
       benefits: ['Skin Care', 'Daily Routine', 'Topical Application']
     },
     {
-      id: 'kynetik',
+       id: 'kynetik' as const,
       name: 'Kynetik',
       category: 'Berry Blast Drink Mix',
       description: 'A caffeinated drink mix offering a flavorful berry taste for your active days and routines.',
@@ -143,6 +146,13 @@ function ThreeProducts() {
                   href="https://jenae.threeinternational.com/en/purchase-products"
                   target="_blank"
                   rel="sponsored noopener noreferrer external commercial"
+                  onClick={() =>
+                    trackEvent('three_link_click', {
+                      action: 'shop',
+                      featured_product_id: p.id,
+                      placement: 'three_product_card',
+                    })
+                  }
                   className="w-full inline-flex justify-center items-center px-4 py-3 bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-900 font-semibold rounded-xl transition-colors"
                 >
                   Purchase {p.name}
@@ -177,6 +187,7 @@ function ThreeOpportunity() {
                 href="https://jenae.threeinternational.com/en/enrollment/enrollmentconfigurationba"
                 target="_blank"
                 rel="sponsored noopener noreferrer external commercial"
+                onClick={() => trackEvent('three_link_click', { action: 'enroll', placement: 'three_opportunity' })}
                 className="inline-flex items-center justify-center px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
               >
                 Join My Team
@@ -185,6 +196,7 @@ function ThreeOpportunity() {
                 href="https://jenae.threeinternational.com/en/opportunity"
                 target="_blank"
                 rel="sponsored noopener noreferrer external commercial"
+                onClick={() => trackEvent('three_link_click', { action: 'opportunity', placement: 'three_opportunity' })}
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-slate-800 text-white font-semibold text-lg rounded-xl border border-slate-600 hover:border-slate-500 transition-colors"
               >
                 Read Compensation Plan

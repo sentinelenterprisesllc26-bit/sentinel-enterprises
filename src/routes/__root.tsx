@@ -1,5 +1,6 @@
 import { HeadContent, Link, Scripts, createRootRoute } from '@tanstack/react-router'
 import '../styles.css'
+import { trackEvent } from '../lib/analytics'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -161,6 +162,7 @@ function Footer() {
                 href="https://www.youtube.com/@JenaeSentinel"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('social_link_click', { platform: 'youtube', placement: 'global_footer' })}
                 aria-label="Sentinel Enterprises on YouTube"
                 className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 hover:bg-amber-500 text-slate-300 hover:text-slate-900 transition-colors"
               >
@@ -172,6 +174,7 @@ function Footer() {
                 href="https://www.tiktok.com/@jenae.wiley"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('social_link_click', { platform: 'tiktok', placement: 'global_footer' })}
                 aria-label="Sentinel Enterprises on TikTok"
                 className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 hover:bg-amber-500 text-slate-300 hover:text-slate-900 transition-colors"
               >
@@ -183,6 +186,7 @@ function Footer() {
                 href="https://www.facebook.com/profile.php?id=61572035077818"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackEvent('social_link_click', { platform: 'facebook', placement: 'global_footer' })}
                 aria-label="Sentinel Enterprises on Facebook"
                 className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-800 hover:bg-amber-500 text-slate-300 hover:text-slate-900 transition-colors"
               >
