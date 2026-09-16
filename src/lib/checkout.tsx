@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { ProductId } from './products'
+import { trackEvent, type ProductCheckoutPlacement } from './analytics'
 
 /*
  * <CheckoutButton> — drops a customer into Stripe Checkout for a given product.
@@ -11,10 +12,12 @@ import type { ProductId } from './products'
  */
 export function CheckoutButton({
   productId,
+  placement,
   className,
   children,
 }: {
   productId: ProductId
+  placement: ProductCheckoutPlacement
   className?: string
   children: React.ReactNode
 }) {
@@ -22,8 +25,10 @@ export function CheckoutButton({
   const [error, setError] = useState<string | null>(null)
 
   async function handleClick() {
+    if (loading) return
     setLoading(true)
     setError(null)
+    trackEvent('product_checkout_click', { product_id: productId, placement })
     try {
       const res = await fetch('/.netlify/functions/create-checkout', {
         method: 'POST',

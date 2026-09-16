@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { formatPrice, PRODUCTS, type ProductId } from '../lib/products'
+import { trackEvent } from '../lib/analytics'
 
 export const Route = createFileRoute('/guides')({
   component: GuidesPage,
@@ -230,6 +231,12 @@ function ProductCard({
         href={checkoutUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() =>
+          trackEvent('product_checkout_click', {
+            product_id: id,
+            placement: featured ? 'guides_featured_bundle' : 'guides_individual',
+          })
+        }
         className="block w-full text-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold py-3 px-6 rounded-xl transition-colors"
       >
         {buttonText}

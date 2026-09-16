@@ -1,15 +1,25 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { trackEvent, type ServiceCheckoutPlacement, type ServiceId } from '../lib/analytics'
 
 export const Route = createFileRoute('/services')({
   component: ServicesPage,
 })
 
-function PayPalButton({ className = '' }: { className?: string }) {
+function PayPalButton({
+  serviceId,
+  placement,
+  className = '',
+}: {
+  serviceId: ServiceId
+  placement: ServiceCheckoutPlacement
+  className?: string
+}) {
   return (
     <a
       href="https://paypal.me/JenaeWiley"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackEvent('service_checkout_click', { service_id: serviceId, placement })}
       className={`inline-flex items-center gap-3 px-6 py-3 bg-[#FFC439] hover:bg-[#FFB800] text-[#003087] font-bold rounded-xl transition-all shadow-lg shadow-yellow-400/30 hover:shadow-yellow-400/50 hover:scale-[1.02] active:scale-[0.98] ${className}`}
     >
       <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -96,7 +106,7 @@ function ServiceDetails() {
               <Link to="/contact" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors">
                 Learn About Asset Protection →
               </Link>
-              <PayPalButton />
+              <PayPalButton serviceId="asset_protection" placement="service_details_asset_protection" />
             </div>
           </div>
         </div>
@@ -147,7 +157,7 @@ function ServiceDetails() {
               <Link to="/crypto-inheritance-checklist" className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-semibold transition-colors">
                 Download the Crypto Inheritance Checklist →
               </Link>
-              <PayPalButton />
+              <PayPalButton serviceId="digital_asset_guidance" placement="service_details_digital_asset" />
             </div>
           </div>
         </div>
@@ -165,7 +175,11 @@ function PayPalSection() {
         <p className="text-slate-400 mb-8 leading-relaxed">
           Pay securely via PayPal. After payment, reach out through our contact page to schedule your consultation.
         </p>
-        <PayPalButton className="text-lg px-8 py-4" />
+        <PayPalButton
+          serviceId="general_consultation"
+          placement="services_ready"
+          className="text-lg px-8 py-4"
+        />
         <p className="mt-4 text-xs text-slate-600">
           Powered by PayPal — your payment is protected by PayPal Buyer Protection.
         </p>

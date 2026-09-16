@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { formatPrice, PRODUCTS } from '../lib/products'
+import { trackEvent, type AffiliatePartner, type ResourceId } from '../lib/analytics'
 
 export const Route = createFileRoute('/videos')({
   component: VideosPage,
@@ -43,9 +44,11 @@ type Tool = {
   benefit: string
   // 🔵 REPLACE each href with your real affiliate link.
   href: string
+  partner: AffiliatePartner
   // Optional companion PDF guide shown as a second button.
   pdfHref?: string
   pdfLabel?: string
+  resource?: ResourceId
 }
 
 const RECOMMENDED_TOOLS: Tool[] = [
@@ -53,25 +56,31 @@ const RECOMMENDED_TOOLS: Tool[] = [
     name: 'Tangem Wallet',
     benefit: 'A tap-to-sign card wallet — cold storage as simple as tapping your phone.',
     href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    partner: 'tangem',
   },
   {
     name: 'ELLIPAL Wallet',
     benefit: 'A fully air-gapped wallet with no USB or Bluetooth — keys never touch the internet.',
     href: 'https://www.ellipal.com/?rfsn=8708468.a45049',
+    partner: 'ellipal',
     pdfHref: '/downloads/ELLIPAL_Setup_Guide.pdf',
     pdfLabel: 'Setup Guide (PDF)',
+    resource: 'ellipal_setup_guide',
   },
   {
     name: 'Crypto Security Toolkit',
     benefit: 'A trusted resource for seed-phrase backups and hardened self-custody.',
     href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    partner: 'tangem',
     pdfHref: '/downloads/Tangem_Beginners_Guide.pdf',
     pdfLabel: 'Setup Guide (PDF)',
+    resource: 'tangem_beginners_guide',
   },
   {
     name: 'Ledger',
     benefit: 'The most widely used hardware wallet in the world — stores keys offline, supports XRP, Bitcoin, and more.',
     href: 'https://shop.ledger.com/?r=2f2485b5c526',
+    partner: 'ledger',
   },
 ]
 
@@ -192,6 +201,7 @@ function VideosPage() {
               href={CHANNEL_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackEvent('social_link_click', { platform: 'youtube', placement: 'videos_header' })}
               className="mt-6 inline-flex items-center gap-2 px-5 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -293,6 +303,12 @@ function MasterclassSection() {
                 href="https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent('product_checkout_click', {
+                    product_id: MASTERCLASS.productId,
+                    placement: 'videos_masterclass',
+                  })
+                }
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
               >
                 Buy the Masterclass
@@ -338,6 +354,7 @@ function MasterclassSection() {
                   href={MASTERCLASS.walletAffiliateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('affiliate_link_click', { partner: 'tangem', placement: 'videos_masterclass' })}
                   className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
                 >
                   View Recommended Wallet →
@@ -378,6 +395,7 @@ function RecommendedToolsSection() {
                   href={tool.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackEvent('affiliate_link_click', { partner: tool.partner, placement: 'videos_recommended_tools' })}
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
                 >
                   View Tool
@@ -387,6 +405,14 @@ function RecommendedToolsSection() {
                     href={tool.pdfHref}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => {
+                      if (tool.resource) {
+                        trackEvent('resource_download_click', {
+                          resource: tool.resource,
+                          placement: 'videos_recommended_tools',
+                        })
+                      }
+                    }}
                     className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
                   >
                     {tool.pdfLabel || 'Download PDF'}

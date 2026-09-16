@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { trackEvent, type ResourceId } from '../lib/analytics'
 
 export const Route = createFileRoute('/thank-you')({
   component: ThankYouPage,
@@ -23,6 +24,7 @@ type Download = {
   title: string
   file: string
   description: string
+  resource: ResourceId
 }
 
 // Each entry links to /downloads/<file> served from /public/downloads/.
@@ -31,26 +33,31 @@ const DOWNLOADS: Download[] = [
     title: 'Crypto Inheritance Checklist',
     file: 'crypto-inheritance-checklist.pdf',
     description: 'A step-by-step checklist to make sure your heirs can actually find and inherit your crypto.',
+    resource: 'crypto_inheritance_checklist',
   },
   {
     title: 'Crypto Inheritance Fillable Workbook',
     file: 'your-purchased-workbook.pdf',
     description: 'A fill-in-the-blanks workbook to document wallets, access, and instructions in one place.',
+    resource: 'crypto_inheritance_workbook',
   },
   {
     title: 'Beneficiary Access Template',
     file: 'beneficiary-access-template.pdf',
     description: 'A ready-to-use template for securely passing access details to the people you trust.',
+    resource: 'beneficiary_access_template',
   },
 {
     title: 'Asset Protection Starter Guide',
     file: 'asset-protection-guide.pdf',
     description: 'Practical first steps to shield what you’ve built — without an eight-figure trust budget.',
+    resource: 'asset_protection_guide',
   },
   {
     title: 'Trust & Titling Starter Checklist',
     file: 'trust-titling-checklist.pdf',
     description: 'How to title accounts and assets correctly so your protection plan actually holds up.',
+    resource: 'trust_titling_checklist',
   },
 ]
 
@@ -87,6 +94,12 @@ function ThankYouPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 download
+                onClick={() =>
+                  trackEvent('resource_download_click', {
+                    resource: d.resource,
+                    placement: 'thank_you_delivery',
+                  })
+                }
                 className="inline-flex w-full items-center justify-center gap-2 px-4 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

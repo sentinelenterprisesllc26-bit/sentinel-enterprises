@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { trackEvent, type AffiliatePartner, type ResourceId, type VideoId } from '../lib/analytics'
 
 export const Route = createFileRoute('/downloads')({
   component: DownloadsPage,
@@ -39,14 +40,16 @@ type Download = {
   title: string
   description: string
   href: string
+  resource: ResourceId
   badge?: string
   // When true, the button invites an email signup instead of an instant download.
   emailGated?: boolean
   // Optional secondary link nudging the reader toward the matching paid guide
   // or affiliate tool right next to the free download.
-  upsell?: { label: string; href: string; external?: boolean }
+  upsell?: { label: string; href: string; external?: boolean; partner?: AffiliatePartner }
   // Optional companion video for this guide, shown as a "Watch on YouTube" button.
   youtubeUrl?: string
+  video?: VideoId
 }
 
 type DownloadGroup = {
@@ -67,6 +70,7 @@ const groups: DownloadGroup[] = [
         // To deliver this after email signup instead of an instant download,
         // it points at the existing lead-magnet page + Netlify form.
         href: '/crypto-inheritance-checklist',
+        resource: 'crypto_inheritance_checklist',
         badge: 'Free',
         emailGated: true,
       },
@@ -81,13 +85,15 @@ const groups: DownloadGroup[] = [
         description:
           'An accessible introduction to XRP — how it works, why it matters for cross-border payments, and what crypto holders need to know before buying or holding.',
         href: '/downloads/XRP_Essentials_Guide.pdf',
-        upsell: { label: 'Buy XRP on Uphold →', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', external: true },
+        resource: 'xrp_essentials_guide',
+        upsell: { label: 'Buy XRP on Uphold →', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', external: true, partner: 'uphold' },
       },
 {
         title: 'XRP Ripple Book',
         description:
           'An in-depth look at Ripple, the company behind XRP, its technology, regulatory history, and what the settlement means for long-term holders.',
         href: '/downloads/XRP_Ripple_Book.pdf',
+        resource: 'xrp_ripple_book',
       },
     ],
   },
@@ -100,16 +106,20 @@ const groups: DownloadGroup[] = [
         description:
           'Complete setup instructions for the ELLIPAL air-gapped hardware wallet — the safest way to store crypto offline with no USB or Bluetooth attack surface.',
         href: '/downloads/ELLIPAL_Setup_Guide.pdf',
-        upsell: { label: 'Shop ELLIPAL →', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', external: true },
+        resource: 'ellipal_setup_guide',
+        upsell: { label: 'Shop ELLIPAL →', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', external: true, partner: 'ellipal' },
         youtubeUrl: 'https://www.youtube.com/watch?v=VGUBgFpx-0U',
+        video: 'ellipal_setup',
       },
       {
         title: "Tangem Beginner's Guide",
         description:
           'Get started with the Tangem card wallet — a card-sized, chip-protected cold storage device perfect for beginners stepping into self-custody for the first time.',
         href: '/downloads/Tangem_Beginners_Guide.pdf',
-        upsell: { label: 'Get Tangem — code FUSB6E →', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', external: true },
+        resource: 'tangem_beginners_guide',
+        upsell: { label: 'Get Tangem — code FUSB6E →', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', external: true, partner: 'tangem' },
         youtubeUrl: 'https://www.youtube.com/watch?v=WNlgRXtUtK4',
+        video: 'tangem_beginner',
       },
     ],
   },
@@ -185,7 +195,7 @@ function DownloadsPage() {
   )
 }
 
-function DownloadCard({ title, description, href, badge, emailGated, upsell, youtubeUrl }: Download) {
+function DownloadCard({ title, description, href, resource, badge, emailGated, upsell, youtubeUrl, video }: Download) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 flex flex-col hover:border-amber-500/50 transition-colors">
       <div className="flex items-start justify-between gap-3 mb-2">
@@ -219,6 +229,7 @@ function DownloadCard({ title, description, href, badge, emailGated, upsell, you
             href={href}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('resource_download_click', { resource, placement: 'downloads_library' })}
             className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -236,6 +247,11 @@ function DownloadCard({ title, description, href, badge, emailGated, upsell, you
             href={youtubeUrl}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              if (video) {
+                trackEvent('video_link_click', { video_id: video, placement: 'downloads_library' })
+              }
+            }}
             className="inline-flex items-center px-4 py-2.5 rounded-xl border border-slate-600 text-slate-100 text-sm font-semibold hover:bg-slate-800/70 transition-colors"
           >
             Watch on YouTube
@@ -246,6 +262,11 @@ function DownloadCard({ title, description, href, badge, emailGated, upsell, you
         <a
           href={upsell.href}
           {...(upsell.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          onClick={() => {
+            if (upsell.partner) {
+              trackEvent('affiliate_link_click', { partner: upsell.partner, placement: 'downloads_upsell' })
+            }
+          }}
           className="inline-flex items-center justify-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-xs font-semibold transition-colors"
         >
           {upsell.label}

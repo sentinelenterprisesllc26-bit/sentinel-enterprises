@@ -72,6 +72,7 @@ function CryptoMasteryPage() {
             </p>
             <CheckoutButton
               productId="crypto-mastery"
+              placement="crypto_mastery_hero"
               className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-950 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
             >
               Get Instant Access — $17
@@ -148,6 +149,7 @@ function CryptoMasteryPage() {
             </ul>
             <CheckoutButton
               productId="crypto-mastery"
+              placement="crypto_mastery_bottom"
               className="w-full inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 disabled:opacity-60 text-slate-950 font-bold text-lg rounded-xl transition-all"
             >
               Buy Now — Instant Download

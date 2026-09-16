@@ -1,5 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { trackEvent } from '../lib/analytics'
+import { submitNetlifyFormOnce } from '../lib/forms'
 
 export const Route = createFileRoute('/sentinel-squad')({
   component: SentinelSquadPage,
@@ -129,6 +131,7 @@ function HeroSection() {
             href={CHANNEL_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackEvent('social_link_click', { platform: 'youtube', placement: 'squad_hero' })}
             className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border border-white/20 transition-all"
           >
             Watch our YouTube channel →
@@ -236,22 +239,24 @@ function EpisodeCard({ number, title, description, youtubeId }: Episode) {
 function NotifySection() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const submittingRef = useRef(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    if (status === 'submitting' || submittingRef.current) return
+    submittingRef.current = true
     setStatus('submitting')
+    const form = e.currentTarget
     try {
-      const formData = new FormData(e.currentTarget)
-      await fetch('/__forms.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
-      })
+      const accepted = await submitNetlifyFormOnce(form, () =>
+        trackEvent('lead_form_success', { form_name: 'sentinel_squad_notify', placement: 'sentinel_squad_page' }),
+      )
+      if (!accepted) return
       setStatus('success')
       setEmail('')
     } catch {
       setStatus('error')
-    }
+    } finally { submittingRef.current = false }
   }
 
   return (
