@@ -438,10 +438,26 @@ function HealthyWealthySection() {
     'https://photos.smugmug.com/Three-Social-Assets-B/Product-Photos/i-C9Q46g3/0/MX8d2BD6PMw8DrwMWXgmNqkRCx47Bcn9ZbvG9Mm78/L/1223_THREE4437-L.jpg'
   ]
   const videos = [
-    { id: 'Mm9zFV4UgS0', title: 'GLP-1: What You Actually Need to Know' },
-    { id: 'qD9dG3dBDlE', title: 'GLP THREE: Natural GLP-1 Support' },
-    { id: '-Wqu0mxNPQU', title: 'Kynetik Berry Blast: The Sound of Summer' },
-    { id: 'ADVTMWt1eeM', title: 'THREE International Wellness' }
+    {
+      id: 'Mm9zFV4UgS0',
+      title: 'GLP-1: What You Actually Need to Know',
+      description: 'A clear, science-first breakdown of what GLP-1 actually is and what you need to know about it.',
+    },
+    {
+      id: 'qD9dG3dBDlE',
+      title: 'GLP THREE: Natural GLP-1 Support',
+      description: "How GLP THREE from THREE International supports your body's own natural GLP-1 production.",
+    },
+    {
+      id: '-Wqu0mxNPQU',
+      title: 'Kynetik Berry Blast: The Sound of Summer',
+      description: 'A quick taste of Kynetik Berry Blast, the refreshing seasonal flavor from THREE International.',
+    },
+    {
+      id: 'ADVTMWt1eeM',
+      title: 'THREE International Wellness',
+      description: 'A short introduction to THREE International and the science-backed wellness line behind it.',
+    },
   ]
   return (
     <section id="healthy-wealthy" className="py-24 bg-slate-900">
@@ -485,7 +501,10 @@ function HealthyWealthySection() {
                   frameBorder="0"
                 />
               </div>
-              <div className="px-4 py-3 text-center text-slate-200 text-sm font-medium">{v.title}</div>
+              <div className="px-4 py-3 text-center">
+                <p className="text-slate-200 text-sm font-medium">{v.title}</p>
+                <p className="mt-1 text-slate-400 text-xs leading-relaxed">{v.description}</p>
+              </div>
             </div>
           ))}
         </div>
