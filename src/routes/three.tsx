@@ -6,13 +6,13 @@ export const Route = createFileRoute('/three')({
       { title: 'Three Wellness & Opportunity - Sentinel Enterprises' },
       {
         name: 'description',
-        content: 'Discover Three International wellness products and explore the opportunity to build your own business. Learn about Vitalité, Visage, and Kynetik.',
+        content: 'Discover the full THREE International product line — Vitalité, Collagène, Éternel, Imúne, Purifí, Revíve, GLP THREE, Visage skin care, and Kynetik — and explore the opportunity to build your own business.',
       },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Three Wellness & Opportunity - Sentinel Enterprises' },
       {
         property: 'og:description',
-        content: 'Discover Three International wellness products and explore the opportunity to build your own business. Learn about Vitalité, Visage, and Kynetik.',
+        content: 'Discover the full THREE International product line — Vitalité, Collagène, Éternel, Imúne, Purifí, Revíve, GLP THREE, Visage skin care, and Kynetik — and explore the opportunity to build your own business.',
       },
       { property: 'og:url', content: 'https://sentinelenterprisesllc.com/three' },
     ],
@@ -27,7 +27,9 @@ function ThreePage() {
   return (
     <>
       <ThreeHero />
+      <ThreeTrustBand />
       <ThreeProducts />
+      <ThreeScience />
       <ThreeOpportunity />
       <ThreeFAQ />
       <ThreeDisclosure />
@@ -73,46 +75,184 @@ function ThreeHero() {
             Learn About the Opportunity →
           </a>
         </div>
+
+        <img
+          src="/images/three/full-catalog.webp"
+          alt="The full THREE International product line"
+          loading="lazy"
+          className="mt-14 max-w-4xl w-full mx-auto"
+        />
+      </div>
+    </section>
+  )
+}
+
+const PRODUCTS = [
+  {
+    id: 'vitalite',
+    name: 'Vitalité',
+    category: 'Superfood Blend + Multivitamin Complex',
+    description: 'A comprehensive daily formula featuring vitamins, minerals, and nutrients to support your foundational nutritional needs.',
+    image: '/images/three/card-vitalite.jpg',
+    benefits: ['Vitamins & Minerals', 'Daily Nutrition', 'Wellness Support']
+  },
+  {
+    id: 'collagene',
+    name: 'Collagène',
+    category: 'Marine Sourced Collagen',
+    description: 'A delicious blend of collagen and other powerful ingredients that nourishes cells to keep skin, hair, and nails vibrant and healthy.',
+    image: '/images/three/collagene-box.webp',
+    benefits: ['Skin, Hair & Nails', 'Marine Sourced', '10-Packet Supply']
+  },
+  {
+    id: 'eternel',
+    name: 'Éternel',
+    category: 'Antioxidant Super-Blend',
+    description: 'An advanced blend of liposomal antioxidants and polyphenols that helps protect your body’s cells from the damage caused by free radicals.',
+    image: '/images/three/eternel-box.webp',
+    benefits: ['Cellular Protection', 'Polyphenol Blend', 'Age-Defying']
+  },
+  {
+    id: 'imune',
+    name: 'Imúne',
+    category: 'Total Body Immune Support',
+    description: 'Specially designed to work at the cellular level, Imúne’s unique blend of vitamins, minerals, and phytochemicals supports your body’s natural immune response.',
+    image: '/images/three/imune-jar.webp',
+    benefits: ['Immune Support', 'Vitamins & Minerals', 'Cellular Level']
+  },
+  {
+    id: 'purifi',
+    name: 'Purifí',
+    category: 'Daily Whole-Body Detox',
+    description: 'An advanced blend of cleansing herbs and fulvic acid that works at the cellular level to support the body’s elimination organs.',
+    image: '/images/three/purifi-jar.webp',
+    benefits: ['Cellular Cleansing', 'Fulvic Acid', 'Daily Detox']
+  },
+  {
+    id: 'revive',
+    name: 'Revíve',
+    category: 'Renewal & Recovery',
+    description: 'A unique formula designed to work at the cellular level to support healthy joints and offer enhanced flexibility, mobility, and range of motion.',
+    image: '/images/three/revive-jar.webp',
+    benefits: ['Joint Support', 'Mobility & Flexibility', 'Cellular Renewal']
+  },
+  {
+    id: 'glp-three',
+    name: 'GLP THREE',
+    category: 'Dietary Supplement',
+    description: 'A daily dropper formula that supports your body’s own natural GLP-1 production, taken before meals or as desired.',
+    image: '/images/three/glp-three.png',
+    benefits: ['Natural GLP-1 Support', 'Simple Dropper Dose', 'Take Before Meals']
+  },
+  {
+    id: 'visage-pure-cleanse',
+    name: 'Visage Pure Cleanse',
+    category: 'Skin Care',
+    description: 'Refresh your skin and renew your spirit with a gentle daily cleanse designed for a versatile skin-care routine.',
+    image: '/images/three/card-visage-pure-cleanse.jpg',
+    benefits: ['Daily Cleanse', 'Skin Care', 'Topical Application']
+  },
+  {
+    id: 'visage-radiant-toner',
+    name: 'Visage Radiant Toner',
+    category: 'Skin Care',
+    description: 'Balance within, beauty without — a radiance-boosting toner that rounds out the Visage skin-care line.',
+    image: '/images/three/card-visage-radiant-toner.jpg',
+    benefits: ['Radiance Boost', 'Skin Care', 'Topical Application']
+  },
+  {
+    id: 'visage-super-serum',
+    name: 'Visage Super Serum',
+    category: 'Skin Care',
+    description: 'A serum that’s good for your skin and good for your soul — a dedicated formula designed to be a versatile addition to your daily beauty routine.',
+    image: '/images/three/card-visage-super-serum.jpg',
+    benefits: ['Skin Care', 'Daily Routine', 'Topical Application']
+  },
+  {
+    id: 'kynetik',
+    name: 'Kynetik',
+    category: 'Clean Caffeine Drink Mix',
+    description: 'A caffeinated drink mix offering a flavorful Cherry Rush taste for your active days and routines.',
+    image: '/images/three/kynetik-cherry-rush.jpg',
+    benefits: ['Clean Caffeine', 'Cherry Rush Flavor', 'Mix with Water']
+  }
+]
+
+function ThreeTrustBand() {
+  return (
+    <section className="py-16 bg-slate-950 border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-10">
+        <img
+          src="/images/three/lifestyle-group.jpg"
+          alt="Sharing THREE International products"
+          loading="lazy"
+          className="w-full md:w-1/2 rounded-3xl object-cover max-h-96"
+        />
+        <div className="md:w-1/2 text-center md:text-left">
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            Trusted & Referenced
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Formulated Products, Real Community</h2>
+          <p className="text-slate-400 leading-relaxed mb-6">
+            THREE International's cellular absorption technology and select formulas are referenced in the Prescribers' Digital
+            Reference (PDR) &mdash; the same directory clinicians use to look up supplement and drug information.
+          </p>
+          <img
+            src="/images/three/pdr-listing.jpg"
+            alt="THREE products listed in the Prescribers' Digital Reference (PDR)"
+            loading="lazy"
+            className="rounded-2xl border border-slate-800 max-w-xs mx-auto md:mx-0"
+          />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ThreeScience() {
+  const topics = [
+    { name: 'Molecular Shuttles', image: '/images/three/science-molecular-shuttles.png' },
+    { name: 'Micelles', image: '/images/three/science-micelles.png' },
+    { name: 'Fulvic Acid', image: '/images/three/science-fulvic-acid.png' },
+    { name: 'Hydrolysis', image: '/images/three/science-hydrolysis.png' },
+  ]
+
+  return (
+    <section className="py-24 bg-slate-900 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Cellular Absorption Technologies</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white mb-4">The Science Behind the Formulas</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Every THREE formula is built to get nutrients where they actually work &mdash; inside the cell.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {topics.map((t) => (
+            <img
+              key={t.name}
+              src={t.image}
+              alt={`${t.name} — THREE cellular absorption technology`}
+              loading="lazy"
+              className="w-full rounded-2xl border border-slate-800 bg-white"
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
 }
 
 function ThreeProducts() {
-  const products = [
-    {
-      id: 'vitalite',
-      name: 'Vitalité',
-      category: 'Daily Multivitamin',
-      description: 'A comprehensive daily formula featuring vitamins, minerals, and nutrients to support your foundational nutritional needs.',
-      image: '/images/three/vitalite.webp',
-      benefits: ['Vitamins & Minerals', 'Daily Nutrition', 'Wellness Support']
-    },
-    {
-      id: 'visage',
-      name: 'Visage',
-      category: 'Super Serum',
-      description: 'A dedicated skin-care serum designed to be a versatile addition to your daily beauty routine.',
-      image: '/images/three/serum.webp',
-      benefits: ['Skin Care', 'Daily Routine', 'Topical Application']
-    },
-    {
-      id: 'kynetik',
-      name: 'Kynetik',
-      category: 'Berry Blast Drink Mix',
-      description: 'A caffeinated drink mix offering a flavorful berry taste for your active days and routines.',
-      image: '/images/three/kynetik.png',
-      benefits: ['Caffeinated', 'Berry Flavor', 'Mix with Water']
-    }
-  ]
+  const products = PRODUCTS
 
   return (
     <section className="py-24 bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Featured Products</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">The Full Product Line</h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            A selection of carefully crafted products designed to support your daily wellness journey.
+            Daily supplements, skin care, and clean-caffeine drink mixes &mdash; carefully crafted to support your wellness journey.
           </p>
         </div>
 
