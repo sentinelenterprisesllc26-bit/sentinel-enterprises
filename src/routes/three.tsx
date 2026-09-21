@@ -6,13 +6,13 @@ export const Route = createFileRoute('/three')({
       { title: 'Three Wellness & Opportunity - Sentinel Enterprises' },
       {
         name: 'description',
-        content: 'Discover Three International wellness products and explore the opportunity to build your own business. Learn about Vitalité, Visage, and Kynetik.',
+        content: 'Discover Three International wellness products and explore the opportunity to build your own business. Learn about Vitalité, the Visage Collection, Crème Caviar, GLP THREE, Collagène, and Kynetik.',
       },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Three Wellness & Opportunity - Sentinel Enterprises' },
       {
         property: 'og:description',
-        content: 'Discover Three International wellness products and explore the opportunity to build your own business. Learn about Vitalité, Visage, and Kynetik.',
+        content: 'Discover Three International wellness products and explore the opportunity to build your own business. Learn about Vitalité, the Visage Collection, Crème Caviar, GLP THREE, Collagène, and Kynetik.',
       },
       { property: 'og:url', content: 'https://sentinelenterprisesllc.com/three' },
     ],
@@ -28,6 +28,7 @@ function ThreePage() {
     <>
       <ThreeHero />
       <ThreeProducts />
+      <ThreeScience />
       <ThreeOpportunity />
       <ThreeFAQ />
       <ThreeDisclosure />
@@ -89,12 +90,36 @@ function ThreeProducts() {
       benefits: ['Vitamins & Minerals', 'Daily Nutrition', 'Wellness Support']
     },
     {
-      id: 'visage',
-      name: 'Visage',
-      category: 'Super Serum',
-      description: 'A dedicated skin-care serum designed to be a versatile addition to your daily beauty routine.',
-      image: '/images/three/serum.webp',
-      benefits: ['Skin Care', 'Daily Routine', 'Topical Application']
+      id: 'visage-collection',
+      name: 'Visage Collection',
+      category: '3-Step Skincare Routine',
+      description: 'The complete routine — Pure Cleanse, Radiant Toner, and Super Serum — designed to cleanse, tone, and nourish as part of your daily skincare ritual.',
+      image: '/images/three/visage-collection.webp',
+      benefits: ['Pure Cleanse', 'Radiant Toner', 'Super Serum']
+    },
+    {
+      id: 'creme-caviar',
+      name: 'Crème Caviar',
+      category: 'Luxury Moisturizer',
+      description: 'A luxurious moisturizer that pairs rare botanical extracts with neurocosmetic molecules to hydrate, nourish, and revitalize the look of your skin. Vegan friendly and third-party tested.',
+      image: '/images/three/visage-creme-caviar.webp',
+      benefits: ['Neurocosmetic Molecules', 'Rare Botanicals', 'Vegan Friendly']
+    },
+    {
+      id: 'glp-three',
+      name: 'GLP THREE',
+      category: 'Wellness Supplement',
+      description: 'An oral dietary supplement designed to support your overall wellness goals — no injections, and easy to take wherever your day takes you. As with any supplement, consult your physician first.',
+      image: '/images/three/glp-three.webp',
+      benefits: ['Oral Supplement', 'No Injections', 'Travel Friendly']
+    },
+    {
+      id: 'collagene',
+      name: 'Collagène',
+      category: 'Marine Collagen',
+      description: 'Delivers 5 grams of highly bioavailable marine collagen in a liquid format, designed to support your body\u2019s natural collagen production for vibrant, youthful-looking skin.',
+      image: '/images/three/collagene.webp',
+      benefits: ['5g Marine Collagen', 'Liquid Format', 'Bioavailable']
     },
     {
       id: 'kynetik',
@@ -151,6 +176,71 @@ function ThreeProducts() {
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  )
+}
+
+function ThreeScience() {
+  const studies = [
+    {
+      title: 'Cellular Absorption & Bioavailability',
+      stat: '95%',
+      statLabel: 'Éternel absorption vs. 10% organic control',
+      description: 'An in-vitro Caco-2 assay found THREE products are 3 to 9.5 times more absorbable than a standard organic control molecule, thanks to THREE\u2019s Cellular Absorption Technologies.',
+      href: '/pdfs/THREE-Cellular-Absorption-Study.pdf',
+      linkLabel: 'Read the absorption study'
+    },
+    {
+      title: 'Epigenetics Study',
+      stat: '8 Genes',
+      statLabel: 'tested across Vitalité, Revíve, Éternel & Collagène',
+      description: 'Researchers measured how THREE supplements support the regulation of genes tied to energy, antioxidant status, inflammation balance, and cognitive function.',
+      href: '/pdfs/THREE-Epigenetics-Study.pdf',
+      linkLabel: 'Read the epigenetics study'
+    },
+    {
+      title: 'Visage Crème Caviar Fact Sheet',
+      stat: 'Dr. Dan Gubler',
+      statLabel: 'THREE Chief Scientific Officer · Caltech-trained · 16 patents',
+      description: 'Explore the full ingredient story behind Crème Caviar, from neurocosmetic molecules to rare botanical extracts, along with usage directions and certifications.',
+      href: '/pdfs/THREE-Visage-Creme-Caviar-Fact-Sheet.pdf',
+      linkLabel: 'View the fact sheet'
+    }
+  ]
+
+  return (
+    <section className="py-24 bg-slate-950 border-t border-slate-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Backed by Science</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            THREE invests in clinical research on cellular absorption and epigenetics. Compare each product\u2019s absorption to the standard organic control — not to other products.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {studies.map((s) => (
+            <div key={s.title} className="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col hover:border-cyan-500/30 transition-colors">
+              <p className="text-4xl font-black text-cyan-400 mb-2">{s.stat}</p>
+              <p className="text-xs text-slate-500 uppercase tracking-wide mb-4">{s.statLabel}</p>
+              <h3 className="text-xl font-bold text-white mb-3">{s.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{s.description}</p>
+              <a
+                href={s.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-semibold text-sm transition-colors"
+              >
+                {s.linkLabel} →
+              </a>
+            </div>
+          ))}
+        </div>
+
+        <p className="text-xs text-slate-500 text-center mt-10 max-w-3xl mx-auto leading-relaxed">
+          These studies are conducted by or in partnership with THREE International and are shared for educational purposes. Individual results vary. These statements have not been evaluated by the Food and Drug Administration. These products are not intended to diagnose, treat, cure, or prevent any disease.
+        </p>
       </div>
     </section>
   )
