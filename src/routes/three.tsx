@@ -27,6 +27,7 @@ function ThreePage() {
   return (
     <>
       <ThreeHero />
+      <ThreeStories />
       <ThreeProducts />
       <ThreeScience />
       <ThreeOpportunity />
@@ -72,6 +73,94 @@ function ThreeHero() {
             className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:border-cyan-400/50 transition-all hover:-translate-y-0.5 w-full sm:w-auto"
           >
             Learn About the Opportunity →
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ThreeStories() {
+  const episodes = [
+    {
+      id: 'U4Yr-mK-7bI',
+      episode: 'Episode 1',
+      title: "Maya's Monday",
+      blurb: 'Her whole routine started with one bottle. A gray Monday turns into something more.',
+    },
+    {
+      id: 'X7eECpb8iHQ',
+      episode: 'Episode 2',
+      title: "Maya's First 30 Days",
+      blurb: 'Thirty days, one small change at a time — week by week, with the team that made the difference.',
+    },
+    {
+      id: 'dZIOn_gt28Q',
+      episode: 'Episode 3',
+      title: 'The Little Bottle',
+      blurb: 'A GLP THREE spotlight — the little bottle everyone asks about. A few drops, ten seconds, once a day.',
+    },
+  ]
+
+  return (
+    <section className="py-24 bg-slate-950">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium mb-6">
+            THE MAYA STORY SERIES
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Watch the Stories</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Follow Maya from gray mornings to a routine that changed everything — then start your own story.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {episodes.map((e) => (
+            <div key={e.id} className="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden flex flex-col hover:border-amber-500/30 transition-colors">
+              <div className="aspect-[9/16] bg-black">
+                <iframe
+                  className="w-full h-full"
+                  src={`https://www.youtube-nocookie.com/embed/${e.id}`}
+                  title={`${e.title} — ${e.episode}`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="p-6 flex-1 flex flex-col">
+                <p className="text-cyan-400 font-semibold text-sm mb-1">{e.episode}</p>
+                <h3 className="text-xl font-bold text-white mb-2">{e.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-1">{e.blurb}</p>
+                <a
+                  href={`https://www.youtube.com/watch?v=${e.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-400 hover:text-amber-300 font-semibold text-sm"
+                >
+                  Watch on YouTube →
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="https://www.youtube.com/@JenaeSentinel"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-900 font-semibold rounded-xl transition-colors"
+          >
+            Subscribe on YouTube
+          </a>
+          <a
+            href="https://jenae.threeinternational.com/"
+            target="_blank"
+            rel="sponsored noopener noreferrer external commercial"
+            className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-900 font-semibold rounded-xl transition-colors"
+          >
+            Start Your Story
           </a>
         </div>
       </div>
