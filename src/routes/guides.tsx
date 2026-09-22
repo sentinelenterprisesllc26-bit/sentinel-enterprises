@@ -10,11 +10,11 @@ export const Route = createFileRoute('/guides')({
  * INDIVIDUAL checkout URLs — Stripe Payment Links for each $17.99 guide
  * Update these with your real Stripe links.
  */
-const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
+const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00'
 const INDIVIDUAL_CHECKOUT_URLS: Partial<Record<ProductId, string>> = {
-  'crypto-inheritance-bundle': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-'asset-protection-guide': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
-  'crypto-inheritance-masterclass': 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06',
+  'crypto-inheritance-bundle': 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00',
+'asset-protection-guide': 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00',
+  'crypto-inheritance-masterclass': 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00',
 }
 
 type Product = {
