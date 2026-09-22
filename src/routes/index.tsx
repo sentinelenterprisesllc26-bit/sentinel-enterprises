@@ -198,7 +198,7 @@ function ValueLadderSection() {
   )
 }
 
-const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
+const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00'
 
 function PaidProductsSection() {
   const included = [
