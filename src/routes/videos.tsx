@@ -159,6 +159,18 @@ const groups: VideoGroup[] = [
     label: 'Health & Wellness (THREE International)',
     items: [
       {
+        id: 'HwcwugAJIJE',
+        title: 'The Visage Collection from THREE — 3-Step Skincare Routine',
+        description:
+          'Meet Pure Cleanse, Radiant Toner, and Super Serum. Jenae is an independent THREE Brand Ambassador and may earn commissions from qualifying purchases.',
+      },
+      {
+        id: '6jVX7t1yx4s',
+        title: 'Crème Caviar from THREE — Luxury Skincare Spotlight',
+        description:
+          'A look at Crème Caviar, a moisturizer with botanical extracts. Jenae is an independent THREE Brand Ambassador and may earn commissions from qualifying purchases.',
+      },
+      {
         id: 'Mm9zFV4UgS0',
         title: 'Dr. Dan Breaks Down GLP-1: What You Actually Need to Know',
         description:
