@@ -1,0 +1,9 @@
+# Path aliases / .org-era URLs → canonical .com pages (permanent)
+/resources/wallet-security-checklist    /crypto-inheritance-checklist    301!
+/resources/wallet-security-checklist/   /crypto-inheritance-checklist    301!
+/crypto-security-checklist              /crypto-inheritance-checklist    301!
+/crypto-security-checklist/             /crypto-inheritance-checklist    301!
+/caregiver-checklist                    /                              301!
+/caregiver-checklist/                   /                              301!
+/wallet-security-checklist              /crypto-inheritance-checklist    301!
+/crypto-checklist                       /crypto-inheritance-checklist    301!

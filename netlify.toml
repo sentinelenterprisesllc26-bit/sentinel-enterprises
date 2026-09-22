@@ -9,3 +9,52 @@
   command = "npm run dev"
   targetPort = 3000
   port = 8888
+
+# Path aliases / .org-era URLs → canonical .com pages (permanent)
+[[redirects]]
+  from = "/resources/wallet-security-checklist"
+  to = "/crypto-inheritance-checklist"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resources/wallet-security-checklist/"
+  to = "/crypto-inheritance-checklist"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-security-checklist"
+  to = "/crypto-inheritance-checklist"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-security-checklist/"
+  to = "/crypto-inheritance-checklist"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/caregiver-checklist"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/caregiver-checklist/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/wallet-security-checklist"
+  to = "/crypto-inheritance-checklist"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-checklist"
+  to = "/crypto-inheritance-checklist"
+  status = 301
+  force = true

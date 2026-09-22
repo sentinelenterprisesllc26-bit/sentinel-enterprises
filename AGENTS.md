@@ -6,7 +6,7 @@ This document provides an overview of the project for developers and AI agents.
 
 Marketing website for Sentinel Enterprises LLC — a consulting firm helping working families and crypto holders with asset protection, digital asset inheritance planning, and caregiver tax education.
 
-**Domain:** sentinel-enterprises.com
+**Domain:** sentinelenterprisesllc.com
 
 ## Tech Stack
 
