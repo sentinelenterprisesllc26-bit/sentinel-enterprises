@@ -70,7 +70,7 @@ function ThankYouPage() {
             Thank You for Your Purchase! 🎉
           </h1>
           <p className="text-xl text-slate-400 leading-relaxed mb-12 max-w-2xl mx-auto">
-            Your Complete Protection Bundle is ready. All 7 guides are listed below.
+            Your Complete Protection Bundle is ready. Your downloads are listed below.
           </p>
         </div>
 
@@ -118,10 +118,10 @@ function ThankYouPage() {
             <p className="text-slate-300 leading-relaxed max-w-xl mx-auto">
               Video coming soon — check back here or email us at{' '}
               <a
-                href="mailto:sentinel@sentinelenterprisesllc.com"
+                href="mailto:Sentinelenterprisesllc26@gmail.com"
                 className="text-amber-400 hover:text-amber-300 font-semibold"
               >
-                sentinel@sentinelenterprisesllc.com
+                Sentinelenterprisesllc26@gmail.com
               </a>
             </p>
           </div>

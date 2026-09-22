@@ -32,7 +32,7 @@ const bundleProduct: Product = {
   id: 'complete-bundle',
   badge: 'Complete Bundle',
   featured: true,
-  title: 'Complete Protection Bundle — All 4 Guides',
+  title: 'Complete Protection Bundle — All 3 Guides',
   tagline: 'Every guide, workbook, checklist, and template. One price, lifetime access.',
   description:
     'Get everything Sentinel offers in one bundle: crypto inheritance planning, asset protection basics, and the full masterclass with companion workbook. Buy once, keep forever.',
@@ -56,7 +56,7 @@ const individualProducts: Product[] = [
       'Fillable Workbook for organizing your holdings',
       'Beneficiary Access Template',
     ],
-    buttonText: 'Buy Now — $17.99',
+    buttonText: 'Get Complete Bundle — $17.99',
   },
 {
     id: 'asset-protection-guide',
@@ -69,7 +69,7 @@ const individualProducts: Product[] = [
       'Trust & Titling Starter Checklist',
       'Plain-English explanations of protective structures',
     ],
-    buttonText: 'Buy Now — $17.99',
+    buttonText: 'Get Complete Bundle — $17.99',
   },
   {
     id: 'crypto-inheritance-masterclass',
@@ -82,7 +82,7 @@ const individualProducts: Product[] = [
       'Companion PDF Workbook',
       'Crypto Inheritance Checklist',
     ],
-    buttonText: 'Buy Now — $17.99',
+    buttonText: 'Get Complete Bundle — $17.99',
   },
 ]
 
@@ -154,7 +154,7 @@ function GuidesPage() {
       <section className="bg-slate-950 py-12 px-4">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-white text-center mb-2">Or Buy Individual Guides</h2>
-          <p className="text-slate-400 text-center mb-10">Each guide is $17.99. You can also explore the complete bundle above.</p>
+          <p className="text-slate-400 text-center mb-10">Individual Stripe links are not live yet — Buy opens the Complete Bundle checkout ($17.99) until separate payment links are added.</p>
           <div className="grid sm:grid-cols-2 gap-6">
             {individualProducts.map((p) => (
               <ProductCard

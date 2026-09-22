@@ -58,3 +58,27 @@
   to = "/crypto-inheritance-checklist"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/buy"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/buy/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bundle"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/bundle/"
+  to = "/guides"
+  status = 301
+  force = true
