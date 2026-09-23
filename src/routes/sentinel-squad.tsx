@@ -32,31 +32,30 @@ type Character = {
   bio: string
 }
 
-// 🔵 Update to match the final cast as the series develops.
 const CHARACTERS: Character[] = [
   {
-    emoji: '🛡️',
-    name: 'Captain Sentinel',
-    role: 'The Protector',
-    bio: 'The team leader who shows families how to shield what they’ve built — no eight-figure budget required.',
+    emoji: '💡',
+    name: 'Jenae',
+    role: 'The Educator',
+    bio: 'The Squad’s guide who can’t resist breaking down exactly how money really moves — and what’s quietly costing you along the way.',
   },
   {
-    emoji: '🔑',
-    name: 'Coldkey',
-    role: 'The Crypto Guardian',
-    bio: 'A self-custody expert who keeps seed phrases safe and makes sure heirs can actually inherit digital assets.',
+    emoji: '🪙',
+    name: 'Coin',
+    role: 'The AI Assistant',
+    bio: 'A holographic data engine who turns confusing numbers into a glowing verdict — red for bad news, green for good.',
+  },
+  {
+    emoji: '🤨',
+    name: 'Marcus',
+    role: 'The Skeptic',
+    bio: 'The one who asks the question everyone else was too polite to ask — until the truth catches up with him too.',
   },
   {
     emoji: '🧾',
-    name: 'Ledger',
-    role: 'The Tax Whisperer',
-    bio: 'A sharp-eyed numbers hero who helps caregivers spot the deductions and credits they’ve been missing.',
-  },
-  {
-    emoji: '⚖️',
-    name: 'Trust',
-    role: 'The Planner',
-    bio: 'The calm strategist who turns confusing legal jargon into a plan a whole family can follow.',
+    name: 'Darius',
+    role: 'The Everyman',
+    bio: 'A hardworking guy stuck holding the receipt, wondering why sending money to family costs so much and takes so long.',
   },
 ]
 
@@ -71,9 +70,9 @@ type Episode = {
 const EPISODES: Episode[] = [
   {
     number: 'Ep. 01',
-    title: 'The Vault Without a Key',
+    title: 'The Old Bank Trick',
     description:
-      'When a family can’t reach their crypto, the Squad shows why self-custody and an inheritance plan matter before it’s too late.',
+      'Darius’s $500 wire transfer costs him $47 in fees and still hasn’t landed after three days. Jenae exposes how the old SWIFT system really works — then shows what instant, near-free settlement with ISO 20022 and XRP looks like.',
   },
   {
     number: 'Ep. 02',
