@@ -17,7 +17,7 @@ export function __setStripeFactoryForTests(f: (key: string) => StripeLike) {
   cachedKeyAccount = undefined
 }
 
-/** Which Stripe account does STRIPE_SECRET_KEY belong to? Never logs the key. */
+/** Which Stripe account does the delivery key belong to? Never logs the key. */
 async function keyAccount(stripe: StripeLike): Promise<string | null> {
   if (cachedKeyAccount !== undefined) return cachedKeyAccount
   try {
@@ -27,15 +27,33 @@ async function keyAccount(stripe: StripeLike): Promise<string | null> {
     console.error('[stripe-purchase] accounts.retrieve failed:', (err as { code?: string })?.code ?? 'unknown')
     cachedKeyAccount = null
   }
-  console.log(`[stripe-purchase] STRIPE_SECRET_KEY account: ${cachedKeyAccount ?? 'unknown'} (expected ${EXPECTED_STRIPE_ACCOUNT})`)
+  console.log(`[stripe-purchase] ${deliveryStripeKeySource()} account: ${cachedKeyAccount ?? 'unknown'} (expected ${EXPECTED_STRIPE_ACCOUNT})`)
   return cachedKeyAccount
+}
+
+/**
+ * Key used for paid-file delivery. Prefer STRIPE_DELIVERY_SECRET_KEY (a restricted key for
+ * acct_1SyKpPEPXDHjPrap); fall back to STRIPE_SECRET_KEY only if it's missing, so the
+ * Crypto Mastery functions (which use STRIPE_SECRET_KEY) stay untouched.
+ */
+export function deliveryStripeKey(): string | undefined {
+  const delivery = process.env.STRIPE_DELIVERY_SECRET_KEY?.trim()
+  if (delivery) return delivery
+  const fallback = process.env.STRIPE_SECRET_KEY?.trim()
+  return fallback || undefined
+}
+
+export function deliveryStripeKeySource(): 'STRIPE_DELIVERY_SECRET_KEY' | 'STRIPE_SECRET_KEY' | 'none' {
+  if (process.env.STRIPE_DELIVERY_SECRET_KEY?.trim()) return 'STRIPE_DELIVERY_SECRET_KEY'
+  if (process.env.STRIPE_SECRET_KEY?.trim()) return 'STRIPE_SECRET_KEY'
+  return 'none'
 }
 
 export async function lookupPurchase(sessionId: string | null): Promise<LookupResult> {
   if (!isCheckoutSessionId(sessionId)) {
     return { kind: 'error', status: 400, body: { ok: false, error: 'A valid purchase session is required.' } }
   }
-  const key = process.env.STRIPE_SECRET_KEY
+  const key = deliveryStripeKey()
   if (!key) {
     return { kind: 'error', status: 503, body: { ok: false, error: 'Purchase verification is not configured.', code: 'not_configured' } }
   }
@@ -48,7 +66,7 @@ export async function lookupPurchase(sessionId: string | null): Promise<LookupRe
     if (code === 'resource_missing') {
       const acct = await keyAccount(stripe)
       if (acct && acct !== EXPECTED_STRIPE_ACCOUNT) {
-        console.error(`[stripe-purchase] Session lookup failed: STRIPE_SECRET_KEY is for ${acct}, not ${EXPECTED_STRIPE_ACCOUNT}. Replace the key in Netlify env.`)
+        console.error(`[stripe-purchase] Session lookup failed: ${deliveryStripeKeySource()} is for ${acct}, not ${EXPECTED_STRIPE_ACCOUNT}. Set STRIPE_DELIVERY_SECRET_KEY to a restricted key for ${EXPECTED_STRIPE_ACCOUNT} in Netlify env.`)
         return {
           kind: 'error',
           status: 503,
