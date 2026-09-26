@@ -1,21 +1,16 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
-import { formatPrice, PRODUCTS, type ProductId } from '../lib/products'
+import { type ProductId } from '../lib/products'
+import { BUNDLE_CHECKOUT_URL, BuyCardsGrid } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/guides')({
   component: GuidesPage,
 })
 
 /*
- * BUNDLE_CHECKOUT_URL  — Stripe Payment Link for the $17.99 Complete Bundle
- * INDIVIDUAL checkout URLs — Stripe Payment Links for each $17.99 guide
- * Update these with your real Stripe links.
+ * Stripe Payment Links (Bundle $17.99, Ripple book $7.99, Pack $19.99) live in
+ * src/lib/buy-cards.tsx. The guides below are sold only as part of the
+ * Complete Protection Bundle — there are no separate per-guide checkouts.
  */
-const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00'
-const INDIVIDUAL_CHECKOUT_URLS: Partial<Record<ProductId, string>> = {
-  'crypto-inheritance-bundle': 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00',
-'asset-protection-guide': 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00',
-  'crypto-inheritance-masterclass': 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00',
-}
 
 type Product = {
   id: ProductId
@@ -37,7 +32,7 @@ const bundleProduct: Product = {
   description:
     'Get everything Sentinel offers in one bundle: crypto inheritance planning, asset protection basics, and the full masterclass with companion workbook. Buy once, keep forever.',
   includes: [
-    'Crypto Inheritance Protection Bundle (PDF checklist + fillable workbook + beneficiary template)',
+    'Crypto Inheritance Protection Bundle (PDF checklist + printable workbook + beneficiary template)',
         'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
     'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
   ],
@@ -50,13 +45,13 @@ const individualProducts: Product[] = [
     title: 'Crypto Inheritance Protection Bundle',
     tagline: 'Make sure your crypto reaches your heirs, not a frozen wallet.',
     description:
-      'Step-by-step PDF checklist, fillable workbook, and beneficiary access template for passing on digital assets without lost seed phrases or locked accounts.',
+      'Step-by-step PDF checklist, printable workbook, and beneficiary access template for passing on digital assets without lost seed phrases or locked accounts.',
     includes: [
       'Crypto Inheritance PDF Checklist',
-      'Fillable Workbook for organizing your holdings',
+      'Printable Workbook for organizing your holdings',
       'Beneficiary Access Template',
     ],
-    buttonText: 'Get Complete Bundle — $17.99',
+    buttonText: 'Get it in the Bundle — $17.99',
   },
 {
     id: 'asset-protection-guide',
@@ -69,7 +64,7 @@ const individualProducts: Product[] = [
       'Trust & Titling Starter Checklist',
       'Plain-English explanations of protective structures',
     ],
-    buttonText: 'Get Complete Bundle — $17.99',
+    buttonText: 'Get it in the Bundle — $17.99',
   },
   {
     id: 'crypto-inheritance-masterclass',
@@ -82,7 +77,7 @@ const individualProducts: Product[] = [
       'Companion PDF Workbook',
       'Crypto Inheritance Checklist',
     ],
-    buttonText: 'Get Complete Bundle — $17.99',
+    buttonText: 'Get it in the Bundle — $17.99',
   },
 ]
 
@@ -137,31 +132,28 @@ function GuidesPage() {
         </div>
       </section>
 
-      {/* === FEATURED BUNDLE === */}
-      <section className="bg-slate-900 py-12 px-4">
-        <div className="max-w-3xl mx-auto">
-          <p className="text-center text-sm text-amber-400 font-semibold uppercase tracking-widest mb-6">
-            Best Value
-          </p>
-          <ProductCard
-            {...bundleProduct}
-            checkoutUrl={BUNDLE_CHECKOUT_URL}
-          />
+      {/* === BUY: Bundle, Ripple book, Pack === */}
+      <section id="buy" className="bg-slate-900 py-12 px-4">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-center text-sm text-amber-400 font-semibold uppercase tracking-widest mb-2">Instant PDF downloads</p>
+          <h2 className="text-3xl font-black text-white text-center mb-8">Choose your guide</h2>
+          <BuyCardsGrid />
         </div>
       </section>
 
-      {/* === INDIVIDUAL GUIDES === */}
+      {/* === WHAT'S IN THE BUNDLE === */}
       <section className="bg-slate-950 py-12 px-4">
+        <div className="max-w-3xl mx-auto mb-10">
+          <ProductCard {...bundleProduct} checkoutUrl={BUNDLE_CHECKOUT_URL} />
+        </div>
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-white text-center mb-2">Or Buy Individual Guides</h2>
-          <p className="text-slate-400 text-center mb-10">Individual Stripe links are not live yet — Buy opens the Complete Bundle checkout ($17.99) until separate payment links are added.</p>
+          <h2 className="text-2xl font-bold text-white text-center mb-2">What’s inside the Complete Protection Bundle</h2>
+          <p className="text-slate-400 text-center mb-10">
+            Each guide below is included in the $17.99 Complete Protection Bundle (and in the $19.99 Pack) — they aren’t sold separately.
+          </p>
           <div className="grid sm:grid-cols-2 gap-6">
             {individualProducts.map((p) => (
-              <ProductCard
-                key={p.id}
-                {...p}
-                checkoutUrl={INDIVIDUAL_CHECKOUT_URLS[p.id] ?? BUNDLE_CHECKOUT_URL}
-              />
+              <ProductCard key={p.id} {...p} checkoutUrl={BUNDLE_CHECKOUT_URL} includedLabel />
             ))}
           </div>
         </div>
@@ -184,7 +176,6 @@ function GuidesPage() {
 }
 
 function ProductCard({
-  id,
   badge,
   title,
   tagline,
@@ -193,7 +184,8 @@ function ProductCard({
   buttonText,
   featured,
   checkoutUrl,
-}: Product & { checkoutUrl: string }) {
+  includedLabel,
+}: Product & { checkoutUrl: string; includedLabel?: boolean }) {
   return (
     <div
       className={`rounded-2xl border p-8 ${
@@ -221,10 +213,14 @@ function ProductCard({
         ))}
       </ul>
 
-      <div className="flex items-baseline gap-2 mb-4">
-        <span className="text-2xl font-black text-white">{formatPrice(PRODUCTS[id].amountCents)}</span>
-        <span className="text-slate-400 text-sm">one-time, lifetime access</span>
-      </div>
+      {includedLabel ? (
+        <p className="text-sm font-semibold text-amber-300 mb-4">Included in the $17.99 Complete Protection Bundle</p>
+      ) : (
+        <div className="flex items-baseline gap-2 mb-4">
+          <span className="text-2xl font-black text-white">$17.99</span>
+          <span className="text-slate-400 text-sm">one-time, lifetime access</span>
+        </div>
+      )}
 
       <a
         href={checkoutUrl}

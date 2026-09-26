@@ -5,6 +5,10 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Paid PDFs are bundled into the /api/download function only — never published.
+[functions.download]
+  included_files = ["netlify/private-assets/**"]
+
 [dev]
   command = "npm run dev"
   targetPort = 3000
@@ -82,3 +86,60 @@
   to = "/guides"
   status = 301
   force = true
+
+# Paid PDFs used to be public here. They are now delivered only via /api/download
+# after a verified Stripe purchase, so the old URLs must 404.
+[[redirects]]
+  from = "/downloads/crypto-inheritance-checklist.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/crypto-inheritance-fillable-workbook.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/your-purchased-workbook.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/beneficiary-access-template.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/asset-protection-guide.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/asset-protection-starter-guide.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/trust-titling-checklist.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/trust-titling-starter-checklist.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/downloads/XRP_Ripple_Book.pdf"
+  to = "/file-not-found.html"
+  status = 404
+  force = true
+

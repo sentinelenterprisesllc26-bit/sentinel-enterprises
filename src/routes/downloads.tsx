@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { BuyCardsGrid } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/downloads')({
   component: DownloadsPage,
@@ -83,12 +84,6 @@ const groups: DownloadGroup[] = [
         href: '/downloads/XRP_Essentials_Guide.pdf',
         upsell: { label: 'Buy XRP on Uphold →', href: 'https://wallet.uphold.com/signup?referral=bfb826d80a&campaign=uw_p_d_w_acq_raf&utm_source=raf&utm_medium=referafriend', external: true },
       },
-{
-        title: 'XRP Ripple Book',
-        description:
-          'An in-depth look at Ripple, the company behind XRP, its technology, regulatory history, and what the settlement means for long-term holders.',
-        href: '/downloads/XRP_Ripple_Book.pdf',
-      },
     ],
   },
   {
@@ -150,6 +145,18 @@ function DownloadsPage() {
               </div>
             </div>
           ))}
+
+          <div id="ripple-book">
+            <h2 className="flex items-center gap-3 text-2xl font-bold text-white mb-2">
+              <span aria-hidden="true">📘</span>
+              The Ripple Effect — XRP Book
+            </h2>
+            <p className="text-slate-400 mb-6 max-w-2xl">
+              Our in-depth look at Ripple, XRP, settlement technology, regulatory history, and what it means for long-term
+              holders is now a paid digital book. Get it on its own, or save with the Pack.
+            </p>
+            <BuyCardsGrid only={['book', 'pack']} />
+          </div>
 
           <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-2xl p-8 text-center">
             <h2 className="text-2xl font-bold text-white mb-2">Want the complete, follow-along version?</h2>
