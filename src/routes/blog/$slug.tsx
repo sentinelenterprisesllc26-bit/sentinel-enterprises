@@ -88,7 +88,7 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           </p>
           <Link to="/crypto-inheritance-checklist">Download the Crypto Inheritance Checklist →</Link>
           <p>
-            Want the complete follow-along system — training video, fillable workbook, and beneficiary access template?
+            Want the complete follow-along system — training video, printable workbook, and beneficiary access template?
           </p>
           <Link to="/guides">Get the Crypto Inheritance Protection Bundle →</Link>
         </div>

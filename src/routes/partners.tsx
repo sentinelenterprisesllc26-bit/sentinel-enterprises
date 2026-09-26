@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { BuyCardsGrid } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/partners')({
   component: PartnersPage,
@@ -90,11 +91,6 @@ const guides = [
     title: 'XRP Illustrated Guide',
     blurb: 'A plain-English visual primer',
     href: '/downloads/xrp_illustrated_guide.pdf',
-  },
-  {
-    title: 'The XRP & Ripple Book',
-    blurb: 'The deeper-dive reference read',
-    href: '/downloads/XRP_Ripple_Book.pdf',
   },
 ]
 
@@ -265,6 +261,20 @@ function PartnersPage() {
               Browse all free downloads →
             </Link>
           </p>
+        </div>
+      </section>
+
+      <section id="ripple-book" className="py-20 bg-slate-950">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-baseline justify-between mb-4">
+            <h2 className="text-3xl font-bold text-white">The Ripple Effect — XRP book</h2>
+            <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Digital · PDF</span>
+          </div>
+          <p className="text-slate-400 mb-8 max-w-2xl">
+            The deeper-dive reference read on Ripple and XRP. Get the book on its own, or bundle it with the Complete
+            Protection guides and save.
+          </p>
+          <BuyCardsGrid only={['book', 'pack']} />
         </div>
       </section>
 

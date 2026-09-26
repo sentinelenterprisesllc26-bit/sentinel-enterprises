@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { BuyCardsGrid } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -13,6 +14,7 @@ function HomePage() {
       <TrustBarSection />
       <FreeLearningSection />
       <ValueLadderSection />
+      <QuizCtaSection />
       <PaidProductsSection />
       <AffiliateToolsSection />
       <SentinelSquadTeaser />
@@ -61,6 +63,12 @@ function HeroSection() {
                             See Guides & Bundle →
             </Link>
           </div>
+          <p className="mt-6 text-slate-300">
+            New:{' '}
+            <Link to="/quiz" className="text-amber-400 hover:text-amber-300 font-semibold underline underline-offset-4">
+              Take the free “What’s your XRP custody level?” quiz →
+            </Link>
+          </p>
         </div>
       </div>
     </section>
@@ -198,45 +206,31 @@ function ValueLadderSection() {
   )
 }
 
-const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00'
-
 function PaidProductsSection() {
-  const included = [
-    'Crypto Inheritance Protection Bundle (PDF checklist + fillable workbook + beneficiary template)',
-    'Asset Protection Starter Guide (PDF guide + trust & titling checklist)',
-    'Crypto Inheritance Masterclass (full video + companion PDF workbook and checklist)',
-  ]
   return (
-    <section className="py-24 bg-slate-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="buy" className="py-24 bg-slate-900">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Complete Bundle</span>
-          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">The Complete Protection Bundle</h2>
-          <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">Ready to go beyond the free content? This bundle gives you every guide, workbook, checklist, and template — the complete follow-along system for protecting your assets, your crypto, and your caregiver tax savings.</p>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Instant PDF Downloads</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">Protect What You&apos;ve Built</h2>
+          <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">The Complete Protection Bundle gives you the checklist, printable workbook, beneficiary template, asset protection guide, and trust &amp; titling checklist. Add The Ripple Effect book with the Pack, or get the book on its own.</p>
         </div>
-        <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/30 rounded-3xl p-8 sm:p-10 lg:p-12 shadow-xl shadow-amber-500/5">
-          <p className="text-white font-semibold text-xs uppercase tracking-wider mb-6 text-center">All 3 Guides Included — One Price, Lifetime Access</p>
-          <ul className="grid grid-cols-1 gap-3 mb-10">
-            {included.map((item) => (
-              <li key={item} className="flex items-start gap-3 bg-slate-800/50 border border-slate-700/50 rounded-xl px-4 py-3">
-                <div className="w-6 h-6 bg-amber-500/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <svg className="w-3.5 h-3.5 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
-                </div>
-                <span className="text-slate-200 text-sm font-medium leading-snug">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="flex flex-col items-center gap-6">
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-slate-500 line-through">$53.97</span>
-              <span className="text-5xl font-black text-white">$17.99</span>
-              <span className="text-slate-400 text-sm">one-time, lifetime access</span>
-            </div>
-            <a href={BUNDLE_CHECKOUT_URL} target="_blank" rel="noopener noreferrer" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5">
-              Get the Complete Bundle — $17.99
-            </a>
-            <p className="text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
-          </div>
+        <BuyCardsGrid />
+        <p className="mt-8 text-center text-slate-500 text-xs">Secure checkout via Stripe. One-time payment. No subscription. 7-day money-back guarantee.</p>
+      </div>
+    </section>
+  )
+}
+
+function QuizCtaSection() {
+  return (
+    <section className="py-16 bg-slate-950">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-3xl border border-amber-500/40 bg-gradient-to-br from-[#0b1f3a] to-slate-900 p-8 sm:p-12 text-center">
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-300 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Free 60-second quiz</span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">What&apos;s your XRP custody level?</h2>
+          <p className="text-slate-300 max-w-2xl mx-auto mb-8">Four honest questions tell you whether an exchange, an ETF, Xaman, a hardware wallet, or a split stack fits you — and what your heirs would need.</p>
+          <Link to="/quiz" className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-colors">Take the free quiz →</Link>
         </div>
       </div>
     </section>

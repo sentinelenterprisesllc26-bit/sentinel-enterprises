@@ -59,6 +59,7 @@ function NavBar() {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/blog">Free Resources</NavLink>
             <NavLink to="/downloads">Downloads</NavLink>
+            <NavLink to="/quiz">Free quiz</NavLink>
             <NavLink to="/videos">Videos</NavLink>
             <NavLink to="/guides">Guides</NavLink>
             <NavLink to="/partners">Tools</NavLink>
@@ -108,6 +109,7 @@ function MobileMenu() {
           <p className="text-amber-400 text-xs font-bold uppercase tracking-wider px-3 py-1">Free Resources</p>
           <MobileNavLink to="/blog">Articles & Guides</MobileNavLink>
           <MobileNavLink to="/downloads">Free Downloads</MobileNavLink>
+          <MobileNavLink to="/quiz">Free quiz</MobileNavLink>
           <MobileNavLink to="/videos">Videos</MobileNavLink>
           <MobileNavLink to="/crypto-inheritance-checklist">Free Checklists</MobileNavLink>
         </div>
@@ -198,6 +200,7 @@ function Footer() {
             <ul className="space-y-2">
               <li><Link to="/blog" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Articles & Guides</Link></li>
               <li><Link to="/downloads" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Free Downloads</Link></li>
+              <li><Link to="/quiz" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Free XRP Custody Quiz</Link></li>
               <li><Link to="/videos" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Video Library</Link></li>
               <li><Link to="/crypto-inheritance-checklist" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Free Checklists</Link></li>
             </ul>

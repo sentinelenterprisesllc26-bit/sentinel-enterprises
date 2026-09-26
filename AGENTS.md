@@ -56,7 +56,11 @@ All forms use AJAX submission to `/__forms.html` — not `/`. This is critical:
 - `public/__forms.html` is the static skeleton that Netlify's build bot reads to register forms at deploy time.
 - Every field submitted from React must be listed in the skeleton, or Netlify will reject it.
 
-Three forms are registered: `caregiver-checklist`, `crypto-checklist`, `contact`.
+Forms registered in `public/__forms.html`: `caregiver-checklist`, `crypto-checklist`, `sentinel-squad-notify`, `crypto-security-checklist`, `contact`, `xrp-custody-quiz` (the /quiz email gate).
+
+## Paid downloads
+
+Paid PDFs live in `netlify/private-assets/` (bundled into the `download` function via `netlify.toml`), never in `public/`. Stripe Payment Links redirect to `/thank-you?session_id={CHECKOUT_SESSION_ID}`; the page calls `/api/verify-purchase` and links to `/api/download`. Product → file rules: `src/lib/purchase-access.ts` (tested by `npm test`). Requires `STRIPE_SECRET_KEY` for Stripe account acct_1SyKpPEPXDHjPrap.
 
 ## Business Information
 
