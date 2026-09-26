@@ -60,7 +60,7 @@ Forms registered in `public/__forms.html`: `caregiver-checklist`, `crypto-checkl
 
 ## Paid downloads
 
-Paid PDFs live in `netlify/private-assets/` (bundled into the `download` function via `netlify.toml`), never in `public/`. Stripe Payment Links redirect to `/thank-you?session_id={CHECKOUT_SESSION_ID}`; the page calls `/api/verify-purchase` and links to `/api/download`. Product → file rules: `src/lib/purchase-access.ts` (tested by `npm test`). Requires `STRIPE_SECRET_KEY` for Stripe account acct_1SyKpPEPXDHjPrap.
+Paid PDFs live in `netlify/private-assets/` (bundled into the `download` function via `netlify.toml`), never in `public/`. Stripe Payment Links redirect to `/thank-you?session_id={CHECKOUT_SESSION_ID}`; the page calls `/api/verify-purchase` and links to `/api/download`. Product → file rules: `src/lib/purchase-access.ts` (tested by `npm test`). Uses `STRIPE_DELIVERY_SECRET_KEY` (restricted key for Stripe account acct_1SyKpPEPXDHjPrap: Checkout Sessions, Products, Prices read), falling back to `STRIPE_SECRET_KEY` only if it is missing. `STRIPE_SECRET_KEY` itself stays with Crypto Mastery (a different Stripe account).
 
 ## Business Information
 
