@@ -43,7 +43,7 @@ function TermsPage() {
               </p>
               <h3>Delivery</h3>
               <p>
-                Digital products are delivered electronically via email download links immediately after purchase. If you experience any issues accessing your files, contact us and we will resolve the issue promptly.
+                Digital products are delivered electronically by email shortly after purchase. If you experience any issues accessing your files, contact us and we will resolve the issue promptly.
               </p>
 
               <h2>Affiliate Links</h2>

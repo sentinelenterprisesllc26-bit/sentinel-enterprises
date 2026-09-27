@@ -211,7 +211,7 @@ function PaidProductsSection() {
     <section id="buy" className="py-24 bg-slate-900">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">Instant PDF Downloads</span>
+          <span className="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-400/10 border border-amber-400/30 rounded-full px-3 py-1 mb-4">PDFs Emailed After Purchase</span>
           <h2 className="mt-2 text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight">Protect What You&apos;ve Built</h2>
           <p className="mt-4 text-slate-400 max-w-2xl mx-auto leading-relaxed">The Complete Protection Bundle gives you the checklist, printable workbook, beneficiary template, asset protection guide, and trust &amp; titling checklist. Add The Ripple Effect book with the Pack, or get the book on its own.</p>
         </div>
