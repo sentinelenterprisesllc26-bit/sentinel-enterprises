@@ -15,9 +15,7 @@ const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
  *   OFFER. Its button opens the Complete Protection Bundle Stripe Payment
  *   Link ($17.99). Stripe shows its own confirmation; files are emailed to
  *   the buyer shortly after purchase.
- * • The "Recommended Tools" cards are AFFILIATE links.
- *   - 🔵 REPLACE each `href` in RECOMMENDED_TOOLS with your real affiliate
- *     URL. The placeholders read https://affiliate-link-here.com/...
+ * • The "Recommended Tools" cards are AFFILIATE links (rel="sponsored").
  * ============================================================================
  */
 
@@ -39,11 +37,12 @@ const MASTERCLASS = {
 type Tool = {
   name: string
   benefit: string
-  // 🔵 REPLACE each href with your real affiliate link.
   href: string
   // Optional companion PDF guide shown as a second button.
   pdfHref?: string
   pdfLabel?: string
+  // Optional promo-code line with FTC disclosure.
+  promo?: string
 }
 
 const RECOMMENDED_TOOLS: Tool[] = [
@@ -51,6 +50,7 @@ const RECOMMENDED_TOOLS: Tool[] = [
     name: 'Tangem Wallet',
     benefit: 'A tap-to-sign card wallet — cold storage as simple as tapping your phone.',
     href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    promo: 'Use code FUSB6E for 10% off your Tangem wallet. #ad',
   },
   {
     name: 'ELLIPAL Wallet',
@@ -343,11 +343,11 @@ function MasterclassSection() {
                 <p className="text-slate-400 text-sm leading-relaxed mb-3">
                   Pair the masterclass with the cold-storage device we use and recommend.
                 </p>
-                {/* 🔵 REPLACE `MASTERCLASS.walletAffiliateUrl` (top of file) with your affiliate link. */}
+                <p className="text-amber-300/90 text-xs font-medium mb-3">Use code FUSB6E for 10% off your Tangem wallet. #ad</p>
                 <a
                   href={MASTERCLASS.walletAffiliateUrl}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-white font-semibold text-sm rounded-xl border border-white/10 transition-colors"
                 >
                   View Recommended Wallet →
@@ -382,12 +382,12 @@ function RecommendedToolsSection() {
             >
               <h3 className="text-lg font-bold text-white mb-2">{tool.name}</h3>
               <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{tool.benefit}</p>
-              {/* 🔵 REPLACE `tool.href` (in RECOMMENDED_TOOLS at top of file) with your affiliate link. */}
+              {tool.promo && <p className="text-amber-300/90 text-xs font-medium -mt-3 mb-4">{tool.promo}</p>}
               <div className="flex flex-col gap-2">
                 <a
                   href={tool.href}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
                 >
                   View Tool

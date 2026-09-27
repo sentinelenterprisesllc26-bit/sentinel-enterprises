@@ -45,7 +45,7 @@ type Download = {
   emailGated?: boolean
   // Optional secondary link nudging the reader toward the matching paid guide
   // or affiliate tool right next to the free download.
-  upsell?: { label: string; href: string; external?: boolean }
+  upsell?: { label: string; href: string; external?: boolean; note?: string }
   // Optional companion video for this guide, shown as a "Watch on YouTube" button.
   youtubeUrl?: string
 }
@@ -103,7 +103,7 @@ const groups: DownloadGroup[] = [
         description:
           'Get started with the Tangem card wallet — a card-sized, chip-protected cold storage device perfect for beginners stepping into self-custody for the first time.',
         href: '/downloads/Tangem_Beginners_Guide.pdf',
-        upsell: { label: 'Get Tangem — code FUSB6E →', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', external: true },
+        upsell: { label: 'Get Tangem — code FUSB6E →', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', external: true, note: 'Use code FUSB6E for 10% off your Tangem wallet. #ad' },
         youtubeUrl: 'https://www.youtube.com/watch?v=WNlgRXtUtK4',
       },
     ],
@@ -175,7 +175,8 @@ function DownloadsPage() {
           <p className="text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-8">
             These materials are provided for educational purposes only. Sentinel Enterprises LLC is not a licensed
             attorney, financial advisor, or fiduciary. Nothing in these guides constitutes legal, tax, or financial
-            advice.
+            advice. Educational only, not financial advice. Some product links on this page are affiliate links (#ad) — we
+            may earn a commission at no extra cost to you.
           </p>
 
           <div className="text-center">
@@ -249,10 +250,11 @@ function DownloadCard({ title, description, href, badge, emailGated, upsell, you
           </a>
         )}
       </div>
+      {upsell?.note && <p className="mt-3 text-amber-300/90 text-xs font-medium">{upsell.note}</p>}
       {upsell && (
         <a
           href={upsell.href}
-          {...(upsell.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+          {...(upsell.external ? { target: '_blank', rel: 'sponsored noopener noreferrer' } : {})}
           className="inline-flex items-center justify-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-xs font-semibold transition-colors"
         >
           {upsell.label}

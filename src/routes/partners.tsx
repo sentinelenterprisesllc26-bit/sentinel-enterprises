@@ -18,6 +18,8 @@ type Platform = {
   description: string
   code?: { label: string; value: string }
   links: Resource[]
+  // Optional small time-limited line; hidden automatically after `until`.
+  limitedOffer?: { text: string; until: string }
 }
 
 const platforms: Platform[] = [
@@ -35,12 +37,14 @@ const platforms: Platform[] = [
     name: 'Tangem',
     category: 'Tap-to-sign card wallet',
     description:
-      'A hardware wallet the size of a credit card. Tap it to your phone to sign — no cables, no charging, no seed phrase to lose. Use the code below for a discount at checkout.',
+      'A hardware wallet the size of a credit card. Tap it to your phone to sign — no cables, no charging, no seed phrase to lose. Backup cards included. Use code FUSB6E for 10% off your Tangem wallet. #ad',
     code: { label: 'Promo code', value: 'FUSB6E' },
     links: [
       { label: 'Get Tangem', href: 'https://tangem.com/en/pricing/?promocode=FUSB6E', primary: true },
       { label: 'Setup guide', href: '/downloads/Tangem_Beginners_Guide.pdf', pdf: true },
     ],
+    // TEMPORARY (added 2026-09-27): Tangem's own limited offer, ends Oct 5, 2026. Delete this line after it ends.
+    limitedOffer: { text: 'Limited time from Tangem: up to $20 in Bitcoin with purchase, through Oct 5, 2026.', until: '2026-10-06T05:00:00Z' },
   },
   {
     name: 'Caleb & Brown',
@@ -96,21 +100,18 @@ const guides = [
 
 /*
  * ============================================================================
- * RECOMMENDED TOOLS — AFFILIATE LINK PLACEHOLDERS
- * ============================================================================
- * Swap each `href` below for your real affiliate URL when you have it.
- * The placeholders intentionally read https://affiliate-link-here.com/...
- * so they are easy to find-and-replace.
+ * RECOMMENDED TOOLS — AFFILIATE LINKS (rendered with rel="sponsored")
  * ============================================================================
  */
 type RecommendedTool = {
   name: string
   benefit: string
-  // 🔵 REPLACE with your real affiliate link.
   href: string
   // Optional companion PDF guide shown as a second button.
   pdfHref?: string
   pdfLabel?: string
+  // Optional promo-code line with FTC disclosure.
+  promo?: string
 }
 
 const recommendedTools: RecommendedTool[] = [
@@ -118,6 +119,7 @@ const recommendedTools: RecommendedTool[] = [
     name: 'Tangem Wallet',
     benefit: 'Tap-to-sign card wallet — the simplest way to move crypto into cold storage.',
     href: 'https://tangem.com/en/pricing/?promocode=FUSB6E',
+    promo: 'Use code FUSB6E for 10% off your Tangem wallet. #ad',
   },
   {
     name: 'ELLIPAL Wallet',
@@ -155,7 +157,7 @@ function PartnersPage() {
         </div>
       </section>
 
-      {/* ===== AFFILIATE: Recommended Tools (placeholder links) ===== */}
+      {/* ===== AFFILIATE: Recommended Tools ===== */}
       <section className="py-20 bg-slate-950 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mb-10">
@@ -175,7 +177,7 @@ function PartnersPage() {
               >
                 <h3 className="text-lg font-bold text-white mb-2">{tool.name}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">{tool.benefit}</p>
-                {/* 🔵 REPLACE `tool.href` (in recommendedTools above) with your affiliate link. */}
+                {tool.promo && <p className="text-amber-300/90 text-xs font-medium -mt-3 mb-4">{tool.promo}</p>}
                 <div className="flex flex-col gap-2">
                   <a
                     href={tool.href}
@@ -331,7 +333,7 @@ function PartnersPage() {
   )
 }
 
-function PlatformCard({ name, category, description, code, links }: Platform) {
+function PlatformCard({ name, category, description, code, links, limitedOffer }: Platform) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 flex flex-col hover:border-amber-500/50 transition-colors">
       <h3 className="text-xl font-bold text-white">{name}</h3>
@@ -343,6 +345,10 @@ function PlatformCard({ name, category, description, code, links }: Platform) {
           <span className="text-slate-500 text-xs uppercase tracking-wider">{code.label}</span>
           <span className="text-amber-400 font-mono font-semibold text-sm tracking-wide">{code.value}</span>
         </div>
+      )}
+
+      {limitedOffer && Date.now() < Date.parse(limitedOffer.until) && (
+        <p className="text-slate-400 text-xs mb-4">{limitedOffer.text}</p>
       )}
 
       <div className="flex flex-wrap gap-3">
