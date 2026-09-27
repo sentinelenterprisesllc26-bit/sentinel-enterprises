@@ -201,8 +201,9 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           <li><strong>Best for:</strong> Beginners who want cold storage without a steep learning curve</li>
         </ul>
         <p>
-          <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer">Get Tangem — use code FUSB6E →</a>
+          <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="sponsored noopener noreferrer">Get Tangem — use code FUSB6E →</a>
         </p>
+        <p><em>Use code FUSB6E for 10% off your Tangem wallet. #ad</em></p>
 
         <h2>Ledger: Best for Advanced Users</h2>
         <p>
@@ -216,7 +217,7 @@ const posts: Record<string, { title: string; date: string; category: string; rea
         </ul>
         <p>
           Prefer a fully air-gapped option with no seed-phrase card to lose?{' '}
-          <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer">See the ELLIPAL wallet we recommend →</a>
+          <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="sponsored noopener noreferrer">See the ELLIPAL wallet we recommend →</a>
         </p>
 
         <h2>Exchange Custody: When It Makes Sense</h2>
@@ -240,16 +241,24 @@ const posts: Record<string, { title: string; date: string; category: string; rea
             Ready to move to cold storage? We recommend Tangem for beginners and ELLIPAL for fully air-gapped security.
           </p>
           <p>
-            <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="noopener noreferrer">Get Tangem — code FUSB6E →</a>
+            <a href="https://tangem.com/en/pricing/?promocode=FUSB6E" target="_blank" rel="sponsored noopener noreferrer">Get Tangem — code FUSB6E →</a>
           </p>
+          <p>Use code FUSB6E for 10% off your Tangem wallet. #ad</p>
           <p>
-            <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="noopener noreferrer">Shop ELLIPAL →</a>
+            <a href="https://www.ellipal.com/?rfsn=8708468.a45049" target="_blank" rel="sponsored noopener noreferrer">Shop ELLIPAL →</a>
           </p>
           <p>
             Not sure how to include your cold storage in an estate plan? Explore our Digital Asset Guidance services.
           </p>
           <Link to="/services">Explore Digital Asset Guidance Services →</Link>
         </div>
+
+        <p>
+          <small>
+            Disclosure: The Tangem and ELLIPAL links in this post are affiliate links (#ad) — we may earn a commission at
+            no extra cost to you. Educational only, not financial advice.
+          </small>
+        </p>
       </div>
     ),
   },
