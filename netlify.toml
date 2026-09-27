@@ -87,6 +87,25 @@
   status = 301
   force = true
 
+# Crypto Mastery ($17) is retired — send old links to /guides (permanent)
+[[redirects]]
+  from = "/crypto-mastery"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-mastery/"
+  to = "/guides"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/crypto-mastery/*"
+  to = "/guides"
+  status = 301
+  force = true
+
 # Paid PDFs used to be public here. They are now delivered only via /api/download
 # after a verified Stripe purchase, so the old URLs must 404.
 [[redirects]]

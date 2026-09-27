@@ -12,11 +12,9 @@ const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
  * PAID VIDEO OFFER + AFFILIATE TOOLS (this file)
  * ============================================================================
  * • The "Crypto Inheritance Masterclass" section below is the PAID VIDEO
- *   OFFER. Its "Buy" button opens Stripe Checkout via the create-checkout
- *   function — no payment link to paste. (Its price lives in
- *   src/lib/products.ts under `crypto-inheritance-masterclass`.)
- *   - 🔵 Upload the companion workbook to /public/pdfs/ and point the
- *     delivery at /thank-you (see src/routes/thank-you.tsx).
+ *   OFFER. Its button opens the Complete Protection Bundle Stripe Payment
+ *   Link ($17.99). Stripe shows its own confirmation; files are emailed to
+ *   the buyer shortly after purchase.
  * • The "Recommended Tools" cards are AFFILIATE links.
  *   - 🔵 REPLACE each `href` in RECOMMENDED_TOOLS with your real affiliate
  *     URL. The placeholders read https://affiliate-link-here.com/...
@@ -307,7 +305,7 @@ function MasterclassSection() {
                 rel="noopener noreferrer"
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
               >
-                Buy the Masterclass
+                Get the Complete Protection Bundle — $17.99
               </a>
               <p className="mt-3 flex items-center gap-1.5 text-slate-500 text-xs">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

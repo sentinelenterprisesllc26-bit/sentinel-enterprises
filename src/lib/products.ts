@@ -3,12 +3,11 @@
  *  PRODUCT CATALOG  —  the ONE place prices live
  * ============================================================================
  *  This is the single source of truth for every paid product on the site.
- *  The storefront reads from this list while the secure checkout function
- *  uses the Stripe-managed Price ID named on each checkout-enabled product.
+ *  All purchases go through Stripe Payment Links (see src/lib/buy-cards.tsx).
  *
  *  TO CHANGE A PRICE: edit `amountCents` below (e.g. 4700 = $47.00). That's it.
- *  TO ADD A PRODUCT:  add an entry here, then drop a <CheckoutButton> with its
- *                     id onto any page.
+ *  TO ADD A PRODUCT:  create a Stripe Payment Link and add it in
+ *                     src/lib/buy-cards.tsx.
  * ============================================================================
  */
 
@@ -17,7 +16,6 @@ export type ProductId =
   | 'asset-protection-guide'
   | 'complete-bundle'
   | 'crypto-inheritance-masterclass'
-  | 'crypto-mastery'
 
 export type Product = {
   id: ProductId
@@ -37,14 +35,6 @@ export const PRODUCTS: Record<ProductId, Product> = {
     description: 'Training video + PDF checklist & workbook for passing on digital assets.',
     amountCents: 1799,
     currency: 'usd',
-  },
-  'crypto-mastery': {
-    id: 'crypto-mastery',
-    name: "Crypto Mastery: The Complete Beginner's Guide to Cryptocurrency",
-    description: '39-page digital PDF e-book for cryptocurrency beginners, including a bonus estate-planning section.',
-    amountCents: 1700,
-    currency: 'usd',
-    stripePriceEnv: 'STRIPE_PRICE_CRYPTO_MASTERY',
   },
   'asset-protection-guide': {
     id: 'asset-protection-guide',

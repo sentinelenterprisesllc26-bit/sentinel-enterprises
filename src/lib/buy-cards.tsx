@@ -2,9 +2,9 @@
  * ============================================================================
  *  PAID PRODUCTS (Stripe Payment Links) + shared buy cards
  * ============================================================================
- *  Stripe account acct_1SyKpPEPXDHjPrap (live). After checkout, Stripe sends
- *  buyers to /thank-you?session_id=... which verifies the purchase and shows
- *  only the files that product includes (see src/lib/purchase-access.ts).
+ *  Stripe account acct_1SyKpPEPXDHjPrap (live). After checkout, Stripe shows
+ *  its own confirmation page (no redirect back to this site). The PDF files
+ *  are emailed to the buyer manually shortly after purchase.
  * ============================================================================
  */
 
@@ -101,7 +101,7 @@ export function BuyCard({ p, compact = false }: { p: BuyProduct; compact?: boole
         <div className="mt-auto">
           <div className="flex items-baseline gap-2 mb-3">
             <span className="text-3xl font-black text-white">{p.price}</span>
-            <span className="text-slate-400 text-xs">one-time · instant PDF download</span>
+            <span className="text-slate-400 text-xs">one-time · PDFs emailed shortly after purchase</span>
           </div>
           <a
             href={p.href}

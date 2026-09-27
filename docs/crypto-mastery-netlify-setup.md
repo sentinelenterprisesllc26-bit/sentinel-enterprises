@@ -1,3 +1,5 @@
+> **RETIRED (Sep 2026):** Crypto Mastery is no longer sold. `/crypto-mastery` and `/crypto-mastery/success` 301-redirect to `/guides`, and the `create-checkout` function has been removed. Kept for history only.
+
 # Crypto Mastery checkout launch checklist
 
 The public website repository contains the product page and secure Netlify

@@ -11,3 +11,7 @@
 /buy/                                   /guides                          301!
 /bundle                                 /guides                          301!
 /bundle/                                /guides                          301!
+# Crypto Mastery ($17) is retired (permanent)
+/crypto-mastery                         /guides                          301!
+/crypto-mastery/                        /guides                          301!
+/crypto-mastery/*                       /guides                          301!
