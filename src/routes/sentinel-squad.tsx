@@ -11,52 +11,58 @@ const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
  * ============================================================================
  *  THE SENTINEL SQUAD — ANIMATED SERIES (this file)
  * ============================================================================
- *  An upcoming animated series that turns Sentinel's lessons — asset
- *  protection, crypto self-custody, and caregiver tax savings — into
- *  family-friendly stories.
+ *  An upcoming animated series — a Saturday-morning cartoon for grown-ups —
+ *  that turns Sentinel's lessons (how money moves, crypto self-custody,
+ *  asset protection) into funny, plain-English stories.
  *
  *  This page is a "coming soon" launch hub. To go live with episodes:
  *    - 🔵 In EPISODES below, fill in each episode's `youtubeId` with the real
  *      YouTube video ID. Any episode left without an id renders as a
  *      "Coming Soon" placeholder card automatically.
- *    - 🔵 Edit CHARACTERS to match the final cast of the series.
+ *    - Cast art lives in public/images/sentinel-squad/ (webp, 480x480).
  *  The "Notify me at launch" form writes to the `sentinel-squad-notify`
  *  Netlify form (registered in public/__forms.html).
  * ============================================================================
  */
 
 type Character = {
-  emoji: string
+  image: string
   name: string
   role: string
   bio: string
 }
 
-// 🔵 Update to match the final cast as the series develops.
+// Cast of Season One. Art lives in public/images/sentinel-squad/.
 const CHARACTERS: Character[] = [
   {
-    emoji: '🛡️',
-    name: 'Captain Sentinel',
-    role: 'The Protector',
-    bio: 'The team leader who shows families how to shield what they’ve built — no eight-figure budget required.',
+    image: '/images/sentinel-squad/jenae.webp',
+    name: 'Jenae',
+    role: 'The Lead',
+    bio: 'Calm, sharp, and fiercely protective of her family’s money. She reads the fine print so you don’t have to — and explains it in plain English.',
   },
   {
-    emoji: '🔑',
-    name: 'Coldkey',
-    role: 'The Crypto Guardian',
-    bio: 'A self-custody expert who keeps seed phrases safe and makes sure heirs can actually inherit digital assets.',
+    image: '/images/sentinel-squad/jarrod.webp',
+    name: 'Jarrod',
+    role: 'The Friendly Skeptic',
+    bio: 'Jenae’s easygoing friend who isn’t sold on crypto. He asks what you’re thinking — “Why not just use the bank?” — and makes the Squad earn every answer.',
   },
   {
-    emoji: '🧾',
-    name: 'Ledger',
-    role: 'The Tax Whisperer',
-    bio: 'A sharp-eyed numbers hero who helps caregivers spot the deductions and credits they’ve been missing.',
+    image: '/images/sentinel-squad/marcus.webp',
+    name: 'Marcus',
+    role: 'The Skeptic',
+    bio: 'Jenae’s longtime friend who still trusts the old bank way. He asks the question everyone’s thinking — and admits it when the answer surprises him.',
   },
   {
-    emoji: '⚖️',
-    name: 'Trust',
-    role: 'The Planner',
-    bio: 'The calm strategist who turns confusing legal jargon into a plan a whole family can follow.',
+    image: '/images/sentinel-squad/coin.webp',
+    name: 'Coin',
+    role: 'The AI Sidekick',
+    bio: 'A friendly glowing orb that explains the tech. Gold when thinking, red for bad news, green for good news — and always honest about what nobody can promise.',
+  },
+  {
+    image: '/images/sentinel-squad/darius.webp',
+    name: 'Darius Dimes',
+    role: 'The Middleman',
+    bio: 'A smooth banker in a pinstripe suit with a rubber stamp that says FEE. Charming, a little ridiculous, and somehow at every window.',
   },
 ]
 
@@ -66,26 +72,35 @@ type Episode = {
   description: string
   // 🔵 Add the YouTube video ID once the episode is published. Leave empty for "Coming Soon".
   youtubeId?: string
+  // Optional badge shown on the placeholder card instead of "Coming Soon".
+  status?: string
 }
 
 const EPISODES: Episode[] = [
   {
     number: 'Ep. 01',
+    title: 'The Old Bank Trick',
+    description:
+      'A $500 wire, $47 in fees, and “3–5 business days.” The Squad follows the money through the SWIFT maze, learns what ISO 20022 really is (a messaging standard, not a coin), and looks at how some payment providers use XRP as a bridge.',
+    status: 'Premiering Soon',
+  },
+  {
+    number: 'Ep. 02',
     title: 'The Vault Without a Key',
     description:
       'When a family can’t reach their crypto, the Squad shows why self-custody and an inheritance plan matter before it’s too late.',
   },
   {
-    number: 'Ep. 02',
+    number: 'Ep. 03',
     title: 'The Missing Deductions',
     description:
-      'Ledger helps a busy caregiver discover the tax savings hiding in plain sight — and keep more of what they’ve earned.',
+      'A busy caregiver discovers the tax savings hiding in plain sight — and keeps more of what they’ve earned.',
   },
   {
-    number: 'Ep. 03',
+    number: 'Ep. 04',
     title: 'Building the Shield',
     description:
-      'Trust and Captain Sentinel walk a working family through protecting their home and savings without a fortune.',
+      'The Squad walks a working family through protecting their home and savings without a fortune.',
   },
 ]
 
@@ -115,8 +130,8 @@ function HeroSection() {
           Meet the <span className="text-amber-400">Sentinel Squad</span>
         </h1>
         <p className="text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto">
-          A family-friendly animated series that turns asset protection, crypto self-custody, and caregiver tax savings
-          into stories everyone can understand — and enjoy.
+          A Saturday-morning cartoon for grown-ups that turns money moves, crypto self-custody, and asset protection
+          into funny, plain-English stories you’ll actually remember.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
@@ -147,9 +162,9 @@ function PremiseSection() {
         <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white mb-6">Big Ideas, Made Simple</h2>
         <p className="text-lg text-slate-400 leading-relaxed">
           Protecting your family’s future shouldn’t require a law degree. The Sentinel Squad takes the same practical
-          lessons we teach working families and crypto holders — and brings them to life through animated stories the
-          whole household can watch together. Each episode follows the Squad as they help everyday families guard what
-          they’ve built, pass on their digital assets, and stop overpaying on taxes.
+          lessons we teach working families and crypto holders — and turns them into a cartoon for grown-ups: bold,
+          funny, and honest. Each episode follows Jenae, Jarrod, Marcus, Coin, and one very smooth middleman as they figure out
+          how money really moves, how to guard what you’ve built, and how to pass on your digital assets.
         </p>
       </div>
     </section>
@@ -164,15 +179,20 @@ function CharactersSection() {
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Meet the Squad</span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white">Your Guides to a Protected Future</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {CHARACTERS.map((c) => (
             <div
               key={c.name}
               className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-7 text-center flex flex-col items-center hover:border-amber-500/50 transition-colors"
             >
-              <div className="w-16 h-16 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-center justify-center text-3xl mb-5">
-                <span aria-hidden="true">{c.emoji}</span>
-              </div>
+              <img
+                src={c.image}
+                alt={`${c.name}, ${c.role} — Sentinel Squad character`}
+                width={480}
+                height={480}
+                loading="lazy"
+                className="w-40 h-40 object-contain mb-5 rounded-2xl bg-slate-900/60 border border-slate-700/50"
+              />
               <h3 className="text-lg font-bold text-white">{c.name}</h3>
               <p className="text-amber-400 text-sm font-medium mb-3">{c.role}</p>
               <p className="text-slate-400 text-sm leading-relaxed">{c.bio}</p>
@@ -202,7 +222,7 @@ function EpisodesSection() {
   )
 }
 
-function EpisodeCard({ number, title, description, youtubeId }: Episode) {
+function EpisodeCard({ number, title, description, youtubeId, status }: Episode) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col hover:border-amber-500/50 transition-colors">
       <div className="relative w-full bg-slate-900" style={{ aspectRatio: '16 / 9' }}>
@@ -220,7 +240,7 @@ function EpisodeCard({ number, title, description, youtubeId }: Episode) {
             <span className="text-3xl" aria-hidden="true">
               🎬
             </span>
-            <span className="text-amber-400 text-xs font-semibold uppercase tracking-wider">Coming Soon</span>
+            <span className="text-amber-400 text-xs font-semibold uppercase tracking-wider">{status ?? 'Coming Soon'}</span>
           </div>
         )}
       </div>

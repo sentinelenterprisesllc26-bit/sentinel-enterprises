@@ -333,7 +333,8 @@ function SentinelSquadTeaser() {
             New Animated Series - Coming Soon
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Meet the <span className="text-amber-400">Sentinel Squad</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">A family-friendly animated series that turns asset protection, crypto self-custody, and caregiver tax savings into stories the whole household can enjoy.</p>
+          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">A Saturday-morning cartoon for grown-ups that turns money moves, crypto self-custody, and asset protection into funny, plain-English stories. Episode 1, &ldquo;The Old Bank Trick,&rdquo; is premiering soon.</p>
+          <img src="/images/sentinel-squad/squad-lineup.webp" alt="The Sentinel Squad cast: Marcus, Jenae, Jarrod, Darius Dimes, and Coin" width={1200} height={675} loading="lazy" className="w-full max-w-3xl mx-auto rounded-2xl border border-amber-500/20 mb-8" />
           <Link to="/sentinel-squad" className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40">
             Meet the Squad &rarr;
           </Link>
