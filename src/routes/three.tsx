@@ -148,33 +148,33 @@ const PRODUCTS = [
     id: 'visage-pure-cleanse',
     name: 'Visage Pure Cleanse',
     category: 'Skin Care',
-    description: 'Refresh your skin and renew your spirit with a gentle daily cleanse designed for a versatile skin-care routine.',
+    description: 'A gentle daily cleanser built on allantoin, jojoba seed oil, and sunflower seed oil that lifts impurities without stripping natural moisture, using Quorum Sensing Technology to help skin cells communicate more effectively.',
     image: '/images/three/card-visage-pure-cleanse.jpg',
-    benefits: ['Daily Cleanse', 'Skin Care', 'Topical Application']
+    benefits: ['Allantoin + Jojoba Oil', 'No Harsh Preservatives', 'Quorum Sensing Technology']
   },
   {
     id: 'visage-radiant-toner',
     name: 'Visage Radiant Toner',
     category: 'Skin Care',
-    description: 'Balance within, beauty without — a radiance-boosting toner that rounds out the Visage skin-care line.',
+    description: 'A niacinamide and beta-glucan toner that balances your skin’s pH, refines pores, and preps skin to better absorb your serum and moisturizer, powered by Quorum Sensing Technology.',
     image: '/images/three/card-visage-radiant-toner.jpg',
-    benefits: ['Radiance Boost', 'Skin Care', 'Topical Application']
+    benefits: ['Niacinamide + Vitamin C', 'Balances Skin pH', 'Preps Skin for Serum']
   },
   {
     id: 'visage-super-serum',
     name: 'Visage Super Serum',
     category: 'Skin Care',
-    description: 'A serum that’s good for your skin and good for your soul — a dedicated formula designed to be a versatile addition to your daily beauty routine.',
+    description: 'A neurocosmetic serum built on polyphenol complexation, adjuvants, and molecular shuttles — THREE’s own Cellular Absorption Technologies — to support the skin-brain connection. Made in the USA with plantain-leaf molecules from THREE’s Death Valley research expedition.',
     image: '/images/three/card-visage-super-serum.jpg',
-    benefits: ['Skin Care', 'Daily Routine', 'Topical Application']
+    benefits: ['3 Cellular Absorption Technologies', 'Neurocosmetic Formula', 'Made in the USA']
   },
   {
     id: 'visage-creme-caviar',
     name: 'Visage Crème Caviar',
     category: 'Skin Care',
-    description: 'A luxurious moisturizer combining rare botanical extracts with neurocosmetic peptides and Quorum Sensing Technology to nourish, hydrate, and revitalize skin for a youthful, radiant complexion.',
+    description: 'A rich moisturizer built on Mountain Caviar (Kochia fruit extract), squalane, and neurocosmetic peptides — Acetyl Hexapeptide-8 and Palmitoyl Tetrapeptide-7 — that ease facial tension and support collagen, finished with a subtle bergamot scent.',
     image: '/images/three/visage-creme-caviar.png',
-    benefits: ['Neurocosmetic Peptides', 'Quorum Sensing Technology', 'Deep Hydration']
+    benefits: ['Neurocosmetic Peptides', 'Mountain Caviar Extract', 'Quorum Sensing Technology']
   },
   {
     id: 'kynetik',
