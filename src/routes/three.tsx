@@ -92,57 +92,57 @@ const PRODUCTS = [
     id: 'vitalite',
     name: 'Vitalité',
     category: 'Superfood Blend + Multivitamin Complex',
-    description: 'A comprehensive daily formula featuring vitamins, minerals, and nutrients to support your foundational nutritional needs.',
+    description: 'Forge your nutritional foundation. A superfood blend, 72 trace minerals, enzymes, probiotics, and a 10-berry blend work together at the cellular level to support heart, brain, eye, and gut health.',
     image: '/images/three/card-vitalite.jpg',
-    benefits: ['Vitamins & Minerals', 'Daily Nutrition', 'Wellness Support']
+    benefits: ['72 Trace Minerals & Amino Acids', '100M Live Probiotics', '44% Cellular Absorption']
   },
   {
     id: 'collagene',
     name: 'Collagène',
     category: 'Marine Sourced Collagen',
-    description: 'A delicious blend of collagen and other powerful ingredients that nourishes cells to keep skin, hair, and nails vibrant and healthy.',
+    description: 'A delicious daily packet delivering 5 grams of highly bioavailable marine collagen, promoting the body’s natural ability to produce collagen for vibrant, youthful-looking skin, hair, and nails.',
     image: '/images/three/collagene-box.webp',
-    benefits: ['Skin, Hair & Nails', 'Marine Sourced', '10-Packet Supply']
+    benefits: ['5g Marine Collagen', 'Skin, Hair & Nails', '73% Cellular Absorption']
   },
   {
     id: 'eternel',
     name: 'Éternel',
     category: 'Antioxidant Super-Blend',
-    description: 'An advanced blend of liposomal antioxidants and polyphenols that helps protect your body’s cells from the damage caused by free radicals.',
+    description: 'An advanced blend of liposomal antioxidants and polyphenols that helps protect your body’s cells from free-radical damage — the most bioavailable formula in the THREE line, at 95% cellular absorption in independent lab testing.',
     image: '/images/three/eternel-box.webp',
-    benefits: ['Cellular Protection', 'Polyphenol Blend', 'Age-Defying']
+    benefits: ['95% Cellular Absorption', 'Polyphenol Blend', 'Age-Defying']
   },
   {
     id: 'imune',
     name: 'Imúne',
     category: 'Total Body Immune Support',
-    description: 'Specially designed to work at the cellular level, Imúne’s unique blend of vitamins, minerals, and phytochemicals supports your body’s natural immune response.',
+    description: 'A three-part formula — innate, adaptive, and quorum-sensing support blends — built to work at the cellular level, since roughly 80% of the immune system lives in the gut.',
     image: '/images/three/imune-jar.webp',
-    benefits: ['Immune Support', 'Vitamins & Minerals', 'Cellular Level']
+    benefits: ['Innate + Adaptive Support', 'Gut Microbiome Focus', '44% Cellular Absorption']
   },
   {
     id: 'purifi',
     name: 'Purifí',
     category: 'Daily Whole-Body Detox',
-    description: 'An advanced blend of cleansing herbs and fulvic acid that works at the cellular level to support the body’s elimination organs.',
+    description: 'An advanced blend of cleansing herbs and fulvic acid that supports the body’s elimination organs at the cellular level — the second-most bioavailable formula in the THREE line, at 88% cellular absorption.',
     image: '/images/three/purifi-jar.webp',
-    benefits: ['Cellular Cleansing', 'Fulvic Acid', 'Daily Detox']
+    benefits: ['88% Cellular Absorption', 'Fulvic Acid', 'Daily Detox']
   },
   {
     id: 'revive',
     name: 'Revíve',
     category: 'Renewal & Recovery',
-    description: 'A unique formula designed to work at the cellular level to support healthy joints and offer enhanced flexibility, mobility, and range of motion.',
+    description: 'A joint-support formula built on curcumin, boswellia, and black cumin oil, with quillaja saponins that self-assemble into micelles for better cellular absorption — supporting healthy joints, easing stiffness, and promoting exercise recovery.',
     image: '/images/three/revive-jar.webp',
-    benefits: ['Joint Support', 'Mobility & Flexibility', 'Cellular Renewal']
+    benefits: ['Joint & Mobility Support', 'Curcumin + Boswellia', 'Exercise Recovery']
   },
   {
     id: 'glp-three',
     name: 'GLP THREE',
     category: 'Dietary Supplement',
-    description: 'A daily dropper formula that supports your body’s own natural GLP-1 production, taken before meals or as desired.',
+    description: 'Powered by MBC-267, a patented peptide complex from salmon protein hydrolysate and mushroom glycolipids that binds to the same receptor as pharmaceutical GLP-1 medications, but more gently. Take ¾ of a dropper under the tongue 30 minutes before a meal.',
     image: '/images/three/glp-three.png',
-    benefits: ['Natural GLP-1 Support', 'Simple Dropper Dose', 'Take Before Meals']
+    benefits: ['MBC-267 Peptide Complex', 'Oral Dropper — No Injections', 'Take Before Meals']
   },
   {
     id: 'visage-pure-cleanse',
@@ -167,6 +167,14 @@ const PRODUCTS = [
     description: 'A serum that’s good for your skin and good for your soul — a dedicated formula designed to be a versatile addition to your daily beauty routine.',
     image: '/images/three/card-visage-super-serum.jpg',
     benefits: ['Skin Care', 'Daily Routine', 'Topical Application']
+  },
+  {
+    id: 'visage-creme-caviar',
+    name: 'Visage Crème Caviar',
+    category: 'Skin Care',
+    description: 'A luxurious moisturizer combining rare botanical extracts with neurocosmetic peptides and Quorum Sensing Technology to nourish, hydrate, and revitalize skin for a youthful, radiant complexion.',
+    image: '/images/three/visage-creme-caviar.png',
+    benefits: ['Neurocosmetic Peptides', 'Quorum Sensing Technology', 'Deep Hydration']
   },
   {
     id: 'kynetik',
@@ -194,8 +202,10 @@ function ThreeTrustBand() {
           </span>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Formulated Products, Real Community</h2>
           <p className="text-slate-400 leading-relaxed mb-6">
-            THREE International's cellular absorption technology and select formulas are referenced in the Prescribers' Digital
-            Reference (PDR) &mdash; the same directory clinicians use to look up supplement and drug information.
+            THREE's formulas are developed under Dr. Dan Gubler, Ph.D. &mdash; THREE International's Chief Scientific Officer,
+            Caltech-trained, holder of 16 patents granted or pending, and formulator of 70+ nutritional supplements. Select
+            formulas are referenced in the Prescribers' Digital Reference (PDR), the same directory clinicians use to look up
+            supplement and drug information.
           </p>
           <img
             src="/images/three/pdr-listing.jpg"
@@ -217,6 +227,18 @@ function ThreeScience() {
     { name: 'Hydrolysis', image: '/images/three/science-hydrolysis.png' },
   ]
 
+  // Independent Caco-2 permeability study (Stephens & Gubler, 2023) vs. a
+  // standard organic control molecule (curcumin, 10% absorption).
+  const absorption = [
+    { name: 'Éternel', pct: 95 },
+    { name: 'Purifí', pct: 88 },
+    { name: 'Collagène', pct: 73 },
+    { name: 'Vitalité', pct: 44 },
+    { name: 'Imúne', pct: 44 },
+    { name: 'Revíve', pct: 30 },
+    { name: 'Organic Control', pct: 10 },
+  ]
+
   return (
     <section className="py-24 bg-slate-900 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -227,7 +249,7 @@ function ThreeScience() {
             Every THREE formula is built to get nutrients where they actually work &mdash; inside the cell.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {topics.map((t) => (
             <img
               key={t.name}
@@ -237,6 +259,23 @@ function ThreeScience() {
               className="w-full rounded-2xl border border-slate-800 bg-white"
             />
           ))}
+        </div>
+
+        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-10">
+          <h3 className="text-xl font-bold text-white mb-2">Study Snapshot: Cellular Absorption & Bioavailability</h3>
+          <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-3xl">
+            An independent Caco-2 permeability study (Dr. Brett Stephens, Wasatch Scientific, and Dr. Dan Gubler, THREE
+            International, 2023) found THREE's Cellular Absorption Technologies make its products between 3x and 9.5x more
+            bioavailable than a standard organic control molecule (curcumin, 10% absorption).
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
+            {absorption.map((a) => (
+              <div key={a.name} className="text-center">
+                <div className="text-2xl font-black text-cyan-400">{a.pct}%</div>
+                <div className="mt-1 text-xs text-slate-400 leading-tight">{a.name}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
