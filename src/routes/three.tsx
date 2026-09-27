@@ -30,6 +30,7 @@ function ThreePage() {
       <ThreeTrustBand />
       <ThreeProducts />
       <ThreeScience />
+      <ThreeRecipes />
       <ThreeOpportunity />
       <ThreeFAQ />
       <ThreeDisclosure />
@@ -276,6 +277,38 @@ function ThreeScience() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function ThreeRecipes() {
+  const recipes = [
+    { name: 'Eternally Tropical', image: '/images/three/recipe-eternally-tropical.png' },
+    { name: 'Antioxidant Berry Blend', image: '/images/three/recipe-antioxidant-berry-blend.png' },
+  ]
+
+  return (
+    <section className="py-24 bg-slate-950 border-t border-slate-800">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-14">
+          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">A Taste of Éternel</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white mb-4">Smoothie Recipes</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+            Two simple ways to blend Éternel into your day.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          {recipes.map((r) => (
+            <img
+              key={r.name}
+              src={r.image}
+              alt={`${r.name} — Éternel smoothie recipe`}
+              loading="lazy"
+              className="w-full rounded-2xl border border-slate-800"
+            />
+          ))}
         </div>
       </div>
     </section>
