@@ -7,3 +7,8 @@ dist/
 
 # Paid digital files are stored in the private delivery-assets repository.
 private/
+
+# Third-party agent skill tooling (installed via `npx skills add`), not site content.
+.agents/
+.claude/
+skills-lock.json
