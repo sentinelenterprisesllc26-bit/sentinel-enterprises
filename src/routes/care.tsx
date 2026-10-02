@@ -8,14 +8,14 @@ export const Route = createFileRoute('/care')({
       {
         name: 'description',
         content:
-          'Monthly paperwork help for families managing home care and independent caregivers in the Peoria, IL area. Visit logs, receipts, schedules, and weekly family updates.',
+          'Monthly paperwork help for families managing home care and independent caregivers anywhere in the US. Remote support for visit logs, receipts, schedules, and weekly family updates.',
       },
       { property: 'og:type', content: 'website' },
       { property: 'og:title', content: 'Care paperwork, handled | Sentinel Enterprises LLC' },
       {
         property: 'og:description',
         content:
-          'Monthly paperwork help for families managing home care and independent caregivers in the Peoria, IL area. Visit logs, receipts, schedules, and weekly family updates.',
+          'Monthly paperwork help for families managing home care and independent caregivers anywhere in the US. Remote support for visit logs, receipts, schedules, and weekly family updates.',
       },
       { property: 'og:url', content: 'https://sentinelenterprisesllc.com/care' },
     ],
@@ -38,7 +38,7 @@ function CarePage() {
             Care paperwork, handled.
           </h1>
           <p className="font-sans text-[1.05rem] text-[#52606d] m-0 leading-relaxed">
-            For families managing a loved one&apos;s home care — and for independent caregivers — in the Peoria area.
+            For families managing a loved one&apos;s home care — and for independent caregivers — anywhere in the US. Remote paperwork support, wherever you are.
           </p>
         </header>
 
@@ -101,7 +101,7 @@ function CarePage() {
         </Card>
 
         <p className="mt-6 text-center font-sans text-[0.85rem] text-[#52606d]">
-          Sentinel Enterprises LLC · Peoria, IL area · Cancel anytime
+          Sentinel Enterprises LLC · Serving families and independent caregivers across the US · Cancel anytime
         </p>
       </div>
     </div>
