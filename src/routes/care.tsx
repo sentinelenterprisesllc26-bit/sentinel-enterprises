@@ -59,9 +59,19 @@ function CarePage() {
         </Card>
 
         <Card title="Price">
-          <p className="text-[1.35rem] font-bold m-0 mb-1.5 text-[#1f2933]">$75–$150 per month per family</p>
+          <p className="text-[1.35rem] font-bold m-0 mb-1.5 text-[#1f2933]">$99 per month per family</p>
           <p className="font-sans text-[0.95rem] text-[#52606d] m-0">Cancel anytime.</p>
+          <p className="mt-3 rounded-lg bg-[#fff7e6] px-3 py-2 font-sans text-[0.95rem] text-[#7a4b00]">
+            First month $75 through October 31, 2026 — use code <strong>OCT75</strong> at checkout.
+          </p>
         </Card>
+
+        <a
+          href="https://buy.stripe.com/8x214n8P75NAgM555ndIA07"
+          className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
+        >
+          Subscribe / Get started
+        </a>
 
         <Card title="How it works">
           <ol className="m-0 pl-[1.15rem] list-decimal space-y-2 text-[#1f2933]">
