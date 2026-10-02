@@ -49,18 +49,24 @@ function HeroSection() {
           <p className="text-base text-amber-400 font-medium mb-10 max-w-2xl">
             Start free. Go deeper if you want more. Use better tools. Protect what you build.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
             <a
-                          href="/crypto-inheritance-checklist"
+              href="/crypto-inheritance-checklist"
               className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5"
             >
-                            Get the Free Crypto Checklist
+              Get the Free Crypto Checklist
+            </a>
+            <a
+              href="#buy"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-amber-400/60 hover:border-amber-400 transition-all hover:-translate-y-0.5"
+            >
+              Shop Bundle from $17.99 →
             </a>
             <Link
               to="/guides"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:border-amber-400/50 transition-all hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/5 hover:bg-white/15 text-slate-200 font-semibold text-lg rounded-xl border-2 border-white/20 hover:border-white/40 transition-all hover:-translate-y-0.5"
             >
-                            See Guides & Bundle →
+              See all guides →
             </Link>
           </div>
           <p className="mt-6 text-slate-300">
