@@ -23,6 +23,7 @@ import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as CryptoMasteryRouteImport } from './routes/crypto-mastery'
 import { Route as CryptoInheritanceChecklistRouteImport } from './routes/crypto-inheritance-checklist'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CareRouteImport } from './routes/care'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
@@ -100,6 +101,11 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareRoute = CareRouteImport.update({
+  id: '/care',
+  path: '/care',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -129,6 +135,7 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/care': typeof CareRoute
   '/contact': typeof ContactRoute
   '/crypto-inheritance-checklist': typeof CryptoInheritanceChecklistRoute
   '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
@@ -150,6 +157,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/care': typeof CareRoute
   '/contact': typeof ContactRoute
   '/crypto-inheritance-checklist': typeof CryptoInheritanceChecklistRoute
   '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/care': typeof CareRoute
   '/contact': typeof ContactRoute
   '/crypto-inheritance-checklist': typeof CryptoInheritanceChecklistRoute
   '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
@@ -195,6 +204,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/care'
     | '/contact'
     | '/crypto-inheritance-checklist'
     | '/crypto-mastery'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/care'
     | '/contact'
     | '/crypto-inheritance-checklist'
     | '/crypto-mastery'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/care'
     | '/contact'
     | '/crypto-inheritance-checklist'
     | '/crypto-mastery'
@@ -259,6 +271,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  CareRoute: typeof CareRoute
   ContactRoute: typeof ContactRoute
   CryptoInheritanceChecklistRoute: typeof CryptoInheritanceChecklistRoute
   CryptoMasteryRoute: typeof CryptoMasteryRouteWithChildren
@@ -377,6 +390,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/care': {
+      id: '/care'
+      path: '/care'
+      fullPath: '/care'
+      preLoaderRoute: typeof CareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -430,6 +450,7 @@ const CryptoMasteryRouteWithChildren = CryptoMasteryRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  CareRoute: CareRoute,
   ContactRoute: ContactRoute,
   CryptoInheritanceChecklistRoute: CryptoInheritanceChecklistRoute,
   CryptoMasteryRoute: CryptoMasteryRouteWithChildren,

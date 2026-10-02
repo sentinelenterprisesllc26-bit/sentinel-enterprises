@@ -65,6 +65,7 @@ function NavBar() {
             <NavLink to="/partners">Tools</NavLink>
             <NavLink to="/three">Three Wellness</NavLink>
             <NavLink to="/services">Services</NavLink>
+            <NavLink to="/care">Care</NavLink>
             <NavLink to="/sentinel-squad">Sentinel Squad</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/contact">Contact</NavLink>
@@ -122,6 +123,7 @@ function MobileMenu() {
         </div>
         <div>
           <p className="text-amber-400 text-xs font-bold uppercase tracking-wider px-3 py-1">More</p>
+          <MobileNavLink to="/care">Care Paperwork</MobileNavLink>
           <MobileNavLink to="/sentinel-squad">Sentinel Squad</MobileNavLink>
           <MobileNavLink to="/about">About</MobileNavLink>
           <MobileNavLink to="/contact">Contact</MobileNavLink>
@@ -213,6 +215,7 @@ function Footer() {
               <li><Link to="/partners" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Trusted Tools & Partners</Link></li>
               <li><Link to="/three" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Three Wellness</Link></li>
               <li><Link to="/services" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Services</Link></li>
+              <li><Link to="/care" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Care Paperwork</Link></li>
               <li><Link to="/sentinel-squad" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">Sentinel Squad Series</Link></li>
               <li>
                 <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
