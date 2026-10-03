@@ -46,10 +46,19 @@ function HeroSection() {
           <p className="text-xl text-slate-300 leading-relaxed mb-6 max-w-2xl">
             Sentinel Enterprises helps working families and crypto holders understand the changing financial system, protect their digital assets, and make smarter money decisions.
           </p>
-          <p className="text-base text-amber-400 font-medium mb-10 max-w-2xl">
+          <p className="text-base text-amber-400 font-medium mb-4 max-w-2xl">
             Start free. Go deeper if you want more. Use better tools. Protect what you build.
           </p>
+          <p className="text-base text-slate-300 mb-10 max-w-2xl">
+            Care paperwork: first month free ($0 today), second month $75, then $99/month. Cancel anytime.
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
+            <a
+              href="https://buy.stripe.com/8x214n8P75NAgM555ndIA07?prefilled_promo_code=CARE75"
+              className="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
+            >
+              First month free — $0 today
+            </a>
             <a
               href="/crypto-inheritance-checklist"
               className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5"

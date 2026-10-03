@@ -258,6 +258,13 @@ function QuizPage() {
               <button type="button" onClick={() => setStep('questions')} className="mt-4 w-full text-sm text-slate-400 hover:text-white">
                 ← Change my answers
               </button>
+              <button
+                type="button"
+                onClick={() => result && setStep('result')}
+                className="mt-3 w-full text-sm text-slate-300 hover:text-white underline underline-offset-4"
+              >
+                Skip email and see my result
+              </button>
             </form>
           )}
 
