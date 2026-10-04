@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { BuyCard, BUY_PRODUCTS } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/crypto-inheritance-checklist')({
   component: CryptoChecklistPage,
@@ -8,6 +9,7 @@ export const Route = createFileRoute('/crypto-inheritance-checklist')({
 function CryptoChecklistPage() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const bundle = BUY_PRODUCTS.find((x) => x.key === 'bundle')!
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -103,6 +105,22 @@ function CryptoChecklistPage() {
             ))}
           </div>
 
+          {/* Message-matched Bundle CTA (Shorts → protect) */}
+          <div className="bg-gradient-to-br from-amber-500/15 to-slate-800/80 border border-amber-500/40 rounded-3xl p-8 sm:p-10 mb-10 max-w-2xl mx-auto">
+            <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-3">When the phone is found — and the seed isn&apos;t</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 leading-tight">
+              Don&apos;t leave your family guessing where the keys are
+            </h2>
+            <p className="text-slate-300 leading-relaxed mb-6">
+              A phone, an exchange app, and no workable backup plan leaves heirs stuck.
+              The Complete Protection Bundle walks you through seed backups, beneficiary access, and inheritance checklists — step by step.
+            </p>
+            <div className="mb-4">
+              <BuyCard p={bundle} compact />
+            </div>
+            <p className="text-slate-500 text-xs text-center">Educational only. Not financial advice.</p>
+          </div>
+
           {/* Email Signup */}
           <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-10 text-center max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-3">Get the Full Checklist</h2>
@@ -154,10 +172,17 @@ function CryptoChecklistPage() {
             <p className="mt-4 text-slate-500 text-xs">We respect your privacy. No spam, ever.</p>
           </div>
 
-          <div className="text-center mt-10">
-            <Link to="/services" className="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors">
-              Explore our Digital Asset Guidance services →
-            </Link>
+          <div className="text-center mt-10 space-y-2">
+            <p>
+              <Link to="/guides" className="text-amber-400 hover:text-amber-300 text-sm font-medium transition-colors">
+                See all guides &amp; products →
+              </Link>
+            </p>
+            <p>
+              <Link to="/services" className="text-slate-500 hover:text-slate-400 text-xs transition-colors">
+                Or explore Digital Asset Guidance services
+              </Link>
+            </p>
           </div>
         </div>
       </section>
