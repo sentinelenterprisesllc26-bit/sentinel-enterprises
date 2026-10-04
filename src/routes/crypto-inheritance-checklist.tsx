@@ -112,7 +112,7 @@ function CryptoChecklistPage() {
               Don&apos;t leave your family guessing where the keys are
             </h2>
             <p className="text-slate-300 leading-relaxed mb-6">
-              Same problem as the Short: a phone, an exchange app, and no workable backup plan.
+              A phone, an exchange app, and no workable backup plan leaves heirs stuck.
               The Complete Protection Bundle walks you through seed backups, beneficiary access, and inheritance checklists — step by step.
             </p>
             <div className="mb-4">
