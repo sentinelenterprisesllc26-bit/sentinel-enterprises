@@ -2,6 +2,8 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { BuyCard, BUY_PRODUCTS } from '../lib/buy-cards'
 
+const CHECKLIST_PDF = '/downloads/Wallet-Security-Self-Custody-Checklist.pdf'
+
 export const Route = createFileRoute('/lookalike')({
   head: () => ({
     meta: [
@@ -26,11 +28,13 @@ function LookalikePage() {
     setStatus('submitting')
     try {
       const formData = new FormData(e.currentTarget)
-      await fetch('/__forms.html', {
+      const res = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formData as any).toString(),
       })
+      // Only claim success when Netlify actually saved the submission.
+      if (!res.ok) throw new Error(`Form save failed: ${res.status}`)
       setStatus('success')
       setEmail('')
     } catch {
@@ -147,6 +151,17 @@ function LookalikePage() {
               <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
                 <p className="font-semibold text-lg mb-1">You&apos;re on the list!</p>
                 <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+                <p className="text-sm mt-3">
+                  Can&apos;t wait?{' '}
+                  <a
+                    href={CHECKLIST_PDF}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline font-semibold text-green-300 hover:text-green-200"
+                  >
+                    Download the checklist now
+                  </a>
+                </p>
               </div>
             ) : (
               <form
@@ -158,6 +173,7 @@ function LookalikePage() {
                 className="flex flex-col sm:flex-row gap-3"
               >
                 <input type="hidden" name="form-name" value="crypto-checklist" />
+                <input type="hidden" name="source" value="lookalike" />
                 <p className="hidden">
                   <label>
                     Don't fill this: <input name="bot-field" />
@@ -183,7 +199,13 @@ function LookalikePage() {
             )}
 
             {status === 'error' && (
-              <p className="mt-3 text-red-400 text-sm">Something went wrong. Please try again.</p>
+              <p className="mt-3 text-red-400 text-sm" role="alert">
+                That didn&apos;t go through, so you&apos;re not on the list yet. Please try again, or email{' '}
+                <a href="mailto:sentinelenterprisesllc26@gmail.com" className="underline">
+                  sentinelenterprisesllc26@gmail.com
+                </a>
+                .
+              </p>
             )}
 
             <p className="mt-4 text-slate-500 text-xs">We respect your privacy. No spam, ever.</p>
