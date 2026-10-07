@@ -18,6 +18,7 @@ import { Route as SentinelSquadRouteImport } from './routes/sentinel-squad'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as LookalikeRouteImport } from './routes/lookalike'
 import { Route as GuidesRouteImport } from './routes/guides'
 import { Route as DownloadsRouteImport } from './routes/downloads'
 import { Route as CryptoMasteryRouteImport } from './routes/crypto-mastery'
@@ -73,6 +74,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PartnersRoute = PartnersRouteImport.update({
   id: '/partners',
   path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LookalikeRoute = LookalikeRouteImport.update({
+  id: '/lookalike',
+  path: '/lookalike',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesRoute = GuidesRouteImport.update({
@@ -141,6 +147,7 @@ export interface FileRoutesByFullPath {
   '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
+  '/lookalike': typeof LookalikeRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
@@ -163,6 +170,7 @@ export interface FileRoutesByTo {
   '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
+  '/lookalike': typeof LookalikeRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
@@ -186,6 +194,7 @@ export interface FileRoutesById {
   '/crypto-mastery': typeof CryptoMasteryRouteWithChildren
   '/downloads': typeof DownloadsRoute
   '/guides': typeof GuidesRoute
+  '/lookalike': typeof LookalikeRoute
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
@@ -210,6 +219,7 @@ export interface FileRouteTypes {
     | '/crypto-mastery'
     | '/downloads'
     | '/guides'
+    | '/lookalike'
     | '/partners'
     | '/privacy'
     | '/quiz'
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/crypto-mastery'
     | '/downloads'
     | '/guides'
+    | '/lookalike'
     | '/partners'
     | '/privacy'
     | '/quiz'
@@ -254,6 +265,7 @@ export interface FileRouteTypes {
     | '/crypto-mastery'
     | '/downloads'
     | '/guides'
+    | '/lookalike'
     | '/partners'
     | '/privacy'
     | '/quiz'
@@ -277,6 +289,7 @@ export interface RootRouteChildren {
   CryptoMasteryRoute: typeof CryptoMasteryRouteWithChildren
   DownloadsRoute: typeof DownloadsRoute
   GuidesRoute: typeof GuidesRoute
+  LookalikeRoute: typeof LookalikeRoute
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   QuizRoute: typeof QuizRoute
@@ -353,6 +366,13 @@ declare module '@tanstack/react-router' {
       path: '/partners'
       fullPath: '/partners'
       preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lookalike': {
+      id: '/lookalike'
+      path: '/lookalike'
+      fullPath: '/lookalike'
+      preLoaderRoute: typeof LookalikeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides': {
@@ -456,6 +476,7 @@ const rootRouteChildren: RootRouteChildren = {
   CryptoMasteryRoute: CryptoMasteryRouteWithChildren,
   DownloadsRoute: DownloadsRoute,
   GuidesRoute: GuidesRoute,
+  LookalikeRoute: LookalikeRoute,
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   QuizRoute: QuizRoute,
