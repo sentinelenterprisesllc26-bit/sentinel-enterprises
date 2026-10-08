@@ -352,7 +352,10 @@ function SentinelSquadTeaser() {
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Meet the <span className="text-amber-400">Sentinel Squad</span></h2>
           <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">A Saturday-morning cartoon for grown-ups that turns money moves, crypto self-custody, and asset protection into funny, plain-English stories. Episode 1, &ldquo;The Old Bank Trick,&rdquo; is premiering soon.</p>
-          <img src="/images/sentinel-squad/squad-lineup.webp" alt="The Sentinel Squad cast: Marcus, Jenae, Jarrod, Darius Dimes, and Coin" width={1200} height={675} loading="lazy" className="w-full max-w-3xl mx-auto rounded-2xl border border-amber-500/20 mb-8" />
+          <picture>
+            <source srcSet="/images/sentinel-squad/sentinel-squad-coming-soon-16x9.webp" type="image/webp" />
+            <img src="/images/sentinel-squad/sentinel-squad-coming-soon-16x9.jpg" alt="Sentinel Squad, coming soon: the animated cast of Jenae with her curly red hair and blue jacket, Hash, Sats, Node, Coin the gold AI orb, and Ripple the blue XRP orb, standing together in a city park" width={1920} height={1080} loading="lazy" decoding="async" className="w-full max-w-3xl mx-auto rounded-2xl border border-amber-500/20 mb-8" />
+          </picture>
           <Link to="/sentinel-squad" className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40">
             Meet the Squad &rarr;
           </Link>
