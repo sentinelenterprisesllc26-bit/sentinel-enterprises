@@ -19,7 +19,9 @@ const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
  *    - 🔵 In EPISODES below, fill in each episode's `youtubeId` with the real
  *      YouTube video ID. Any episode left without an id renders as a
  *      "Coming Soon" placeholder card automatically.
- *    - Cast art lives in public/images/sentinel-squad/ (webp, 480x480).
+ *    - Cast art lives in public/images/sentinel-squad/ (squad-*.webp, 480x480).
+ *    - Episode thumbnails (16:9, status badge built in) live there too; set
+ *      `thumbnail` on an episode to show it on the card until it has a youtubeId.
  *  The "Notify me at launch" form writes to the `sentinel-squad-notify`
  *  Netlify form (registered in public/__forms.html).
  * ============================================================================
@@ -35,34 +37,40 @@ type Character = {
 // Cast of Season One. Art lives in public/images/sentinel-squad/.
 const CHARACTERS: Character[] = [
   {
-    image: '/images/sentinel-squad/jenae.webp',
+    image: '/images/sentinel-squad/squad-jenae.webp',
     name: 'Jenae',
     role: 'The Lead',
     bio: 'Calm, sharp, and fiercely protective of her family’s money. She reads the fine print so you don’t have to — and explains it in plain English.',
   },
   {
-    image: '/images/sentinel-squad/jarrod.webp',
-    name: 'Jarrod',
+    image: '/images/sentinel-squad/squad-hash.webp',
+    name: 'Hash',
     role: 'The Friendly Skeptic',
     bio: 'Jenae’s easygoing friend who isn’t sold on crypto. He asks what you’re thinking — “Why not just use the bank?” — and makes the Squad earn every answer.',
   },
   {
-    image: '/images/sentinel-squad/marcus.webp',
-    name: 'Marcus',
+    image: '/images/sentinel-squad/squad-sats.webp',
+    name: 'Sats',
     role: 'The Skeptic',
     bio: 'Jenae’s longtime friend who still trusts the old bank way. He asks the question everyone’s thinking — and admits it when the answer surprises him.',
   },
   {
-    image: '/images/sentinel-squad/coin.webp',
+    image: '/images/sentinel-squad/squad-coin.webp',
     name: 'Coin',
     role: 'The AI Sidekick',
     bio: 'A friendly glowing orb that explains the tech. Gold when thinking, red for bad news, green for good news — and always honest about what nobody can promise.',
   },
   {
-    image: '/images/sentinel-squad/darius.webp',
-    name: 'Darius Dimes',
+    image: '/images/sentinel-squad/squad-node.webp',
+    name: 'Node',
     role: 'The Middleman',
     bio: 'A smooth banker in a pinstripe suit with a rubber stamp that says FEE. Charming, a little ridiculous, and somehow at every window.',
+  },
+  {
+    image: '/images/sentinel-squad/squad-ripple.webp',
+    name: 'Ripple',
+    role: 'The XRP Orb',
+    bio: 'Coin’s bright blue buddy who shows how value can zip across borders in seconds. Ripple keeps it educational: no price predictions, no promises.',
   },
 ]
 
@@ -74,6 +82,8 @@ type Episode = {
   youtubeId?: string
   // Optional badge shown on the placeholder card instead of "Coming Soon".
   status?: string
+  // Optional 16:9 thumbnail (webp + jpg fallback, badge built in) shown until the episode has a youtubeId.
+  thumbnail?: { webp: string; jpg: string; alt: string }
 }
 
 const EPISODES: Episode[] = [
@@ -83,24 +93,44 @@ const EPISODES: Episode[] = [
     description:
       'A $500 wire, $47 in fees, and “3–5 business days.” The Squad follows the money through the SWIFT maze, learns what ISO 20022 really is (a messaging standard, not a coin), and looks at how some payment providers use XRP as a bridge.',
     status: 'Premiering Soon',
+    thumbnail: {
+      webp: '/images/sentinel-squad/ep01-old-bank-trick-premiering-soon.webp',
+      jpg: '/images/sentinel-squad/ep01-old-bank-trick-premiering-soon.jpg',
+      alt: 'Episode 1, The Old Bank Trick, premiering soon: Jenae, Hash, Sats, Coin, and Ripple at the bank following a $500 wire through a maze that costs $47 in fees',
+    },
   },
   {
     number: 'Ep. 02',
     title: 'The Vault Without a Key',
     description:
       'When a family can’t reach their crypto, the Squad shows why self-custody and an inheritance plan matter before it’s too late.',
+    thumbnail: {
+      webp: '/images/sentinel-squad/ep02-vault-without-a-key-coming-soon.webp',
+      jpg: '/images/sentinel-squad/ep02-vault-without-a-key-coming-soon.jpg',
+      alt: 'Episode 2, The Vault Without a Key, coming soon: Jenae, Coin, and Ripple with a family gathered around a locked vault',
+    },
   },
   {
     number: 'Ep. 03',
     title: 'The Missing Deductions',
     description:
       'A busy caregiver discovers the tax savings hiding in plain sight — and keeps more of what they’ve earned.',
+    thumbnail: {
+      webp: '/images/sentinel-squad/ep03-missing-deductions-coming-soon.webp',
+      jpg: '/images/sentinel-squad/ep03-missing-deductions-coming-soon.jpg',
+      alt: 'Episode 3, The Missing Deductions, coming soon: Jenae and the Squad help a caregiver sort a pile of receipts',
+    },
   },
   {
     number: 'Ep. 04',
     title: 'Building the Shield',
     description:
       'The Squad walks a working family through protecting their home and savings without a fortune.',
+    thumbnail: {
+      webp: '/images/sentinel-squad/ep04-building-the-shield-coming-soon.webp',
+      jpg: '/images/sentinel-squad/ep04-building-the-shield-coming-soon.jpg',
+      alt: 'Episode 4, Building the Shield, coming soon: Jenae, Coin, and Ripple under a golden shield in front of a family home',
+    },
   },
 ]
 
@@ -163,7 +193,7 @@ function PremiseSection() {
         <p className="text-lg text-slate-400 leading-relaxed">
           Protecting your family’s future shouldn’t require a law degree. The Sentinel Squad takes the same practical
           lessons we teach working families and crypto holders — and turns them into a cartoon for grown-ups: bold,
-          funny, and honest. Each episode follows Jenae, Jarrod, Marcus, Coin, and one very smooth middleman as they figure out
+          funny, and honest. Each episode follows Jenae, Hash, Sats, Coin, Ripple, and one very smooth middleman named Node as they figure out
           how money really moves, how to guard what you’ve built, and how to pass on your digital assets.
         </p>
       </div>
@@ -179,7 +209,19 @@ function CharactersSection() {
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Meet the Squad</span>
           <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-white">Your Guides to a Protected Future</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <picture>
+          <source srcSet="/images/sentinel-squad/squad-cast-lineup-names.webp" type="image/webp" />
+          <img
+            src="/images/sentinel-squad/squad-cast-lineup-names.jpg"
+            alt="The Sentinel Squad cast, labeled: Hash, Sats, Jenae in the center with her curly red hair and blue jacket, Coin the gold AI orb, Ripple the blue XRP orb, and Node"
+            width={1920}
+            height={1080}
+            loading="lazy"
+            decoding="async"
+            className="w-full max-w-5xl mx-auto mb-12 rounded-2xl border border-amber-500/20"
+          />
+        </picture>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {CHARACTERS.map((c) => (
             <div
               key={c.name}
@@ -222,7 +264,7 @@ function EpisodesSection() {
   )
 }
 
-function EpisodeCard({ number, title, description, youtubeId, status }: Episode) {
+function EpisodeCard({ number, title, description, youtubeId, status, thumbnail }: Episode) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col hover:border-amber-500/50 transition-colors">
       <div className="relative w-full bg-slate-900" style={{ aspectRatio: '16 / 9' }}>
@@ -235,11 +277,21 @@ function EpisodeCard({ number, title, description, youtubeId, status }: Episode)
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
+        ) : thumbnail ? (
+          <picture>
+            <source srcSet={thumbnail.webp} type="image/webp" />
+            <img
+              src={thumbnail.jpg}
+              alt={thumbnail.alt}
+              width={1280}
+              height={720}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </picture>
         ) : (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-center px-4">
-            <span className="text-3xl" aria-hidden="true">
-              🎬
-            </span>
             <span className="text-amber-400 text-xs font-semibold uppercase tracking-wider">{status ?? 'Coming Soon'}</span>
           </div>
         )}
