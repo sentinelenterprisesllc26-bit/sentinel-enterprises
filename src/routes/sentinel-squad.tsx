@@ -64,7 +64,7 @@ const CHARACTERS: Character[] = [
     image: '/images/sentinel-squad/squad-node.webp',
     name: 'Node',
     role: 'The Middleman',
-    bio: 'A smooth banker in a pinstripe suit with a rubber stamp that says FEE. Charming, a little ridiculous, and somehow at every window.',
+    bio: 'A smooth middleman in a dark jacket and a gold chain-link pin, hardware wallet always in hand. Charming, a little ridiculous, and somehow skimming a FEE at every window.',
   },
   {
     image: '/images/sentinel-squad/squad-ripple.webp',
