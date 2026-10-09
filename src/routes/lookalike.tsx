@@ -148,20 +148,36 @@ function LookalikePage() {
             <p className="text-slate-400 mb-6">Enter your email and we&apos;ll send it to you.</p>
 
             {status === 'success' ? (
-              <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
-                <p className="font-semibold text-lg mb-1">You&apos;re on the list!</p>
-                <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
-                <p className="text-sm mt-3">
-                  Can&apos;t wait?{' '}
-                  <a
-                    href={CHECKLIST_PDF}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline font-semibold text-green-300 hover:text-green-200"
-                  >
-                    Download the checklist now
-                  </a>
-                </p>
+              <div className="space-y-6 text-left">
+                <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400 text-center">
+                  <p className="font-semibold text-lg mb-1">You&apos;re on the list!</p>
+                  <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+                  <p className="text-sm mt-3">
+                    Can&apos;t wait?{' '}
+                    <a
+                      href={CHECKLIST_PDF}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline font-semibold text-green-300 hover:text-green-200"
+                    >
+                      Download the checklist now
+                    </a>
+                  </p>
+                </div>
+                <div className="bg-slate-900/60 border border-amber-500/30 rounded-2xl p-6">
+                  <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2 text-center">
+                    While you&apos;re here
+                  </p>
+                  <h3 className="text-white font-bold text-xl mb-2 text-center leading-tight">
+                    Grab the Complete Protection Bundle for $17.99
+                  </h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-4 text-center">
+                    Same-day PDF guides for safe sending, seed backups, beneficiary access, and inheritance — the
+                    checklists that go with the 4 steps above.
+                  </p>
+                  <BuyCard p={bundle} compact />
+                  <p className="mt-3 text-slate-500 text-xs text-center">Educational only. Not financial advice.</p>
+                </div>
               </div>
             ) : (
               <form
