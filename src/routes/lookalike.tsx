@@ -11,7 +11,7 @@ export const Route = createFileRoute('/lookalike')({
       {
         name: 'description',
         content:
-          'The free 4-step check that stops address poisoning, clipboard swaps, and zero-dollar transfer scams before you hit send. Educational only, not financial advice.',
+          'Free 1-page lookalike checklist (about 30 seconds): 4 checks that stop address poisoning, clipboard swaps, and zero-dollar transfer scams before you hit send. Educational only, not financial advice.',
       },
     ],
   }),
@@ -78,7 +78,8 @@ function LookalikePage() {
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">The Lookalike Address Check</h1>
           <p className="text-xl text-slate-400 leading-relaxed">
-            4 checks that stop address poisoning, clipboard swaps, and zero-dollar transfer scams before you hit send.
+            Free 1-page lookalike checklist — 4 checks that stop address poisoning, clipboard swaps, and zero-dollar
+            transfer scams before you hit send. Takes about 30 seconds to grab.
           </p>
         </div>
       </section>
@@ -112,40 +113,11 @@ function LookalikePage() {
             ))}
           </div>
 
-          <div className="bg-gradient-to-br from-amber-500/15 to-slate-800/80 border border-amber-500/40 rounded-3xl p-8 sm:p-10 mb-10 max-w-2xl mx-auto">
-            <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-3">Lock down the rest of your setup</p>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 leading-tight">
-              One wrong paste is all it takes
-            </h2>
-            <p className="text-slate-300 leading-relaxed mb-6">
-              The Complete Protection Bundle walks you through safe sending, seed backups, beneficiary access, and
-              inheritance checklists, step by step, for less than the cost of one mistake.
-            </p>
-            <div className="mb-4">
-              <BuyCard p={bundle} compact />
-            </div>
-            <p className="text-slate-500 text-xs text-center">Educational only. Not financial advice.</p>
-          </div>
-
-          <div className="bg-slate-800/50 border border-slate-700/40 rounded-2xl p-6 mb-10 max-w-2xl mx-auto text-center">
-            <p className="text-slate-300 text-sm leading-relaxed mb-3">
-              Want a screen you can trust for check #3? An air-gapped hardware wallet shows the real destination before
-              you sign.
-            </p>
-            <a
-              href="https://www.ellipal.com/?rfsn=8708468.a45049"
-              target="_blank"
-              rel="sponsored noopener noreferrer"
-              className="text-amber-400 hover:text-amber-300 text-sm font-semibold"
-            >
-              See the ELLIPAL wallet we use (#ad) →
-            </a>
-            <p className="mt-2 text-slate-500 text-xs">#ad: affiliate link. We may earn a commission at no extra cost to you.</p>
-          </div>
-
           <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-10 text-center max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-white mb-3">Get the Free Crypto Safety Checklist</h2>
-            <p className="text-slate-400 mb-6">Enter your email and we&apos;ll send it to you.</p>
+            <h2 className="text-2xl font-bold text-white mb-3">Free 1-page lookalike checklist</h2>
+            <p className="text-slate-400 mb-6">
+              Enter your email — we&apos;ll send the PDF (about 30 seconds). Same 4 checks from the Short, printable.
+            </p>
 
             {status === 'success' ? (
               <div className="space-y-6 text-left">
@@ -209,7 +181,7 @@ function LookalikePage() {
                   disabled={status === 'submitting'}
                   className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap"
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Send Me the Checklist'}
+                  {status === 'submitting' ? 'Sending…' : 'Email me the 1-page checklist'}
                 </button>
               </form>
             )}
@@ -225,6 +197,37 @@ function LookalikePage() {
             )}
 
             <p className="mt-4 text-slate-500 text-xs">We respect your privacy. No spam, ever.</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-amber-500/15 to-slate-800/80 border border-amber-500/40 rounded-3xl p-8 sm:p-10 mb-10 max-w-2xl mx-auto">
+            <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-3">After the free checklist</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-3 leading-tight">
+              Want the full kit for $17.99?
+            </h2>
+            <p className="text-slate-300 leading-relaxed mb-6">
+              The Complete Protection Bundle adds safe-sending worksheets, seed backup steps, beneficiary access, and
+              inheritance checklists — the printable pack that goes with the 4 checks above.
+            </p>
+            <div className="mb-4">
+              <BuyCard p={bundle} compact />
+            </div>
+            <p className="text-slate-500 text-xs text-center">Educational only. Not financial advice.</p>
+          </div>
+
+          <div className="bg-slate-800/50 border border-slate-700/40 rounded-2xl p-6 mb-10 max-w-2xl mx-auto text-center">
+            <p className="text-slate-300 text-sm leading-relaxed mb-3">
+              Want a screen you can trust for check #3? An air-gapped hardware wallet shows the real destination before
+              you sign.
+            </p>
+            <a
+              href="https://www.ellipal.com/?rfsn=8708468.a45049"
+              target="_blank"
+              rel="sponsored noopener noreferrer"
+              className="text-amber-400 hover:text-amber-300 text-sm font-semibold"
+            >
+              See the ELLIPAL wallet we use (#ad) →
+            </a>
+            <p className="mt-2 text-slate-500 text-xs">#ad: affiliate link. We may earn a commission at no extra cost to you.</p>
           </div>
 
           <div className="text-center mt-10 space-y-2">
