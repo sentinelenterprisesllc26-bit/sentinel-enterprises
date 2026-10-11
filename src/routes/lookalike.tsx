@@ -119,6 +119,41 @@ function LookalikePage() {
               Enter your email — we&apos;ll send the PDF (about 30 seconds). Same 4 checks from the Short, printable.
             </p>
 
+            {/* Visible lead-magnet preview: seeing the checklist lifts email opt-ins */}
+            <div
+              className="mb-8 mx-auto max-w-sm text-left rotate-[-1.5deg] shadow-2xl shadow-black/40"
+              aria-hidden="true"
+            >
+              <div className="bg-white rounded-md border border-slate-200 overflow-hidden">
+                <div className="bg-slate-100 border-b border-slate-200 px-4 py-2 flex items-center justify-between">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500">PDF preview</span>
+                  <span className="text-[10px] font-semibold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">
+                    1 page · free
+                  </span>
+                </div>
+                <div className="px-5 py-4">
+                  <p className="text-slate-900 font-black text-sm leading-tight mb-1">Lookalike Address Checklist</p>
+                  <p className="text-slate-500 text-[11px] mb-3">4 checks before every crypto send</p>
+                  <ul className="space-y-2">
+                    {[
+                      'Never copy an address from history',
+                      'Check the whole address, not just the ends',
+                      'Confirm on the wallet’s own screen',
+                      'A test send is not a safety check',
+                    ].map((line) => (
+                      <li key={line} className="flex items-start gap-2 text-slate-700 text-[12px] leading-snug">
+                        <span className="mt-0.5 inline-block h-3.5 w-3.5 flex-shrink-0 rounded border-2 border-slate-400" />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-4 text-[9px] text-slate-400 border-t border-slate-100 pt-2">
+                    Educational only · Not financial advice · Sentinel Enterprises LLC
+                  </p>
+                </div>
+              </div>
+            </div>
+
             {status === 'success' ? (
               <div className="space-y-6 text-left">
                 <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400 text-center">
