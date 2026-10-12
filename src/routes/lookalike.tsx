@@ -21,7 +21,13 @@ export const Route = createFileRoute('/lookalike')({
 function LookalikePage() {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle')
+  const [quizPick, setQuizPick] = useState<'A' | 'B' | null>(null)
   const bundle = BUY_PRODUCTS.find((x) => x.key === 'bundle')!
+
+  // Demo-only fake addresses (not real wallets). Same start/end; middle differs — classic lookalike pattern.
+  const demoSafe = 'rN7n7otQDd6FczFgLdkpqkqP4EXAMPLESAFE01'
+  const demoLookalike = 'rN7n7otQDd6FczFgLdFAKEpqkqP4EXAMPLESAFE01'
+  const quizCorrect: 'A' | 'B' = 'B' 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -78,14 +84,77 @@ function LookalikePage() {
           </span>
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">The Lookalike Address Check</h1>
           <p className="text-xl text-slate-400 leading-relaxed">
-            Free 1-page lookalike checklist — 4 checks that stop address poisoning, clipboard swaps, and zero-dollar
-            transfer scams before you hit send. Takes about 30 seconds to grab.
+            Most people only glance at the first and last characters of a crypto address — and that&apos;s exactly what
+            lookalike scams rely on. Free 1-page checklist: 4 checks that stop address poisoning, clipboard swaps, and
+            zero-dollar transfer traps before you hit send.
           </p>
         </div>
       </section>
 
       <section className="py-16 bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-slate-800/60 border border-amber-500/30 rounded-3xl p-6 sm:p-8 mb-14">
+            <p className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-2 text-center">10-second check</p>
+            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2 text-center">Can you spot the lookalike?</h2>
+            <p className="text-slate-400 text-sm leading-relaxed mb-6 text-center max-w-xl mx-auto">
+              Both addresses start and end the same. One is the trap. Tap which one you would <em className="not-italic text-slate-300">not</em> send to.
+            </p>
+            <div className="grid sm:grid-cols-2 gap-3 mb-4">
+              {(
+                [
+                  { id: 'A' as const, label: 'Address A', value: demoSafe },
+                  { id: 'B' as const, label: 'Address B', value: demoLookalike },
+                ] as const
+              ).map((opt) => {
+                const picked = quizPick === opt.id
+                const isCorrect = opt.id === quizCorrect
+                let border = 'border-slate-600 hover:border-amber-500/60'
+                if (quizPick) {
+                  if (isCorrect) border = 'border-green-500/70'
+                  else if (picked) border = 'border-red-500/70'
+                  else border = 'border-slate-700 opacity-60'
+                }
+                return (
+                  <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => setQuizPick(opt.id)}
+                    aria-pressed={picked}
+                    className={`text-left rounded-2xl border bg-slate-900/80 p-4 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${border}`}
+                  >
+                    <span className="block text-amber-400 text-xs font-bold uppercase tracking-wider mb-2">{opt.label}</span>
+                    <span className="block font-mono text-[11px] sm:text-xs text-slate-200 break-all leading-relaxed">{opt.value}</span>
+                  </button>
+                )
+              })}
+            </div>
+            {quizPick && (
+              <div
+                className={`rounded-xl p-4 text-sm leading-relaxed ${
+                  quizPick === quizCorrect
+                    ? 'bg-green-500/10 border border-green-500/30 text-green-300'
+                    : 'bg-red-500/10 border border-red-500/30 text-red-300'
+                }`}
+                role="status"
+              >
+                {quizPick === quizCorrect ? (
+                  <p>
+                    Nice catch. Address B sneaks <span className="font-mono text-white">FAKE</span> into the middle while
+                    keeping the familiar start and end. That&apos;s address poisoning in one glance.
+                  </p>
+                ) : (
+                  <p>
+                    Easy to miss. Address B is the lookalike — the middle has <span className="font-mono text-white">FAKE</span>{' '}
+                    while the start and end still match Address A. Scammers design for a quick glance.
+                  </p>
+                )}
+                <p className="mt-2 text-slate-400">
+                  Grab the free 1-page checklist below so this becomes a 10-second habit before every send.
+                </p>
+              </div>
+            )}
+          </div>
+
           <div className="bg-amber-500/5 border border-amber-500/20 rounded-2xl p-8 mb-14">
             <p className="text-slate-300 text-lg leading-relaxed mb-4">
               Crypto sends can&apos;t be reversed.{' '}
@@ -260,9 +329,9 @@ function LookalikePage() {
               rel="sponsored noopener noreferrer"
               className="text-amber-400 hover:text-amber-300 text-sm font-semibold"
             >
-              See the ELLIPAL wallet we use (#ad) →
+              See the ELLIPAL wallet we use #ad →
             </a>
-            <p className="mt-2 text-slate-500 text-xs">#ad: affiliate link. We may earn a commission at no extra cost to you.</p>
+            <p className="mt-2 text-slate-500 text-xs">#ad (affiliate)</p>
           </div>
 
           <div className="text-center mt-10 space-y-2">
