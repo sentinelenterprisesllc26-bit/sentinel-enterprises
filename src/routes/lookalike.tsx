@@ -2,7 +2,25 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { BuyCard, BUY_PRODUCTS } from '../lib/buy-cards'
 
-const CHECKLIST_PDF = '/downloads/Wallet-Security-Self-Custody-Checklist.pdf'
+// Matched lead magnet: same 4 checks as the "She pasted the lookalike" Short and this page.
+const CHECKLIST_PDF = '/downloads/Lookalike-Address-Checklist.pdf'
+const CHECKLIST_FILENAME = 'Lookalike-Address-Checklist.pdf'
+
+// Deliver the PDF instantly after opt-in (no second click needed).
+function triggerChecklistDownload() {
+  try {
+    const a = document.createElement('a')
+    a.href = CHECKLIST_PDF
+    a.download = CHECKLIST_FILENAME
+    a.rel = 'noopener'
+    a.style.display = 'none'
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+  } catch {
+    // Fallback link stays visible in the success message.
+  }
+}
 
 export const Route = createFileRoute('/lookalike')({
   head: () => ({
@@ -43,6 +61,7 @@ function LookalikePage() {
       if (!res.ok) throw new Error(`Form save failed: ${res.status}`)
       setStatus('success')
       setEmail('')
+      triggerChecklistDownload()
     } catch {
       setStatus('error')
     }
@@ -185,7 +204,7 @@ function LookalikePage() {
           <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-10 text-center max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold text-white mb-3">Free 1-page lookalike checklist</h2>
             <p className="text-slate-400 mb-6">
-              Enter your email — we&apos;ll send the PDF (about 30 seconds). Same 4 checks from the Short, printable.
+              Get the PDF instantly — and we&apos;ll email a copy too. Same 4 checks from the Short, printable.
             </p>
 
             {/* Visible lead-magnet preview: seeing the checklist lifts email opt-ins */}
@@ -226,17 +245,18 @@ function LookalikePage() {
             {status === 'success' ? (
               <div className="space-y-6 text-left">
                 <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400 text-center">
-                  <p className="font-semibold text-lg mb-1">You&apos;re on the list!</p>
-                  <p className="text-sm">Check your inbox (and spam folder, just in case).</p>
+                  <p className="font-semibold text-lg mb-1">Your checklist is downloading now.</p>
+                  <p className="text-sm">We&apos;ll also email a copy (check spam, just in case).</p>
                   <p className="text-sm mt-3">
-                    Can&apos;t wait?{' '}
+                    Download didn&apos;t start?{' '}
                     <a
                       href={CHECKLIST_PDF}
+                      download={CHECKLIST_FILENAME}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="underline font-semibold text-green-300 hover:text-green-200"
                     >
-                      Download the checklist now
+                      Get the Lookalike Address Checklist (PDF)
                     </a>
                   </p>
                 </div>
@@ -285,7 +305,7 @@ function LookalikePage() {
                   disabled={status === 'submitting'}
                   className="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl transition-colors disabled:opacity-50 whitespace-nowrap"
                 >
-                  {status === 'submitting' ? 'Sending…' : 'Email me the 1-page checklist'}
+                  {status === 'submitting' ? 'Sending…' : 'Get the free checklist now'}
                 </button>
               </form>
             )}
