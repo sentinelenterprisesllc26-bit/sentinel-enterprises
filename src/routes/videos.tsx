@@ -369,8 +369,7 @@ function RecommendedToolsSection() {
           <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Recommended Tools</span>
           <h2 className="mt-2 text-3xl font-bold text-white">Gear We Trust for Self-Custody</h2>
           <p className="mt-3 text-slate-400 leading-relaxed">
-            The hardware and resources we point clients to first. Some links are affiliate links — we may earn a
-            commission at no extra cost to you.
+            The hardware and resources we point clients to first. Tool links are #ad.
           </p>
         </div>
 
@@ -390,7 +389,7 @@ function RecommendedToolsSection() {
                   rel="sponsored noopener noreferrer"
                   className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-sm rounded-xl transition-colors"
                 >
-                  View Tool
+                  View Tool <span className="text-xs font-normal opacity-80">#ad</span>
                 </a>
                 {tool.pdfHref && (
                   <a
