@@ -160,13 +160,13 @@ const groups: VideoGroup[] = [
         id: 'HwcwugAJIJE',
         title: 'The Visage Collection from THREE — 3-Step Skincare Routine',
         description:
-          'Meet Pure Cleanse, Radiant Toner, and Super Serum. Jenae is an independent THREE Brand Ambassador and may earn commissions from qualifying purchases.',
+          'Meet Pure Cleanse, Radiant Toner, and Super Serum. Jenae is an independent THREE Brand Ambassador. #ad',
       },
       {
         id: '6jVX7t1yx4s',
         title: 'Crème Caviar from THREE — Luxury Skincare Spotlight',
         description:
-          'A look at Crème Caviar, a moisturizer with botanical extracts. Jenae is an independent THREE Brand Ambassador and may earn commissions from qualifying purchases.',
+          'A look at Crème Caviar, a moisturizer with botanical extracts. Jenae is an independent THREE Brand Ambassador. #ad',
       },
       {
         id: 'Mm9zFV4UgS0',

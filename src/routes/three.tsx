@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { createFileRoute } from '@tanstack/react-router'
 
 export const Route = createFileRoute('/three')({
@@ -28,6 +29,7 @@ function ThreePage() {
     <>
       <ThreeHero />
       <ThreeStories />
+      <ThreeQuiz />
       <ThreeProducts />
       <ThreeScience />
       <ThreeOpportunity />
@@ -55,7 +57,7 @@ function ThreeHero() {
         </p>
         
         <p className="text-sm text-slate-300 max-w-2xl mx-auto mb-6">
-          Jenae is an independent Three Brand Ambassador and may earn commissions from qualifying purchases and team sales. Earnings are not guaranteed.
+          Jenae is an independent THREE Brand Ambassador. Links on this page are #ad.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
@@ -64,7 +66,7 @@ function ThreeHero() {
             rel="sponsored noopener noreferrer external commercial"
             className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40 hover:-translate-y-0.5 w-full sm:w-auto"
           >
-            Shop Products
+            Shop Products <span className="text-xs font-normal opacity-80">#ad</span>
           </a>
           <a
             href="https://jenae.threeinternational.com/en/opportunity"
@@ -72,7 +74,7 @@ function ThreeHero() {
             rel="sponsored noopener noreferrer external commercial"
             className="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold text-lg rounded-xl border-2 border-white/30 hover:border-cyan-400/50 transition-all hover:-translate-y-0.5 w-full sm:w-auto"
           >
-            Learn About the Opportunity →
+            Learn About the Opportunity → <span className="text-xs font-normal opacity-80">#ad</span>
           </a>
         </div>
       </div>
@@ -160,8 +162,121 @@ function ThreeStories() {
             rel="sponsored noopener noreferrer external commercial"
             className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-900 font-semibold rounded-xl transition-colors"
           >
-            Start Your Story
+            Start Your Story <span className="text-xs font-normal opacity-80">#ad</span>
           </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+
+type QuizPick = 'vitalite' | 'visage' | 'kynetik'
+
+const QUIZ_QUESTIONS: { q: string; options: { label: string; pick: QuizPick }[] }[] = [
+  {
+    q: 'Which part of your routine do you want to upgrade first?',
+    options: [
+      { label: 'My daily nutrition basics', pick: 'vitalite' },
+      { label: 'My skincare ritual', pick: 'visage' },
+      { label: 'My workout or busy-day drink', pick: 'kynetik' },
+    ],
+  },
+  {
+    q: 'When does your day need the most support?',
+    options: [
+      { label: 'Every morning — I want one simple habit', pick: 'vitalite' },
+      { label: 'Morning and night at the mirror', pick: 'visage' },
+      { label: 'Before the gym or a long shift', pick: 'kynetik' },
+    ],
+  },
+  {
+    q: 'What sounds most like you?',
+    options: [
+      { label: '"I skip meals and want to cover my bases."', pick: 'vitalite' },
+      { label: '"I want my skin to look fresh and hydrated."', pick: 'visage' },
+      { label: '"I want a tasty pick-me-up with caffeine."', pick: 'kynetik' },
+    ],
+  },
+]
+
+const QUIZ_RESULTS: Record<QuizPick, { name: string; image: string; blurb: string }> = {
+  vitalite: {
+    name: 'Vitalité',
+    image: '/images/three/photos/vitalite-boxes.jpg',
+    blurb: 'A daily nutrition formula with vitamins and minerals to support your foundational nutritional needs and overall wellness.*',
+  },
+  visage: {
+    name: 'Visage Collection',
+    image: '/images/three/photos/visage-collection.jpg',
+    blurb: 'A 3-step routine — Pure Cleanse, Radiant Toner, and Super Serum — to cleanse, tone, and support the look of healthy, hydrated skin.',
+  },
+  kynetik: {
+    name: 'Kynetik',
+    image: '/images/three/photos/kynetik-box.jpg',
+    blurb: 'A caffeinated berry drink mix to support energy and focus on active days.*',
+  },
+}
+
+function ThreeQuiz() {
+  const [answers, setAnswers] = useState<QuizPick[]>([])
+  const done = answers.length === QUIZ_QUESTIONS.length
+  let result: QuizPick = 'vitalite'
+  if (done) {
+    const counts: Record<QuizPick, number> = { vitalite: 0, visage: 0, kynetik: 0 }
+    answers.forEach((a) => counts[a]++)
+    result = (Object.keys(counts) as QuizPick[]).reduce((best, k) => (counts[k] > counts[best] ? k : best), answers[0])
+  }
+  const r = QUIZ_RESULTS[result]
+  return (
+    <section id="quiz" className="py-20 bg-slate-900 border-t border-slate-800">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8">
+          <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">30-second quiz</span>
+          <h2 className="mt-2 text-3xl font-bold text-white">Find Your THREE</h2>
+        </div>
+        <div className="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8">
+          {!done ? (
+            <div>
+              <p className="text-slate-400 text-sm mb-2">Question {answers.length + 1} of {QUIZ_QUESTIONS.length}</p>
+              <h3 className="text-xl font-semibold text-white mb-6">{QUIZ_QUESTIONS[answers.length].q}</h3>
+              <div className="space-y-3">
+                {QUIZ_QUESTIONS[answers.length].options.map((o) => (
+                  <button
+                    key={o.label}
+                    type="button"
+                    onClick={() => setAnswers([...answers, o.pick])}
+                    className="w-full text-left px-5 py-4 bg-slate-800 hover:bg-amber-500 hover:text-slate-900 text-white rounded-xl transition-colors"
+                  >
+                    {o.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="text-center">
+              <p className="text-slate-400 text-sm mb-2">Your match</p>
+              <h3 className="text-2xl font-bold text-white mb-4">{r.name}</h3>
+              <img src={r.image} alt={r.name} loading="lazy" className="mx-auto max-h-56 object-contain mb-4" />
+              <p className="text-slate-300 mb-6">{r.blurb}</p>
+              <a
+                href="https://jenae.threeinternational.com/en/purchase-products"
+                target="_blank"
+                rel="sponsored noopener noreferrer external commercial"
+                className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold rounded-xl"
+              >
+                Shop {r.name} <span className="ml-1 text-xs font-normal opacity-80">#ad</span>
+              </a>
+              <div>
+                <button type="button" onClick={() => setAnswers([])} className="mt-4 text-sm text-slate-400 underline">
+                  Retake quiz
+                </button>
+              </div>
+              <p className="mt-6 text-xs text-slate-500">
+                *These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -175,7 +290,7 @@ function ThreeProducts() {
       name: 'Vitalité',
       category: 'Daily Multivitamin',
       description: 'A comprehensive daily formula featuring vitamins, minerals, and nutrients to support your foundational nutritional needs.',
-      image: '/images/three/vitalite.webp',
+      image: '/images/three/photos/vitalite-boxes.jpg',
       benefits: ['Vitamins & Minerals', 'Daily Nutrition', 'Wellness Support']
     },
     {
@@ -183,7 +298,7 @@ function ThreeProducts() {
       name: 'Visage Collection',
       category: '3-Step Skincare Routine',
       description: 'The complete routine — Pure Cleanse, Radiant Toner, and Super Serum — designed to cleanse, tone, and nourish as part of your daily skincare ritual.',
-      image: '/images/three/visage-collection.webp',
+      image: '/images/three/photos/visage-collection.jpg',
       benefits: ['Pure Cleanse', 'Radiant Toner', 'Super Serum']
     },
     {
@@ -191,31 +306,23 @@ function ThreeProducts() {
       name: 'Crème Caviar',
       category: 'Luxury Moisturizer',
       description: 'A luxurious moisturizer that pairs rare botanical extracts with neurocosmetic molecules to hydrate, nourish, and revitalize the look of your skin. Vegan friendly and third-party tested.',
-      image: '/images/three/visage-creme-caviar.webp',
+      image: '/images/three/photos/visage-creme-caviar.png',
       benefits: ['Neurocosmetic Molecules', 'Rare Botanicals', 'Vegan Friendly']
     },
     {
       id: 'glp-three',
       name: 'GLP THREE',
       category: 'Wellness Supplement',
-      description: 'An oral dietary supplement designed to support your overall wellness goals — no injections, and easy to take wherever your day takes you. As with any supplement, consult your physician first.',
-      image: '/images/three/glp-three.webp',
-      benefits: ['Oral Supplement', 'No Injections', 'Travel Friendly']
-    },
-    {
-      id: 'collagene',
-      name: 'Collagène',
-      category: 'Marine Collagen',
-      description: 'Delivers 5 grams of highly bioavailable marine collagen in a liquid format, designed to support your body\u2019s natural collagen production for vibrant, youthful-looking skin.',
-      image: '/images/three/collagene.webp',
-      benefits: ['5g Marine Collagen', 'Liquid Format', 'Bioavailable']
+      description: 'An oral dietary supplement designed to support your overall wellness goals — easy to take wherever your day takes you. As with any supplement, consult your physician first.',
+      image: '/images/three/photos/glp-three-bottle.jpg',
+      benefits: ['Oral Supplement', 'Easy to Take', 'Travel Friendly']
     },
     {
       id: 'kynetik',
       name: 'Kynetik',
       category: 'Berry Blast Drink Mix',
       description: 'A caffeinated drink mix offering a flavorful berry taste for your active days and routines.',
-      image: '/images/three/kynetik.png',
+      image: '/images/three/photos/kynetik-box.jpg',
       benefits: ['Caffeinated', 'Berry Flavor', 'Mix with Water']
     }
   ]
@@ -259,7 +366,7 @@ function ThreeProducts() {
                   rel="sponsored noopener noreferrer external commercial"
                   className="w-full inline-flex justify-center items-center px-4 py-3 bg-slate-800 hover:bg-amber-500 text-white hover:text-slate-900 font-semibold rounded-xl transition-colors"
                 >
-                  Purchase {p.name}
+                  Purchase {p.name} <span className="ml-1 text-xs font-normal opacity-80">#ad</span>
                 </a>
               </div>
             </div>
@@ -346,7 +453,7 @@ function ThreeOpportunity() {
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Build With Us</h2>
             <p className="text-lg text-slate-300 leading-relaxed mb-6">
-              Three International provides a structured opportunity for individuals interested in sharing wellness products and building an independent business. Whether you are looking for supplemental income or a new venture, you can join as an independent Brand Ambassador.
+              Three International provides a structured opportunity for individuals interested in sharing wellness products and building an independent business. If you would like to start a product-sharing business of your own, you can join as an independent Brand Ambassador.
             </p>
             <p className="text-base text-slate-400 mb-10">
               Enrollment takes place on the official Three website. Check that Jenae is listed as your sponsor before completing registration, and review the current costs and terms.
@@ -358,7 +465,7 @@ function ThreeOpportunity() {
                 rel="sponsored noopener noreferrer external commercial"
                 className="inline-flex items-center justify-center px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
               >
-                Join My Team
+                Join My Team <span className="text-xs font-normal opacity-80">#ad</span>
               </a>
               <a
                 href="https://jenae.threeinternational.com/en/opportunity"
@@ -366,7 +473,7 @@ function ThreeOpportunity() {
                 rel="sponsored noopener noreferrer external commercial"
                 className="inline-flex items-center justify-center px-8 py-4 bg-transparent hover:bg-slate-800 text-white font-semibold text-lg rounded-xl border border-slate-600 hover:border-slate-500 transition-colors"
               >
-                Read Compensation Plan
+                Read Compensation Plan <span className="text-xs font-normal opacity-80">#ad</span>
               </a>
             </div>
           </div>
@@ -394,7 +501,7 @@ function ThreeFAQ() {
     },
     {
       q: 'What is a Brand Ambassador?',
-      a: 'A Brand Ambassador is an independent representative who earns commissions by sharing and selling Three products. It is a business opportunity with its own terms, rewards, and structure.'
+      a: 'A Brand Ambassador is an independent representative who shares Three products. It is a business opportunity with its own terms, costs, and structure. Earnings are not guaranteed.'
     },
     {
       q: 'Will Jenae be my sponsor if I join?',
@@ -439,7 +546,7 @@ function ThreeDisclosure() {
     <section className="py-12 bg-slate-950 border-t border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-slate-500 leading-relaxed space-y-4">
         <p>
-          <strong className="text-slate-400">Independent Ambassador Disclosure:</strong> Jenae is an independent Brand Ambassador for Three International and may earn commissions from qualifying purchases and team sales. This is not Three International's corporate website.
+          <strong className="text-slate-400">Independent Ambassador Disclosure:</strong> Jenae is an independent Brand Ambassador for Three International. Links to Three are #ad. This is not Three International's corporate website.
         </p>
         <p>
           <strong className="text-slate-400">Income Disclaimer:</strong> Earnings are not guaranteed. Results vary and expenses can exceed earnings. Review current enrollment and ongoing costs, the official rewards plan, and any applicable income disclosure before deciding to join. This page does not promise any level of income.
