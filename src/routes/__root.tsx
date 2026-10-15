@@ -1,4 +1,5 @@
-import { HeadContent, Link, Scripts, createRootRoute } from '@tanstack/react-router'
+import { HeadContent, Link, Scripts, createRootRoute, useRouterState } from '@tanstack/react-router'
+import { useEffect, useState } from 'react'
 import '../styles.css'
 
 export const Route = createRootRoute({
@@ -253,6 +254,88 @@ function Footer() {
   )
 }
 
+// Slide-in for the free lookalike checklist. Appears after the reader scrolls
+// about halfway down a page, once per browser (dismissal is remembered).
+// Hidden on pages that already capture the email or handle checkout.
+const CHECKLIST_SLIDEIN_KEY = 'sentinel-checklist-slidein-dismissed'
+const CHECKLIST_SLIDEIN_HIDDEN = ['/lookalike', '/paste', '/thank-you', '/crypto-mastery', '/downloads', '/privacy', '/terms']
+
+function ChecklistSlideIn() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname })
+  const [open, setOpen] = useState(false)
+  const hidden = CHECKLIST_SLIDEIN_HIDDEN.some((p) => pathname === p || pathname.startsWith(p + '/') || pathname.startsWith(p + '.'))
+
+  useEffect(() => {
+    setOpen(false)
+    if (hidden) return
+    try {
+      if (window.localStorage.getItem(CHECKLIST_SLIDEIN_KEY)) return
+    } catch {
+      /* storage blocked: still show */
+    }
+    const onScroll = () => {
+      const doc = document.documentElement
+      const scrollable = doc.scrollHeight - window.innerHeight
+      if (scrollable <= 0) return
+      if (window.scrollY / scrollable >= 0.5) {
+        setOpen(true)
+        window.removeEventListener('scroll', onScroll)
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [pathname, hidden])
+
+  if (!open || hidden) return null
+
+  const dismiss = () => {
+    setOpen(false)
+    try {
+      window.localStorage.setItem(CHECKLIST_SLIDEIN_KEY, '1')
+    } catch {
+      /* ignore */
+    }
+  }
+
+  return (
+    <div
+      role="dialog"
+      aria-label="Free lookalike address checklist"
+      className="fixed z-40 bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:bottom-6 sm:w-80 rounded-xl border border-amber-500/40 bg-slate-900/95 backdrop-blur shadow-2xl p-4"
+    >
+      <button
+        type="button"
+        onClick={dismiss}
+        aria-label="Close"
+        className="absolute top-2 right-2 p-1 text-slate-400 hover:text-white"
+      >
+        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <p className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Free 1-page checklist</p>
+      <p className="text-white font-semibold text-sm leading-snug mb-2 pr-4">
+        Can you spot a lookalike crypto address? 4 ten-second checks before every send.
+      </p>
+      <a
+        href="/paste"
+        onClick={() => {
+          try {
+            ;(window as any).gtag?.('event', 'checklist_slidein_click', { page_path: pathname })
+            window.localStorage.setItem(CHECKLIST_SLIDEIN_KEY, '1')
+          } catch {
+            /* ignore */
+          }
+        }}
+        className="block w-full text-center px-4 py-2 bg-amber-500 hover:bg-amber-400 text-slate-900 font-semibold text-sm rounded-lg transition-colors"
+      >
+        Get the free checklist
+      </a>
+      <p className="text-slate-500 text-[11px] mt-2">Educational only, not financial advice.</p>
+    </div>
+  )
+}
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
@@ -289,6 +372,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <NavBar />
         <main className="pt-16">{children}</main>
         <Footer />
+        <ChecklistSlideIn />
         <Scripts />
       </body>
     </html>
