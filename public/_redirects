@@ -5,17 +5,24 @@
 /copy/                                  /lookalike                       301!
 /zero                                   /lookalike                       301!
 /zero/                                  /lookalike                       301!
+# Family wallet-security routine Short → /routine (typeable aliases)
+/family                                 /routine                         301!
+/family/                                /routine                         301!
+/secure                                 /routine                         301!
+/secure/                                /routine                         301!
+# Wallet-security checklist paths → /routine (matches Wallet-Security-Self-Custody-Checklist.pdf)
+/wallet-security-checklist              /routine                         301!
+/wallet-security-checklist/             /routine                         301!
+/resources/wallet-security-checklist    /routine                         301!
+/resources/wallet-security-checklist/   /routine                         301!
 # Shorts message-match landing (bio / pin → protect)
 /protect                                /crypto-inheritance-checklist    301!
 /protect/                               /crypto-inheritance-checklist    301!
 # Path aliases / .org-era URLs → canonical .com pages (permanent)
-/resources/wallet-security-checklist    /crypto-inheritance-checklist    301!
-/resources/wallet-security-checklist/   /crypto-inheritance-checklist    301!
 /crypto-security-checklist              /crypto-inheritance-checklist    301!
 /crypto-security-checklist/             /crypto-inheritance-checklist    301!
 /caregiver-checklist                    /                              301!
 /caregiver-checklist/                   /                              301!
-/wallet-security-checklist              /crypto-inheritance-checklist    301!
 /crypto-checklist                       /crypto-inheritance-checklist    301!
 /buy                                    /guides                          301!
 /buy/                                   /guides                          301!
