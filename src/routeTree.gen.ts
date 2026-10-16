@@ -15,6 +15,7 @@ import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SentinelSquadRouteImport } from './routes/sentinel-squad'
+import { Route as RoutineRouteImport } from './routes/routine'
 import { Route as QuizRouteImport } from './routes/quiz'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PartnersRouteImport } from './routes/partners'
@@ -59,6 +60,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const SentinelSquadRoute = SentinelSquadRouteImport.update({
   id: '/sentinel-squad',
   path: '/sentinel-squad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RoutineRoute = RoutineRouteImport.update({
+  id: '/routine',
+  path: '/routine',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QuizRoute = QuizRouteImport.update({
@@ -151,6 +157,7 @@ export interface FileRoutesByFullPath {
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
+  '/routine': typeof RoutineRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByTo {
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
+  '/routine': typeof RoutineRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
@@ -198,6 +206,7 @@ export interface FileRoutesById {
   '/partners': typeof PartnersRoute
   '/privacy': typeof PrivacyRoute
   '/quiz': typeof QuizRoute
+  '/routine': typeof RoutineRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacy'
     | '/quiz'
+    | '/routine'
     | '/sentinel-squad'
     | '/services'
     | '/terms'
@@ -246,6 +256,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacy'
     | '/quiz'
+    | '/routine'
     | '/sentinel-squad'
     | '/services'
     | '/terms'
@@ -269,6 +280,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/privacy'
     | '/quiz'
+    | '/routine'
     | '/sentinel-squad'
     | '/services'
     | '/terms'
@@ -293,6 +305,7 @@ export interface RootRouteChildren {
   PartnersRoute: typeof PartnersRoute
   PrivacyRoute: typeof PrivacyRoute
   QuizRoute: typeof QuizRoute
+  RoutineRoute: typeof RoutineRoute
   SentinelSquadRoute: typeof SentinelSquadRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
@@ -345,6 +358,13 @@ declare module '@tanstack/react-router' {
       path: '/sentinel-squad'
       fullPath: '/sentinel-squad'
       preLoaderRoute: typeof SentinelSquadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/routine': {
+      id: '/routine'
+      path: '/routine'
+      fullPath: '/routine'
+      preLoaderRoute: typeof RoutineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/quiz': {
@@ -480,6 +500,7 @@ const rootRouteChildren: RootRouteChildren = {
   PartnersRoute: PartnersRoute,
   PrivacyRoute: PrivacyRoute,
   QuizRoute: QuizRoute,
+  RoutineRoute: RoutineRoute,
   SentinelSquadRoute: SentinelSquadRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
