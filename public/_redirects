@@ -5,6 +5,9 @@
 /copy/                                  /lookalike                       301!
 /zero                                   /lookalike                       301!
 /zero/                                  /lookalike                       301!
+# KEYS inheritance Short → /keys (typeable alias)
+/letter                                 /keys                            301!
+/letter/                                /keys                            301!
 # Family wallet-security routine Short → /routine (typeable aliases)
 /family                                 /routine                         301!
 /family/                                /routine                         301!
