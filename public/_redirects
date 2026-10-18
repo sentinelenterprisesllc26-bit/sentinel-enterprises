@@ -5,6 +5,11 @@
 /copy/                                  /lookalike                       301!
 /zero                                   /lookalike                       301!
 /zero/                                  /lookalike                       301!
+# Recovery-scam Short ("Comment help") → /recovery (typeable aliases)
+/help                                   /recovery                        301!
+/help/                                  /recovery                        301!
+/fee                                    /recovery                        301!
+/fee/                                   /recovery                        301!
 # KEYS inheritance Short → /keys (typeable alias)
 /letter                                 /keys                            301!
 /letter/                                /keys                            301!

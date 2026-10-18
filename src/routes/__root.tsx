@@ -258,7 +258,7 @@ function Footer() {
 // about halfway down a page, once per browser (dismissal is remembered).
 // Hidden on pages that already capture the email or handle checkout.
 const CHECKLIST_SLIDEIN_KEY = 'sentinel-checklist-slidein-dismissed'
-const CHECKLIST_SLIDEIN_HIDDEN = ['/lookalike', '/paste', '/routine', '/family', '/secure', '/keys', '/letter', '/thank-you', '/crypto-mastery', '/downloads', '/privacy', '/terms']
+const CHECKLIST_SLIDEIN_HIDDEN = ['/lookalike', '/paste', '/routine', '/family', '/secure', '/keys', '/letter', '/recovery', '/help', '/fee', '/thank-you', '/crypto-mastery', '/downloads', '/privacy', '/terms']
 
 function ChecklistSlideIn() {
   const pathname = useRouterState({ select: (s) => s.location.pathname })
