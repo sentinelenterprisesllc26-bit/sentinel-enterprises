@@ -2,9 +2,11 @@
  * ============================================================================
  *  PAID PRODUCTS (Stripe Payment Links) + shared buy cards
  * ============================================================================
- *  Stripe account acct_1SyKpPEPXDHjPrap (live). After checkout, Stripe shows
- *  its own confirmation page (no redirect back to this site). The PDF files
- *  are emailed to the buyer manually shortly after purchase.
+ *  Stripe account acct_1SyKpPEPXDHjPrap (live). The Bundle Payment Link
+ *  redirects to /thank-you?session_id=... (confirmed Oct 5, 2026), which
+ *  verifies payment and shows the downloads right away. Book/Pack redirects
+ *  are not yet confirmed, so those cards keep the "emailed" wording.
+ *  Each card's `delivery` line answers "how do I get the file?" up front.
  * ============================================================================
  */
 
@@ -23,6 +25,7 @@ export type BuyProduct = {
   imageAlt: string
   href: string
   cta: string
+  delivery: string
   featured?: boolean
 }
 
@@ -44,6 +47,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     imageAlt: 'Complete Protection Bundle cover',
     href: BUNDLE_CHECKOUT_URL,
     cta: 'Get the Bundle — $17.99',
+    delivery: 'one-time · instant download page right after checkout · opens on your phone',
     featured: true,
   },
   {
@@ -56,6 +60,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     imageAlt: 'The Ripple Effect book cover',
     href: RIPPLE_BOOK_CHECKOUT_URL,
     cta: 'Buy the Ripple Book — $7.99',
+    delivery: 'one-time · PDF emailed shortly after purchase',
   },
   {
     key: 'pack',
@@ -68,6 +73,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     imageAlt: 'Complete Protection + Ripple Book Pack cover',
     href: PACK_CHECKOUT_URL,
     cta: 'Get the Pack — $19.99',
+    delivery: 'one-time · PDFs emailed shortly after purchase',
   },
 ]
 
@@ -101,7 +107,7 @@ export function BuyCard({ p, compact = false }: { p: BuyProduct; compact?: boole
         <div className="mt-auto">
           <div className="flex items-baseline gap-2 mb-3">
             <span className="text-3xl font-black text-white">{p.price}</span>
-            <span className="text-slate-400 text-xs">one-time · PDFs emailed shortly after purchase</span>
+            <span className="text-slate-400 text-xs">{p.delivery}</span>
           </div>
           <a
             href={p.href}
@@ -112,6 +118,13 @@ export function BuyCard({ p, compact = false }: { p: BuyProduct; compact?: boole
             {p.cta}
           </a>
           <p className="text-center text-xs text-slate-500 mt-2">Secure checkout powered by Stripe</p>
+          <p className="text-center text-xs text-slate-500 mt-1">
+            Download trouble? Email{' '}
+            <a href="mailto:Sentinelenterprisesllc26@gmail.com" className="underline hover:text-slate-300">
+              Sentinelenterprisesllc26@gmail.com
+            </a>{' '}
+            and we'll resend it.
+          </p>
         </div>
       </div>
     </div>
