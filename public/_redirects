@@ -23,6 +23,29 @@
 /wallet-security-checklist/             /routine                         301!
 /resources/wallet-security-checklist    /routine                         301!
 /resources/wallet-security-checklist/   /routine                         301!
+# Recovery-phrase / wallet-safety soap Shorts (comment keywords) → /routine self-custody checklist
+/trash                                  /routine                         301!
+/trash/                                 /routine                         301!
+/print                                  /routine                         301!
+/print/                                 /routine                         301!
+/camera                                 /routine                         301!
+/camera/                                /routine                         301!
+/share                                  /routine                         301!
+/share/                                 /routine                         301!
+/hotel                                  /routine                         301!
+/hotel/                                 /routine                         301!
+/wipe                                   /routine                         301!
+/wipe/                                  /routine                         301!
+/desk                                   /routine                         301!
+/desk/                                  /routine                         301!
+/app                                    /routine                         301!
+/app/                                   /routine                         301!
+/flex                                   /routine                         301!
+/flex/                                  /routine                         301!
+/seed                                   /routine                         301!
+/seed/                                  /routine                         301!
+/phrase                                 /routine                         301!
+/phrase/                                /routine                         301!
 # Shorts message-match landing (bio / pin → protect)
 /protect                                /crypto-inheritance-checklist    301!
 /protect/                               /crypto-inheritance-checklist    301!
