@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WillRouteImport } from './routes/will'
 import { Route as VideosRouteImport } from './routes/videos'
 import { Route as ThreeRouteImport } from './routes/three'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
@@ -34,6 +35,11 @@ import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as CryptoMasterySuccessRouteImport } from './routes/crypto-mastery.success'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
+const WillRoute = WillRouteImport.update({
+  id: '/will',
+  path: '/will',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
   path: '/videos',
@@ -178,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
   '/videos': typeof VideosRoute
+  '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog/': typeof BlogIndexRoute
@@ -204,6 +211,7 @@ export interface FileRoutesByTo {
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
   '/videos': typeof VideosRoute
+  '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog': typeof BlogIndexRoute
@@ -231,6 +239,7 @@ export interface FileRoutesById {
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
   '/videos': typeof VideosRoute
+  '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog/': typeof BlogIndexRoute
@@ -259,6 +268,7 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/three'
     | '/videos'
+    | '/will'
     | '/blog/$slug'
     | '/crypto-mastery/success'
     | '/blog/'
@@ -285,6 +295,7 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/three'
     | '/videos'
+    | '/will'
     | '/blog/$slug'
     | '/crypto-mastery/success'
     | '/blog'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/thank-you'
     | '/three'
     | '/videos'
+    | '/will'
     | '/blog/$slug'
     | '/crypto-mastery/success'
     | '/blog/'
@@ -338,12 +350,20 @@ export interface RootRouteChildren {
   ThankYouRoute: typeof ThankYouRoute
   ThreeRoute: typeof ThreeRoute
   VideosRoute: typeof VideosRoute
+  WillRoute: typeof WillRoute
   BlogSlugRoute: typeof BlogSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/will': {
+      id: '/will'
+      path: '/will'
+      fullPath: '/will'
+      preLoaderRoute: typeof WillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/videos': {
       id: '/videos'
       path: '/videos'
@@ -549,6 +569,7 @@ const rootRouteChildren: RootRouteChildren = {
   ThankYouRoute: ThankYouRoute,
   ThreeRoute: ThreeRoute,
   VideosRoute: VideosRoute,
+  WillRoute: WillRoute,
   BlogSlugRoute: BlogSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
