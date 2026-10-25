@@ -69,14 +69,14 @@ function CarePage() {
         </Card>
 
         {/*
-          Promo CARE75 → coupon CARE_M2_75B ($24 off, duration=repeating, duration_in_months=1).
-          The payment link's 30-day trial creates a $0 invoice. A once coupon is used up on that $0 invoice.
+          Promo CARE75 → coupon g9vrSd0I in acct_1SyKpPEPXDHjPrap ($24 off, duration=repeating, duration_in_months=1).
+          The payment link's 28-day trial (28 so the first paid invoice always lands inside the 1-month window, even in February) creates a $0 invoice. A once coupon is used up on that $0 invoice.
           A repeating coupon is a calendar window from signup, not an invoice counter: 1 month still covers
           the first paid invoice ($99 − $24 = $75) and ends before the invoice after that ($99).
           duration_in_months=2 also discounts that following invoice, so it is not used.
         */}
         <a
-          href="https://buy.stripe.com/8x214n8P75NAgM555ndIA07?prefilled_promo_code=CARE75"
+          href="https://buy.stripe.com/eVq9AT4Bn7O1fzt6zg6Zy03?prefilled_promo_code=CARE75"
           className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
         >
           Subscribe / Get started
