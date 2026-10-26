@@ -54,7 +54,7 @@ function HeroSection() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
             <a
-              href="https://buy.stripe.com/eVq9AT4Bn7O1fzt6zg6Zy03?prefilled_promo_code=CARE75"
+              href="https://buy.stripe.com/14A14n1mFgsefI1fK1dIA08?prefilled_promo_code=CARE75"
               className="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
             >
               First month free — $0 today

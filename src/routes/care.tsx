@@ -76,7 +76,7 @@ function CarePage() {
           duration_in_months=2 also discounts that following invoice, so it is not used.
         */}
         <a
-          href="https://buy.stripe.com/eVq9AT4Bn7O1fzt6zg6Zy03?prefilled_promo_code=CARE75"
+          href="https://buy.stripe.com/14A14n1mFgsefI1fK1dIA08?prefilled_promo_code=CARE75"
           className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
         >
           Subscribe / Get started

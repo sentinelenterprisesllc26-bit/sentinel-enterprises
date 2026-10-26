@@ -10,8 +10,8 @@
  * ============================================================================
  */
 
-export const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00'
-export const RIPPLE_BOOK_CHECKOUT_URL = 'https://buy.stripe.com/00wcN55Fr9W93QL5vc6Zy01'
+export const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
+export const RIPPLE_BOOK_CHECKOUT_URL = 'https://buy.stripe.com/5kQbJ12qJ1xk67rapHdIA04'
 export const PACK_CHECKOUT_URL = 'https://buy.stripe.com/aFadR91pb3xL9b5f5M6Zy02'
 
 export type BuyProduct = {
