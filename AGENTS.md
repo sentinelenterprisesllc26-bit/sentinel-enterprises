@@ -56,7 +56,7 @@ All forms use AJAX submission to `/__forms.html` — not `/`. This is critical:
 - `public/__forms.html` is the static skeleton that Netlify's build bot reads to register forms at deploy time.
 - Every field submitted from React must be listed in the skeleton, or Netlify will reject it.
 
-Forms registered in `public/__forms.html`: `caregiver-checklist`, `crypto-checklist`, `sentinel-squad-notify`, `crypto-security-checklist`, `contact`, `xrp-custody-quiz` (the /quiz email gate).
+Forms registered in `public/__forms.html`: `caregiver-checklist`, `crypto-checklist`, `sentinel-squad-notify`, `crypto-security-checklist`, `contact`, `xrp-custody-quiz` (the /quiz email gate), `care-contact`, `care-intake` (/care/start).
 
 ## Paid downloads
 
