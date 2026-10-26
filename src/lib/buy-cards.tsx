@@ -12,7 +12,7 @@
 
 export const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 export const RIPPLE_BOOK_CHECKOUT_URL = 'https://buy.stripe.com/5kQbJ12qJ1xk67rapHdIA04'
-export const PACK_CHECKOUT_URL = 'https://buy.stripe.com/aFadR91pb3xL9b5f5M6Zy02'
+export const PACK_CHECKOUT_URL = 'https://buy.stripe.com/dRmaEXghzfoa2VfgO5dIA09'
 
 export type BuyProduct = {
   key: 'bundle' | 'book' | 'pack'
