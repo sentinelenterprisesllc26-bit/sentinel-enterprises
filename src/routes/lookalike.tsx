@@ -344,7 +344,7 @@ function LookalikePage() {
               you sign.
             </p>
             <a
-              href="https://www.ellipal.com/?rfsn=8708468.a45049"
+              href="https://www.ellipal.com/?rfsn=9126585.fbd589"
               target="_blank"
               rel="sponsored noopener noreferrer"
               className="text-amber-400 hover:text-amber-300 text-sm font-semibold"

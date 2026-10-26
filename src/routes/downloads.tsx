@@ -95,7 +95,7 @@ const groups: DownloadGroup[] = [
         description:
           'Complete setup instructions for the ELLIPAL air-gapped hardware wallet — the safest way to store crypto offline with no USB or Bluetooth attack surface.',
         href: '/downloads/ELLIPAL_Setup_Guide.pdf',
-        upsell: { label: 'Shop ELLIPAL →', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', external: true },
+        upsell: { label: 'Shop ELLIPAL →', href: 'https://www.ellipal.com/?rfsn=9126585.fbd589', external: true },
         youtubeUrl: 'https://www.youtube.com/watch?v=VGUBgFpx-0U',
       },
       {

@@ -74,8 +74,8 @@
 /ledger/                                https://shop.ledger.com/?r=2f2485b5c526   302!
 /tangem                                 https://tangem.com/en/pricing/?promocode=FUSB6E   302!
 /tangem/                                https://tangem.com/en/pricing/?promocode=FUSB6E   302!
-/ellipal                                https://www.ellipal.com/?rfsn=8708468.a45049   302!
-/ellipal/                               https://www.ellipal.com/?rfsn=8708468.a45049   302!
+/ellipal                                https://www.ellipal.com/?rfsn=9126585.fbd589   302!
+/ellipal/                               https://www.ellipal.com/?rfsn=9126585.fbd589   302!
 # Estate/wills Shorts: spoken "type sentinelenterprisesllc.com/will" -> message-matched /will page (src/routes/will.tsx)
 /wills                                  /will    302!
 /wills/                                 /will    302!

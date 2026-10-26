@@ -29,7 +29,7 @@ const platforms: Platform[] = [
     description:
       'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device. The starting point Sentinel recommends for serious self-custody.',
     links: [
-      { label: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=8708468.a45049', primary: true },
+      { label: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=9126585.fbd589', primary: true },
       { label: 'Setup guide', href: '/downloads/ELLIPAL_Setup_Guide.pdf', pdf: true },
     ],
   },
@@ -124,7 +124,7 @@ const recommendedTools: RecommendedTool[] = [
   {
     name: 'ELLIPAL Wallet',
     benefit: 'Fully air-gapped hardware wallet — no USB, no Bluetooth, no online attack surface.',
-    href: 'https://www.ellipal.com/?rfsn=8708468.a45049',
+    href: 'https://www.ellipal.com/?rfsn=9126585.fbd589',
   },
   {
     name: 'Crypto Security Toolkit',

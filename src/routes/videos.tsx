@@ -55,7 +55,7 @@ const RECOMMENDED_TOOLS: Tool[] = [
   {
     name: 'ELLIPAL Wallet',
     benefit: 'A fully air-gapped wallet with no USB or Bluetooth — keys never touch the internet.',
-    href: 'https://www.ellipal.com/?rfsn=8708468.a45049',
+    href: 'https://www.ellipal.com/?rfsn=9126585.fbd589',
     pdfHref: '/downloads/ELLIPAL_Setup_Guide.pdf',
     pdfLabel: 'Setup Guide (PDF)',
   },
