@@ -37,6 +37,9 @@ function CarePage() {
           <h1 className="font-serif text-[clamp(1.9rem,6vw,2.4rem)] leading-[1.15] font-bold m-0 mb-3 text-[#1f2933]">
             Care paperwork, handled.
           </h1>
+          <p className="font-sans text-[1.15rem] text-[#1f2933] font-semibold m-0 mb-2 leading-snug">
+            Tired of digging for receipts, visit logs and bills? We build the paper system for you.
+          </p>
           <p className="font-sans text-[1.05rem] text-[#52606d] m-0 leading-relaxed">
             For families managing a loved one&apos;s home care — and for independent caregivers — anywhere in the US. Remote paperwork support, wherever you are.
           </p>
