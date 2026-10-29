@@ -82,8 +82,11 @@ function CarePage() {
           href="https://buy.stripe.com/14A14n1mFgsefI1fK1dIA08?prefilled_promo_code=CARE75"
           className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
         >
-          Subscribe / Get started
+          Start your free trial — $0 today
         </a>
+        <p className="-mt-2 mb-4 text-center font-sans text-[0.9rem] text-[#52606d]">
+          Secure checkout by Stripe. Cancel anytime.
+        </p>
 
         <Card title="How it works">
           <ol className="m-0 pl-[1.15rem] list-decimal space-y-2 text-[#1f2933]">
