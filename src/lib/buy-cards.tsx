@@ -12,6 +12,8 @@
 
 export const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ00jaXfb7U8fz2XfdIA06'
 export const RIPPLE_BOOK_CHECKOUT_URL = 'https://buy.stripe.com/5kQbJ12qJ1xk67rapHdIA04'
+/** Free sample (cover, contents, Foreword, Introduction + buy page). Typeable alias: /sample */
+export const RIPPLE_SAMPLE_URL = '/pdfs/The-Ripple-Effect-Free-Sample.pdf'
 export const PACK_CHECKOUT_URL = 'https://buy.stripe.com/dRmaEXghzfoa2VfgO5dIA09'
 
 export type BuyProduct = {
@@ -27,6 +29,8 @@ export type BuyProduct = {
   cta: string
   delivery: string
   featured?: boolean
+  /** Optional free preview link shown above the buy button (try-before-you-buy). */
+  sample?: { href: string; label: string }
 }
 
 export const BUY_PRODUCTS: BuyProduct[] = [
@@ -61,6 +65,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     href: RIPPLE_BOOK_CHECKOUT_URL,
     cta: 'Buy the Ripple Book — $7.99',
     delivery: 'one-time · PDF emailed shortly after purchase',
+    sample: { href: RIPPLE_SAMPLE_URL, label: 'Read the Foreword + Introduction free (PDF, no email needed)' },
   },
   {
     key: 'pack',
@@ -74,6 +79,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     href: PACK_CHECKOUT_URL,
     cta: 'Get the Pack — $19.99',
     delivery: 'one-time · PDFs emailed shortly after purchase',
+    sample: { href: RIPPLE_SAMPLE_URL, label: 'Read the Ripple Effect sample free (PDF)' },
   },
 ]
 
@@ -109,6 +115,17 @@ export function BuyCard({ p, compact = false }: { p: BuyProduct; compact?: boole
             <span className="text-3xl font-black text-white">{p.price}</span>
             <span className="text-slate-400 text-xs">{p.delivery}</span>
           </div>
+          {p.sample && (
+            <a
+              href={p.sample.href}
+              target="_blank"
+              rel="noopener"
+              className="block w-full text-center border border-amber-500/60 text-amber-300 hover:bg-amber-500/10 font-semibold py-2.5 px-4 rounded-xl transition-colors mb-2 text-sm"
+              data-sample={p.key}
+            >
+              📖 {p.sample.label}
+            </a>
+          )}
           <a
             href={p.href}
             target="_blank"
