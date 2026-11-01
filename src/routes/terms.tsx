@@ -82,7 +82,7 @@ function TermsPage() {
               </p>
               <ul>
                 <li>Email: Sentinelenterprisesllc26@gmail.com</li>
-                <li>Phone: (309) 643-3335</li>
+                <li>WhatsApp: 253-320-6431</li>
               </ul>
 
               <div className="cta-box">

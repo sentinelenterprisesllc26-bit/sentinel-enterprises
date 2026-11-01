@@ -65,5 +65,5 @@ Paid PDFs live in `netlify/private-assets/` (bundled into the `download` functio
 ## Business Information
 
 - **Email:** Sentinelenterprisesllc26@gmail.com
-- **Phone:** (309) 643-3335
+- **WhatsApp:** 253-320-6431 (https://wa.me/12533206431)
 - **Disclaimer:** Not attorneys, financial advisors, or fiduciaries. Education/consulting only.

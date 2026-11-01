@@ -393,7 +393,7 @@ function contactPage(g, intro) {
   g.space(6);
   g.heading('Reach Us');
   g.paragraph('Email:  sentinel@sentinelenterprisesllc.com', { font: g.bold, gap: 4 });
-  g.paragraph('Phone:  (309) 643-3335', { font: g.bold, gap: 4 });
+  g.paragraph('WhatsApp:  253-320-6431', { font: g.bold, gap: 4 });
   g.paragraph('Website:  sentinelenterprisesllc.com', { font: g.bold, gap: 14 });
   g.callout(
     'Sentinel Enterprises LLC is not a law firm, financial advisor, or fiduciary. This guide is for education and consulting purposes only. For legal or tax decisions, consult a licensed professional.',
@@ -592,7 +592,7 @@ async function buildWorkbook() {
   g.divider();
   g.paragraph('Sentinel Enterprises LLC', { font: g.bold, color: NAVY, size: 12, gap: 8 });
   g.paragraph('Email:  sentinel@sentinelenterprisesllc.com', { font: g.bold, gap: 4 });
-  g.paragraph('Phone:  (309) 643-3335', { font: g.bold, gap: 14 });
+  g.paragraph('WhatsApp:  253-320-6431', { font: g.bold, gap: 14 });
   g.callout('Once complete, store this workbook in a fireproof safe or safety deposit box and tell your trusted person exactly where it is.', { variant: 'success', title: 'You did it!' });
 
   return doc;
@@ -736,7 +736,7 @@ async function buildCaregiverTaxGuide() {
   g.divider();
   g.paragraph('Questions? We are happy to point you in the right direction.', { gap: 8 });
   g.paragraph('Email:  sentinel@sentinelenterprisesllc.com', { font: g.bold, gap: 4 });
-  g.paragraph('Phone:  (309) 643-3335', { font: g.bold, gap: 12 });
+  g.paragraph('WhatsApp:  253-320-6431', { font: g.bold, gap: 12 });
   g.callout('Sentinel Enterprises LLC is not a tax advisor or fiduciary. This guide is for education only. Confirm all deductions with a licensed tax professional.', { variant: 'warning', title: 'Important Disclaimer' });
 
   return doc;

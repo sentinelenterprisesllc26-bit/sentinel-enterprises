@@ -224,8 +224,8 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="tel:+13096433335" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
-                  (309) 643-3335
+                <a href="https://wa.me/12533206431" className="text-slate-400 hover:text-amber-400 text-sm transition-colors">
+                  WhatsApp: 253-320-6431
                 </a>
               </li>
             </ul>

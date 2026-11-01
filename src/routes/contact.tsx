@@ -69,10 +69,11 @@ function ContactPage() {
                   </svg>
                 }
                 label="Phone"
-                value="(309) 643-3335"
-                href="tel:+13096433335"
+                value="WhatsApp: 253-320-6431"
+                href="https://wa.me/12533206431"
               />
 
+              {/* TODO: business mailing address (3561 S Archer Ave #1014, Chicago, IL 60609) goes here ONLY after USPS Form 1583 is complete and Jenae approves. Never use a home address. */}
               <div className="bg-amber-500/5 border border-amber-500/20 rounded-xl p-5 mt-4">
                 <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-1">Response Time</p>
                 <p className="text-slate-300 text-sm">
