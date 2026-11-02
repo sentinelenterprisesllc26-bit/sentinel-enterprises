@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WillRouteImport } from './routes/will'
 import { Route as VideosRouteImport } from './routes/videos'
+import { Route as UsdaRouteImport } from './routes/usda'
 import { Route as ThreeRouteImport } from './routes/three'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -44,6 +45,11 @@ const WillRoute = WillRouteImport.update({
 const VideosRoute = VideosRouteImport.update({
   id: '/videos',
   path: '/videos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UsdaRoute = UsdaRouteImport.update({
+  id: '/usda',
+  path: '/usda',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ThreeRoute = ThreeRouteImport.update({
@@ -189,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
+  '/usda': typeof UsdaRoute
   '/videos': typeof VideosRoute
   '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -217,6 +224,7 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
+  '/usda': typeof UsdaRoute
   '/videos': typeof VideosRoute
   '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -246,6 +254,7 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
+  '/usda': typeof UsdaRoute
   '/videos': typeof VideosRoute
   '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -276,6 +285,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/thank-you'
     | '/three'
+    | '/usda'
     | '/videos'
     | '/will'
     | '/blog/$slug'
@@ -304,6 +314,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/thank-you'
     | '/three'
+    | '/usda'
     | '/videos'
     | '/will'
     | '/blog/$slug'
@@ -332,6 +343,7 @@ export interface FileRouteTypes {
     | '/terms'
     | '/thank-you'
     | '/three'
+    | '/usda'
     | '/videos'
     | '/will'
     | '/blog/$slug'
@@ -361,6 +373,7 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
   ThreeRoute: typeof ThreeRoute
+  UsdaRoute: typeof UsdaRoute
   VideosRoute: typeof VideosRoute
   WillRoute: typeof WillRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -382,6 +395,13 @@ declare module '@tanstack/react-router' {
       path: '/videos'
       fullPath: '/videos'
       preLoaderRoute: typeof VideosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/usda': {
+      id: '/usda'
+      path: '/usda'
+      fullPath: '/usda'
+      preLoaderRoute: typeof UsdaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/three': {
@@ -588,6 +608,7 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
   ThreeRoute: ThreeRoute,
+  UsdaRoute: UsdaRoute,
   VideosRoute: VideosRoute,
   WillRoute: WillRoute,
   BlogSlugRoute: BlogSlugRoute,
