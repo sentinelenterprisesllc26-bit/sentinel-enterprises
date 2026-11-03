@@ -15,6 +15,7 @@ import { Route as UsdaRouteImport } from './routes/usda'
 import { Route as ThreeRouteImport } from './routes/three'
 import { Route as ThankYouRouteImport } from './routes/thank-you'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TangemPromoCodeRouteImport } from './routes/tangem-promo-code'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SentinelSquadRouteImport } from './routes/sentinel-squad'
 import { Route as RoutineRouteImport } from './routes/routine'
@@ -65,6 +66,11 @@ const ThankYouRoute = ThankYouRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TangemPromoCodeRoute = TangemPromoCodeRouteImport.update({
+  id: '/tangem-promo-code',
+  path: '/tangem-promo-code',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -192,6 +198,7 @@ export interface FileRoutesByFullPath {
   '/routine': typeof RoutineRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
+  '/tangem-promo-code': typeof TangemPromoCodeRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
@@ -221,6 +228,7 @@ export interface FileRoutesByTo {
   '/routine': typeof RoutineRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
+  '/tangem-promo-code': typeof TangemPromoCodeRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
@@ -251,6 +259,7 @@ export interface FileRoutesById {
   '/routine': typeof RoutineRoute
   '/sentinel-squad': typeof SentinelSquadRoute
   '/services': typeof ServicesRoute
+  '/tangem-promo-code': typeof TangemPromoCodeRoute
   '/terms': typeof TermsRoute
   '/thank-you': typeof ThankYouRoute
   '/three': typeof ThreeRoute
@@ -282,6 +291,7 @@ export interface FileRouteTypes {
     | '/routine'
     | '/sentinel-squad'
     | '/services'
+    | '/tangem-promo-code'
     | '/terms'
     | '/thank-you'
     | '/three'
@@ -311,6 +321,7 @@ export interface FileRouteTypes {
     | '/routine'
     | '/sentinel-squad'
     | '/services'
+    | '/tangem-promo-code'
     | '/terms'
     | '/thank-you'
     | '/three'
@@ -340,6 +351,7 @@ export interface FileRouteTypes {
     | '/routine'
     | '/sentinel-squad'
     | '/services'
+    | '/tangem-promo-code'
     | '/terms'
     | '/thank-you'
     | '/three'
@@ -370,6 +382,7 @@ export interface RootRouteChildren {
   RoutineRoute: typeof RoutineRoute
   SentinelSquadRoute: typeof SentinelSquadRoute
   ServicesRoute: typeof ServicesRoute
+  TangemPromoCodeRoute: typeof TangemPromoCodeRoute
   TermsRoute: typeof TermsRoute
   ThankYouRoute: typeof ThankYouRoute
   ThreeRoute: typeof ThreeRoute
@@ -423,6 +436,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tangem-promo-code': {
+      id: '/tangem-promo-code'
+      path: '/tangem-promo-code'
+      fullPath: '/tangem-promo-code'
+      preLoaderRoute: typeof TangemPromoCodeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -605,6 +625,7 @@ const rootRouteChildren: RootRouteChildren = {
   RoutineRoute: RoutineRoute,
   SentinelSquadRoute: SentinelSquadRoute,
   ServicesRoute: ServicesRoute,
+  TangemPromoCodeRoute: TangemPromoCodeRoute,
   TermsRoute: TermsRoute,
   ThankYouRoute: ThankYouRoute,
   ThreeRoute: ThreeRoute,
