@@ -29,9 +29,10 @@ const platforms: Platform[] = [
     description:
       'A fully air-gapped cold wallet — no USB, no Bluetooth, no Wi-Fi. Sign transactions by QR code so your private keys never touch an online device. The starting point Sentinel recommends for serious self-custody.',
     links: [
-      { label: 'Shop ELLIPAL', href: 'https://www.ellipal.com/?rfsn=9126585.fbd589', primary: true },
+      { label: 'Shop the ELLIPAL Black Friday Sale', href: 'https://www.ellipal.com/?rfsn=9126585.fbd589', primary: true },
       { label: 'Setup guide', href: '/downloads/ELLIPAL_Setup_Guide.pdf', pdf: true },
     ],
+    limitedOffer: { text: 'Black Friday sale is live at ELLIPAL: up to 50% off selected wallets and bundles. Prices set by ELLIPAL and can change. (affiliate) #ad', until: '2026-12-01T06:00:00Z' },
   },
   {
     name: 'Tangem',
