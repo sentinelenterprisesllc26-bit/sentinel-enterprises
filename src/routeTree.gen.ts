@@ -35,6 +35,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as CryptoMasterySuccessRouteImport } from './routes/crypto-mastery.success'
+import { Route as CareThankYouRouteImport } from './routes/care_.thank-you'
 import { Route as CareStartRouteImport } from './routes/care_.start'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 
@@ -169,6 +170,11 @@ const CryptoMasterySuccessRoute = CryptoMasterySuccessRouteImport.update({
   path: '/success',
   getParentRoute: () => CryptoMasteryRoute,
 } as any)
+const CareThankYouRoute = CareThankYouRouteImport.update({
+  id: '/care_/thank-you',
+  path: '/care/thank-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareStartRoute = CareStartRouteImport.update({
   id: '/care_/start',
   path: '/care/start',
@@ -207,6 +213,7 @@ export interface FileRoutesByFullPath {
   '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/care/start': typeof CareStartRoute
+  '/care/thank-you': typeof CareThankYouRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -237,6 +244,7 @@ export interface FileRoutesByTo {
   '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/care/start': typeof CareStartRoute
+  '/care/thank-you': typeof CareThankYouRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog': typeof BlogIndexRoute
 }
@@ -268,6 +276,7 @@ export interface FileRoutesById {
   '/will': typeof WillRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/care_/start': typeof CareStartRoute
+  '/care_/thank-you': typeof CareThankYouRoute
   '/crypto-mastery/success': typeof CryptoMasterySuccessRoute
   '/blog/': typeof BlogIndexRoute
 }
@@ -300,6 +309,7 @@ export interface FileRouteTypes {
     | '/will'
     | '/blog/$slug'
     | '/care/start'
+    | '/care/thank-you'
     | '/crypto-mastery/success'
     | '/blog/'
   fileRoutesByTo: FileRoutesByTo
@@ -330,6 +340,7 @@ export interface FileRouteTypes {
     | '/will'
     | '/blog/$slug'
     | '/care/start'
+    | '/care/thank-you'
     | '/crypto-mastery/success'
     | '/blog'
   id:
@@ -360,6 +371,7 @@ export interface FileRouteTypes {
     | '/will'
     | '/blog/$slug'
     | '/care_/start'
+    | '/care_/thank-you'
     | '/crypto-mastery/success'
     | '/blog/'
   fileRoutesById: FileRoutesById
@@ -391,6 +403,7 @@ export interface RootRouteChildren {
   WillRoute: typeof WillRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CareStartRoute: typeof CareStartRoute
+  CareThankYouRoute: typeof CareThankYouRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -578,6 +591,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CryptoMasterySuccessRouteImport
       parentRoute: typeof CryptoMasteryRoute
     }
+    '/care_/thank-you': {
+      id: '/care_/thank-you'
+      path: '/care/thank-you'
+      fullPath: '/care/thank-you'
+      preLoaderRoute: typeof CareThankYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/care_/start': {
       id: '/care_/start'
       path: '/care/start'
@@ -634,6 +654,7 @@ const rootRouteChildren: RootRouteChildren = {
   WillRoute: WillRoute,
   BlogSlugRoute: BlogSlugRoute,
   CareStartRoute: CareStartRoute,
+  CareThankYouRoute: CareThankYouRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport
