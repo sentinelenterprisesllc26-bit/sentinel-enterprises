@@ -10,11 +10,11 @@
  * ============================================================================
  */
 
-export const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/eVq14nebXgkx72Xf5M6Zy00'
-export const RIPPLE_BOOK_CHECKOUT_URL = 'https://buy.stripe.com/00wcN55Fr9W93QL5vc6Zy01'
+export const BUNDLE_CHECKOUT_URL = 'https://buy.stripe.com/5kQ4gzc1j6RE2VfapHdIA0b'
+export const RIPPLE_BOOK_CHECKOUT_URL = 'https://buy.stripe.com/7sY5kDaXf2Bo3Zj55ndIA0c'
 /** Free sample (cover, contents, Foreword, Introduction + buy page). Typeable alias: /sample */
 export const RIPPLE_SAMPLE_URL = '/pdfs/The-Ripple-Effect-Free-Sample.pdf'
-export const PACK_CHECKOUT_URL = 'https://buy.stripe.com/aFadR91pb3xL9b5f5M6Zy02'
+export const PACK_CHECKOUT_URL = 'https://buy.stripe.com/dRmaEXghzfoa2VfgO5dIA09'
 
 export type BuyProduct = {
   key: 'bundle' | 'book' | 'pack'
