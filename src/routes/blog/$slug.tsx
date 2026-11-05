@@ -245,8 +245,11 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           </p>
           <p>Use code FUSB6E for 10% off your Tangem wallet. #ad</p>
           <p>
-            <a href="https://www.ellipal.com/?rfsn=9126585.fbd589" target="_blank" rel="sponsored noopener noreferrer">Shop ELLIPAL →</a>
+            <a href="https://www.ellipal.com/?rfsn=9126585.fbd589" target="_blank" rel="sponsored noopener noreferrer">{Date.now() < Date.parse('2026-12-01T06:00:00Z') ? 'Shop the ELLIPAL Black Friday Sale →' : 'Shop ELLIPAL →'}</a>
           </p>
+          {Date.now() < Date.parse('2026-12-01T06:00:00Z') && (
+            <p>Black Friday sale is live at ELLIPAL: up to 50% off selected wallets and bundles. Prices set by ELLIPAL and can change. (affiliate) #ad</p>
+          )}
           <p>
             Not sure how to include your cold storage in an estate plan? Explore our Digital Asset Guidance services.
           </p>
