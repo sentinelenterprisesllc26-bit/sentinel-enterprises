@@ -65,7 +65,7 @@ function CarePage() {
           <p className="text-[1.35rem] font-bold m-0 mb-1.5 text-[#1f2933]">$99 per month per family</p>
           <ul className="m-0 pl-[1.15rem] list-disc space-y-1.5 text-[#1f2933] font-sans text-[0.95rem]">
             <li>First month free</li>
-            <li>Second month $75</li>
+            <li>Second month $75 with CARE75</li>
             <li>Then $99/month</li>
           </ul>
           <p className="font-sans text-[0.95rem] text-[#52606d] m-0 mt-2">Cancel anytime.</p>
@@ -84,8 +84,11 @@ function CarePage() {
         >
           Start your free trial — $0 today
         </a>
-        <p className="-mt-2 mb-4 text-center font-sans text-[0.9rem] text-[#52606d]">
-          Secure checkout by Stripe. Cancel anytime.
+        <p className="-mt-2 mb-1 text-center font-sans text-[0.9rem] text-[#52606d]">
+          First month free · then $75 with CARE75 · then $99/mo
+        </p>
+        <p className="mb-4 text-center font-sans text-[0.85rem] text-[#52606d]">
+          Secure checkout by Stripe. Cancel anytime. CARE75 is prefilled at checkout.
         </p>
 
         <Card title="How it works">
