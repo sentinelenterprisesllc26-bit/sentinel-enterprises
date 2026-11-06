@@ -5,12 +5,12 @@ import verify from '../netlify/functions/verify-purchase.mts'
 import { __setStripeFactoryForTests, deliveryStripeKey, deliveryStripeKeySource } from '../netlify/lib/stripe-purchase'
 
 const SESSIONS: Record<string, unknown> = {
-  cs_test_paidbundle0000000: { status: 'complete', payment_status: 'paid', line_items: { data: [{ price: { product: { id: 'prod_VJ00IcCGTl5r9A' } } }] } },
-  cs_test_paidbook000000000: { status: 'complete', payment_status: 'paid', line_items: { data: [{ price: { product: { id: 'prod_VKdAlI53OWNprH' } } }] } },
-  cs_test_paidpack000000000: { status: 'complete', payment_status: 'paid', line_items: { data: [{ price: { product: { id: 'prod_VKdArH9H940rLv' } } }] } },
-  cs_test_unpaid00000000000: { status: 'open', payment_status: 'unpaid', line_items: { data: [{ price: { product: { id: 'prod_VJ00IcCGTl5r9A' } } }] } },
+  cs_test_paidbundle0000000: { status: 'complete', payment_status: 'paid', line_items: { data: [{ price: { product: { id: 'prod_VZU8EA165KqseT' } } }] } },
+  cs_test_paidbook000000000: { status: 'complete', payment_status: 'paid', line_items: { data: [{ price: { product: { id: 'prod_VZU9OwVGI1IzwD' } } }] } },
+  cs_test_paidpack000000000: { status: 'complete', payment_status: 'paid', line_items: { data: [{ price: { product: { id: 'prod_VVoXCqZU7KYqU6' } } }] } },
+  cs_test_unpaid00000000000: { status: 'open', payment_status: 'unpaid', line_items: { data: [{ price: { product: { id: 'prod_VZU8EA165KqseT' } } }] } },
 }
-let account = 'acct_1SyKpPEPXDHjPrap'
+let account = 'acct_1TgyoVEDoVpqpse2'
 const fake = () => ({
   checkout: {
     sessions: {
@@ -85,7 +85,7 @@ test('delivery key: prefers STRIPE_DELIVERY_SECRET_KEY, falls back to STRIPE_SEC
 
     // The functions actually hand the delivery key to Stripe.
     const seen: string[] = []
-    account = 'acct_1SyKpPEPXDHjPrap'
+    account = 'acct_1TgyoVEDoVpqpse2'
     __setStripeFactoryForTests((k) => { seen.push(k); return fake() })
     assert.equal((await get(verify, 'session_id=cs_test_paidbook000000000')).status, 200)
     assert.equal((await get(download, 'session_id=cs_test_paidbook000000000&file=ripple-effect-book')).status, 200)

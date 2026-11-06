@@ -11,28 +11,28 @@ const paid = (product: string, extra: Record<string, unknown> = {}) => ({
 })
 
 test('paid bundle unlocks the 5 bundle PDFs but not the book', () => {
-  const r = evaluateSession(paid('prod_VJ00IcCGTl5r9A'))
+  const r = evaluateSession(paid('prod_VZU8EA165KqseT'))
   assert.ok(r.ok)
   if (r.ok) {
     assert.deepEqual(r.kinds, ['bundle'])
     assert.equal(r.files.length, 5)
     assert.ok(!r.files.includes('ripple-effect-book'))
   }
-  assert.equal(evaluateDownload(paid('prod_VJ00IcCGTl5r9A'), 'ripple-effect-book').ok, false)
-  assert.equal(evaluateDownload(paid('prod_VJ00IcCGTl5r9A'), 'printable-workbook').ok, true)
+  assert.equal(evaluateDownload(paid('prod_VZU8EA165KqseT'), 'ripple-effect-book').ok, false)
+  assert.equal(evaluateDownload(paid('prod_VZU8EA165KqseT'), 'printable-workbook').ok, true)
 })
 
 test('paid book unlocks only the Ripple book', () => {
-  const r = evaluateSession(paid('prod_VKdAlI53OWNprH'))
+  const r = evaluateSession(paid('prod_VZU9OwVGI1IzwD'))
   assert.ok(r.ok)
   if (r.ok) assert.deepEqual(r.files, ['ripple-effect-book'])
-  const d = evaluateDownload(paid('prod_VKdAlI53OWNprH'), 'crypto-inheritance-checklist')
+  const d = evaluateDownload(paid('prod_VZU9OwVGI1IzwD'), 'crypto-inheritance-checklist')
   assert.equal(d.ok, false)
   if (!d.ok) assert.equal(d.status, 403)
 })
 
 test('paid pack unlocks bundle PDFs + book', () => {
-  const r = evaluateSession(paid('prod_VKdArH9H940rLv'))
+  const r = evaluateSession(paid('prod_VVoXCqZU7KYqU6'))
   assert.ok(r.ok)
   if (r.ok) {
     assert.deepEqual(r.kinds, ['pack'])
@@ -42,13 +42,13 @@ test('paid pack unlocks bundle PDFs + book', () => {
 })
 
 test('product id as string works too', () => {
-  const s = { ...paid('x'), line_items: { data: [{ price: { product: 'prod_VKdAlI53OWNprH' } }] } }
+  const s = { ...paid('x'), line_items: { data: [{ price: { product: 'prod_VZU9OwVGI1IzwD' } }] } }
   assert.ok(evaluateSession(s).ok)
 })
 
 test('fallback to payment link, then metadata.sku, when line items are absent', () => {
   const base = { status: 'complete', payment_status: 'paid' }
-  const byLink = evaluateSession({ ...base, payment_link: 'plink_1UJxuKEPXDHjPrapyoO9N0Wm' })
+  const byLink = evaluateSession({ ...base, payment_link: 'plink_1UUmuKEDoVpqpse21auMfyG7' })
   assert.ok(byLink.ok && byLink.kinds[0] === 'pack')
   const bySku = evaluateSession({ ...base, metadata: { sku: 'ripple-effect-book' } })
   assert.ok(bySku.ok && bySku.kinds[0] === 'book')
@@ -56,9 +56,9 @@ test('fallback to payment link, then metadata.sku, when line items are absent', 
 
 test('unpaid / open session is denied with 403', () => {
   for (const s of [
-    paid('prod_VJ00IcCGTl5r9A', { payment_status: 'unpaid', status: 'open' }),
-    paid('prod_VJ00IcCGTl5r9A', { payment_status: 'unpaid', status: 'complete' }),
-    paid('prod_VJ00IcCGTl5r9A', { status: 'expired' }),
+    paid('prod_VZU8EA165KqseT', { payment_status: 'unpaid', status: 'open' }),
+    paid('prod_VZU8EA165KqseT', { payment_status: 'unpaid', status: 'complete' }),
+    paid('prod_VZU8EA165KqseT', { status: 'expired' }),
   ]) {
     const r = evaluateSession(s)
     assert.equal(r.ok, false)
@@ -79,7 +79,7 @@ test('fake / malformed session ids and unknown files', () => {
   assert.equal(isCheckoutSessionId(null), false)
   assert.equal(isCheckoutSessionId('cs_live_a1VdakhjE3Orv8zzsoeqv2FiLjgC7OQRCKNN3TvrwhgWqmwpGVFVB9kAAS'), true)
   assert.equal(evaluateSession(null).ok, false)
-  const d = evaluateDownload(paid('prod_VKdArH9H940rLv'), '../../etc/passwd')
+  const d = evaluateDownload(paid('prod_VVoXCqZU7KYqU6'), '../../etc/passwd')
   assert.equal(d.ok, false)
   if (!d.ok) assert.equal(d.status, 400)
 })

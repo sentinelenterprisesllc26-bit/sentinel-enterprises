@@ -1,7 +1,7 @@
 import Stripe from 'stripe'
 import { evaluateSession, isCheckoutSessionId, type AccessResult, type SessionLike } from '../../src/lib/purchase-access'
 
-export const EXPECTED_STRIPE_ACCOUNT = 'acct_1SyKpPEPXDHjPrap'
+export const EXPECTED_STRIPE_ACCOUNT = 'acct_1TgyoVEDoVpqpse2'
 
 export type LookupResult =
   | { kind: 'access'; session: SessionLike | null; access: AccessResult }
@@ -33,8 +33,10 @@ async function keyAccount(stripe: StripeLike): Promise<string | null> {
 
 /**
  * Key used for paid-file delivery. Prefer STRIPE_DELIVERY_SECRET_KEY (a restricted key for
- * acct_1SyKpPEPXDHjPrap); fall back to STRIPE_SECRET_KEY only if it's missing, so the
- * Crypto Mastery functions (which use STRIPE_SECRET_KEY) stay untouched.
+ * acct_1TgyoVEDoVpqpse2 with Checkout Sessions / Products / Prices Read); fall back to
+ * STRIPE_SECRET_KEY only if it's missing. STRIPE_SECRET_KEY on this site is the same
+ * live account (Crypto Mastery + Bundle/book/pack). Do NOT point the delivery key at the
+ * retired marketing account acct_1SyKpPEPXDHjPrap — new checkouts live on acct_1TgyoVEDoVpqpse2.
  */
 export function deliveryStripeKey(): string | undefined {
   const delivery = process.env.STRIPE_DELIVERY_SECRET_KEY?.trim()
