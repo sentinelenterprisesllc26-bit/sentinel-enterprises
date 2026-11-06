@@ -99,6 +99,19 @@ function CarePage() {
           </ol>
         </Card>
 
+        <a
+          href="https://buy.stripe.com/eVq28rghzek67bvfK1dIA0a?prefilled_promo_code=CARE75"
+          className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
+        >
+          Start your free trial — $0 today
+        </a>
+        <p className="-mt-2 mb-1 text-center font-sans text-[0.9rem] text-[#52606d]">
+          First month free · then $75 with CARE75 · then $99/mo
+        </p>
+        <p className="mb-4 text-center font-sans text-[0.85rem] text-[#52606d]">
+          Secure checkout by Stripe. Cancel anytime. CARE75 is prefilled at checkout.
+        </p>
+
         <Card title="Important" accent>
           <p className="font-sans text-[0.95rem] text-[#52606d] m-0">
             We handle paperwork and organization only. We do not give medical, legal, or financial advice.
@@ -106,6 +119,15 @@ function CarePage() {
         </Card>
 
         <Card title="Contact">
+          <p className="font-sans text-[0.95rem] text-[#52606d] m-0 mb-2">
+            Prefer WhatsApp for the fastest reply.{' '}
+            <a
+              href="https://wa.me/12533206431"
+              className="text-[#2f6f5e] hover:underline"
+            >
+              WhatsApp 253-320-6431
+            </a>
+          </p>
           <p className="font-sans text-[0.95rem] text-[#52606d] m-0 mb-2">
             Email:{' '}
             <a
