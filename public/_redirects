@@ -61,6 +61,11 @@
 # Shorts message-match landing (bio / pin → protect)
 /protect                                /crypto-inheritance-checklist    301!
 /protect/                               /crypto-inheritance-checklist    301!
+# Bundle Inheritance Short ("YOUR CRYPTO DIES WITH YOU?") → typeable alias
+/dies                                   /crypto-inheritance-checklist    301!
+/dies/                                  /crypto-inheritance-checklist    301!
+/crypto-dies                            /crypto-inheritance-checklist    301!
+/crypto-dies/                           /crypto-inheritance-checklist    301!
 # Path aliases / .org-era URLs → canonical .com pages (permanent)
 /crypto-security-checklist              /crypto-inheritance-checklist    301!
 /crypto-security-checklist/             /crypto-inheritance-checklist    301!
