@@ -82,10 +82,10 @@ function CarePage() {
           href="https://buy.stripe.com/eVq28rghzek67bvfK1dIA0a?prefilled_promo_code=CARE75"
           className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
         >
-          Start your free trial — $0 today
+          Start free — CARE75 ready · $0 today
         </a>
         <p className="-mt-2 mb-1 text-center font-sans text-[0.9rem] text-[#52606d]">
-          First month free · then $75 with CARE75 · then $99/mo
+          Month 1 free · CARE75 already applied for month 2 ($75) · then $99/mo
         </p>
         <p className="mb-4 text-center font-sans text-[0.85rem] text-[#52606d]">
           Secure checkout by Stripe. Cancel anytime. CARE75 is prefilled at checkout.
