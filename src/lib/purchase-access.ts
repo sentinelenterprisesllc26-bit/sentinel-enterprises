@@ -9,7 +9,8 @@
  *
  *  The PDFs themselves live in netlify/private-assets/ (NOT public/) and are
  *  bundled into the download function via netlify.toml `included_files`.
- *  Stripe account: acct_1SyKpPEPXDHjPrap (live).
+ *  Stripe account: acct_1TgyoVEDoVpqpse2 (live; sentinelenterprisesllc26@gmail.com).
+ *  Legacy marketing account acct_1SyKpPEPXDHjPrap is retired for new checkouts.
  * ============================================================================
  */
 
@@ -99,24 +100,27 @@ export const PAID_PRODUCT_RULES: PaidProductRule[] = [
   {
     kind: 'bundle',
     name: 'Complete Protection Bundle',
-    productId: 'prod_VJ00IcCGTl5r9A',
-    paymentLinkId: 'plink_1UIO0vEPXDHjPrapEBkR5XsY',
+    // buy.stripe.com/5kQ4gzc1j6RE2VfapHdIA0b · $17.99 · price_1UYL9tEDoVpqpse2RpuOWFPh
+    productId: 'prod_VZU8EA165KqseT',
+    paymentLinkId: 'plink_1UYLAKEDoVpqpse2usReSiVC',
     sku: 'complete-protection-bundle',
     files: BUNDLE_FILES,
   },
   {
     kind: 'book',
     name: 'The Ripple Effect Book',
-    productId: 'prod_VKdAlI53OWNprH',
-    paymentLinkId: 'plink_1UJxuFEPXDHjPrapnCgHxjdU',
+    // buy.stripe.com/7sY5kDaXf2Bo3Zj55ndIA0c · $7.99 · price_1UYLAqEDoVpqpse2VcOw2Rjh
+    productId: 'prod_VZU9OwVGI1IzwD',
+    paymentLinkId: 'plink_1UYLB0EDoVpqpse2nzQ7O7e2',
     sku: 'ripple-effect-book',
     files: ['ripple-effect-book'],
   },
   {
     kind: 'pack',
     name: 'Complete Protection + Ripple Book Pack',
-    productId: 'prod_VKdArH9H940rLv',
-    paymentLinkId: 'plink_1UJxuKEPXDHjPrapyoO9N0Wm',
+    // buy.stripe.com/dRmaEXghzfoa2VfgO5dIA09 · $19.99 · price_1UUmuJEDoVpqpse2o6yssduT
+    productId: 'prod_VVoXCqZU7KYqU6',
+    paymentLinkId: 'plink_1UUmuKEDoVpqpse21auMfyG7',
     sku: 'protection-ripple-pack',
     files: [...BUNDLE_FILES, 'ripple-effect-book'],
   },

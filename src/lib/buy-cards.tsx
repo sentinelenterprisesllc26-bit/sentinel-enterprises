@@ -2,10 +2,10 @@
  * ============================================================================
  *  PAID PRODUCTS (Stripe Payment Links) + shared buy cards
  * ============================================================================
- *  Stripe account acct_1SyKpPEPXDHjPrap (live). The Bundle Payment Link
- *  redirects to /thank-you?session_id=... (confirmed Oct 5, 2026), which
- *  verifies payment and shows the downloads right away. Book/Pack redirects
- *  are not yet confirmed, so those cards keep the "emailed" wording.
+ *  Stripe account acct_1TgyoVEDoVpqpse2 (live). Bundle / Book / Pack Payment
+ *  Links redirect to /thank-you?session_id={CHECKOUT_SESSION_ID}, which
+ *  verifies payment and shows the downloads. Unlock rules live in
+ *  src/lib/purchase-access.ts (must match these product/plink IDs).
  *  Each card's `delivery` line answers "how do I get the file?" up front.
  * ============================================================================
  */
