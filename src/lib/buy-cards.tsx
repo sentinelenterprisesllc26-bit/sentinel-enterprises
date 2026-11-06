@@ -64,7 +64,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     imageAlt: 'The Ripple Effect book cover',
     href: RIPPLE_BOOK_CHECKOUT_URL,
     cta: 'Buy the Ripple Book — $7.99',
-    delivery: 'one-time · PDF emailed shortly after purchase',
+    delivery: 'one-time · instant download page right after checkout · opens on your phone',
     sample: { href: RIPPLE_SAMPLE_URL, label: 'Read the Foreword + Introduction free (PDF, no email needed)' },
   },
   {
@@ -78,7 +78,7 @@ export const BUY_PRODUCTS: BuyProduct[] = [
     imageAlt: 'Complete Protection + Ripple Book Pack cover',
     href: PACK_CHECKOUT_URL,
     cta: 'Get the Pack — $19.99',
-    delivery: 'one-time · PDFs emailed shortly after purchase',
+    delivery: 'one-time · instant download page right after checkout · opens on your phone',
     sample: { href: RIPPLE_SAMPLE_URL, label: 'Read the Ripple Effect sample free (PDF)' },
   },
 ]

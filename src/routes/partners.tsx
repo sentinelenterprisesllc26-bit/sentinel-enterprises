@@ -270,14 +270,15 @@ function PartnersPage() {
       <section id="ripple-book" className="py-20 bg-slate-950">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between mb-4">
-            <h2 className="text-3xl font-bold text-white">The Ripple Effect — XRP book</h2>
-            <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Digital · PDF</span>
+            <h2 className="text-3xl font-bold text-white">Protect what you just bought</h2>
+            <span className="text-amber-400 font-semibold text-sm uppercase tracking-wider">Digital · Instant download</span>
           </div>
           <p className="text-slate-400 mb-8 max-w-2xl">
-            The deeper-dive reference read on Ripple and XRP. Get the book on its own, or bundle it with the Complete
-            Protection guides and save.
+            Got a cold wallet from above? Pair it with the $17.99 Complete Protection Bundle (inheritance checklist,
+            beneficiary template, and more). Or add The Ripple Effect book — Pack saves when you want both. Instant
+            download page right after checkout.
           </p>
-          <BuyCardsGrid only={['book', 'pack']} />
+          <BuyCardsGrid only={['bundle', 'book', 'pack']} />
         </div>
       </section>
 
