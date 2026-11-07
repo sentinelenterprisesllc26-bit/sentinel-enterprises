@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { SquadEpisode } from '../lib/video-embeds'
 import { BuyCardsGrid } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/')({
@@ -438,6 +439,9 @@ function EmailSignupSection() {
           )}
           {status === 'error' && <p className="mt-3 text-red-400 text-sm">Something went wrong. Please try again.</p>}
           <p className="mt-4 text-slate-500 text-xs">We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+          <div className="text-left">
+            <SquadEpisode episode="ep03" caption="Paid to care for a family member? See what Maria almost missed." />
+          </div>
         </div>
       </div>
     </section>

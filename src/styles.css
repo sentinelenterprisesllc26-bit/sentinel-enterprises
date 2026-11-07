@@ -61,6 +61,17 @@ code {
   color: rgb(226 232 240);
 }
 
+.blog-content .prose-content ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.blog-content .prose-content ol li {
+  margin-bottom: 0.5rem;
+  color: rgb(148 163 184);
+}
+
 .blog-content .prose-content .cta-box {
   background: rgba(245, 158, 11, 0.05);
   border: 1px solid rgba(245, 158, 11, 0.2);

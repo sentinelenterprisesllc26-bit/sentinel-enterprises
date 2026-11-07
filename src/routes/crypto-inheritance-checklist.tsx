@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { SquadEpisode } from '../lib/video-embeds'
 import { BuyCard, BUY_PRODUCTS } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/crypto-inheritance-checklist')({
@@ -72,6 +73,9 @@ function CryptoChecklistPage() {
           <p className="text-xl text-slate-400 leading-relaxed">
             5 Essential Steps to Ensure Your Heirs Can Access Your Digital Assets
           </p>
+          <div className="text-left">
+            <SquadEpisode episode="ep02" caption="Two minutes on why the recovery phrase is the real key, and what an inheritance plan needs." />
+          </div>
         </div>
       </section>
 
