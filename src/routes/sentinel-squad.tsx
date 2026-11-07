@@ -15,7 +15,8 @@ const CHANNEL_URL = 'https://www.youtube.com/@JenaeSentinel'
  *  that turns Sentinel's lessons (how money moves, crypto self-custody,
  *  asset protection) into funny, plain-English stories.
  *
- *  This page is a "coming soon" launch hub. To go live with episodes:
+ *  Season One (Ep. 01–04) is live, self-hosted in public/videos/sentinel-squad/
+ *  (`video` on each episode). To switch an episode to YouTube instead:
  *    - 🔵 In EPISODES below, fill in each episode's `youtubeId` with the real
  *      YouTube video ID. Any episode left without an id renders as a
  *      "Coming Soon" placeholder card automatically.
@@ -84,6 +85,8 @@ type Episode = {
   status?: string
   // Optional 16:9 thumbnail (webp + jpg fallback, badge built in) shown until the episode has a youtubeId.
   thumbnail?: { webp: string; jpg: string; alt: string }
+  // Self-hosted episode (public/videos/sentinel-squad/). Used when there is no youtubeId.
+  video?: { src: string; poster: string; duration: string }
 }
 
 const EPISODES: Episode[] = [
@@ -92,7 +95,7 @@ const EPISODES: Episode[] = [
     title: 'The Old Bank Trick',
     description:
       'A $500 wire, $47 in fees, and “3–5 business days.” The Squad follows the money through the SWIFT maze, learns what ISO 20022 really is (a messaging standard, not a coin), and looks at how some payment providers use XRP as a bridge.',
-    status: 'Premiering Soon',
+    video: { src: '/videos/sentinel-squad/ep01-old-bank-trick.mp4', poster: '/images/sentinel-squad/ep01-old-bank-trick-poster.jpg', duration: '2:15' },
     thumbnail: {
       webp: '/images/sentinel-squad/ep01-old-bank-trick-premiering-soon.webp',
       jpg: '/images/sentinel-squad/ep01-old-bank-trick-premiering-soon.jpg',
@@ -103,7 +106,8 @@ const EPISODES: Episode[] = [
     number: 'Ep. 02',
     title: 'The Vault Without a Key',
     description:
-      'When a family can’t reach their crypto, the Squad shows why self-custody and an inheritance plan matter before it’s too late.',
+      'Grandma’s late husband said his crypto was “safe” — and now nobody can get in. The Squad explains why the recovery phrase is the real key, the #1 scam to avoid, and the three parts of a crypto inheritance plan.',
+    video: { src: '/videos/sentinel-squad/ep02-vault-without-a-key.mp4', poster: '/images/sentinel-squad/ep02-vault-without-a-key-poster.jpg', duration: '1:44' },
     thumbnail: {
       webp: '/images/sentinel-squad/ep02-vault-without-a-key-coming-soon.webp',
       jpg: '/images/sentinel-squad/ep02-vault-without-a-key-coming-soon.jpg',
@@ -114,7 +118,8 @@ const EPISODES: Episode[] = [
     number: 'Ep. 03',
     title: 'The Missing Deductions',
     description:
-      'A busy caregiver discovers the tax savings hiding in plain sight — and keeps more of what they’ve earned.',
+      'Maria cares for her mom full time through a state program and is about to pay tax on all of it. The Squad walks through IRS Notice 2014-7 and exactly what to bring to your tax pro.',
+    video: { src: '/videos/sentinel-squad/ep03-missing-deductions.mp4', poster: '/images/sentinel-squad/ep03-missing-deductions-poster.jpg', duration: '1:39' },
     thumbnail: {
       webp: '/images/sentinel-squad/ep03-missing-deductions-coming-soon.webp',
       jpg: '/images/sentinel-squad/ep03-missing-deductions-coming-soon.jpg',
@@ -125,7 +130,8 @@ const EPISODES: Episode[] = [
     number: 'Ep. 04',
     title: 'Building the Shield',
     description:
-      'The Squad walks a working family through protecting their home and savings without a fortune.',
+      'The Johnsons think asset protection is for millionaires with yachts. The Squad builds their shield one layer at a time: insurance, the right paperwork, and smart structure. Season One finale.',
+    video: { src: '/videos/sentinel-squad/ep04-building-the-shield.mp4', poster: '/images/sentinel-squad/ep04-building-the-shield-poster.jpg', duration: '1:56' },
     thumbnail: {
       webp: '/images/sentinel-squad/ep04-building-the-shield-coming-soon.webp',
       jpg: '/images/sentinel-squad/ep04-building-the-shield-coming-soon.jpg',
@@ -154,7 +160,7 @@ function HeroSection() {
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-sm font-medium mb-6">
           <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-          New Animated Series · Coming Soon
+          New Animated Series · Season One Now Streaming
         </span>
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
           Meet the <span className="text-amber-400">Sentinel Squad</span>
@@ -165,10 +171,10 @@ function HeroSection() {
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#notify"
+            href="#episodes"
             className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
           >
-            Get Notified at Launch
+            Watch Season One
           </a>
           <a
             href={CHANNEL_URL}
@@ -248,7 +254,7 @@ function CharactersSection() {
 
 function EpisodesSection() {
   return (
-    <section className="py-20 bg-slate-900">
+    <section id="episodes" className="py-20 bg-slate-900 scroll-mt-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-baseline justify-between mb-10">
           <h2 className="text-2xl sm:text-3xl font-bold text-white">Episodes</h2>
@@ -264,7 +270,7 @@ function EpisodesSection() {
   )
 }
 
-function EpisodeCard({ number, title, description, youtubeId, status, thumbnail }: Episode) {
+function EpisodeCard({ number, title, description, youtubeId, status, thumbnail, video }: Episode) {
   return (
     <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl overflow-hidden flex flex-col hover:border-amber-500/50 transition-colors">
       <div className="relative w-full bg-slate-900" style={{ aspectRatio: '16 / 9' }}>
@@ -277,6 +283,8 @@ function EpisodeCard({ number, title, description, youtubeId, status, thumbnail 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
+        ) : video ? (
+          <EpisodePlayer number={number} title={title} video={video} />
         ) : thumbnail ? (
           <picture>
             <source srcSet={thumbnail.webp} type="image/webp" />
@@ -297,11 +305,59 @@ function EpisodeCard({ number, title, description, youtubeId, status, thumbnail 
         )}
       </div>
       <div className="p-6 flex flex-col flex-1">
-        <span className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-1">{number}</span>
+        <span className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-1">
+          {number}
+          {video ? ` · ${video.duration}` : ''}
+        </span>
         <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
         <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
       </div>
     </div>
+  )
+}
+
+// Poster + play button until clicked, then the real <video> (keeps the poster's title clear of browser controls).
+function EpisodePlayer({ number, title, video }: { number: string; title: string; video: NonNullable<Episode['video']> }) {
+  const [playing, setPlaying] = useState(false)
+  if (playing) {
+    return (
+      <video
+        className="absolute inset-0 w-full h-full bg-slate-950"
+        src={video.src}
+        poster={video.poster}
+        controls
+        autoPlay
+        playsInline
+        aria-label={`${number}: ${title}`}
+      />
+    )
+  }
+  return (
+    <button
+      type="button"
+      onClick={() => setPlaying(true)}
+      className="group absolute inset-0 w-full h-full cursor-pointer"
+      aria-label={`Play ${number}: ${title} (${video.duration})`}
+    >
+      <picture>
+        <source srcSet={video.poster.replace(/\.jpg$/, '.webp')} type="image/webp" />
+        <img
+          src={video.poster}
+          alt=""
+          width={1280}
+          height={720}
+          loading="lazy"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </picture>
+      <span className="absolute inset-0 bg-slate-950/0 group-hover:bg-slate-950/20 transition-colors" />
+      <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-amber-500 group-hover:bg-amber-400 shadow-xl shadow-black/40 ring-4 ring-white/80 transition-all group-hover:scale-105">
+        <svg viewBox="0 0 24 24" className="w-7 h-7 sm:w-9 sm:h-9 ml-1 fill-slate-900" aria-hidden="true">
+          <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.76-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z" />
+        </svg>
+      </span>
+    </button>
   )
 }
 
@@ -331,18 +387,18 @@ function NotifySection() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-10">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-6">
-            Be First in Line
+            Never Miss an Episode
           </span>
-          <h2 className="text-3xl font-bold text-white mb-3">Get Notified When the Squad Drops</h2>
+          <h2 className="text-3xl font-bold text-white mb-3">Get Notified When New Episodes Drop</h2>
           <p className="text-slate-400 mb-8 leading-relaxed">
-            Leave your email and we’ll let you know the moment the first episodes of the Sentinel Squad go live. No spam.
+            Leave your email and we’ll let you know when new Sentinel Squad episodes go live. No spam.
             Unsubscribe anytime.
           </p>
 
           {status === 'success' ? (
             <div className="bg-green-500/10 border border-green-500/30 rounded-xl p-6 text-green-400">
               <p className="font-semibold text-lg mb-1">You’re on the list!</p>
-              <p className="text-sm">We’ll email you as soon as the Sentinel Squad premieres.</p>
+              <p className="text-sm">We’ll email you as soon as the next episode premieres.</p>
               <Link
                 to="/videos"
                 className="inline-flex items-center gap-1 mt-3 text-amber-400 hover:text-amber-300 text-sm font-medium"
