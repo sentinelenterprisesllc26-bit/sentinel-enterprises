@@ -348,16 +348,16 @@ function SentinelSquadTeaser() {
         <div className="bg-gradient-to-br from-amber-500/10 to-amber-600/5 border border-amber-500/20 rounded-3xl p-8 sm:p-10 lg:p-12 text-center">
           <span className="inline-flex items-center gap-2 px-3 py-1 bg-amber-500/10 border border-amber-500/30 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider mb-6">
             <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse" />
-            New Animated Series - Coming Soon
+            New Animated Series - Season One Now Streaming
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">Meet the <span className="text-amber-400">Sentinel Squad</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">A Saturday-morning cartoon for grown-ups that turns money moves, crypto self-custody, and asset protection into funny, plain-English stories. Episode 1, &ldquo;The Old Bank Trick,&rdquo; is premiering soon.</p>
+          <p className="text-slate-400 max-w-2xl mx-auto leading-relaxed mb-8">A Saturday-morning cartoon for grown-ups that turns money moves, crypto self-custody, and asset protection into funny, plain-English stories. All four Season One episodes are streaming now, starting with &ldquo;The Old Bank Trick.&rdquo;</p>
           <picture>
-            <source srcSet="/images/sentinel-squad/sentinel-squad-coming-soon-16x9.webp" type="image/webp" />
-            <img src="/images/sentinel-squad/sentinel-squad-coming-soon-16x9.jpg" alt="Sentinel Squad, coming soon: the animated cast of Jenae with her curly red hair and blue jacket, Hash, Sats, Node, Coin the gold AI orb, and Ripple the blue XRP orb, standing together in a city park" width={1920} height={1080} loading="lazy" decoding="async" className="w-full max-w-3xl mx-auto rounded-2xl border border-amber-500/20 mb-8" />
+            <source srcSet="/images/sentinel-squad/squad-cast-lineup-names.webp" type="image/webp" />
+            <img src="/images/sentinel-squad/squad-cast-lineup-names.jpg" alt="The Sentinel Squad cast, labeled: Hash, Sats, Jenae with her curly red hair and blue jacket, Coin the gold AI orb, Ripple the blue XRP orb, and Node" width={1920} height={1080} loading="lazy" decoding="async" className="w-full max-w-3xl mx-auto rounded-2xl border border-amber-500/20 mb-8" />
           </picture>
           <Link to="/sentinel-squad" className="inline-flex items-center justify-center px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40">
-            Meet the Squad &rarr;
+            Watch Season One &rarr;
           </Link>
         </div>
       </div>
