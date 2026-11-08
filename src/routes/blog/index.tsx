@@ -1,10 +1,21 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { POSTS_2026 } from '../../lib/blog-posts-2026'
 
 export const Route = createFileRoute('/blog/')({
+  head: () => ({
+    meta: [
+      { title: 'Resources: Crypto Planning, Asset Protection & Caregiver Taxes | Sentinel Enterprises' },
+      {
+        name: 'description',
+        content:
+          'Plain-English articles and videos on crypto self-custody and inheritance, asset protection for working families, and caregiver tax rules like IRS Notice 2014-7.',
+      },
+    ],
+  }),
   component: BlogPage,
 })
 
-const posts = [
+const legacyPosts = [
   {
     id: 'crypto-trust',
     title: 'Do I Need a Trust If I Own Crypto?',
@@ -47,6 +58,19 @@ const posts = [
   },
 ]
 
+const posts = [
+  ...POSTS_2026.map((p) => ({
+    id: p.slug,
+    title: p.title,
+    slug: p.slug,
+    date: p.date,
+    readTime: p.readTime,
+    category: p.category,
+    excerpt: p.excerpt,
+  })),
+  ...legacyPosts,
+]
+
 function BlogPage() {
   return (
     <>
@@ -54,7 +78,7 @@ function BlogPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-black text-white mb-4">Resources</h1>
           <p className="text-xl text-slate-400 leading-relaxed">
-            Plain-English guides on asset protection, crypto planning, and caregiver taxes.
+            Plain-English guides and videos on asset protection, crypto planning, and caregiver taxes.
           </p>
         </div>
       </section>

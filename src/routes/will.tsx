@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { SquadEpisode } from '../lib/video-embeds'
 import { BuyCard, BUY_PRODUCTS } from '../lib/buy-cards'
 
 export const Route = createFileRoute('/will')({
@@ -56,6 +57,9 @@ function WillChecklistPage() {
           <p className="text-xl text-slate-400 leading-relaxed">
             The free Will &amp; Legacy Checklist: what to update after a new baby, marriage, divorce, move, or new assets (including crypto)
           </p>
+          <div className="text-left">
+            <SquadEpisode episode="ep04" caption="Asset protection for regular families: insurance, the right paperwork, and smart structure." />
+          </div>
         </div>
       </section>
 

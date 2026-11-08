@@ -1,10 +1,34 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { POSTS_2026_BY_SLUG } from '../../lib/blog-posts-2026'
+import { SquadEpisode, YouTubeEmbed } from '../../lib/video-embeds'
 
 export const Route = createFileRoute('/blog/$slug')({
+  head: ({ params }) => {
+    const post = getPost(params.slug)
+    if (!post) return { meta: [{ title: 'Post Not Found | Sentinel Enterprises' }] }
+    const description = 'description' in post ? post.description : undefined
+    return {
+      meta: [
+        { title: `${post.title} | Sentinel Enterprises` },
+        ...(description
+          ? [
+              { name: 'description', content: description },
+              { property: 'og:title', content: post.title },
+              { property: 'og:description', content: description },
+              { property: 'og:type', content: 'article' },
+            ]
+          : []),
+      ],
+    }
+  },
   component: BlogPostPage,
 })
 
-const posts: Record<string, { title: string; date: string; category: string; readTime: string; content: React.ReactNode }> = {
+function getPost(slug: string) {
+  return POSTS_2026_BY_SLUG[slug] ?? legacyPosts[slug]
+}
+
+const legacyPosts: Record<string, { title: string; date: string; category: string; readTime: string; content: React.ReactNode }> = {
   'crypto-trust': {
     title: 'Do I Need a Trust If I Own Crypto?',
     date: 'June 2025',
@@ -16,6 +40,8 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           Your crypto dies with you unless you plan for it. It's a hard truth — but it's one that every Bitcoin,
           Ethereum, and digital asset holder needs to hear before it's too late.
         </p>
+
+        <SquadEpisode episode="ep02" caption="What happens to crypto when nobody has the key." />
 
         <h2>What a Trust Actually Does</h2>
         <p>
@@ -107,6 +133,8 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           at least one of these three deductions — and some miss all three.
         </p>
 
+        <SquadEpisode episode="ep03" caption="How one family caregiver almost paid tax she may not have owed." />
+
         <h2>Deduction 1: Medical Expenses</h2>
         <p>
           You can deduct medical and dental expenses that exceed 7.5% of your adjusted gross income (AGI). The key is
@@ -178,6 +206,8 @@ const posts: Record<string, { title: string; date: string; category: string; rea
           "Not your keys, not your crypto." It's the most important phrase in the crypto world — and most holders
           don't fully understand what it means until it's too late.
         </p>
+
+        <YouTubeEmbed id="VGUBgFpx-0U" title="The Air-Gapped Wallet That Never Touches the Internet" />
 
         <h2>What Cold Storage Is (And Why Exchanges Aren't Enough)</h2>
         <p>
@@ -344,7 +374,7 @@ const posts: Record<string, { title: string; date: string; category: string; rea
 
 function BlogPostPage() {
   const { slug } = Route.useParams()
-  const post = posts[slug]
+  const post = getPost(slug)
 
   if (!post) {
     return (
