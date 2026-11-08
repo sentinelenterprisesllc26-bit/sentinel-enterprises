@@ -85,7 +85,7 @@ export const postsB: BlogPost[] = [
           balance, your rights, and your bank's rules didn't change because of either switch.
         </p>
 
-        <YouTubeEmbed id="hc4XJktTf68" title="The Global Financial System Is Shifting. Are You Ready?" />
+        <SquadEpisode episode="ep01" caption="What ISO 20022 really is: a messaging standard, not a coin and not a freeze switch." />
 
         <h2>What can freeze an account (and always could)</h2>
         <ul>

@@ -97,12 +97,6 @@ const groups: VideoGroup[] = [
           'A look at how regulatory clarity and institutional adoption — including comments from SBI’s CEO — are shaping the future of XRP.',
       },
       {
-        id: 'hc4XJktTf68',
-        title: 'The Global Financial System Is Shifting — Are You Ready?',
-        description:
-          'An audiobook-style presentation on the shifting global financial system and what it means for everyday holders.',
-      },
-      {
         id: 'gruxCAPQWgw',
         title: 'Why Self-Custody Matters Before the System Changes Again',
         description:
