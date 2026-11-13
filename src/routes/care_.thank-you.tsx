@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 const TITLE = "Thanks — you're in Sentinel Care | Sentinel Enterprises LLC"
 const DESC =
@@ -96,6 +97,7 @@ function CareThankYouPage() {
           </p>
           <a
             href={BUNDLE_URL}
+            onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
             className="block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
           >
             Get the Bundle — $17.99

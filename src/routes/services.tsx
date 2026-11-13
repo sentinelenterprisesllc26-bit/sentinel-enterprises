@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 export const Route = createFileRoute('/services')({
   component: ServicesPage,
@@ -10,6 +11,7 @@ function PayPalButton({ className = '' }: { className?: string }) {
       href="https://paypal.me/JenaeWiley"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
       className={`inline-flex items-center gap-3 px-6 py-3 bg-[#FFC439] hover:bg-[#FFB800] text-[#003087] font-bold rounded-xl transition-all shadow-lg shadow-yellow-400/30 hover:shadow-yellow-400/50 hover:scale-[1.02] active:scale-[0.98] ${className}`}
     >
       <svg className="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

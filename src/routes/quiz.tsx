@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { BUNDLE_CHECKOUT_URL, RIPPLE_BOOK_CHECKOUT_URL } from '../lib/buy-cards'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 export const Route = createFileRoute('/quiz')({
   head: () => ({
@@ -295,6 +296,7 @@ function QuizPage() {
                   href={BUNDLE_CHECKOUT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
                   className="block w-full bg-[#c9a227] hover:bg-[#e8c86a] text-[#0b1f3a] font-black text-lg py-4 rounded-xl transition-colors"
                 >
                   Get the Complete Protection Bundle — $17.99
@@ -303,6 +305,7 @@ function QuizPage() {
                   href={RIPPLE_BOOK_CHECKOUT_URL}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
                   className="inline-block mt-4 text-[#e8c86a] hover:text-white font-semibold underline underline-offset-4"
                 >
                   Or start with The Ripple Effect book — $7.99
