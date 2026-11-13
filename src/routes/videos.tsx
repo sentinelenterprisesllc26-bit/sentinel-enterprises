@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { formatPrice, PRODUCTS } from '../lib/products'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 export const Route = createFileRoute('/videos')({
   component: VideosPage,
@@ -297,6 +298,7 @@ function MasterclassSection() {
                 href="https://buy.stripe.com/5kQ4gzc1j6RE2VfapHdIA0b"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
               >
                 Get the Complete Protection Bundle — $17.99

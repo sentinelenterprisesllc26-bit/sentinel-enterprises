@@ -2,6 +2,7 @@ import { Link, createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
 import { SquadEpisode } from '../lib/video-embeds'
 import { BuyCardsGrid } from '../lib/buy-cards'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 export const Route = createFileRoute('/')({
   component: HomePage,
@@ -56,6 +57,7 @@ function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-4 flex-wrap">
             <a
               href="https://buy.stripe.com/eVq28rghzek67bvfK1dIA0a?prefilled_promo_code=CARE75"
+              onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
               className="inline-flex items-center justify-center px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-900 font-bold text-lg rounded-xl transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:-translate-y-0.5"
             >
               First month free — $0 today

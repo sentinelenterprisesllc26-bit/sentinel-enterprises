@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from '@tanstack/react-router'
 import { type ProductId } from '../lib/products'
 import { BUNDLE_CHECKOUT_URL, BuyCardsGrid } from '../lib/buy-cards'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 export const Route = createFileRoute('/guides')({
   component: GuidesPage,
@@ -193,6 +194,7 @@ function ProductCard({
         href={checkoutUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
         className="block w-full text-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold py-3 px-6 rounded-xl transition-colors"
       >
         {buttonText}

@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react'
+import { trackCheckoutClick } from '../lib/offer-clicks'
 
 export const Route = createFileRoute('/care')({
   head: () => ({
@@ -80,6 +81,7 @@ function CarePage() {
         */}
         <a
           href="https://buy.stripe.com/eVq28rghzek67bvfK1dIA0a?prefilled_promo_code=CARE75"
+          onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
           className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
         >
           Start free — CARE75 ready · $0 today
@@ -101,6 +103,7 @@ function CarePage() {
 
         <a
           href="https://buy.stripe.com/eVq28rghzek67bvfK1dIA0a?prefilled_promo_code=CARE75"
+          onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
           className="mb-4 block rounded-full bg-[#2f6f5e] px-[18px] py-3.5 text-center font-sans text-base font-semibold text-white transition hover:brightness-95"
         >
           Start your free trial — $0 today

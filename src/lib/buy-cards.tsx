@@ -1,3 +1,5 @@
+import { trackCheckoutClick } from './offer-clicks'
+
 /*
  * ============================================================================
  *  PAID PRODUCTS (Stripe Payment Links) + shared buy cards
@@ -130,6 +132,7 @@ export function BuyCard({ p, compact = false }: { p: BuyProduct; compact?: boole
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={(e) => trackCheckoutClick(e.currentTarget.href)}
             className="block w-full text-center bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold py-3 px-4 rounded-xl transition-colors"
           >
             {p.cta}
